@@ -27,4 +27,4 @@ script:
 - ng lint
 
 after_success: 
-- ng github-pages:deploy
+  - 'npm run gh-pages'
