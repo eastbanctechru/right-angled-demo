@@ -25,3 +25,6 @@ before_script:
 script: 
 - ng build
 - ng lint
+
+after_success: 
+- ng github-pages:deploy
