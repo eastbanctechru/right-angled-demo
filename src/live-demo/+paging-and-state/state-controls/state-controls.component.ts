@@ -5,6 +5,7 @@ import { Airport, AirportsListRequest, AirportsService, ListResponse } from '../
 
 @Component({
     selector: 'rt-demo-state-controls',
+    styleUrls: ['state-controls.component.scss'],
     templateUrl: 'state-controls.component.html'
 })
 export class StateControlsComponent {
