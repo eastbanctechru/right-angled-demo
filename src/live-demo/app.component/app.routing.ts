@@ -20,7 +20,8 @@ const appRoutes: Routes = [
     ...MiscDirectivesRoutes,
     ...PagingAndStatesRoutes,
     ...PersistenceRoutes,
-    ...SortingsRoutes
+    ...SortingsRoutes,
+    { path: '**', redirectTo: '' }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
