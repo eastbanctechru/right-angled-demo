@@ -30,10 +30,10 @@ export class StateControlsComponent {
     };
     public loadEmptyData(): void {
         this.returnNoData = true;
-        this.listComponent.listService.reloadData();
+        this.listComponent.reloadData();
     };
     public raiseErrorOnLoad(): void {
         this.raiseError = true;
-        this.listComponent.listService.reloadData();
+        this.listComponent.reloadData();
     };
 }
