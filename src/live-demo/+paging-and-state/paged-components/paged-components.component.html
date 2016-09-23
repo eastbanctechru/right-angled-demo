@@ -10,11 +10,11 @@
         <div class="col-md-12">
             <div class="pager">
                 <rt-display-pager #rtdp>
-                    <span rtGoToFirstPage disabledCls="disabled" title="go to first page"></span>
-                    <span rtGoToPrevPage disabledCls="disabled" title="go to previous page"></span>
+                    <span rtGoToFirstPage title="go to first page"></span>
+                    <span rtGoToPrevPage title="go to previous page"></span>
                     <input rtSelectOnFocus rtPageNumber type="text" class="form-control" maxlength="4" />
-                    <span rtGoToNextPage disabledCls="disabled" title="go to next page"></span>
-                    <span rtGoToLastPage disabledCls="disabled" title="go to last page"></span>
+                    <span rtGoToNextPage title="go to next page"></span>
+                    <span rtGoToLastPage title="go to last page"></span>
                     <span>Displaying records {{rtdp.pager.displayFrom}} - {{rtdp.pager.displayTo}} of {{rtdp.pager.totalCount}}.</span>
                     <span>Page size</span>
                     <input rtSelectOnFocus rtPageSize type="text" class="form-control" maxlength="3" />

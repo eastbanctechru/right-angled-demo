@@ -15,11 +15,11 @@
 </rt-list-state-progress>
 <rt-list-state-done>
     <rt-display-pager>
-        <span rtGoToFirstPage disabledCls="disabled" title="go to first page"></span>
-        <span rtGoToPrevPage disabledCls="disabled" title="go to previous page"></span>
+        <span rtGoToFirstPage title="go to first page"></span>
+        <span rtGoToPrevPage title="go to previous page"></span>
         <input rtSelectOnFocus rtPageNumber type="text" class="form-control" maxlength="4" />
-        <span rtGoToNextPage disabledCls="disabled" title="go to next page"></span>
-        <span rtGoToLastPage disabledCls="disabled" title="go to last page"></span>
+        <span rtGoToNextPage title="go to next page"></span>
+        <span rtGoToLastPage title="go to last page"></span>
         <span>
             Displaying records {{pager.displayFrom}} - {{pager.displayTo}} of {{pager.totalCount}}.
             </span>
