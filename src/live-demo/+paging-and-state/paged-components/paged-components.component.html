@@ -1,4 +1,4 @@
-<rt-list [fetchMethod]="loadData" [loadOnInit]="false">
+<rt-paged-list [fetchMethod]="loadData">
     <div class="row">
         <div class="col-md-12 toolbar">
             <ul>
@@ -9,31 +9,17 @@
         </div>
         <div class="col-md-12">
             <div class="pager">
-                <!-- Вы увидите это сообщение если запрос не вернет данные. -->
-                <rt-list-state-no-data>
-                    Данные не найдены
-                </rt-list-state-no-data>
-                <!-- Вы увидите это сообщение если нажмете кнопку "отменить запрос" когда он будет выполняться. -->
-                <rt-list-state-request-canceled>
-                    Запрос был отменен
-                </rt-list-state-request-canceled>
-                <!-- Вы увидите это сообщение если нажмете кнопку "Raise error on load". -->
-                <rt-list-state-failed>
-                    При запросе данных произошла ошибка
-                </rt-list-state-failed>
-                <!-- Вы будете видеть это сообщение пока список не выполнил первый запрос данных. -->
-                <rt-list-state-initial>
-                    Пока ничего не произошло. Нажмите любую из кнопок вверху
-                </rt-list-state-initial>
-                <!-- Вы будете видеть это сообщение пока выполняется загрузка данных. -->
-                <rt-list-state-progress>
-                    Загружаю данные...
-                </rt-list-state-progress>
-                <!-- Вы увидите это сообщение если нажмете кнопку "загрузить данные". -->
-                <rt-list-state-done>
-                    Данные успешно загружены
-                </rt-list-state-done>
+                <rt-display-pager #rtdp>
+                    <span rtGoToFirstPage disabledCls="disabled" title="go to first page"></span>
+                    <span rtGoToPrevPage disabledCls="disabled" title="go to previous page"></span>
+                    <input rtSelectOnFocus rtPageNumber type="text" class="form-control" maxlength="4" />
+                    <span rtGoToNextPage disabledCls="disabled" title="go to next page"></span>
+                    <span rtGoToLastPage disabledCls="disabled" title="go to last page"></span>
+                    <span>Displaying records {{rtdp.pager.displayFrom}} - {{rtdp.pager.displayTo}} of {{rtdp.pager.totalCount}}.</span>
+                    <span>Page size</span>
+                    <input rtSelectOnFocus rtPageSize type="text" class="form-control" maxlength="3" />
+                </rt-display-pager>
             </div>
         </div>
     </div>
-</rt-list>
+</rt-paged-list>
