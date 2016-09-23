@@ -13,3 +13,36 @@ html, body {
     height: 100vh;
     background: url(img/progress/app-loader.gif) center center no-repeat;
 }
+
+.btn-primary {
+    background-color: $color-light-blue;
+    border-color: $color-light-blue;
+    @include border-radius(0);
+    &:hover,
+    &:focus {
+        background-color: $color-btn-primary-focus;
+        border-color: $color-btn-primary-focus;
+    }
+    &:active {
+        background-color: $color-btn-primary-active;
+        border-color: $color-btn-primary-active;
+        @include box-shadow(none);
+    }
+}
+div.toolbar {
+        text-align: right;
+        padding-bottom: 15px;
+    ul {
+        padding-left: 0;
+        margin-left: -5px;
+        list-style: none;
+        text-align: right;
+        margin-right: -5px;
+        margin-bottom: 0;
+        li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+     }
+    }
+}

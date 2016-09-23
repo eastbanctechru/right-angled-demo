@@ -4,7 +4,6 @@ import { AirportsService } from '../../shared';
 
 @Component({
     selector: 'rt-demo-select-all',
-    styleUrls: ['select-all.component.scss'],
     templateUrl: 'select-all.component.html'
 })
 export class SelectAllComponent {

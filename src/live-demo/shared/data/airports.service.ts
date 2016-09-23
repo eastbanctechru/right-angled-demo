@@ -74,6 +74,9 @@ export class AirportsService {
             .share();
     }
 
+    public getAirportsList(request: AirportsListRequest, delay: number = 500): Observable<ListResponse<Airport>> {
+        return this.getFilteredAirports(request, delay).map(airports => this.applyRequest(request, airports));
+    }
     public getAirportsPaged(request: AirportsPagedListRequest, delay: number = 500): Observable<PagedListResponse<Airport>> {
         return this.getFilteredAirports(request, delay).map(airports => this.applyPagedRequest(request, airports));
     }

@@ -1,5 +1,55 @@
 <div class="row">
     <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
         <h1>Paging and lists state</h1>
+        <h3>Table of contents</h3>
+        <ul>
+            <li><a href="paging-and-state#common-idea">Общая идея</a></li>
+            <li><a href="paging-and-state#bootstrap">Как подключить</a></li>
+            <li><a href="paging-and-state#state-controls">Компоненты состояния</a></li>
+            <li><a href="paging-and-state#paging-controls">Компоненты для paging</a></li>
+        </ul>
+        <section id="common-idea">
+            <h3>Общая идея</h3>
+            <p>
+                Для работы с paging в нашей библиотеке реализовано множество небольших контролов, ни один из которых не влияет на стили вашего конечного приложения.
+                Идея заключается в том, что вы можете самостоятельно собрать нужный вам пейджер с нужной вам версткой, стилями и функционалом.
+            </p>
+            <p>
+                Ниже мы перечислим все имеющиеся компоненты и директивы, касающиеся paging-а и отображения текущего состояния списка (например, как отобразить spinner, пока загружаются данные).
+                В самом конце мы представим три рабочих варианта собранных pagers для paged, buffered и simple списков.
+            </p>
+        </section>
+        <section id="bootstrap">
+            <h3>Как подключить</h3>
+            <p>Данный функционал поставляется вместе с функционалом списков в модуле <code>RTListsModule</code> 
+                Также можно импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки целиком.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/bootstrap/app.module.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+        </section>
+        <section id="state-controls">
+
+            <h3>Компоненты состояния</h3>
+            <p>
+                Суть данного набора компонентов проста: каждый из них является котейнером для контента, и отображается только когда список находится в определенном состоянии.
+            </p>
+            <p>
+                Например, при помощи компонента <code>rt-list-state-progress</code> вы можете отобразить spinner на время загрузки данных.
+            </p>
+            <p>
+                Список данных компонентов отражает собой возможные значения перечисления <a target="_blank" href="http://fshchudlo.github.io/e2e4/enums/progressstate.html">ProgressState</a>
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="State controls">
+                    <rt-demo-state-controls></rt-demo-state-controls>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-controls/state-controls.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-controls/state-controls.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+        </section>
     </div>
 </div>
