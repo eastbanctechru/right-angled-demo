@@ -4,11 +4,10 @@ import { ListComponent } from 'right-angled';
 import { Airport, AirportsListRequest, AirportsService, ListResponse } from '../../shared';
 
 @Component({
-    selector: 'rt-demo-state-controls',
-    styleUrls: ['state-controls.component.scss'],
-    templateUrl: 'state-controls.component.html'
+    selector: 'rt-demo-state-components',
+    templateUrl: 'state-components.component.html'
 })
-export class StateControlsComponent {
+export class StateComponentsComponent {
     private raiseError: boolean = false;
     private returnNoData: boolean = false;
     @ViewChild(ListComponent) public listComponent: ListComponent;

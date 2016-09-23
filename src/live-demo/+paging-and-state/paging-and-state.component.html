@@ -5,51 +5,118 @@
         <ul>
             <li><a href="paging-and-state#common-idea">Общая идея</a></li>
             <li><a href="paging-and-state#bootstrap">Как подключить</a></li>
-            <li><a href="paging-and-state#state-controls">Компоненты состояния</a></li>
-            <li><a href="paging-and-state#paging-controls">Компоненты для paging</a></li>
+            <li><a href="paging-and-state#state-components">Компоненты состояния</a></li>
+            <li>
+                <a href="paging-and-state#paging-components">Компоненты для paging</a>
+                <ul>
+                    <li><a href="selection#display-pager"><code>rt-display-pager</code></a></li>
+                    <li><a href="selection#paged-components">Paged list components</a></li>
+                    <li><a href="selection#buffered-components">Buffered list components</a></li>
+                </ul>
+            </li>
         </ul>
         <section id="common-idea">
             <h3>Общая идея</h3>
             <p>
-                Для работы с paging в нашей библиотеке реализовано множество небольших контролов, ни один из которых не влияет на стили вашего конечного приложения.
-                Идея заключается в том, что вы можете самостоятельно собрать нужный вам пейджер с нужной вам версткой, стилями и функционалом.
+                Для работы с paging в нашей библиотеке реализовано множество небольших контролов, ни один из которых не влияет на стили вашего
+                конечного приложения. Идея заключается в том, что вы можете самостоятельно собрать нужный вам пейджер с нужной
+                вам версткой, стилями и функционалом.
             </p>
             <p>
-                Ниже мы перечислим все имеющиеся компоненты и директивы, касающиеся paging-а и отображения текущего состояния списка (например, как отобразить spinner, пока загружаются данные).
-                В самом конце мы представим три рабочих варианта собранных pagers для paged, buffered и simple списков.
+                Ниже мы перечислим все имеющиеся компоненты и директивы, касающиеся paging-а и отображения текущего состояния списка (например,
+                как отобразить spinner, пока загружаются данные). В самом конце мы представим три рабочих варианта собранных
+                pagers для paged, buffered и simple списков.
             </p>
         </section>
         <section id="bootstrap">
             <h3>Как подключить</h3>
-            <p>Данный функционал поставляется вместе с функционалом списков в модуле <code>RTListsModule</code> 
-                Также можно импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки целиком.
+            <p>Данный функционал поставляется вместе с функционалом списков в модуле <code>RTListsModule</code> Также можно
+                импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки целиком.
             </p>
             <rt-demo-tab-section>
                 <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/bootstrap/app.module.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>
-        <section id="state-controls">
-
+        <section id="state-components">
             <h3>Компоненты состояния</h3>
             <p>
-                Суть данного набора компонентов проста: каждый из них является котейнером для контента, и отображается только когда список находится в определенном состоянии.
+                Суть данного набора компонентов проста: каждый из них является котейнером для контента, и отображается только когда список
+                находится в определенном состоянии.
             </p>
             <p>
-                Например, при помощи компонента <code>rt-list-state-progress</code> вы можете отобразить spinner на время загрузки данных.
+                Например, при помощи компонента <code>rt-list-state-progress</code> вы можете отобразить spinner на время
+                загрузки данных.
             </p>
             <p>
                 Список данных компонентов отражает собой возможные значения перечисления <a target="_blank" href="http://fshchudlo.github.io/e2e4/enums/progressstate.html">ProgressState</a>
             </p>
             <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="State controls">
-                    <rt-demo-state-controls></rt-demo-state-controls>
+                <rt-demo-sample-tab tabTitle="State components">
+                    <rt-demo-state-components></rt-demo-state-components>
                 </rt-demo-sample-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-controls/state-controls.component.ts">
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.ts">
                 </rt-demo-code-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-controls/state-controls.component.html">
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
+        </section>
+        <section id="paging-components">
+            <section id="display-pager">
+                <h4><code>rt-display-pager</code></h4>
+                <p>
+                    Данный компонент является контейнером для всех контролов описанных ниже и определяет, когда отрисовывать pager.
+                </p>
+                <p>
+                    Данный компонент будет отрисовываться когда:
+                </p>
+                <ol>
+                    <li>При заданных фильтрах на сервере имеются записи (то есть <code>totalCount > 0</code>)</li>
+                    <li>На случай <code>buffered list</code>, загружены еще не все записи (то есть <code>skip < totalCount</code>)</li>
+                </ol>
+                <p>
+                    Так же логично будет отображать pager только когда последний запрос был выполнен успешно. Для таких случаев можно использовать
+                    <code>rt-display-pager</code> в сочетании с <code>rt-list-state-done</code> описанным выше.
+                </p>
+                <p>
+                    Использование данного компонента не является обязательным. Живой пример его использования мы увидим ниже.
+                </p>
+                <rt-demo-tab-section>
+                    <rt-demo-sample-tab tabTitle="State components">
+                        <rt-demo-state-components></rt-demo-state-components>
+                    </rt-demo-sample-tab>
+                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.ts">
+                    </rt-demo-code-tab>
+                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.html">
+                    </rt-demo-code-tab>
+                </rt-demo-tab-section>
+
+            </section>
+            <section id="paged-components">
+                <h4>Paged list components</h4>
+                <rt-demo-tab-section>
+                    <rt-demo-sample-tab tabTitle="Paged list components">
+                        <rt-demo-paged-components></rt-demo-paged-components>
+                    </rt-demo-sample-tab>
+                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.ts">
+                    </rt-demo-code-tab>
+                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.html">
+                    </rt-demo-code-tab>
+                </rt-demo-tab-section>
+
+            </section>
+            <section id="buffered-components">
+                <h4>Buffered list components</h4>
+                <rt-demo-tab-section>
+                    <rt-demo-sample-tab tabTitle="Buffered list components">
+                        <rt-demo-buffered-components></rt-demo-buffered-components>
+                    </rt-demo-sample-tab>
+                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.ts">
+                    </rt-demo-code-tab>
+                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.html">
+                    </rt-demo-code-tab>
+                </rt-demo-tab-section>
+            </section>
         </section>
     </div>
 </div>
