@@ -1,7 +1,17 @@
 @import '../shared.scss';
 
 :host /deep/ .pager {
-    padding: 15px;
-    background-color: $color-blue;
+    padding: 10px;
+    background-color: $color-light-blue;
     color: $color-white;
+    margin-top: 0;
+}
+
+:host /deep/ .item {
+    background-color: rebeccapurple;
+    padding: 15px;
+    color: $color-white;
+    text-align: center;
+    cursor: pointer;
+    margin: 1px 0;
 }

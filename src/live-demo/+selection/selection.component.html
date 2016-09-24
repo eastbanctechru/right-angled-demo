@@ -122,14 +122,14 @@
                     Базовый пример такого подхода вы уже увидели в демо выше, поэтому ниже показан чуть более интересный
                     пример - реализация inline-редактирования на основе флага selected.
                 </p>
-                <div class="note">
+                <aside>
                     <p>
                         В данном примере используем <a href="#" [routerLink]="['/misc-directives']">вспомогательные директивы</a>
                         <code>rtFocusOnRender</code> для автоустановки фокуса в input после его отрисовки, и
                         <code>rtStopEvents</code> чтобы предотвратить bubbling события <code>mouseup</code>, который будет
                         приводить к deselect-у строки.
                     </p>
-                </div>
+                </aside>
                 <rt-demo-tab-section>
                     <rt-demo-sample-tab tabTitle="'selected' flag">
                         <rt-demo-selected-flag></rt-demo-selected-flag>
@@ -166,7 +166,7 @@
                     </rt-demo-code-tab>
                     <rt-demo-code-tab url="live-demo/%2Bselection/selection-events/selection-events.component.html">
                     </rt-demo-code-tab>
-                    <rt-demo-code-tab url="components/core/selection/selection-event.ts">
+                    <rt-demo-code-tab [fromLib]="true" url="core/selection/selection-event.ts">
                     </rt-demo-code-tab>
                 </rt-demo-tab-section>
             </section>
@@ -236,13 +236,13 @@
                 <p>
                     Ниже вы можете увидеть пример всех четырех вариантов кнопок, которые разворачивают сгруппированный список.
                 </p>
-                <div class="note">
+                <aside>
                     <p>
                         Обратите внимание, что директива <code>rtSelectionAreaFor</code> перенесена на уровень элемента <code>table</code>.
                         Это нужно чтобы директивы <code>rtSelectAll</code> и <code>rtDeselectAll</code> получили корректный
                         инстанс <code>rtSelectionAreaFor</code>, через который они и работают.
                     </p>
-                </div>
+                </aside>
                 <rt-demo-tab-section>
                     <rt-demo-sample-tab tabTitle="rtSelectAll и rtDeselectAll">
                         <rt-demo-select-all></rt-demo-select-all>

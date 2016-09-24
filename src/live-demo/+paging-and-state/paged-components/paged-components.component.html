@@ -1,17 +1,17 @@
 <rt-paged-list [fetchMethod]="loadData" #rtList>
     <div class="row">
-        <div class="col-md-12 toolbar">
-            <ul>
-                <li>
-                    <button rtLoadData type="button" class="btn btn-primary">Load data</button>
-                </li>
-            </ul>
+        <div class="col-md-12" *ngFor="let airport of rtList.items">
+            <div class="item">{{airport.name}}</div>
         </div>
         <div class="col-md-12">
-            <div class="pager">
+            <div class="pager" [rtDefaultPageSize]="5">
+                <rt-list-state-progress>
+                    Загружаю данные...
+                </rt-list-state-progress>
+
                 <rt-list-state-done>
                     <span rtGoToFirstPage title="go to first page"></span>
-                    <span rtGoToPrevPage title="go to previous page"></span>
+                    <span rtGoToPreviousPage title="go to previous page"></span>
                     <input rtSelectOnFocus rtPageNumber type="text" class="form-control" maxlength="4" />
                     <span rtGoToNextPage title="go to next page"></span>
                     <span rtGoToLastPage title="go to last page"></span>

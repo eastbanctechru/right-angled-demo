@@ -21,15 +21,17 @@ declare const PR: {
 export class CodeTabComponent extends Tab implements OnChanges {
     public isActive: boolean;
     public baseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled-demo/master/src/';
+    public libBaseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled/master/src/';
     public src: Observable<any> = Observable.empty();
     @Input() public url: string;
+    @Input() public fromLib: boolean;
     constructor(tabs: TabSectionComponent, private http: Http, private elementRef: ElementRef) {
         super(tabs);
     }
     public ngOnChanges(changes: { url?: SimpleChange }): void {
 
         this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1);
-        this.src = this.http.get(this.baseUrl + this.url)
+        this.src = this.http.get((this.fromLib ? this.libBaseUrl : this.baseUrl) + this.url)
             .map(res => {
                 return res.text();
             }).do(res => {

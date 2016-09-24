@@ -1,0 +1,36 @@
+@import '../../shared.scss';
+:host /deep/ .pager {
+    text-align: right;
+    display: block;
+    > * {
+        display: block;
+    }
+    span[rtGoToFirstPage], span[rtGoToPreviousPage], span[rtGoToNextPage], span[rtGoToLastPage] {
+        display: inline-block;
+        width: 24px;
+        height: 21px;
+        vertical-align: middle;
+        background-position: center center;
+        background-repeat: no-repeat;
+        &:hover {
+            cursor: pointer;
+            @include opacity(.85);
+        }
+        &[disabled='true'] {
+            cursor: no-drop;
+            @include opacity(.45);
+        }
+    }
+    span[rtGoToFirstPage] {
+        background-image: url('assets/images/go-to-first-page.png');
+    }
+    span[rtGoToPreviousPage] {
+        background-image: url('assets/images/go-to-prev-page.png');
+    }
+    span[rtGoToNextPage] {
+        background-image: url('assets/images/go-to-next-page.png');
+    }
+    span[rtGoToLastPage] {
+        background-image: url('assets/images/go-to-last-page.png');
+    }
+}
