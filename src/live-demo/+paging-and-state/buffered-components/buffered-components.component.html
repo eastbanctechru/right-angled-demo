@@ -1,4 +1,4 @@
-<rt-buffered-list [fetchMethod]="loadData">
+<rt-buffered-list [fetchMethod]="loadData" #rtList>
     <div class="row">
         <div class="col-md-12 toolbar">
             <ul>
@@ -10,12 +10,10 @@
         <div class="col-md-12">
             <div class="pager">
                 <rt-list-state-done>
-                    <rt-display-pager #rtdp>
-                        <span>Loaded records {{rtdp.pager.loadedCount}} of {{rtdp.pager.totalCount}}</span>
+                    <span>Loaded records {{rtList.pager.loadedCount}} of {{rtList.pager.totalCount}}</span>
 
-                        <a tabindex="0" rtLoadMore href="#">Show more</a>
-                        <input class="form-control" rtSelectOnFocus rtRowCount type="text" maxlength="3" title="count of rows to load" />
-                    </rt-display-pager>
+                    <a tabindex="0" rtLoadMore href="#">Show more</a>
+                    <input class="form-control" rtSelectOnFocus rtRowCount type="text" maxlength="3" title="count of rows to load" />
                 </rt-list-state-done>
             </div>
         </div>

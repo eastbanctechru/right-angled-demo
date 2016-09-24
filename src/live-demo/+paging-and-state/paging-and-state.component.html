@@ -6,14 +6,8 @@
             <li><a href="paging-and-state#common-idea">Общая идея</a></li>
             <li><a href="paging-and-state#bootstrap">Как подключить</a></li>
             <li><a href="paging-and-state#state-components">Компоненты состояния</a></li>
-            <li>
-                <a href="paging-and-state#paging-components">Компоненты для paging</a>
-                <ul>
-                    <li><a href="selection#display-pager"><code>rt-display-pager</code></a></li>
-                    <li><a href="selection#paged-components">Paged list components</a></li>
-                    <li><a href="selection#buffered-components">Buffered list components</a></li>
-                </ul>
-            </li>
+            <li><a href="selection#paged-components">Paged list components</a></li>
+            <li><a href="selection#buffered-components">Buffered list components</a></li>
         </ul>
         <section id="common-idea">
             <h3>Общая идея</h3>
@@ -61,67 +55,30 @@
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>
-        <section id="paging-components">
-            <h4>Компоненты для paging</h4>
-            <section id="display-pager">
-                <h4><code>rt-display-pager</code></h4>
-                <p>
-                    Данный компонент является контейнером для всех контролов описанных ниже и определяет, когда их отрисовывать. 
-                    Так же у данного компонента доступно свойство pager, с помощью которого можно в разметке отобразить, к примеру, значение свойства <code>totalCount</code>.
-                </p>
-                <p>
-                    Данный компонент будет отрисовываться когда:
-                </p>
-                <ol>
-                    <li>При заданных фильтрах на сервере имеются записи (то есть <code>totalCount > 0</code>)</li>
-                    <li>На случай <code>buffered list</code>, загружены еще не все записи (то есть <code>skip < totalCount</code>)</li>
-                </ol>
-                <p>
-                    Использование данного компонента не является обязательным. Живой пример его использования мы увидим ниже.
-                </p>
+        <section id="paged-components">
+            <h4>Paged list components</h4>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Paged list components">
+                    <rt-demo-paged-components></rt-demo-paged-components>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
 
-                <div class="note">
-                    <p>
-                        Так же логично будет отображать pager только когда последний запрос был выполнен успешно. Для таких случаев можно использовать
-                        <code>rt-display-pager</code> в сочетании с <code>rt-list-state-done</code> описанным выше.
-                    </p>
-                </div>
-                <rt-demo-tab-section>
-                    <rt-demo-sample-tab tabTitle="State components">
-                        <rt-demo-state-components></rt-demo-state-components>
-                    </rt-demo-sample-tab>
-                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.ts">
-                    </rt-demo-code-tab>
-                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.html">
-                    </rt-demo-code-tab>
-                </rt-demo-tab-section>
-
-            </section>
-            <section id="paged-components">
-                <h4>Paged list components</h4>
-                <rt-demo-tab-section>
-                    <rt-demo-sample-tab tabTitle="Paged list components">
-                        <rt-demo-paged-components></rt-demo-paged-components>
-                    </rt-demo-sample-tab>
-                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.ts">
-                    </rt-demo-code-tab>
-                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.html">
-                    </rt-demo-code-tab>
-                </rt-demo-tab-section>
-
-            </section>
-            <section id="buffered-components">
-                <h4>Buffered list components</h4>
-                <rt-demo-tab-section>
-                    <rt-demo-sample-tab tabTitle="Buffered list components">
-                        <rt-demo-buffered-components></rt-demo-buffered-components>
-                    </rt-demo-sample-tab>
-                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.ts">
-                    </rt-demo-code-tab>
-                    <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.html">
-                    </rt-demo-code-tab>
-                </rt-demo-tab-section>
-            </section>
+        </section>
+        <section id="buffered-components">
+            <h4>Buffered list components</h4>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Buffered list components">
+                    <rt-demo-buffered-components></rt-demo-buffered-components>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
         </section>
     </div>
 </div>

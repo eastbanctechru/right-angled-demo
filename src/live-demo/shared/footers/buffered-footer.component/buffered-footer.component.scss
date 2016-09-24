@@ -1,19 +1,13 @@
 @import '../../../shared.scss';
-rt-total-records-text, rt-display-pager{
+rt-total-records-text{
     text-align: right;
 }
 
-rt-display-pager>div {
-    display: inline;
-}
 :host {
     text-align: right;
     display: block;
     > * {
         display: block;
-    }
-    rt-display-pager > * {
-        vertical-align: middle;
     }
 }
 
