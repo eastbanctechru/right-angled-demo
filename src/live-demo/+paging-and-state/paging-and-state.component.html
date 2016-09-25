@@ -8,6 +8,7 @@
             <li><a href="paging-and-state#state-components">Компоненты состояния</a></li>
             <li><a href="paging-and-state#paged-components">Paged pager components</a></li>
             <li><a href="paging-and-state#buffered-components">Buffered pager components</a></li>
+            <li><a href="paging-and-state#reusable-component">Complete reusable pager</a></li>
         </ul>
         <section id="common-idea">
             <h3>Общая идея</h3>
@@ -27,7 +28,7 @@
                 импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки целиком.
             </p>
             <rt-demo-tab-section>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/bootstrap/app.module.ts">
+                <rt-demo-code-tab url="%2Bpaging-and-state/bootstrap/app.module.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>
@@ -45,9 +46,9 @@
                 <rt-demo-sample-tab tabTitle="State components">
                     <rt-demo-state-components></rt-demo-state-components>
                 </rt-demo-sample-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.ts">
+                <rt-demo-code-tab url="%2Bpaging-and-state/state-components/state-components.component.ts">
                 </rt-demo-code-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/state-components/state-components.component.html">
+                <rt-demo-code-tab url="%2Bpaging-and-state/state-components/state-components.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
             <h4>rt-list-state-initial</h4>
@@ -81,9 +82,9 @@
                 <rt-demo-sample-tab tabTitle="Paged list components">
                     <rt-demo-paged-components></rt-demo-paged-components>
                 </rt-demo-sample-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.ts">
+                <rt-demo-code-tab url="%2Bpaging-and-state/paged-components/paged-components.component.ts">
                 </rt-demo-code-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/paged-components/paged-components.component.html">
+                <rt-demo-code-tab url="%2Bpaging-and-state/paged-components/paged-components.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
             <p>
@@ -127,20 +128,6 @@
                 у элемента будет автоматически выставляться свойство
                 <code>disabled</code> в зависимости от доступности данного действия
             </p>
-            <h4>rtMinPageSize = "&lt;number&gt;"</h4>
-            <p>
-                Позволяет указать значение для свойства <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/pagedpager.html#minpagesize">minPageSize</a>.
-            </p>
-            <h4>rtMaxPageSize = "&lt;number&gt;"</h4>
-            <p>
-                Позволяет указать значение для свойства
-                <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/pagedpager.html#maxpagesize">maxPageSize</a>.
-            </p>
-            <h4>rtDefaultPageSize = "&lt;number&gt;"</h4>
-            <p>
-                Позволяет указать значение для свойства
-                <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/pagedpager.html#defaultpagesize">defaultPageSize</a>.
-            </p>
         </section>
         <section id="buffered-components">
             <h3>Buffered pager components</h3>
@@ -148,9 +135,9 @@
                 <rt-demo-sample-tab tabTitle="Buffered list components">
                     <rt-demo-buffered-components></rt-demo-buffered-components>
                 </rt-demo-sample-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.ts">
+                <rt-demo-code-tab url="%2Bpaging-and-state/buffered-components/buffered-components.component.ts">
                 </rt-demo-code-tab>
-                <rt-demo-code-tab url="live-demo/%2Bpaging-and-state/buffered-components/buffered-components.component.html">
+                <rt-demo-code-tab url="%2Bpaging-and-state/buffered-components/buffered-components.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
             <p>
@@ -172,20 +159,18 @@
                 данных и автоматически будет выставлено свойство <code>disabled</code>, когда в список будут подгружены все
                 записи
             </p>
-            <h4>rtMinRowCount = "&lt;number&gt;"</h4>
-            <p>
-                Позволяет указать значение для свойства <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/bufferedpager.html#minrowcount">minRowCount</a>.
-            </p>
-            <h4>rtMaxPageSize = "&lt;number&gt;"</h4>
-            <p>
-                Позволяет указать значение для свойства
-                <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/bufferedpager.html#maxrowcount">maxRowCount</a>.
-            </p>
-            <h4>rtDefaultRowCount = "&lt;number&gt;"</h4>
-            <p>
-                Позволяет указать значение для свойства
-                <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/bufferedpager.html#defaultrowcount">defaultRowCount</a>.
-            </p>
+        </section>
+        <section id="reusable-component">
+            <h3>Complete reusable pager</h3>
+             <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Buffered pager">
+                    <rt-demo-reusable-component></rt-demo-reusable-component>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
         </section>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<rt-buffered-list [fetchMethod]="loadData" #rtList>
+<rt-buffered-list [fetchMethod]="loadData" [defaultRowCount]="5" #rtList>
     <div class="row">
         <div class="col-md-12" *ngFor="let airport of rtList.items">
             <div class="item">{{airport.name}}</div>
@@ -9,7 +9,7 @@
                     Загружаю данные...
                 </rt-list-state-progress>
 
-                <rt-list-state-done [rtDefaultRowCount]="5">
+                <rt-list-state-done>
                     <span>Loaded records {{rtList.pager.loadedCount}} of {{rtList.pager.totalCount}}</span>
 
                     <a tabindex="0" rtLoadMore href="#">Show more</a>
