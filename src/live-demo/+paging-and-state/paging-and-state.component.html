@@ -79,13 +79,8 @@
         <section id="paged-components">
             <h3>Paged pager components</h3>
             <p>
-                Ниже вы можете увидеть живые примеры буферного и paged списков, в которых в качестве футера используются полностью изолированный
-                компоненты, использующие все описанные выше компоненты и директивы.
+                Данный набор директив представляет собой мост к функциональности сервиса <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/pagedpager.html">PagedPager</a>.
             </p>
-            <p>
-                Исходники пейджеров размещены в соседних вкладках.
-            </p>
-
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Paged list components">
                     <rt-demo-paged-components></rt-demo-paged-components>
@@ -95,9 +90,6 @@
                 <rt-demo-code-tab url="%2Bpaging-and-state/paged-components/paged-components.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
-            <p>
-                Данный набор директив представляет собой мост к функциональности сервиса <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/pagedpager.html">PagedPager</a>.
-            </p>
             <h4>rtPageNumber</h4>
             <p>
                 Элемент <code>input</code> помеченный данной директивой получает функциональность перехода на другую страницу
@@ -139,6 +131,10 @@
         </section>
         <section id="buffered-components">
             <h3>Buffered pager components</h3>
+            <p>
+                Данный набор директив представляет собой мост к функциональности сервиса <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/bufferedpager.html">BufferedPager</a>.
+            </p>
+
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Buffered list components">
                     <rt-demo-buffered-components></rt-demo-buffered-components>
@@ -148,9 +144,6 @@
                 <rt-demo-code-tab url="%2Bpaging-and-state/buffered-components/buffered-components.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
-            <p>
-                Данный набор директив представляет собой мост к функциональности сервиса <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/bufferedpager.html">BufferedPager</a>.
-            </p>
             <h4>rtLoadMore</h4>
             <p>
                 При клике по элементу, помеченному данной директивой, будет выполняться подгрузка следующего набора записей. Так же у элемента
@@ -170,6 +163,15 @@
         </section>
         <section id="reusable-component">
             <h3>Complete reusable pager</h3>
+            <p>
+                Ниже вы можете увидеть живые примеры буферного и paged списков, в которых в качестве футера используются полностью изолированный
+                компоненты, использующие все описанные выше компоненты и директивы.
+            </p>
+            <p>
+                Обратите внимание, что в компоненты мы инжектим сервиса PagedPager и BufferedPager. Мы их используем для того, чтобы отрисовать
+                в шаблоне сообщение о том, сколько записей загружено и сколько их всего на сервере.
+            </p>
+
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Buffered pager">
                     <rt-demo-reusable-buffered-sample></rt-demo-reusable-buffered-sample>

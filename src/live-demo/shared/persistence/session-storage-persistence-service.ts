@@ -5,7 +5,7 @@ import { FiltersService } from 'e2e4';
 import { RtPersistenceService } from 'right-angled';
 
 @Injectable()
-export class RtSessionStoragePersistenceService implements RtPersistenceService {
+export class SessionStoragePersistenceService implements RtPersistenceService {
     private internalStateKey: string;
 
     constructor(@Optional() @SkipSelf() private activatedRoute: ActivatedRoute) {

@@ -1,30 +1,23 @@
 import { Location } from '@angular/common';
-import { Injectable, Optional, SkipSelf } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { FiltersService, cloneAsLiteral } from 'e2e4';
 
 import { RtPersistenceService } from 'right-angled';
 
 @Injectable()
-export class RtQueryStringPersistenceService implements RtPersistenceService {
-    // tslint:disable-next-line: typedef
-    public static settings = {
-        serializationKeyName: 'ls'
-    };
-    public serializationKey: string = RtQueryStringPersistenceService.settings.serializationKeyName;
-    constructor(private location: Location, @Optional() @SkipSelf() private activatedRoute: ActivatedRoute, @Optional() @SkipSelf() private router: Router) {
+export class QueryStringPersistenceService implements RtPersistenceService {
+    public serializationKey: string = 'rtls';
+    constructor(private location: Location, private router: Router) {
     }
     public persistState(filtersService: FiltersService): void {
-        setTimeout(() => {
-            let newState = {};
-            Object.assign(newState, filtersService.getRequestState());
-            let params = cloneAsLiteral(this.router.routerState.root.snapshot.queryParams || {});
-
-            params[this.serializationKey] = JSON.stringify(newState);
-            let path = this.location.path(true);
-            path = path.indexOf('?') === -1 ? path : path.substring(0, path.indexOf('?'));
-            this.location.replaceState(path, this.serializeQueryParams(params));
-        }, 0);
+        let newState = {};
+        Object.assign(newState, filtersService.getRequestState());
+        let params = cloneAsLiteral(this.router.routerState.root.snapshot.queryParams || {});
+        params[this.serializationKey] = JSON.stringify(newState);
+        let path = this.location.path(true);
+        path = path.indexOf('?') === -1 ? path : path.substring(0, path.indexOf('?'));
+        this.location.replaceState(path, this.serializeQueryParams(params));
     }
     public getPersistedState(): Object {
         const restoredState = {};

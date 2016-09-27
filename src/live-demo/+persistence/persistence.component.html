@@ -1,5 +1,135 @@
 <div class="row">
     <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
         <h1>Persist lists state</h1>
+        <h3>Table of contents</h3>
+        <ul>
+            <li><a href="persistence#common-idea">Общая идея</a></li>
+            <li><a href="persistence#bootstrap">Как подключить</a></li>
+            <li><a href="persistence#service-implementations">Примеры реализаций контракта <code>RtPersistenceService</code></a></li>
+            <li><a href="persistence#live-demo">Работающий пример</a></li>
+        </ul>
+        <section id="common-idea">
+            <h3>Общая идея</h3>
+            <p>
+                Если вы уже просмотрели раздел про <a href="#" [routerLink]="['/filters']">работу с фильтрами</a>, то вы
+                знаете, что при помощи декоратора <code>@filter</code> можно декларативно пометить поля вашего компонента
+                как фильтры и гибко настроить параметры их отправки на сервер при запросе данных.
+            </p>
+            <p>
+                Однако, на этом возможности использования фильтров не исчерпываются. Например:
+            </p>
+            <ul>
+                <li>Мы можем сохранять состояние важных параметров списка (сортировки, размер страницы) в <code>localStorage</code>,
+                    и передавать их списку когда пользователь посетит страницу в следующий раз</li>
+                <li>Мы можем сохранять параметры списка в <code>sessionStorage</code>, и восстанавливать их когда пользователь
+                    вернется на страницу в той же сессии. Вернувшись на страницу пользователь получит ровно то же состояние,
+                    в котором он ее покинул. Со значениями всех фильтров и прочего</li>
+                <li>Мы можем сохранять состояние всех параметров списка в <code>queryString</code>. Когда пользователь поделится
+                    ссылкой на страницу, то открывший ее получит то же самое состояние страницы, что и у отправившего ее
+                    пользователя
+                </li>
+                <li>Мы можем делать все, перечисленное выше, одновременно</li>
+            </ul>
+            <p>
+                Поскольку логика того, как сохранять настройки и как потом идентифицировать их, является очень специфичной для конечного
+                приложения, наша библиотека содержит не готовые реализации, а лишь контракт для их поддержки.
+            </p>
+            <p>
+                Тем не менее, в данном разделе мы покажем примеры реализаций, которые могут послужить для вас отправной точкой для реализации
+                собственных.
+            </p>
+        </section>
+        <section id="bootstrap">
+            <h3>Как подключить</h3>
+            <p>
+                Для того чтобы сохранять настройки списков вам необходимо:
+            </p>
+            <ol>
+                <li>Реализовать сервис (или сервисы), наследующие абстрактный класс <code>RtPersistenceService</code>
+                    <rt-demo-tab-section>
+                        <rt-demo-code-tab [fromLib]="true" url="core/persistence-service.ts">
+                        </rt-demo-code-tab>
+                    </rt-demo-tab-section>
+                    <p>Метод <code>getPersistedState</code> должен возвращать сохраненные ранее настройки. Данный метод будет
+                        вызываться списком при инициализации, чтобы восстановить состояние перед использованием.</p>
+                    <p>Метод <code>persistState</code> будет вызываться списком при каждой загрузке данных. То есть логика такова,
+                        что если пользователь поменял какие-либо параметры и "подтвердил", что это то, что ему нужно, нажатием
+                        кнопки "загрузить", то мы можем запомнить эти параметры. В зависимости от потребностей, можно вызвать
+                        <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getrequeststate">getRequestState</a>                        или
+                        <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getpersistedstate">getPersistedState</a>                        переданного объекта <code>filtersService</code>.
+                    </p>
+
+                </li>
+                <li>
+                    <p>Зарегистрировать реализованные сервисы в контейнере</p>
+                    <p>
+                        Для этого необходимо вызвать метод <code>RtModule.registerPersistenceService</code> либо <code>RtListModule.registerPersistenceService</code>                        передав в качестве параметра объект с настройками, аналогичными настройкам, доступным при регистрации
+                        провайдера в angular dependency injection.
+                    </p>
+                    <rt-demo-tab-section>
+                        <rt-demo-code-tab url="%2Bpersistence/bootstrap/app.module.ts">
+                        </rt-demo-code-tab>
+                    </rt-demo-tab-section>
+                </li>
+            </ol>
+            <aside>
+                <p>
+                    Возможна ситуация, когда вы зарегистрируете несколько провайдеров для <code>RtPersistenceService</code>,
+                    используя
+                    <a href="https://angular.io/docs/ts/latest/api/core/index/ClassProvider-interface.html">флаг multi</a>.
+                    В таком случае разумным будет вопрос: а что, если несколько провайдеров вернут настройки для одного и
+                    того же параметра?</p>
+                <p> Ответ следующий: методы <code>getPersistedState</code> будут вызваны в том же порядке, в котором вы зарегистрировали
+                    ваши сервиса. Итоговое состояние будет собрано посредством вызова <code>Object.assign(&#123;&#125;, state1, state2, ...)</code>
+                </p>
+            </aside>
+        </section>
+        <section id="service-implementations">
+            <h3>Примеры реализаций контракта <code>RtPersistenceService</code></h3>
+            <p>
+                Ниже вы можете увидеть три простейших примера сервисов, реализующих <code>RtPersistenceService</code> и сохраняющих
+                состояние списка в <code>localStorage</code>, <code>sessionStorage</code> и <code>queryString</code>.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-code-tab url="shared/persistence/local-storage-persistence-service.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/persistence/session-storage-persistence-service.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/persistence/query-string-persistence-service.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+
+            <p>
+                Сервисы <code>RtLocalStoragePersistenceService</code> и <code>RtSessionStoragePersistenceService</code> ни
+                чем не примечательны кроме того, что инжектят объект <a target="_blank" href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html">ActivatedRoute</a>                и на его основе строят ключ для сериализации/десериализации настроек списка.
+            </p>
+            <aside>
+                <p>
+                    Хорошее это решение или нет, зависит от требований к конечному приложению. Например, более подходящим вариантом может быть
+                    задание ключа для каждого компонента по отдельности и регистрация ключа в контейнере компонента при помощи
+                    <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/OpaqueToken-class.html">OpaqueToken</a>.
+                </p>
+            </aside>
+            <p>
+                Сервис <code>RtQueryStringPersistenceService</code> чуть сложнее. Вот ключевые моменты:
+            </p>
+            <ul>
+                <li>
+                    Сервис использует функцию <a target="_blank" href="http://fshchudlo.github.io/e2e4/index.html#cloneasliteral">cloneAsLiteral</a>                    для клонирования текущих параметров, поскольку, если вы попытаетесь изменить имеющиеся параметры напрямую,
+                    то получите ошибку <code>object is not extensible</code>
+                </li>
+                <li>
+                    Сервис использует функцию <a href="https://angular.io/docs/ts/latest/api/common/index/Location-class.html#!#replaceState-anchor">location.replaceState</a>,
+                    чтобы перезаписать текущий url, не меняя историю в браузере.
+                </li>
+            </ul>
+        </section>
+        <section id="live-demo">
+            <h3>Работающий пример</h3>
+            <p>
+                Ну и куда же без живого примера. Ниже расположен список, в котором использованы реализации <code>RtPersistenceService</code>                для <code>queryString</code>, <code>sessionStorage</code> и <code>localStorage</code>, описанные выше.
+            </p>
+        </section>
+        <rt-demo-persistence-sample></rt-demo-persistence-sample>
     </div>
 </div>
