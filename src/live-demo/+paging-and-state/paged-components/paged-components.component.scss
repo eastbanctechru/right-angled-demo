@@ -22,15 +22,15 @@
         }
     }
     span[rtGoToFirstPage] {
-        background-image: url('assets/images/go-to-first-page.png');
+        background-image: url('./assets/images/go-to-first-page.png');
     }
     span[rtGoToPreviousPage] {
-        background-image: url('assets/images/go-to-prev-page.png');
+        background-image: url('./assets/images/go-to-prev-page.png');
     }
     span[rtGoToNextPage] {
-        background-image: url('assets/images/go-to-next-page.png');
+        background-image: url('./assets/images/go-to-next-page.png');
     }
     span[rtGoToLastPage] {
-        background-image: url('assets/images/go-to-last-page.png');
+        background-image: url('./assets/images/go-to-last-page.png');
     }
 }

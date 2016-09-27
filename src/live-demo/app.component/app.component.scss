@@ -4,7 +4,7 @@ rt-list-state-progress>div {
     display: inline-block;
     width: 128px;
     height: 16px;
-    background: url(assets/images/line-progress.gif) center center no-repeat;
+    background: url('./assets/images/line-progress.gif') center center no-repeat;
 }
 
 rt-demo-paged-footer, rt-demo-buffered-footer, div.pager {
@@ -48,7 +48,7 @@ aside {
     border-left-color: $color-blue;
     background-position: 10px center;
     background-repeat: no-repeat;
-    background-image: url('assets/images/note.png');
+    background-image: url('./assets/images/note.png');
 }
 
 .table { 
@@ -110,7 +110,7 @@ aside {
         margin-bottom: 18px;
         margin-left: 0 !important;
         padding: 0;
-        background: url('assets/images/logo.png') center center no-repeat;
+        background: url('./assets/images/logo.png') center center no-repeat;
     }
     .navbar-nav {
         > li {

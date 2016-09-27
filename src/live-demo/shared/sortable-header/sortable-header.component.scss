@@ -43,13 +43,13 @@ th.t-col-size {
     }
     &:hover {
         &:after {
-           background-image: url('assets/images/sortable.png');
+           background-image: url('./assets/images/sortable.png');
         }
     }
     &.rt-sort-asc:after {
-        background-image: url('assets/images/sort-asc.png');
+        background-image: url('./assets/images/sort-asc.png');
     }
     &.rt-sort-desc:after {
-        background-image: url('assets/images/sort-desc.png');
+        background-image: url('./assets/images/sort-desc.png');
     }
 }

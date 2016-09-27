@@ -29,7 +29,7 @@ form {
 .arrow-icon:before, .arrow-icon.collapsed:before {
     content: '';
     display: block;
-    background-image: url('assets/images/arrow-up.png');
+    background-image: url('./assets/images/arrow-up.png');
     background-repeat: no-repeat;
     margin: 0 auto;
     width: 29px;
@@ -37,7 +37,7 @@ form {
 }
 
 .arrow-icon.collapsed:before {
-    background-image: url('assets/images/arrow-down.png');
+    background-image: url('./assets/images/arrow-down.png');
 }
 
 .btn {
