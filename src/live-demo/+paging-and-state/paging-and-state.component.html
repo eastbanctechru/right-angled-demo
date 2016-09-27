@@ -78,6 +78,14 @@
         </section>
         <section id="paged-components">
             <h3>Paged pager components</h3>
+            <p>
+                Ниже вы можете увидеть живые примеры буферного и paged списков, в которых в качестве футера используются полностью изолированный
+                компоненты, использующие все описанные выше компоненты и директивы.
+            </p>
+            <p>
+                Исходники пейджеров размещены в соседних вкладках.
+            </p>
+
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Paged list components">
                     <rt-demo-paged-components></rt-demo-paged-components>
@@ -162,13 +170,23 @@
         </section>
         <section id="reusable-component">
             <h3>Complete reusable pager</h3>
-             <rt-demo-tab-section>
+            <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Buffered pager">
-                    <rt-demo-reusable-component></rt-demo-reusable-component>
+                    <rt-demo-reusable-buffered-sample></rt-demo-reusable-buffered-sample>
                 </rt-demo-sample-tab>
                 <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.ts">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Paged pager">
+                    <rt-demo-reusable-paged-sample></rt-demo-reusable-paged-sample>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>

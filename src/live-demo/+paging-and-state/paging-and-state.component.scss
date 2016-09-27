@@ -15,3 +15,20 @@
     cursor: pointer;
     margin: 1px 0;
 }
+:host /deep/ thead {
+    th.t-col-iata {
+        width: 5%;
+    }
+    th.t-col-iata-code {
+        width: 5%;
+    }
+    th.t-col-airport-name {
+        width: 35%;
+    }
+    th.t-col-city-name {
+        width: 30%;
+    }
+    th.t-col-country-name {
+        width: 25%;
+    }
+}

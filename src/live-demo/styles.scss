@@ -46,3 +46,18 @@ div.toolbar {
      }
     }
 }
+// overwrite bootstrap style for disbled controls since angular can write disabled="false"
+.form-control[disabled], fieldset[disabled] .form-control {
+    cursor: default;
+}
+.form-control[disabled="true"], fieldset[disabled="true"] .form-control {
+    cursor: not-allowed;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fff;
+    opacity: 1;
+}
+.form-control[disabled="true"], fieldset[disabled="true"] .form-control {
+    background-color: #eee;
+    opacity: 1;
+}

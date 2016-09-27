@@ -1,5 +1,5 @@
 <div>
-    <rt-buffered-list [fetchMethod]="loadData" [defaultRowCount]="5" #list="rtList">
+    <rt-paged-list [fetchMethod]="loadData" [defaultPageSize]="5" #list="rtList">
         <table class="table table-striped" [rtSelectionAreaFor]="list.items">
             <thead>
                 <tr>
@@ -25,10 +25,10 @@
             <tfoot>
                 <tr>
                     <td colspan="6">
-                        <rt-demo-buffered-footer></rt-demo-buffered-footer>
+                        <rt-demo-paged-footer></rt-demo-paged-footer>
                     </td>
                 </tr>
             </tfoot>
         </table>
-    </rt-buffered-list>
+    </rt-paged-list>
 </div>
