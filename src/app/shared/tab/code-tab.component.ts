@@ -20,7 +20,7 @@ declare const PR: {
 })
 export class CodeTabComponent extends Tab implements OnChanges {
     public isActive: boolean;
-    public baseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled-demo/master/src/live-demo/';
+    public baseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled-demo/master/src/app/';
     public libBaseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled/master/src/';
     public src: Observable<any> = Observable.empty();
     @Input() public url: string;
