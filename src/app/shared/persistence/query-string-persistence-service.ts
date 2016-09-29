@@ -1,9 +1,8 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { FiltersService, cloneAsLiteral } from 'e2e4';
 
-import { RtPersistenceService } from 'right-angled';
+import { FiltersService, RtPersistenceService, cloneAsLiteral } from 'right-angled';
 
 @Injectable()
 export class QueryStringPersistenceService implements RtPersistenceService {
