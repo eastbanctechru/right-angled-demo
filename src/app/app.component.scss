@@ -1,186 +1,222 @@
 @import './shared.scss';
 
-rt-list-state-progress>div {
-    display: inline-block;
-    width: 128px;
-    height: 16px;
-    background: url('./assets/images/line-progress.gif') center center no-repeat;
-}
-
-rt-demo-paged-footer, rt-demo-buffered-footer, div.pager {
-    display: block;
-    .form-control {
-        display: inline-block;
-        width: 50px;
-        text-align: center;
-        padding: 6px 6px;
-        vertical-align: middle;
-    }
-}
-
-
-.form-control {
-    color: $color-black;
-    @include border-radius(0);
-    @include box-shadow(0 0 3px 0 $color-gray);
-    border-color: $color-gray;
-    &:hover,
-    &:focus {
-        @include box-shadow(0 0 3px 0 $color-gray);
-        border-color: $color-light-blue;
-    }
-}
-
-section {
-    margin-top: -80px;
-    padding-top: 80px;
-}
-
-aside {
-    p {
-        margin-left: 65px;
-        vertical-align: middle;
-    }
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid $color-muted-grey;
-    border-left-width: 5px;
-    border-left-color: $color-blue;
-    background-position: 10px center;
-    background-repeat: no-repeat;
-    background-image: url('./assets/images/note.png');
-}
-
-.table { 
-    thead {
-        tr {
-            th {
-                background-color: $color-light-blue;
-                color: $color-white;
-                text-transform: uppercase;
-                border-bottom-color: $color-gray;
-                padding: 15px;
-            }
-        }
-    }
-
-    tbody {
-        border: solid $color-gray;
-        border-width: 0 2px 2px 2px;
-        tr {
-            background-color: $color-white;
-            td {
-                padding: 10px 20px;
-                border-top-color: $color-gray;
-            }
-            &:nth-of-type(even) {
-                background-color: $color-striped;
-            }
-            &:hover {
-                background-color: $color-gray;
-            }
-            &.selected {
-                background-color: $color-selected;
-            }
-        }
-    }
-    tfoot {
-        tr {
-            background-color: $color-gray;
-            td {
-                border-top: 0;
-                padding-right: 40px;
-                vertical-align: middle;
-            }
-        }
-    }
-}
-
-.navbar-fixed-top {
-    border: 0;
-    margin-bottom: 0;
-    background-color: $color-blue;
-    @include border-radius(0);
-    @include box-shadow(0 0 15px 0 rgba(0, 0, 0, .65));
-    .navbar-brand {
-        width: 138px;
-        height: 44px;
-        margin-top: 18px;
-        margin-right: 80px;
-        margin-bottom: 18px;
-        margin-left: 0 !important;
-        padding: 0;
-        background: url('./assets/images/logo.png') center center no-repeat;
-    }
-    .navbar-nav {
-        > li {
-            > .dropdown-toggle {
-                display: block;
-                line-height: 20px;
-                padding: 40px 25px 20px 25px;
-                color: $color-white;
-                @include opacity(.85);
-                &:hover, &:focus {
-                    background-color: transparent;
-                    @include opacity(1);
-                }
-            }
-            &:hover {
-                > .dropdown-toggle {
-                    color: $color-white;
-                    background-color: transparent;
-                    @include opacity(1);
-                    cursor: pointer;
-                    &:hover, &:focus {
-                        background-color: transparent;
-                    }
-                }
-                .dropdown-menu {
-                    height: 325px;
-                }
-            }
-            .dropdown-menu {
-                display: block;
-                overflow: hidden;
-                height: 0;
-                min-width: 100%;
+:host /deep/ div {
+    .navbar-fixed-top {
+            border: 0;
+            margin-bottom: 0;
+            background-color: $color-blue;
+            @include border-radius(0);
+            @include box-shadow(0 0 15px 0 rgba(0, 0, 0, .65));
+            .navbar-brand {
+                width: 138px;
+                height: 44px;
+                margin-top: 18px;
+                margin-right: 80px;
+                margin-bottom: 18px;
+                margin-left: 0 !important;
                 padding: 0;
-                margin: -5px 0 0;
-                @include border-radius(0);
-                border:0;
-                @include box-shadow(0 2px 5px 0 rgba(0, 0, 0, 0.45));
-                @include transition(height .25s ease-in-out);
-                li:first-child {
-                    border-top:5px solid $color-yellow;
-                }
-                a {
-                    color: $color-black;
-                    padding: 10px 18px;
-                    &:hover, &:focus {
-                        background-color: $color-gray;
+                background: url('./assets/images/logo.png') center center no-repeat;
+            }
+            .navbar-nav {
+                > li {
+                    > .dropdown-toggle {
+                        display: block;
+                        line-height: 20px;
+                        padding: 40px 25px 20px 25px;
+                        color: $color-white;
+                        @include opacity(.85);
+                        &:hover, &:focus {
+                            background-color: transparent;
+                            @include opacity(1);
+                        }
+                    }
+                    &:hover {
+                        > .dropdown-toggle {
+                            color: $color-white;
+                            background-color: transparent;
+                            @include opacity(1);
+                            cursor: pointer;
+                            &:hover, &:focus {
+                                background-color: transparent;
+                            }
+                        }
+                        .dropdown-menu {
+                            height: 325px;
+                        }
+                    }
+                    .dropdown-menu {
+                        display: block;
+                        overflow: hidden;
+                        height: 0;
+                        min-width: 100%;
+                        padding: 0;
+                        margin: -5px 0 0;
+                        @include border-radius(0);
+                        border:0;
+                        @include box-shadow(0 2px 5px 0 rgba(0, 0, 0, 0.45));
+                        @include transition(height .25s ease-in-out);
+                        li:first-child {
+                            border-top:5px solid $color-yellow;
+                        }
+                        a {
+                            color: $color-black;
+                            padding: 10px 18px;
+                            &:hover, &:focus {
+                                background-color: $color-gray;
+                            }
+                        }
                     }
                 }
             }
         }
-    }
-}
 
-.layout {
-    min-height: 100vh;
-    padding: 110px 0;
-    h1, h2, h3, h4, h5, h6 {
-        color: $color-blue;
-        margin-bottom: 20px;
-    }
-}
+        .layout {
+            min-height: 100vh;
+            padding: 110px 0;
+            h1, h2, h3, h4, h5, h6 {
+                color: $color-blue;
+                margin-bottom: 20px;
+            }
+        }
 
-.navbar-fixed-bottom {
-    height: 60px;
-    border: 0;
-    padding: 20px 0;
-    background-color: $color-gray;
-    @include box-shadow(0 0 15px 0 rgba(0, 0, 0, 0.25));
-    a {
+        .navbar-fixed-bottom {
+            height: 60px;
+            border: 0;
+            padding: 20px 0;
+            background-color: $color-gray;
+            @include box-shadow(0 0 15px 0 rgba(0, 0, 0, 0.25));
+            a {
+                color: $color-black;
+            }
+        }
+
+
+        .btn-primary {
+            background-color: $color-light-blue;
+            border-color: $color-light-blue;
+            @include border-radius(0);
+            &:hover,
+            &:focus {
+                background-color: $color-btn-primary-focus;
+                border-color: $color-btn-primary-focus;
+            }
+            &:active {
+                background-color: $color-btn-primary-active;
+                border-color: $color-btn-primary-active;
+                @include box-shadow(none);
+            }
+        }
+        div.toolbar {
+                text-align: right;
+                padding-bottom: 15px;
+            ul {
+                padding-left: 0;
+                margin-left: -5px;
+                list-style: none;
+                text-align: right;
+                margin-right: -5px;
+                margin-bottom: 0;
+                li {
+                    display: inline-block;
+                    padding-right: 5px;
+                    padding-left: 5px;
+            }
+            }
+        }
+
+        rt-list-state-progress>div {
+            display: inline-block;
+            width: 128px;
+            height: 16px;
+            background: url('./assets/images/line-progress.gif') center center no-repeat;
+        }
+
+    rt-demo-paged-footer, rt-demo-buffered-footer, div.pager {
+        display: block;
+        .form-control {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+            padding: 6px 6px;
+            vertical-align: middle;
+        }
+    }
+
+
+    .form-control {
         color: $color-black;
+        @include border-radius(0);
+        @include box-shadow(0 0 3px 0 $color-gray);
+        border-color: $color-gray;
+        &:hover,
+        &:focus {
+            @include box-shadow(0 0 3px 0 $color-gray);
+            border-color: $color-light-blue;
+        }
+    }
+
+    section {
+        margin-top: -80px;
+        padding-top: 80px;
+    }
+
+    aside {
+        p {
+            margin-left: 65px;
+            vertical-align: middle;
+        }
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid $color-muted-grey;
+        border-left-width: 5px;
+        border-left-color: $color-blue;
+        background-position: 10px center;
+        background-repeat: no-repeat;
+        background-image: url('./assets/images/note.png');
+    }
+
+    .table { 
+        thead {
+            tr {
+                th {
+                    background-color: $color-light-blue;
+                    color: $color-white;
+                    text-transform: uppercase;
+                    border-bottom-color: $color-gray;
+                    padding: 15px;
+                }
+            }
+        }
+
+        tbody {
+            border: solid $color-gray;
+            border-width: 0 2px 2px 2px;
+            tr {
+                background-color: $color-white;
+                td {
+                    padding: 10px 20px;
+                    border-top-color: $color-gray;
+                }
+                &:nth-of-type(even) {
+                    background-color: $color-striped;
+                }
+                &:hover {
+                    background-color: $color-gray;
+                }
+                &.selected {
+                    background-color: $color-selected;
+                }
+            }
+        }
+        tfoot {
+            tr {
+                background-color: $color-gray;
+                td {
+                    border-top: 0;
+                    padding-right: 40px;
+                    vertical-align: middle;
+                }
+            }
+        }
     }
 }
