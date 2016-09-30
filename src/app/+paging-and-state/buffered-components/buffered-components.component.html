@@ -1,4 +1,4 @@
-<rt-buffered-list [fetchMethod]="loadData" [defaultRowCount]="5" #rtList>
+<rt-list [fetchMethod]="loadData" #rtList>
     <div class="row">
         <div class="col-md-12" *ngFor="let airport of rtList.items">
             <div class="item">{{airport.name}}</div>
@@ -10,12 +10,13 @@
                 </rt-list-state-progress>
 
                 <rt-list-state-done>
-                    <span>Loaded records {{rtList.pager.loadedCount}} of {{rtList.pager.totalCount}}</span>
-
-                    <a tabindex="0" rtLoadMore href="#">Show more</a>
-                    <input class="form-control" rtSelectOnFocus rtRowCount type="text" maxlength="3" title="count of rows to load" />
+                    <rt-buffered-pager [defaultRowCount]="5">
+                        <span>Loaded records {{rtList.pager.loadedCount}} of {{rtList.pager.totalCount}}</span>
+                        <a tabindex="0" rtLoadMore href="#">Show more</a>
+                        <input class="form-control" rtSelectOnFocus rtRowCount type="text" maxlength="3" title="count of rows to load" />
+                    </rt-buffered-pager>
                 </rt-list-state-done>
             </div>
         </div>
     </div>
-</rt-buffered-list>
+</rt-list>

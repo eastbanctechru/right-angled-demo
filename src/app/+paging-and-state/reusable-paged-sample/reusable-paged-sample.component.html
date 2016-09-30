@@ -1,5 +1,5 @@
 <div>
-    <rt-paged-list [fetchMethod]="loadData" [defaultPageSize]="5" #list="rtList">
+    <rt-list [fetchMethod]="loadData" #list="rtList">
         <table class="table table-striped" [rtSelectionAreaFor]="list.items">
             <thead>
                 <tr>
@@ -30,5 +30,5 @@
                 </tr>
             </tfoot>
         </table>
-    </rt-paged-list>
+    </rt-list>
 </div>

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ListComponent } from 'right-angled';
 
-import { AirportsPagedListRequest, AirportsService } from '../../shared';
+import { AirportsListRequest, AirportsService } from '../../shared';
 
 @Component({
     selector: 'rt-demo-paged-components',
@@ -12,7 +12,7 @@ export class PagedComponentsComponent {
     @ViewChild(ListComponent) public listComponent: ListComponent;
     constructor(public airportsService: AirportsService) {
     }
-    public loadData = (requestParams: AirportsPagedListRequest): any => {
-        return this.airportsService.getAirportsPaged(requestParams, 700);
+    public loadData = (requestParams: AirportsListRequest): any => {
+        return this.airportsService.getAirportsList(requestParams, 700);
     };
 }

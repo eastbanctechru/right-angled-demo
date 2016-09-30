@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import * as _ from 'lodash';
-import { BufferedListRequest, ListRequest, ListResponse, PagedListRequest, PagedListResponse, SortDirection } from 'right-angled';
+import { ListRequest, ListResponse, SortDirection } from 'right-angled';
 import { Observable } from 'rxjs/Observable';
 
 import { Airport } from './airport';
-import { AirportsBufferedListRequest, AirportsListRequest, AirportsPagedListRequest } from './airports-list-request';
+import { AirportsListRequest } from './airports-list-request';
 import { LookupItem } from './lookup-item';
 
 @Injectable()
@@ -14,38 +14,27 @@ export class AirportsService {
     constructor(private http: Http) {
 
     }
-    private applyBufferedRequest(request: BufferedListRequest, data: Airport[]): ListResponse<Airport> {
-        let response = this.applyRequest(request, data);
-        let take = request.take > AirportsService.maxPageSize ? AirportsService.maxPageSize : request.take;
+    private applyRequest(request: ListRequest, data: Airport[]): ListResponse<Airport> {
+        let response = {
+            items: null,
+            loadedCount: 0,
+            totalCount: data.length
+        } as ListResponse<Airport>;
+        this.applySortings(request, response, data);
+        let take = request.take ? (request.take > AirportsService.maxPageSize ? AirportsService.maxPageSize : request.take) : data.length;
+        request.skip = request.skip || 0;
         response.items = _.slice(response.items, request.skip, request.skip + take);
         response.loadedCount = response.items.length;
         return response;
     }
-    private applyPagedRequest(request: PagedListRequest, data: Airport[]): PagedListResponse<Airport> {
-        let response = this.applyRequest(request, data) as PagedListResponse<Airport>;
-        let pageSize = request.pageSize > AirportsService.maxPageSize ? AirportsService.maxPageSize : request.pageSize;
-        let skip = (request.pageNumber - 1) * pageSize;
-        response.displayFrom = skip + 1;
-        response.displayTo = (response.displayFrom + pageSize > response.totalCount) ? response.totalCount : response.displayFrom + pageSize - 1;
-        response.items = _.slice(response.items, skip, skip + pageSize);
-        response.loadedCount = response.items.length;
-        return response;
-    }
-    private applyRequest(request: ListRequest, data: Airport[]): ListResponse<Airport> {
-        let response = {
-            loadedCount: data.length,
-            totalCount: data.length
-        } as ListResponse<Airport>;
-        return this.applySortings(request, response, data);
-    }
     private applySortings(request: ListRequest, response: ListResponse<Airport>, data: Airport[]): ListResponse<Airport> {
-        let fieldNames = request.sort.map(sort => (sort.fieldName));
-        let directions = request.sort.map(sort => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
+        let fieldNames = request.sortings.map(sort => (sort.fieldName));
+        let directions = request.sortings.map(sort => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
         response.items = _.orderBy(data, fieldNames, directions);
         return response;
     }
 
-    private getFilteredAirports(request: AirportsListRequest | AirportsBufferedListRequest | AirportsPagedListRequest, delay: number): Observable<Array<Airport>> {
+    private getFilteredAirports(request: AirportsListRequest, delay: number): Observable<Array<Airport>> {
         return this.getAirports(delay).map(airports => {
             return _.chain(airports)
                 .filter(item => !request.airportName || item.name.toLowerCase().indexOf(request.airportName.toLowerCase()) !== -1)
@@ -76,12 +65,6 @@ export class AirportsService {
 
     public getAirportsList(request: AirportsListRequest, delay: number = 500): Observable<ListResponse<Airport>> {
         return this.getFilteredAirports(request, delay).map(airports => this.applyRequest(request, airports));
-    }
-    public getAirportsPaged(request: AirportsPagedListRequest, delay: number = 500): Observable<PagedListResponse<Airport>> {
-        return this.getFilteredAirports(request, delay).map(airports => this.applyPagedRequest(request, airports));
-    }
-    public getAirportsBuffered(request: AirportsBufferedListRequest, delay: number = 500): Observable<ListResponse<Airport>> {
-        return this.getFilteredAirports(request, delay).map(airports => this.applyBufferedRequest(request, airports));
     }
     public getRegions(delay: number = 0): Observable<Array<string>> {
         return this.getAirports(delay)

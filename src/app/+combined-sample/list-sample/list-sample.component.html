@@ -1,5 +1,5 @@
 <div>
-    <rt-paged-list [fetchMethod]="loadData" #list="rtList">
+    <rt-list [fetchMethod]="loadData" #list="rtList">
         <rt-demo-filter-area #filter [rtRegisterAsFilter]="filter">
         </rt-demo-filter-area>
         <table class="table table-striped" [rtSelectionAreaFor]="list.items">
@@ -28,5 +28,5 @@
                 </tr>
             </tfoot>
         </table>
-    </rt-paged-list>
+    </rt-list>
 </div>
