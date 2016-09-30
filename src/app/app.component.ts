@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import 'rxjs/Rx';
 
-import { AirportsService } from '../shared';
+import { AirportsService } from './shared';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
