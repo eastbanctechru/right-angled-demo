@@ -10,8 +10,8 @@
                 </rt-list-state-progress>
 
                 <rt-list-state-done>
-                    <rt-buffered-pager [defaultRowCount]="5">
-                        <span>Loaded records {{rtList.pager.loadedCount}} of {{rtList.pager.totalCount}}</span>
+                    <rt-buffered-pager [defaultRowCount]="5" #rtPager>
+                        <span>Loaded records {{rtPager.pager.loadedCount}} of {{rtPager.pager.totalCount}}</span>
                         <a tabindex="0" rtLoadMore href="#">Show more</a>
                         <input class="form-control" rtSelectOnFocus rtRowCount type="text" maxlength="3" title="count of rows to load" />
                     </rt-buffered-pager>

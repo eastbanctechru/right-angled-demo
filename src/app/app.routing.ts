@@ -8,6 +8,7 @@ import { ListControlsRoutes } from './+list-controls/list-controls.routes';
 import { MiscDirectivesRoutes } from './+misc-directives/misc-directives.routes';
 import { PagingAndStatesRoutes } from './+paging-and-state/paging-and-state.routes';
 import { PersistenceRoutes } from './+persistence/persistence.routes';
+import { QuickTourRoutes } from './+quick-tour/quick-tour.routes';
 import { SelectionRoutes } from './+selection/selection.routes';
 import { SortingsRoutes } from './+sortings/sortings.routes';
 
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     ...MiscDirectivesRoutes,
     ...PagingAndStatesRoutes,
     ...PersistenceRoutes,
+    ...QuickTourRoutes,
     ...SortingsRoutes,
     { path: '**', redirectTo: '' }
 ];

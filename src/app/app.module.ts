@@ -15,6 +15,7 @@ import { ListControlsModule } from './+list-controls/list-controls.module';
 import { MiscDirectivesModule } from './+misc-directives/misc-directives.module';
 import { PagingAndStateModule } from './+paging-and-state/paging-and-state.module';
 import { PersistenceModule } from './+persistence/persistence.module';
+import { QuickTourModule } from './+quick-tour/quick-tour.module';
 import { SelectionModule } from './+selection/selection.module';
 import { SortingsModule } from './+sortings/sortings.module';
 import { SharedModule } from './shared/shared.module';
@@ -29,6 +30,6 @@ RTModule.registerPersistenceService({multi: true, useClass: QueryStringPersisten
 @NgModule({
   bootstrap: [DemoAppComponent],
   declarations: [DemoAppComponent],
-  imports: [BrowserModule, HttpModule, FormsModule, RTModule, routing, AdditionalConfigurationModule, CombinedSampleModule, FiltersModule, ListControlsModule, MiscDirectivesModule, PagingAndStateModule, PersistenceModule, SelectionModule, SortingsModule, SharedModule]
+  imports: [BrowserModule, HttpModule, FormsModule, RTModule, routing, AdditionalConfigurationModule, CombinedSampleModule, FiltersModule, ListControlsModule, MiscDirectivesModule, PagingAndStateModule, PersistenceModule, QuickTourModule, SelectionModule, SortingsModule, SharedModule]
 })
 export class AppModule { }
