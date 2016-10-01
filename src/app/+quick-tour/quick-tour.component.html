@@ -11,7 +11,8 @@
             <ul>
                 <li><a href="selection#common-idea">Идеи, которые были заложены в библиотеку</a></li>
                 <li><a href="selection#bootstrap">Как подключить</a></li>
-                <li><a href="selection#basic-sample">Basic sample</a></li>
+                <li><a href="selection#initial-sample">Initial sample to start</a></li>
+                <li><a href="selection#use-rt-list">Подключаем <code>rt-list</code></a></li>
             </ul>
         </section>
         <section id="common-idea">
@@ -74,26 +75,34 @@
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>
-        <section id="basic-sample">
-            <h3>Basic sample</h3>
+        <section id="initial-sample">
+            <h3>Initial sample to start</h3>
             <p>
-                Итак, приступим к разработке приложения, которое будет использовать списки.
+                Итак, приступим к написанию кода.
             </p>
             <p>
-                Прежде всего, для работы нам понадобятся данные. Поскольку данное приложение не имеет бэкенда мы будем просто вытягивать
-                json-файл с данными о 99 аэропортах и обрабатывать их нужным нам образом с использованием библиотеки
+                Прежде всего, для работы нам понадобятся данные. Чтобы не мучаться с бэкендом, в качестве данных мы будем использовать <code>json</code>-файл
+                с данными о 99 аэропортах, который мы будем получать при помощи <code>angular</code> сервиса
+                <a target="_blank" href="https://angular.io/docs/ts/latest/guide/server-communication.html">Http</a> и обрабатывать
+                их нужным нам образом с использованием библиотеки
                 <a target="_blank" href="https://lodash.com">lodash</a>.
             </p>
             <p>
-                Ниже приведен код простейшего сервиса для извлечения данных, контракт класса Airport и компонент, который использует сервис,
-                чтобы получить список аэропортов.
+                Ниже приведен пример простейшего сервиса для извлечения данных, контракт данных Airport и компонент, который использует сервис,
+                чтобы получить список аэропортов. Поскольку наши первые примеры списков будут без paging, мы используем функцию
+                <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">Array.slice</a>                и выбираем только первые 5 аэропортов, чтобы список не получился слишком длинным.
             </p>
             <rt-demo-tab-section>
-                <rt-demo-code-tab url="%2Bquick-tour/basic-sample/airports.service.ts">
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-initial-sample></rt-demo-initial-sample>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/initial-sample/airports.service.ts">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/airport.ts">
                 </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/basic-sample/basic-sample.component.ts">
+                <rt-demo-code-tab url="%2Bquick-tour/initial-sample/initial-sample.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/initial-sample/initial-sample.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
 
@@ -104,6 +113,32 @@
                     вы решите посмотреть <a target="_blank" href="https://github.com/fshchudlo/right-angled-demo">исходники</a>                    данного приложения.
                 </p>
             </aside>
+        </section>
+        <section id="use-rt-list">
+            <h3>
+                Подключаем <code>rt-list</code>
+            </h3>
+            <p>
+                Для того, чтобы превратить наш компонент в список, нам необходимо обернуть его компонентом <code>rt-list</code>.
+                Данный компонент принимает обязательный параметр <code>fetchMethod</code>, в котором необходимо указать метод
+                для запроса данных. То есть, в нашем случае, метод, обращающийся к airportsService.
+            </p>
+            <p>
+                Данный метод должен вернуть <code>Promise</code> или <code>Observable</code> или <code>EventEmitter</code>                с данными для списка. В нашем случае это будет <code>Observable</code>.
+            </p>
+            <p>
+                Ниже приведен пример компонента использующего <code>rt-list</code>. Обратите внимание, что свойство <code>getAirports</code>                это не функция, а поле с типом <code>Function</code>, проинициализированное стрелочной функцией. Это необходимо
+                для сохранения контекста <code>this</code>.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-use-list></rt-demo-use-list>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-list/use-list.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-list/use-list.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
         </section>
     </div>
 </div>

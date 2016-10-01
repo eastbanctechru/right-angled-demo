@@ -51,7 +51,7 @@ export class AirportsService {
         // we use optional "delay" parameter to simulate backend latency
         return this.http.get(this.airportsUrl)
             .map(response => (response.json().airports as Array<Airport>))
-            .delay(delay).publish();
+            .delay(delay);
     }
 
     public getAirportsList(request: AirportsListRequest, delay: number = 500): Observable<ListResponse<Airport>> {

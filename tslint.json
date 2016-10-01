@@ -14,8 +14,7 @@
       300
     ],
     "member-access": [
-      true,
-      "check-accessor"
+      false
     ],
     "member-ordering": [
       true,

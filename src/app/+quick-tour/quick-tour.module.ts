@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
-import { BasicSampleComponent } from './basic-sample/basic-sample.component';
+import { InitialSampleComponent } from './initial-sample/initial-sample.component';
 import { QuickTourComponent } from './quick-tour.component';
+import { UseListComponent } from './use-list/use-list.component';
 
 @NgModule({
-    declarations: [QuickTourComponent, BasicSampleComponent],
-    exports: [QuickTourComponent, BasicSampleComponent],
+    declarations: [QuickTourComponent, InitialSampleComponent, UseListComponent],
+    exports: [QuickTourComponent, InitialSampleComponent, UseListComponent],
     imports: [CommonModule, SharedModule]
 })
 export class QuickTourModule {

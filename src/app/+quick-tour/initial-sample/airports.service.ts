@@ -7,12 +7,12 @@ import { Airport } from './airport';
 
 @Injectable()
 export class AirportsService {
-    private airportsUrl: string = './assets/airports.json';
+    airportsUrl: string = './assets/airports.json';
     constructor(private http: Http) {
 
     }
-    public getAirports(delay: number): Observable<Array<Airport>> {
-        // we use optional "delay" parameter to simulate backend latency
+    getAirports(delay: number): Observable<Array<Airport>> {
+        // we'll use "delay" parameter to simulate backend latency
         return this.http.get(this.airportsUrl)
             .map(response => (response.json().airports as Array<Airport>))
             .delay(delay).publish();
