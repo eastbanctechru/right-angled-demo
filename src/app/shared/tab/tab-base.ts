@@ -1,8 +1,8 @@
 import { TabSectionComponent } from './tab-section.component';
 
 export abstract class Tab {
-    public isActive: boolean;
     public tabTitle: string = '';
+    public isActive: boolean = false;
     constructor(tabs: TabSectionComponent) {
         tabs.addTab(this);
     }

@@ -14,7 +14,7 @@ declare const PR: {
     selector: 'rt-demo-code-tab',
     template: `
     <div [hidden]="!isActive">
-        <pre class="prettyprint">{{src | async}}</pre>
+        <pre>{{src | async}}</pre>
     </div>
   `
 })
@@ -28,16 +28,25 @@ export class CodeTabComponent extends Tab implements OnChanges {
     constructor(tabs: TabSectionComponent, private http: Http, private elementRef: ElementRef) {
         super(tabs);
     }
-    public ngOnChanges(changes: { url?: SimpleChange }): void {
-
-        this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1);
-        this.src = this.http.get((this.fromLib ? this.libBaseUrl : this.baseUrl) + this.url)
-            .map(res => {
-                return res.text();
-            }).do(res => {
-                if (changes.url && typeof PR !== 'undefined') {
-                    setTimeout(() => PR.prettyPrint(null, this.elementRef.nativeElement), 50);
-                }
-            });
+    public ngOnChanges(changes: { url?: SimpleChange, fromLib: SimpleChange }): void {
+        if (changes.url) {
+            this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1);
+            this.src = this.http.get((this.fromLib ? this.libBaseUrl : this.baseUrl) + this.url)
+                .map(res => {
+                    return res.text();
+                }).do(res => {
+                    // this was the only way to make prettify work with dynamic rendering :(
+                    let timer = setInterval(() => {
+                        if (typeof PR !== 'undefined') {
+                            let pre = this.elementRef.nativeElement.querySelector('pre');
+                            if (pre.innerHTML) {
+                                pre.className = 'prettyprint';
+                                PR.prettyPrint(null, this.elementRef.nativeElement);
+                                clearInterval(timer);
+                            }
+                        }
+                    }, 50);
+                });
+        }
     }
 }
