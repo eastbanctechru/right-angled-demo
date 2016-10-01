@@ -8,12 +8,12 @@ import { LookupItem } from './lookup-item';
 
 @Injectable()
 export class LookupsService {
+    private airportsUrl: string = './assets/airports.json';
     constructor(private http: Http) {
 
     }
     private getAirports(delay: number): Observable<Array<Airport>> {
-        let url = './assets/airports.json';
-        return this.http.get(url).map(response => (response.json().airports as Array<Airport>)).delay(delay);
+        return this.http.get(this.airportsUrl).map(response => (response.json().airports as Array<Airport>)).delay(delay);
     }
     private transformToLookup(data: Array<string>): Array<LookupItem> {
         return _.chain(data).map(value => ({

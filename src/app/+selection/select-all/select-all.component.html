@@ -28,7 +28,7 @@
                 <div class="col-md-12" *ngIf="country.selected" [rtSelectionAreaFor]="country.airports">
                     <div *ngFor="let airport of country.airports, let index=index">
                         <div class="col-md-12 item" [class.selected]="airport.selected" [rtSelectByIndex]="index" style="background-color: darkorange;">
-                            {{airport.name}} ({{airport.iata}})
+                            {{airport.name}} ({{airport.iataCode}})
                         </div>
                     </div>
                 </div>

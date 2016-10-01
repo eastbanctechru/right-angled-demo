@@ -7,12 +7,12 @@ import { Airport } from '../shared/data/airport';
 
 @Injectable()
 export class CountriesService {
+    private airportsUrl: string = './assets/airports.json';
     constructor(private http: Http) {
 
     }
     private getAirports(delay: number): Observable<Array<Airport>> {
-        let url = './assets/airports.json';
-        return this.http.get(url).map(response => (response.json().airports as Array<Airport>)).delay(delay)
+        return this.http.get(this.airportsUrl).map(response => (response.json().airports as Array<Airport>)).delay(delay)
             // use share to avoid multiple calls by angular async pipes
             .share();
     }
@@ -43,7 +43,7 @@ export class CountriesService {
                             {
                                 airports: groupedByCountry
                                     .map(airport => ({
-                                        iata: airport.iata,
+                                        iataCode: airport.iataCode,
                                         name: airport.name,
                                         selected: false
                                     })),

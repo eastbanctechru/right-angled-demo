@@ -10,6 +10,7 @@ import { AirportsListRequest } from './airports-list-request';
 @Injectable()
 export class AirportsService {
     public static maxPageSize: number = 200;
+    private airportsUrl: string = './assets/airports.json';
     constructor(private http: Http) {
 
     }
@@ -46,11 +47,11 @@ export class AirportsService {
                 .value();
         });
     }
-    public getAirports(delay: number): Observable<Array<Airport>> {
-        let url = './assets/airports.json';
-        return this.http.get(url).map(response => (response.json().airports as Array<Airport>)).delay(delay)
-            // use share to avoid multiple calls by angular async pipes
-            .share();
+    public getAirports(delay: number = 500): Observable<Array<Airport>> {
+        // we use optional "delay" parameter to simulate backend latency
+        return this.http.get(this.airportsUrl)
+            .map(response => (response.json().airports as Array<Airport>))
+            .delay(delay).publish();
     }
 
     public getAirportsList(request: AirportsListRequest, delay: number = 500): Observable<ListResponse<Airport>> {

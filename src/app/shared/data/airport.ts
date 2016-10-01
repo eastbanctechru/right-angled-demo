@@ -1,6 +1,6 @@
 export interface Airport {
-    iata: string;
-    iso: string;
+    iataCode: string;
+    isoCode: string;
     status: number;
     name: string;
     region: string;
@@ -10,6 +10,6 @@ export interface Airport {
     coordinates: string;
     cityCode: string;
     cityName: string;
-    countryName: string;
     countryCode: string;
+    countryName: string;
 }

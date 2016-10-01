@@ -28,7 +28,7 @@
                     <div *ngFor="let airport of country.airports, let index=index">
                         <div class="col-md-12 item" [class.selected]="airport.selected" style="background-color: darkorange;">
                             <label class="checkbox-inline">
-                            <input type="checkbox" [rtSelectionCheckboxFor]="index" /> {{airport.name}} ({{airport.iata}})
+                            <input type="checkbox" [rtSelectionCheckboxFor]="index" /> {{airport.name}} ({{airport.iataCode}})
                             </label>
                         </div>
                     </div>

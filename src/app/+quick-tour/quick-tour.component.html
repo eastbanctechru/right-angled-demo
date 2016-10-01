@@ -11,6 +11,7 @@
             <ul>
                 <li><a href="selection#common-idea">Идеи, которые были заложены в библиотеку</a></li>
                 <li><a href="selection#bootstrap">Как подключить</a></li>
+                <li><a href="selection#basic-sample">Basic sample</a></li>
             </ul>
         </section>
         <section id="common-idea">
@@ -72,7 +73,37 @@
                 <rt-demo-code-tab url="%2Bquick-tour/bootstrap/app.module.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
+        </section>
+        <section id="basic-sample">
+            <h3>Basic sample</h3>
+            <p>
+                Итак, приступим к разработке приложения, которое будет использовать списки.
+            </p>
+            <p>
+                Прежде всего, для работы нам понадобятся данные. Поскольку данное приложение не имеет бэкенда мы будем просто вытягивать
+                json-файл с данными о 99 аэропортах и обрабатывать их нужным нам образом с использованием библиотеки
+                <a target="_blank" href="https://lodash.com">lodash</a>.
+            </p>
+            <p>
+                Ниже приведен код простейшего сервиса для извлечения данных, контракт класса Airport и компонент, который использует сервис,
+                чтобы получить список аэропортов.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-code-tab url="%2Bquick-tour/basic-sample/airports.service.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/airport.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/basic-sample/basic-sample.component.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
 
+            <aside>
+                <p>По мере того, как пример будет усложняться, сервис для работы с данными будет наполняться функционалом. Чтобы
+                    не загружать мозг лишними деталями, мы будем добавлять функционал в сервис по ходу дела. Но в компонентах
+                    в исходном коде будет использоваться уже конечный сервис. Мы сообщаем это, чтобы не смущать вас если
+                    вы решите посмотреть <a target="_blank" href="https://github.com/fshchudlo/right-angled-demo">исходники</a>                    данного приложения.
+                </p>
+            </aside>
         </section>
     </div>
 </div>
