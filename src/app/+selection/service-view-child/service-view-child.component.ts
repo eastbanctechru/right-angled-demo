@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { SelectionAreaForDirective } from 'right-angled';
 
-import { AirportsService } from '../../shared';
+import { CountriesService } from '../countries.service';
 
 @Component({
     selector: 'rt-demo-service-view-child',
@@ -10,8 +10,8 @@ import { AirportsService } from '../../shared';
 export class ServiceViewChildComponent {
     public countries: any;
     @ViewChild(SelectionAreaForDirective) public selectionArea: SelectionAreaForDirective;
-    constructor(public airportsService: AirportsService) {
-        this.countries = this.airportsService.getSomeCountries()
+    constructor(public countriesService: CountriesService) {
+        this.countries = this.countriesService.getSomeCountries()
             .map(countries => countries.map(country => ({ name: country, selected: false })))
             .share();
     }

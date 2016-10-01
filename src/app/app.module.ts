@@ -1,4 +1,4 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,16 +20,31 @@ import { SelectionModule } from './+selection/selection.module';
 import { SortingsModule } from './+sortings/sortings.module';
 import { SharedModule } from './shared/shared.module';
 
-import { DemoAppComponent }  from './app.component';
-import { routing }        from './app.routing';
+import { DemoAppComponent } from './app.component';
+import { routing } from './app.routing';
 
-RTModule.registerPersistenceService({multi: true, useClass: LocalStoragePersistenceService});
-RTModule.registerPersistenceService({multi: true, useClass: SessionStoragePersistenceService});
-RTModule.registerPersistenceService({multi: true, useClass: QueryStringPersistenceService});
+RTModule.registerPersistenceService({ multi: true, useClass: LocalStoragePersistenceService });
+RTModule.registerPersistenceService({ multi: true, useClass: SessionStoragePersistenceService });
+RTModule.registerPersistenceService({ multi: true, useClass: QueryStringPersistenceService });
 
 @NgModule({
   bootstrap: [DemoAppComponent],
   declarations: [DemoAppComponent],
-  imports: [BrowserModule, HttpModule, FormsModule, RTModule, routing, AdditionalConfigurationModule, CombinedSampleModule, FiltersModule, ListControlsModule, MiscDirectivesModule, PagingAndStateModule, PersistenceModule, QuickTourModule, SelectionModule, SortingsModule, SharedModule]
+  imports: [BrowserModule,
+    HttpModule,
+    FormsModule,
+    RTModule,
+    SharedModule.forRoot(),
+    routing,
+    AdditionalConfigurationModule,
+    CombinedSampleModule,
+    FiltersModule,
+    ListControlsModule,
+    MiscDirectivesModule,
+    PagingAndStateModule,
+    PersistenceModule,
+    QuickTourModule,
+    SelectionModule,
+    SortingsModule]
 })
 export class AppModule { }

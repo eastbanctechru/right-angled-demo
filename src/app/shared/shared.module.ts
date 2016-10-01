@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { RTModule } from 'right-angled';
+
+import { AirportsService } from './data/airports.service';
 
 import { AdditionalFilterComponent } from './additional-filter/additional-filter.component';
 import { FilterAreaComponent } from './filter-area/filter-area.component';
@@ -19,4 +21,10 @@ import { TabSectionComponent } from './tab/tab-section.component';
   imports: [CommonModule, FormsModule, RTModule]
 })
 export class SharedModule {
+  public static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [AirportsService]
+    };
+  }
 }

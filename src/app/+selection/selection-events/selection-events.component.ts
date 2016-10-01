@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AirportsService } from '../../shared';
+import { CountriesService } from '../countries.service';
 import { RtSelectionEvent } from 'right-angled';
 
 @Component({
@@ -9,8 +9,8 @@ import { RtSelectionEvent } from 'right-angled';
 })
 export class SelectionEventsComponent {
     public countries: any;
-    constructor(public airportsService: AirportsService) {
-        this.countries = this.airportsService.getSomeCountries();
+    constructor(public countriesService: CountriesService) {
+        this.countries = this.countriesService.getSomeCountries();
     }
     public onItemSelected(evt: RtSelectionEvent): void {
         alertify.log(`${evt.item} - selection handled by area`);

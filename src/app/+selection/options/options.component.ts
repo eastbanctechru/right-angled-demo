@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AirportsService } from '../../shared';
+import { CountriesService } from '../countries.service';
 
 @Component({
     selector: 'rt-demo-options',
@@ -12,12 +12,12 @@ export class OptionsComponent {
     public toggleOnly: boolean = false;
     public autoSelectFirst: boolean = false;
     public countries: Array<any> = [];
-    constructor(public airportsService: AirportsService) {
+    constructor(public countriesService: CountriesService) {
         this.reload();
     }
     public reload(): void {
         this.countries = [];
-        this.airportsService.getSomeCountries(6, 700)
+        this.countriesService.getSomeCountries(6, 700)
             .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
     }
 }

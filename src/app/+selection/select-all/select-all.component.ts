@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AirportsService } from '../../shared';
+import { CountriesService } from '../countries.service';
 
 @Component({
     selector: 'rt-demo-select-all',
@@ -8,7 +8,7 @@ import { AirportsService } from '../../shared';
 })
 export class SelectAllComponent {
     public regions: any;
-    constructor(public airportsService: AirportsService) {
-        this.regions = this.airportsService.getRegionsWithCountriesAndAirports();
+    constructor(public countriesService: CountriesService) {
+        this.regions = this.countriesService.getRegionsWithCountriesAndAirports();
     }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AirportsService } from '../../shared';
+import { CountriesService } from '../countries.service';
 
 @Component({
     selector: 'rt-demo-basic-usage',
@@ -8,8 +8,8 @@ import { AirportsService } from '../../shared';
 })
 export class BasicUsageComponent {
     public countries: any;
-    constructor(public airportsService: AirportsService) {
-        this.countries = this.airportsService.getSomeCountries()
+    constructor(public countriesService: CountriesService) {
+        this.countries = this.countriesService.getSomeCountries()
             .map(countries => countries.map(country => ({ name: country, selected: false })))
             .share();
     }
