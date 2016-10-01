@@ -10,10 +10,10 @@ export class AirportsService {
     constructor(private http: Http) {
 
     }
-    getAirports(delay: number): Observable<Array<Airport>> {
+    getAirports(): Observable<Airport[]> {
         // we'll use "delay" parameter to simulate backend latency
         return this.http.get(this.airportsUrl)
-            .map(response => (response.json().airports as Array<Airport>))
-            .delay(delay).publish();
+            .map(response => (response.json().airports as Airport[]))
+            .delay(500).publish();
     }
 }

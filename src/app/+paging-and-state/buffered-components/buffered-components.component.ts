@@ -12,6 +12,6 @@ export class BufferedComponentsComponent {
     constructor(public airportsService: AirportsService) {
     }
     public loadData = (requestParams: AirportsListRequest): any => {
-        return this.airportsService.getAirportsList(requestParams, 700);
+        return this.airportsService.getAirportsList(requestParams);
     };
 }

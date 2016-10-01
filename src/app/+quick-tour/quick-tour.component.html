@@ -116,7 +116,10 @@
                 <code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code>.
             </p>
             <p>
-                В нашем случае это будет метод, обращающийся к airportsService и возвращающий <code>Observable&lt;Airport[]&gt;></code>.
+                В нашем случае это будет функция, обращающаяся к airportsService и возвращающая <code>Observable&lt;Airport[]&gt;></code>.
+                Обратите внимание, что <code>getAirports</code> это не метод, а свойство с типом <code>Function</code>, проинициализированное
+                стрелочной функцией. Это необходимо для сохранения контекста <code>this</code> при вызове функции. Разумеется,
+                подход с использованием <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">Function.bind</a>                тоже работает.
             </p>
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Live demo">
@@ -127,12 +130,10 @@
                 <rt-demo-code-tab url="%2Bquick-tour/use-list/use-list.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
-            <aside>
-                <p>
-                    Обратите внимание, что свойство <code>getAirports</code> это не метод, а свойство с типом <code>Function</code>,
-                    проинициализированное стрелочной функцией. Это необходимо для сохранения контекста <code>this</code>                    при вызове функции. Разумеется, подход с использованием <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">Function.bind</a>                    тоже работает.
-                </p>
-            </aside>
+            <p>
+                Наш первый список готов. Пока он только самостоятельно делает первый запрос за данными, что не особо-то впечатляет. Давайте
+                продолжим добавлять к нему функционал.
+            </p>
         </section>
     </div>
 </div>

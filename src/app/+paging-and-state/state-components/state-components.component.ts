@@ -14,7 +14,7 @@ export class StateComponentsComponent {
     constructor(public airportsService: AirportsService) {
     }
     public loadData = (requestParams: AirportsListRequest): any => {
-        return this.airportsService.getAirportsList(requestParams, 700).map((response: ListResponse<Airport>) => {
+        return this.airportsService.getAirportsList(requestParams).map((response: ListResponse<Airport>) => {
             if (this.raiseError) {
                 this.raiseError = false;
                 throw new Error('Error!!!');
