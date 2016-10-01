@@ -10,8 +10,8 @@
             <h3>Table of contents</h3>
             <ul>
                 <li><a href="selection#common-idea">Идеи, которые были заложены в библиотеку</a></li>
-                <li><a href="selection#bootstrap">Как подключить</a></li>
                 <li><a href="selection#initial-sample">Initial sample to start</a></li>
+                <li><a href="selection#bootstrap">Подключаем <code>right-angled</code></a></li>
                 <li><a href="selection#use-list">Start to use <code>right-angled</code></a></li>
             </ul>
         </section>
@@ -63,28 +63,16 @@
                 </li>
             </ul>
         </section>
-        <section id="bootstrap">
-            <h3>Как подключить</h3>
-            <p>Чтобы подключить <code>right-angled</code>, импортируйте модуль <code>RtModule</code> и подключите в вашем
-                <code>AppModule</code>. Также можно подключать функционал по частям. Для этого есть модули <code>RTListsModule</code>,
-                <code>RTSelectionModule</code> и <code>RTFiltersModule</code> и <code>RTMiscModule</code>. Детали о них мы
-                узнаем позже.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-code-tab url="%2Bquick-tour/bootstrap/app.module.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </section>
         <section id="initial-sample">
             <h3>Initial sample to start</h3>
             <p>
                 Итак, приступим к написанию кода.
             </p>
             <p>
-                Прежде всего, для работы нам понадобятся данные. Чтобы не мучаться с бэкендом, в качестве данных мы будем использовать <code>json</code>-файл
+                Для работы нам понадобятся данные. Чтобы не мучаться с бэкендом, мы будем использовать простой <code>json</code>-файл
                 с данными о 99 аэропортах, который мы будем получать при помощи <code>angular</code> сервиса
                 <a target="_blank" href="https://angular.io/docs/ts/latest/guide/server-communication.html">Http</a> и обрабатывать
-                их нужным нам образом с использованием библиотеки
+                нужным нам образом с использованием библиотеки
                 <a target="_blank" href="https://lodash.com">lodash</a>.
             </p>
             <p>
@@ -106,20 +94,28 @@
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
 
-            <aside>
-                <p>По мере того, как пример будет усложняться, сервис для работы с данными будет наполняться функционалом. Чтобы
-                    не загружать мозг лишними деталями, мы будем добавлять функционал в сервис по ходу дела. Но в компонентах
-                    в исходном коде будет использоваться уже конечный сервис. Мы сообщаем это, чтобы не смущать вас если
-                    вы решите посмотреть <a target="_blank" href="https://github.com/fshchudlo/right-angled-demo">исходники</a>                    данного приложения.
-                </p>
-            </aside>
+        </section>
+        <section id="bootstrap">
+            <h3>Подключаем <code>right-angled</code></h3>
+            <p>Чтобы подключить <code>right-angled</code> мы импортируем модуль <code>RtModule</code> и подключаем его в вашем
+                <code>AppModule</code>. Также можно подключать функционал по частям. Для этого есть модули <code>RTListsModule</code>,
+                <code>RTSelectionModule</code> и <code>RTFiltersModule</code> и <code>RTMiscModule</code>.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-code-tab url="%2Bquick-tour/bootstrap/app.module.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
         </section>
         <section id="use-list">
             <h3>Start to use <code>right-angled</code></h3>
             <p>
-                Далее, чтобы превратить наш компонент в список, нам необходимо обернуть его компонентом <code>rt-list</code>.
-                Данный компонент принимает обязательный параметр <code>fetchMethod</code>, в котором необходимо указать функцию
-                для запроса данных, возвращающую <code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code>.
+                Чтобы превратить наш компонент в список, нам необходимо обернуть его компонентом <code>rt-list</code>. Данный
+                компонент принимает обязательный параметр <code>fetchMethod</code>, в котором необходимо указать функцию
+                запроса данных, которую будет вызывать список, передавая ей параметры запроса (о них ниже). Возвращать данная
+                функция должна
+                <code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code>.
+            </p>
+            <p>
                 В нашем случае это будет метод, обращающийся к airportsService и возвращающий <code>Observable&lt;Airport[]&gt;></code>.
             </p>
             <rt-demo-tab-section>

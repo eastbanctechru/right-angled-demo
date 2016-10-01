@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import * as _ from 'lodash';
-import { ListRequest, ListResponse, SortDirection } from 'right-angled';
+import { ListRequest, ListResponse, SortDirection, SortParameter } from 'right-angled';
 import { Observable } from 'rxjs/Observable';
 
 import { Airport } from './airport';
@@ -20,18 +20,18 @@ export class AirportsService {
             loadedCount: 0,
             totalCount: data.length
         } as ListResponse<Airport>;
-        this.applySortings(request, response, data);
         let take = request.take ? (request.take > AirportsService.maxPageSize ? AirportsService.maxPageSize : request.take) : data.length;
-        request.skip = request.skip || 0;
-        response.items = _.slice(response.items, request.skip, request.skip + take);
+        let skip = request.skip || 0;
+
+        let sortedRecords = this.applySortings(request.sortings, data);
+        response.items = _.slice(sortedRecords, skip, skip + take);
         response.loadedCount = response.items.length;
         return response;
     }
-    private applySortings(request: ListRequest, response: ListResponse<Airport>, data: Airport[]): ListResponse<Airport> {
-        let fieldNames = request.sortings.map(sort => (sort.fieldName));
-        let directions = request.sortings.map(sort => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
-        response.items = _.orderBy(data, fieldNames, directions);
-        return response;
+    private applySortings(sortings: SortParameter[], data: Airport[]): Airport[] {
+        let fieldNames = sortings.map(sort => (sort.fieldName));
+        let directions = sortings.map(sort => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
+        return _.orderBy(data, fieldNames, directions);
     }
 
     private getFilteredAirports(request: AirportsListRequest, delay: number): Observable<Array<Airport>> {

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
 
 import { Airport } from './airport';
