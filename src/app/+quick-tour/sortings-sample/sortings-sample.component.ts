@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { Airport, AirportsService } from '../../shared';
 
 @Component({
-    selector: 'rt-demo-initial-sample',
-    templateUrl: 'initial-sample.component.html'
+    selector: 'rt-demo-sortings-sample',
+    templateUrl: 'sortings-sample.component.html'
 })
-export class InitialSampleComponent {
+export class SortingsSampleComponent {
     airports: Airport[];
     constructor(public airportsService: AirportsService) {
         this.airportsService.getAirports()

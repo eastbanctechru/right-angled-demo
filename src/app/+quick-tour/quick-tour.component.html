@@ -10,7 +10,7 @@
             <h3>Table of contents</h3>
             <ul>
                 <li><a href="selection#common-idea">Идеи, которые были заложены в библиотеку</a></li>
-                <li><a href="selection#initial-sample">Initial sample to start</a></li>
+                <li><a href="selection#airports-service">Организация доступа к данным для наших примеров</a></li>
                 <li><a href="selection#bootstrap">Подключаем <code>right-angled</code></a></li>
                 <li><a href="selection#use-list">Start to use <code>right-angled</code></a></li>
             </ul>
@@ -63,34 +63,31 @@
                 </li>
             </ul>
         </section>
-        <section id="initial-sample">
-            <h3>Initial sample to start</h3>
+        <section id="airports-service">
+            <h3>Организация доступа к данным для наших примеров</h3>
             <p>
-                Итак, приступим к написанию кода.
-            </p>
-            <p>
-                Для работы нам понадобятся данные. Чтобы не мучаться с бэкендом, мы будем использовать простой <code>json</code>-файл
-                с данными о 99 аэропортах, который мы будем получать при помощи <code>angular</code> сервиса
-                <a target="_blank" href="https://angular.io/docs/ts/latest/guide/server-communication.html">Http</a> и обрабатывать
-                нужным нам образом с использованием библиотеки
+                Для работы нам понадобятся данные. Для простоты, вместо реализации бэкенда, мы будем использовать простой <code>json</code>-файл
+                с данными о 99 аэропортах, и обрабатывать его при помощи
                 <a target="_blank" href="https://lodash.com">lodash</a>.
             </p>
             <p>
-                Ниже приведен пример простейшего сервиса для извлечения данных, контракт данных Airport и компонент, который использует сервис,
-                чтобы получить список аэропортов. Поскольку наши первые примеры списков будут без paging, мы используем функцию
-                <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">Array.slice</a>                и выбираем только первые 5 аэропортов, чтобы список не получился слишком длинным.
+                Ниже приведен код данного сервиса в том виде, каким он будет нужен для реализации всех наших задач, начиная от запроса простого массива
+                с данными, и заканчивая запросом данных с фильтрациями, сортировками, paging-ом. Сервис содержит следующие
+                методы:
             </p>
+            <ul>
+                <li><code>getAirports</code> - возвращает все данные из файла простым масивом.</li>
+                <li><code>getSortedAirports</code> - вызывает метод <code>getAirports</code> и применяет к результату сортировки,
+                    переданные в параметрах.</li>
+                <li><code>getFilteredAirports</code> - вызывает метод <code>getSortedAirports</code> и применяет к результату
+                    фильтры, переданные в параметрах.</li>
+                <li><code>getAirportsList</code> - конечный метод содержащий весь функционал простого списка. Вызывает метод
+                    <code>getFilteredAirports</code> и применяет к результату paging, переданные в параметрах.</li>
+            </ul>
             <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-initial-sample></rt-demo-initial-sample>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/initial-sample/airports.service.ts">
+                <rt-demo-code-tab url="shared/data/airports.service.ts">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/airport.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/initial-sample/initial-sample.component.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/initial-sample/initial-sample.component.html">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
 
