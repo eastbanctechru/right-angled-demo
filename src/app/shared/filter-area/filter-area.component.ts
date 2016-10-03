@@ -11,8 +11,8 @@ import { LookupsService } from '../data/lookups.service';
 export class FilterAreaComponent implements OnInit {
     public useAdvancedFilters: boolean = false;
     @filter() public airportName: string = null;
-    @filter('size') public selectedAirportSize: string = null;
-    @filter('type') public selectedAirportType: string = null;
+    @filter('airportSize') public selectedAirportSize: string = null;
+    @filter('airportType') public selectedAirportType: string = null;
     public airportSizes: any;
     public airportTypes: any;
     constructor(private lookupsService: LookupsService) {

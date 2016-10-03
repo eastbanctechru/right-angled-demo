@@ -24,32 +24,3 @@ th.t-col-region {
 th.t-col-size {
     width: 5%;
 }
-
-.rt-sortable {
-    position: relative;
-    padding-right: 45px;
-    cursor: pointer;
-    &:after {
-        content: '';
-        display: inline-block;
-        width: 22px;
-        height: 22px;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        margin-top: -11px;
-        background-position: center center;
-        background-repeat: no-repeat;
-    }
-    &:hover {
-        &:after {
-           background-image: url('./assets/images/sortable.png');
-        }
-    }
-    &.rt-sort-asc:after {
-        background-image: url('./assets/images/sort-asc.png');
-    }
-    &.rt-sort-desc:after {
-        background-image: url('./assets/images/sort-desc.png');
-    }
-}

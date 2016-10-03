@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
-        <h1>Ow, Hello!</h1>
+        <h1>right-angled quick tour</h1>
         <section>
             <p>Здесь мы познакомимся с библиотекой <code>right-angled</code>, увидим на живых примерах ее основные возможности
                 и ссылки на разделы с более детальной информацией по каждому из аспектов библиотеки.
@@ -10,9 +10,10 @@
             <h3>Table of contents</h3>
             <ul>
                 <li><a href="selection#common-idea">Идеи, которые были заложены в библиотеку</a></li>
-                <li><a href="selection#airports-service">Организация доступа к данным для наших примеров</a></li>
+                <li><a href="selection#airports-service">"бэкенд" для работы с данными для нашего демо</a></li>
                 <li><a href="selection#bootstrap">Подключаем <code>right-angled</code></a></li>
-                <li><a href="selection#use-list">Start to use <code>right-angled</code></a></li>
+                <li><a href="selection#use-list">Делаем первый список</a></li>
+                <li><a href="selection#use-sortings">Добавляем сортировки</a></li>
             </ul>
         </section>
         <section id="common-idea">
@@ -64,37 +65,50 @@
             </ul>
         </section>
         <section id="airports-service">
-            <h3>Организация доступа к данным для наших примеров</h3>
+            <h3>"бэкенд" для работы с данными для нашего демо</h3>
             <p>
-                Для работы нам понадобятся данные. Для простоты, вместо реализации бэкенда, мы будем использовать простой <code>json</code>-файл
-                с данными о 99 аэропортах, и обрабатывать его при помощи
-                <a target="_blank" href="https://lodash.com">lodash</a>.
+                Для работы нам понадобятся данные. Вместо реализации полноценного бэкенда, мы будем использовать простой класс <code>AirportsService</code>,
+                который будет получать с сервера <code>json</code>-файл с данными о 99 аэропортах, и обрабатывать их при
+                помощи
+                <a target="_blank" href="https://lodash.com">lodash</a> прямо в браузере.
             </p>
             <p>
-                Ниже приведен код данного сервиса в том виде, каким он будет нужен для реализации всех наших задач, начиная от запроса простого массива
-                с данными, и заканчивая запросом данных с фильтрациями, сортировками, paging-ом. Сервис содержит следующие
-                методы:
+                Для работы с простыми списками мы реализуем метод <code>getAirportsList</code>. Данный метод будет принимать
+                параметр с контрактом
+                <code>AirportsListRequest</code>, который содержит параметры сортировки и фильтрации. Возвращать данный метод
+                будет массив с объектами контракта <code>Airport</code>, то есть просто массив с данными.
             </p>
-            <ul>
-                <li><code>getAirports</code> - возвращает все данные из файла простым масивом.</li>
-                <li><code>getSortedAirports</code> - вызывает метод <code>getAirports</code> и применяет к результату сортировки,
-                    переданные в параметрах.</li>
-                <li><code>getFilteredAirports</code> - вызывает метод <code>getSortedAirports</code> и применяет к результату
-                    фильтры, переданные в параметрах.</li>
-                <li><code>getAirportsList</code> - конечный метод содержащий весь функционал простого списка. Вызывает метод
-                    <code>getFilteredAirports</code> и применяет к результату paging, переданные в параметрах.</li>
-            </ul>
+            <p>
+                Для работы с paging мы реализуем метод <code>getAirportsPagedList</code>, который будет принимать параметр
+                с контрактом
+                <code>AirportsPagedListRequest</code>, расширяющий контракт <code>AirportsListRequest</code> свойствами
+                <code>skip</code> и <code>take</code>, указывающими сколько записей при загрузке необходимо проспустить,
+                а сколько загрузить. Возвращать данный метод будет объект с контрактом <code>AirportsListResponse</code>,
+                содержащим массив аэропортов и поля <code>totalCount</code> и <code>loadedCount</code>, указывающие, сколько
+                всего записей имеется на "сервере" без учета paging и сколько записей было загружено в результате текущего
+                запроса.
+            </p>
+            <p>
+                Ниже вы можете увидеть исходный код всех упомянутых классов и интерфейсов.
+            </p>
             <rt-demo-tab-section>
-                <rt-demo-code-tab url="shared/data/airports.service.ts">
-                </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/airport.ts">
                 </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/airports-list-request.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/airports-paged-list-request.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/list-response.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/airports.service.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/sort-parameter.ts">
+                </rt-demo-code-tab>
             </rt-demo-tab-section>
-
         </section>
         <section id="bootstrap">
             <h3>Подключаем <code>right-angled</code></h3>
-            <p>Чтобы подключить <code>right-angled</code> мы импортируем модуль <code>RtModule</code> и подключаем его в вашем
+            <p>Чтобы подключить <code>right-angled</code> мы импортируем модуль <code>RtModule</code> и подключаем его в
                 <code>AppModule</code>. Также можно подключать функционал по частям. Для этого есть модули <code>RTListsModule</code>,
                 <code>RTSelectionModule</code> и <code>RTFiltersModule</code> и <code>RTMiscModule</code>.
             </p>
@@ -104,7 +118,7 @@
             </rt-demo-tab-section>
         </section>
         <section id="use-list">
-            <h3>Start to use <code>right-angled</code></h3>
+            <h3>Делаем первый список</h3>
             <p>
                 Чтобы превратить наш компонент в список, нам необходимо обернуть его компонентом <code>rt-list</code>. Данный
                 компонент принимает обязательный параметр <code>fetchMethod</code>, в котором необходимо указать функцию
@@ -129,7 +143,21 @@
             </rt-demo-tab-section>
             <p>
                 Наш первый список готов. Пока он только самостоятельно делает первый запрос за данными, что не особо-то впечатляет. Давайте
-                продолжим добавлять к нему функционал.
+                добавим ему побольше функционала.
+            </p>
+        </section>
+        <section id="use-sortings">
+            <h3>Добавляем сортировки</h3>
+            <p>
+                <rt-demo-tab-section>
+                    <rt-demo-sample-tab tabTitle="Live demo">
+                        <rt-demo-use-sortings></rt-demo-use-sortings>
+                    </rt-demo-sample-tab>
+                    <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.ts">
+                    </rt-demo-code-tab>
+                    <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.html">
+                    </rt-demo-code-tab>
+                </rt-demo-tab-section>
             </p>
         </section>
     </div>

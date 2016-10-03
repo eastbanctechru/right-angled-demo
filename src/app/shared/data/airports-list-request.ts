@@ -1,9 +1,8 @@
-import { ListRequest } from 'right-angled';
-export interface AirportsListRequest extends ListRequest {
+import { SortParameter } from './sort-parameter';
+
+export interface AirportsListRequest {
     airportName?: string;
-    type?: string;
-    size?: string;
-    countryName?: string;
-    cityName?: string;
-    regionName?: string;
+    airportType?: string;
+    airportSize?: string;
+    sortings: Array<SortParameter>;
 }
