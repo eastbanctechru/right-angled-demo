@@ -19,7 +19,8 @@ export class AirportsService {
         return this
             .getAllAirports()
             .map(airports => this.applyFilters(request, airports))
-            .map(airports => this.applySortings(request, airports));
+            .map(airports => this.applySortings(request, airports))
+            .map(airports => airports.slice(0, 5));
     }
     public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 500): Observable<ListResponse> {
         return this.getAirportsList(request).map(airports => this.applyPaging(request, airports));

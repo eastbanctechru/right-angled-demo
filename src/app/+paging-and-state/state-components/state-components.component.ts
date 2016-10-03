@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ListComponent } from 'right-angled';
 
-import { Airport, AirportsListRequest, AirportsService, ListResponse } from '../../shared';
+import { Airport, AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 
 @Component({
     selector: 'rt-demo-state-components',
@@ -13,7 +13,7 @@ export class StateComponentsComponent {
     @ViewChild(ListComponent) public listComponent: ListComponent;
     constructor(public airportsService: AirportsService) {
     }
-    public loadData = (requestParams: AirportsListRequest): any => {
+    public loadData = (requestParams: AirportsPagedListRequest): any => {
         return this.airportsService.getAirportsPagedList(requestParams).map((response: ListResponse<Airport>) => {
             if (this.raiseError) {
                 this.raiseError = false;

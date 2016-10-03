@@ -65,7 +65,7 @@
             </ul>
         </section>
         <section id="airports-service">
-            <h3>"бэкенд" для работы с данными для нашего демо</h3>
+            <h3>"Бэкенд" для работы с данными для нашего демо</h3>
             <p>
                 Для работы нам понадобятся данные. Вместо реализации полноценного бэкенда, мы будем использовать простой класс <code>AirportsService</code>,
                 который будет получать с сервера <code>json</code>-файл с данными о 99 аэропортах, и обрабатывать их при
@@ -77,6 +77,10 @@
                 параметр с контрактом
                 <code>AirportsListRequest</code>, который содержит параметры сортировки и фильтрации. Возвращать данный метод
                 будет массив с объектами контракта <code>Airport</code>, то есть просто массив с данными.
+            </p>
+            <p>
+                Поскольку 99 записей для демонстрационного списка многовато, а paging-а у нас поначалу не будет, данный метод выбирает только
+                первые 5 записей используя функцию <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">Array.slice</a>.
             </p>
             <p>
                 Для работы с paging мы реализуем метод <code>getAirportsPagedList</code>, который будет принимать параметр
@@ -92,17 +96,17 @@
                 Ниже вы можете увидеть исходный код всех упомянутых классов и интерфейсов.
             </p>
             <rt-demo-tab-section>
-                <rt-demo-code-tab url="shared/data/airport.ts">
-                </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/airports-list-request.ts">
                 </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/sort-parameter.ts">
+                </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/airports-paged-list-request.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="shared/data/airport.ts">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/list-response.ts">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/airports.service.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="shared/data/sort-parameter.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>
@@ -120,18 +124,14 @@
         <section id="use-list">
             <h3>Делаем первый список</h3>
             <p>
-                Чтобы превратить наш компонент в список, нам необходимо обернуть его компонентом <code>rt-list</code>. Данный
-                компонент принимает обязательный параметр <code>fetchMethod</code>, в котором необходимо указать функцию
-                запроса данных, которую будет вызывать список, передавая ей параметры запроса (о них ниже). Возвращать данная
-                функция должна
-                <code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code>.
+                Чтобы создать список, нам необходимо использовать компонент <code>rt-list</code>. Данный компонент принимает
+                обязательный параметр <code>fetchMethod</code> - функцию запроса данных, которую будет вызывать компонент,
+                передавая ей параметры запроса. Возвращать данная функция должна
+                <code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code> с данными.
             </p>
             <p>
-                В нашем случае это будет функция, обращающаяся к airportsService и возвращающая <code>Observable&lt;Airport[]&gt;></code>.
-                Обратите внимание, что <code>getAirports</code> это не метод, а свойство с типом <code>Function</code>, проинициализированное
-                стрелочной функцией. Это необходимо для сохранения контекста <code>this</code> при вызове функции. Разумеется,
-                подход с использованием <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">Function.bind</a>                тоже работает.
-            </p>
+                Ниже представлен пример компонента, который обращается к методу <code>getAirportsList</code> описанного выше
+                класса <code>AirportsService</code>. </p>
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Live demo">
                     <rt-demo-use-list></rt-demo-use-list>
@@ -149,16 +149,24 @@
         <section id="use-sortings">
             <h3>Добавляем сортировки</h3>
             <p>
-                <rt-demo-tab-section>
-                    <rt-demo-sample-tab tabTitle="Live demo">
-                        <rt-demo-use-sortings></rt-demo-use-sortings>
-                    </rt-demo-sample-tab>
-                    <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.ts">
-                    </rt-demo-code-tab>
-                    <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.html">
-                    </rt-demo-code-tab>
-                </rt-demo-tab-section>
+                На самом деле наш список уже передает параметры сортировок. Нам нужен просто способ указать их на UI. Для этого используется
+                директива <code>rtSort</code>, принимающая в качестве параметра строку с идентификатором
+                сортировки, который будет передаваться на сервер. В простейшем случае он может совпадать с именем столбца,
+                однако помните про <a href="https://en.wikipedia.org/wiki/SQL_injection">sql injection</a>!
             </p>
+            <p>
+                В примере ниже мы добавили в заголовок таблицы директивы <code>rtSort</code> и теперь по клику на заголовок
+                будет выполняться сортировка. Зажимая <code>Ctrl</code> можно выполнить сортировку по нескольким столбцам.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-use-sortings></rt-demo-use-sortings>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
         </section>
     </div>
 </div>
