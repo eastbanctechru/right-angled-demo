@@ -10,7 +10,6 @@ import { UseSelectionComponent } from './use-selection/use-selection.component';
 import { UseSortingsComponent } from './use-sortings/use-sortings.component';
 import { UseStateComponent } from './use-state/use-state.component';
 
-
 @NgModule({
     declarations: [QuickTourComponent, UseListComponent, UseControlsComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
     exports: [QuickTourComponent, UseListComponent, UseControlsComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
