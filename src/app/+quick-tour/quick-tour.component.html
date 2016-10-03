@@ -9,11 +9,13 @@
         <section>
             <h3>Table of contents</h3>
             <ul>
-                <li><a href="selection#common-idea">Идеи, которые были заложены в библиотеку</a></li>
-                <li><a href="selection#airports-service">"бэкенд" для работы с данными для нашего демо</a></li>
-                <li><a href="selection#bootstrap">Подключаем <code>right-angled</code></a></li>
-                <li><a href="selection#use-list">Делаем первый список</a></li>
-                <li><a href="selection#use-sortings">Добавляем сортировки</a></li>
+                <li><a href="quick-tour#common-idea">Идеи, которые были заложены в библиотеку</a></li>
+                <li><a href="quick-tour#airports-service">"бэкенд" для работы с данными для нашего демо</a></li>
+                <li><a href="quick-tour#bootstrap">Подключаем <code>right-angled</code></a></li>
+                <li><a href="quick-tour#use-list">Делаем первый список</a></li>
+                <li><a href="quick-tour#use-sortings">Добавляем сортировки</a></li>
+                <li><a href="quick-tour#use-state">Добавляем progress bar</a></li>
+                <li><a href="quick-tour#use-selection">Добавляем selection</a></li>
             </ul>
         </section>
         <section id="common-idea">
@@ -155,16 +157,94 @@
                 однако помните про <a href="https://en.wikipedia.org/wiki/SQL_injection">sql injection</a>!
             </p>
             <p>
-                В примере ниже мы добавили в заголовок таблицы директивы <code>rtSort</code> и теперь по клику на заголовок
-                будет выполняться сортировка. Зажимая <code>Ctrl</code> можно выполнить сортировку по нескольким столбцам.
+                В примере ниже мы добавили в шаблоне в заголовок таблицы директивы <code>rtSort</code> и теперь по клику
+                на заголовок будет выполняться сортировка. Зажимая <code>Ctrl</code> можно выполнить сортировку по нескольким
+                столбцам.
+            </p>
+            <p>
+                Код компонента остался без изменений.
             </p>
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Live demo">
                     <rt-demo-use-sortings></rt-demo-use-sortings>
                 </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.html">
+                </rt-demo-code-tab>
                 <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.ts">
                 </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.html">
+
+            </rt-demo-tab-section>
+        </section>
+
+        <section id="use-state">
+            <h3>Добавляем progress bar</h3>
+            <p>
+                Наш список выглядит не очень хорошо, пока загружает данные. Используя компонент <code>rt-list-state-progress</code>                мы можем исправить положение. Данный компонент будет отрисовывать свое внутреннее содержимое во время загрузки
+                данных.
+            </p>
+            <p>
+                В примере ниже мы добавили в шаблон компонент <code>rt-list-state-progress</code>, внутри которого расположен
+                <code>div</code> настиленный отображать progress bar. Код компонента остался тем же.
+            </p>
+            <p>
+                Аналогичным образом можно отображать контент для состояний, когда произошла ошибка, не было загружено ни одной записи и т.д.
+                Детали в <a href="#" [routerLink]="['/paging-and-state']">этом разделе</a>.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-use-state></rt-demo-use-state>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-state/use-state.component.html">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-state/use-state.component.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+
+        </section>
+        <section id="use-selection">
+            <h3>Добавляем selection</h3>
+            <p>
+                В примере ниже мы добавили в <code>tbody</code> директиву <code>rtSelectionAreaFor</code>, указав тем самым,
+                что он является областью для выбора.
+            </p>
+            <p>В теги <code>tr</code> мы добавили директиву <code>rtSelectByIndex</code>, указав тем самым элементу, что он
+                становится выбираемым.</p>
+            <p>При помощи angular директивы <code>class</code> мы добавляем класс selected к элементу <code>tr</code>, когда
+                свойство <code>selected</code> аэропорта становится равным <code>true</code>.
+            </p>
+            <p>
+                Теперь вы можете выполнять со списком следующие действия:
+            </p>
+            <ul>
+                <li>Клик мышью выбирает элемент.</li>
+                <li>Клик мышью с зажатой клавишей <code>Ctrl</code> выбирает кликнутый элемент сохраняя предыдщий выбор.</li>
+                <li>Клик мышью с зажатой клавишей <code>Shift</code> выбирает последовательность элементов от последнего выбранного
+                    до кликнутого.
+                </li>
+                <li>Нажатие клавиши <code>&uarr;</code> выбирает предыдущий элемент. Или первый элемент списка, если ранее ничего
+                    не было выбрано.</li>
+                <li>Нажатие клавиши <code>&rarr;</code> выбирает следующий элемент. Или первый элемент списка, если ранее ничего
+                    не было выбрано.
+                </li>
+                <li>Нажатие клавиш <code>Ctrl + &uarr;</code> выбирает первый элемент в списке.</li>
+                <li>Нажатие клавиш <code>Ctrl + &rarr;</code> выбирает последний элемент в списке.</li>
+                <li>Нажатие клавиш <code>Ctrl + A</code> выбирает все элементы списка.</li>
+                <li>Нажатие клавиши <code>Tab</code> и <code>Shift + Tab</code> перемещает вас по списку на элемент вверх или
+                    вниз.
+                </li>
+            </ul>
+            <p>
+                С помощью selection можно реализовать множество полезных вещей: master-detail, inline editing, группированные списки, контекстные меню и т.д. 
+                Все детали доступны в разделе в <a href="#" [routerLink]="['/selection']">selection</a>.
+            </p>
+
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-use-selection></rt-demo-use-selection>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.html">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>

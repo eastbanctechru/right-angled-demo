@@ -4,10 +4,10 @@ import { Airport, AirportsListRequest, AirportsService } from '../../shared';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-    selector: 'rt-demo-use-sortings',
-    templateUrl: 'use-sortings.component.html'
+    selector: 'rt-demo-use-state',
+    templateUrl: 'use-state.component.html'
 })
-export class UseSortingsComponent {
+export class UseStateComponent {
     constructor(public airportsService: AirportsService) {
     }
     getAirports = (request: AirportsListRequest): Observable<Airport[]> => {

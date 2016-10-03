@@ -1,0 +1,27 @@
+<rt-list [fetchMethod]="getAirports" #rtList>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><span rtSort="iataCode">IATA</span></th>
+                <th><span rtSort="name">Airport name</span></th>
+                <th><span rtSort="countryName">Country</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let airport of rtList.items">
+                <td>{{airport.iataCode}}</td>
+                <td>{{airport.name}}</td>
+                <td>{{airport.countryName}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <rt-list-state-progress>
+                        <div></div>
+                    </rt-list-state-progress>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</rt-list>

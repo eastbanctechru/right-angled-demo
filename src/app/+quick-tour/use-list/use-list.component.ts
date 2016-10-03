@@ -11,7 +11,6 @@ export class UseListComponent {
     constructor(public airportsService: AirportsService) {
     }
     getAirports = (request: AirportsListRequest): Observable<Airport[]> => {
-        return this.airportsService.getAirportsList(request)
-            .map(airports => airports.slice(0, 5));
+        return this.airportsService.getAirportsList(request);
     }
 }

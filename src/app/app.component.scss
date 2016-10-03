@@ -124,11 +124,15 @@
             }
         }
 
-        rt-list-state-progress>div {
-            display: inline-block;
-            width: 128px;
-            height: 16px;
-            background: url('./assets/images/line-progress.gif') center center no-repeat;
+        rt-list-state-progress{
+            display: block;
+            text-align: center;
+            div {
+                display: inline-block;
+                width: 128px;
+                height: 16px;
+                background: url('./assets/images/line-progress.gif') center center no-repeat;
+            }
         }
 
     rt-demo-paged-footer, rt-demo-buffered-footer, div.pager {
