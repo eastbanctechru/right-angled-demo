@@ -16,6 +16,7 @@
                 <li><a href="quick-tour#use-sortings">Добавляем сортировки</a></li>
                 <li><a href="quick-tour#use-state">Добавляем progress bar</a></li>
                 <li><a href="quick-tour#use-selection">Добавляем selection</a></li>
+                <li><a href="quick-tour#use-controls">Добавляем пару полезных контролов</a></li>
             </ul>
         </section>
         <section id="common-idea">
@@ -104,6 +105,7 @@
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/airports-paged-list-request.ts">
                 </rt-demo-code-tab>
+
                 <rt-demo-code-tab url="shared/data/airport.ts">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="shared/data/list-response.ts">
@@ -179,12 +181,13 @@
         <section id="use-state">
             <h3>Добавляем progress bar</h3>
             <p>
-                Наш список выглядит не очень хорошо, пока загружает данные. Используя компонент <code>rt-list-state-progress</code>                мы можем исправить положение. Данный компонент будет отрисовывать свое внутреннее содержимое во время загрузки
+                Наш список выглядит не очень хорошо в момент пока загружает данные. Используя компонент <code>rt-list-state-progress</code>                мы можем исправить положение. Данный компонент будет отрисовывать свое внутреннее содержимое во время загрузки
                 данных.
             </p>
             <p>
                 В примере ниже мы добавили в шаблон компонент <code>rt-list-state-progress</code>, внутри которого расположен
-                <code>div</code> настиленный отображать progress bar. Код компонента остался тем же.
+                <code>div</code> настиленный отображать progress bar и компонент <code>rt-list-state-done</code>, отображающий
+                надпись, уведомляющую об успешной загрузке данных. Код компонента остался тем же.
             </p>
             <p>
                 Аналогичным образом можно отображать контент для состояний, когда произошла ошибка, не было загружено ни одной записи и т.д.
@@ -207,13 +210,14 @@
                 В примере ниже мы добавили в <code>tbody</code> директиву <code>rtSelectionAreaFor</code>, указав тем самым,
                 что он является областью для выбора.
             </p>
-            <p>В теги <code>tr</code> мы добавили директиву <code>rtSelectByIndex</code>, указав тем самым элементу, что он
-                становится выбираемым.</p>
-            <p>При помощи angular директивы <code>class</code> мы добавляем класс selected к элементу <code>tr</code>, когда
-                свойство <code>selected</code> аэропорта становится равным <code>true</code>.
+            <p>В теги <code>tr</code> мы добавили директиву <code>rtSelectByIndex</code>, указав элементу, что он становится
+                выбираемым.
+            </p>
+            <p>При помощи <code>angular</code> директивы <code>class</code> мы добавляем класс <code>selected</code> к элементу
+                <code>tr</code>, когда свойство <code>selected</code> аэропорта становится равным <code>true</code>.
             </p>
             <p>
-                Теперь вы можете выполнять со списком следующие действия:
+                Теперь список реагирует на следующие действия:
             </p>
             <ul>
                 <li>Клик мышью выбирает элемент.</li>
@@ -234,10 +238,10 @@
                 </li>
             </ul>
             <p>
-                С помощью selection можно реализовать множество полезных вещей: master-detail, inline editing, группированные списки, контекстные меню и т.д. 
-                Все детали доступны в разделе в <a href="#" [routerLink]="['/selection']">selection</a>.
+                С помощью selection можно реализовать множество полезных вещей: master-detail, inline editing, группированные списки, контекстные
+                меню и т.д. И его можно использовать вообще без списков. Все детали доступны в разделе в
+                <a href="#" [routerLink]="['/selection']">selection</a>.
             </p>
-
             <rt-demo-tab-section>
                 <rt-demo-sample-tab tabTitle="Live demo">
                     <rt-demo-use-selection></rt-demo-use-selection>
@@ -245,6 +249,30 @@
                 <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.html">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+        </section>
+        <section id="use-controls">
+            <h3>Добавляем пару полезных контролов</h3>
+            <p>
+                В примере ниже мы добавили несколько полезных контролов:
+            </p>
+            <ul>
+                <li>При помощи директивы <code>rtLoadData</code> мы реализовали кнопку загрузки данных</li>
+                <li>При помощи директивы <code>rtCancelLoad</code> мы реализовали кнопку отмены загрузки данных (и добавили в
+                    footer отображение информации об этом при помощи компонента <code>rt-list-state-request-canceled</code>)</li>
+                <li>При помощи директивы <code>rtResetSettings</code> мы реализовали кнопку сброса параметров к значениям по
+                    умолчанию. Сейчас эта кнопка сбрасывает только сортировки, но она заиграет в полную силу когда мы добавим
+                    фильтры.
+                </li>
+            </ul>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-use-controls></rt-demo-use-controls>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.html">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>

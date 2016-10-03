@@ -1,4 +1,15 @@
 <rt-list [fetchMethod]="getAirports" #rtList>
+    <form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input rtLoadData type="submit" class="btn btn-primary" title="Load data" value="Load data" />
+                    <input rtCancelLoad type="button" class="btn btn-primary" title="Cancel loading" value="Cancel loading" />
+                    <button rtResetSettings type="button" class="btn btn-primary" title="Reset filters values">Reset filters values</button>
+                </div>
+            </div>
+        </div>
+    </form>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -7,8 +18,8 @@
                 <th><span rtSort="countryName">Country</span></th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let airport of rtList.items">
+        <tbody [rtSelectionAreaFor]="rtList.items">
+            <tr *ngFor="let airport of rtList.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
                 <td>{{airport.iataCode}}</td>
                 <td>{{airport.name}}</td>
                 <td>{{airport.countryName}}</td>
@@ -23,6 +34,10 @@
                     <rt-list-state-done>
                         Data was loaded sucessfully.
                     </rt-list-state-done>
+                    <rt-list-state-request-canceled>
+                        Request was cancelled.
+                    </rt-list-state-request-canceled>
+
                 </td>
             </tr>
         </tfoot>
