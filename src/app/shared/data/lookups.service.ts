@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { Airport } from './airport';
 import { LookupItem } from './lookup-item';
@@ -9,11 +10,20 @@ import { LookupItem } from './lookup-item';
 @Injectable()
 export class LookupsService {
     private airportsUrl: string = './assets/airports.json';
+    private airportsCache: ReplaySubject<Airport[]> = new ReplaySubject<Airport[]>(1);
     constructor(private http: Http) {
 
     }
     private getAirports(delay: number): Observable<Array<Airport>> {
-        return this.http.get(this.airportsUrl).map(response => (response.json().airports as Array<Airport>)).delay(delay);
+        // we use optional "delay" parameter to simulate backend latency
+        // also we "cache" result sunce we get all of the items
+        if (!this.airportsCache.observers.length) {
+            this.http.get(this.airportsUrl)
+                .map(response => (response.json().airports as Airport[]))
+                .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
+        }
+        return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(500);
+
     }
     private transformToLookup(data: Array<string>): Array<LookupItem> {
         return _.chain(data).map(value => ({

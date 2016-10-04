@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import * as _ from 'lodash';
 import { SortDirection } from 'right-angled';
 import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { Airport } from './airport';
 import { AirportsListRequest } from './airports-list-request';
@@ -12,6 +13,7 @@ import { ListResponse } from './list-response';
 @Injectable()
 export class AirportsService {
     private airportsUrl: string = './assets/airports.json';
+    private airportsCache: ReplaySubject<Airport[]> = new ReplaySubject<Airport[]>(1);
     constructor(private http: Http) {
 
     }
@@ -28,10 +30,15 @@ export class AirportsService {
 
     private getAllAirports(): Observable<Airport[]> {
         // we use optional "delay" parameter to simulate backend latency
-        return this.http.get(this.airportsUrl)
-            .map(response => (response.json().airports as Airport[]))
-            .map(airports => this.makeItemsSelectable(airports))
-            .delay(500);
+        // also we "cache" result sunce we get all of the items
+        if (!this.airportsCache.observers.length) {
+            this.http.get(this.airportsUrl)
+                .map(response => (response.json().airports as Airport[]))
+                .map(airports => this.makeItemsSelectable(airports))
+                .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error))
+
+        }
+        return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(500);
     }
 
     private applySortings(request: AirportsListRequest, data: Airport[]): Airport[] {
