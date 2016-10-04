@@ -106,6 +106,27 @@
                 @include box-shadow(none);
             }
         }
+        .btn {
+            &.btn-reset {
+                margin-top: 21px;
+            margin-bottom: -5px;
+                @include img-button();
+                @include icon-reset();
+            }
+            &.btn-load {
+                margin-top: 21px;
+            margin-bottom: -5px;
+                @include img-button();
+                @include icon-load();
+            }
+            &.btn-cancel {
+                margin-top: 21px;
+            margin-bottom: -5px;
+                @include img-button();
+                @include icon-cancel();
+            }
+        }
+
         div.toolbar {
                 text-align: right;
                 padding-bottom: 15px;
@@ -148,6 +169,22 @@
             text-align: center;
             padding: 6px 6px;
             vertical-align: middle;
+        }
+    }
+    form {
+        label {
+            color: $color-muted;
+            font-weight: normal;
+            line-height: 1.5;
+        }
+
+        margin-bottom: 15px;
+        .btn {
+            margin-top: 21px;
+            margin-bottom: -5px;
+            & + .btn {
+                margin-left: 5px;
+            }
         }
     }
 

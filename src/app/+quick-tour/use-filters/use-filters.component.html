@@ -1,7 +1,19 @@
 <rt-list [fetchMethod]="getAirports" #rtList>
     <form>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <label>Airport name</label>
+                    <input type="text" class="form-control" [(ngModel)]="airportName" name="airportName" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <label>Country</label>
+                    <input type="text" class="form-control" [(ngModel)]="countryName" name="countryName" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
                 <div class="form-group">
                     <input rtLoadData type="submit" class="btn btn-load" title="Load data" value="Load data" />
                     <input rtCancelLoad type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" />
@@ -10,6 +22,7 @@
             </div>
         </div>
     </form>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -28,16 +41,8 @@
         <tfoot>
             <tr>
                 <td colspan="3">
-                    <rt-list-state-progress>
-                        <div></div>
-                    </rt-list-state-progress>
-                    <rt-list-state-done>
-                        Data was loaded sucessfully.
-                    </rt-list-state-done>
-                    <rt-list-state-request-canceled>
-                        Request was cancelled.
-                    </rt-list-state-request-canceled>
-
+                    <rt-demo-paged-footer>
+                    </rt-demo-paged-footer>
                 </td>
             </tr>
         </tfoot>

@@ -1,12 +1,12 @@
 @import '../../shared.scss';
 
-label {
-    color: $color-muted;
-    font-weight: normal;
-    line-height: 1.5;
-}
-
 form {
+    label {
+        color: $color-muted;
+        font-weight: normal;
+        line-height: 1.5;
+    }
+
     margin-bottom: 40px;
     .btn {
         margin-top: 21px;

@@ -5,6 +5,9 @@
     > * {
         display: block;
     }
+    rt-list-state-done{
+        text-align: right;
+    }
 }
 
 span[rtGoToFirstPage], span[rtGoToPreviousPage], span[rtGoToNextPage], span[rtGoToLastPage] {
