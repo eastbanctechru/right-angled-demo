@@ -1,317 +1,304 @@
-<div class="row">
-    <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
-        <h1>right-angled quick tour</h1>
-        <section>
-            <p>Здесь мы познакомимся с библиотекой <code>right-angled</code>, увидим на живых примерах ее основные возможности
-                и ссылки на разделы с более детальной информацией по каждому из аспектов библиотеки.
-            </p>
-        </section>
-        <section>
-            <h3>Table of contents</h3>
-            <ul>
-                <li><a href="quick-tour#common-idea">Идеи, которые были заложены в библиотеку</a></li>
-                <li><a href="quick-tour#airports-service">"бэкенд" для работы с данными для нашего демо</a></li>
-                <li><a href="quick-tour#bootstrap">Подключаем <code>right-angled</code></a></li>
-                <li><a href="quick-tour#use-list">Делаем первый список</a></li>
-                <li><a href="quick-tour#use-sortings">Добавляем сортировки</a></li>
-                <li><a href="quick-tour#use-state">Добавляем progress bar</a></li>
-                <li><a href="quick-tour#use-selection">Добавляем selection</a></li>
-                <li><a href="quick-tour#use-controls">Добавляем пару полезных контролов</a></li>
-                <li><a href="quick-tour#use-paging">Добавляем paging</a></li>
-                <li><a href="quick-tour#use-filters">Добавляем фильтры</a></li>
-            </ul>
-        </section>
-        <section id="common-idea">
-            <h3>Идеи, которые были заложены в библиотеку</h3>
-            <p>
-                Чтобы знакомство было приятным, давайте сначала озвучим основные идеи, которые заложены в библиотеку.
-                <code>right-angled</code> это библиотека для построения функциональных списков данных (они же таблицы, они
-                же гриды). Еще в ней есть очень полезный selection, и неплохая модель работы с фильтрами. Selection и фильтры
-                могут работать и вообще без списков, но особенно хороши с ними.
-            </p>
-            <p>
-                Главная характеристика, легшая в основу библиотеки, это "ненавязчивость". Которая выражается в следующем.
-            </p>
-            <ul>
-                <li>
-                    Библиотека не привязана к фреймворкам типа <code>bootstrap</code> и сама не включает ни единого стиля.
-                    Все решения по поводу того, как будет выглядеть приложение, на 100% за вами.
-                </li>
-                <li>
-                    Библиотека почти не диктует, что писать в css. Единственное, о чем она вас попросит - определить стили для трех классов:
-                    <code>rt-sortable</code>,
-                    <code>rt-sort-asc</code> и <code>rt-sort-desc</code>. Эти классы определят, как будут выглядеть сортируемые
-                    столбцы ваших списков. Названия этих классов можно поменять на другие.
-                </li>
-                <li>
-                    Как вам известно, в angular есть директивы и компоненты. Компоненты это директивы с шаблоном. В <code>right-angled</code>,
-                    по возможности все сделано на директивах, которые просто добавят функционал к элементу, нарисованному
-                    вами, не влияя на структуру. Естественно, компоненты тоже понадобились, но у всех компонентов шаблон
-                    выглядит либо так:
-                    <br/> <code>&lt;ng-content&gt;&lt;/ng-content&gt;</code>
-                    <br/> либо вот так:
-                    <br/> <code>&lt;ng-content *ngIf="someCondition"&gt;&lt;/ng-content&gt;</code>
-                    <br/> То есть наши компоненты это просто контейнеры, а не верстка.
-                </li>
-                <li>
-                    Расширяемость. Спасибо Angular и идее компонент. Теперь это стало возможным. В директивах и компонентах находится минимум
-                    кода. Весь функционал вынесен в сервиса, которые вы можете получить через dependency injection и использовать
-                    на свое усмотрение. Как расширяя наш набор компонентов, так и заменяя компоненты <code>right-angled</code>                    тем, что больше подходит вам.
-                </li>
-                <li>
-                    <code>right-angled</code> старается быть минималистичным. Минимум директив и опций, которые вам придется
-                    запоминать.
-                </li>
-                <li>
-                    Минимум зависимостей. Единственной зависимостью, помимо самого angular, является написанная мной же библиотека
-                    <a target="_blank" href="https://github.com/fshchudlo/e2e4">e2e4</a>. Данная библиотека как раз и реализует
-                    весь функционал в абстрактной манере и вообще не имеет зависимостей. В минифицированной версии <code>e2e4</code>                    весит 26 килобайт. <code>right-angled</code> весит 60 килобайт минифицированный.
-                </li>
-            </ul>
-        </section>
-        <section id="airports-service">
-            <h3>"Бэкенд" для работы с данными для нашего демо</h3>
-            <p>
-                Для работы нам понадобятся данные. Вместо реализации полноценного бэкенда, мы будем использовать простой класс <code>AirportsService</code>,
-                который будет получать с сервера <code>json</code>-файл с данными о 99 аэропортах, и обрабатывать их при
-                помощи
-                <a target="_blank" href="https://lodash.com">lodash</a> прямо в браузере.
-            </p>
-            <p>
-                Для работы с простыми списками мы реализуем метод <code>getAirportsList</code>. Данный метод будет принимать
-                параметр с контрактом
-                <code>AirportsListRequest</code>, который содержит параметры сортировки и фильтрации. Возвращать данный метод
-                будет массив с объектами контракта <code>Airport</code>, то есть просто массив с данными.
-            </p>
-            <p>
-                Поскольку 99 записей для демонстрационного списка многовато, а paging-а у нас поначалу не будет, данный метод выбирает только
-                первые 5 записей используя функцию <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">Array.slice</a>.
-            </p>
-            <p>
-                Для работы с paging мы реализуем метод <code>getAirportsPagedList</code>, который будет принимать параметр
-                с контрактом
-                <code>AirportsPagedListRequest</code>, расширяющий контракт <code>AirportsListRequest</code> свойствами
-                <code>skip</code> и <code>take</code>, указывающими сколько записей при загрузке необходимо проспустить,
-                а сколько загрузить. Возвращать данный метод будет объект с контрактом <code>AirportsListResponse</code>,
-                содержащим массив аэропортов и поля <code>totalCount</code> и <code>loadedCount</code>, указывающие, сколько
-                всего записей имеется на "сервере" без учета paging и сколько записей было загружено в результате текущего
-                запроса.
-            </p>
-            <p>
-                Ниже вы можете увидеть исходный код всех упомянутых классов и интерфейсов.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-code-tab url="shared/data/airports-list-request.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="shared/data/sort-parameter.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="shared/data/airports-paged-list-request.ts">
-                </rt-demo-code-tab>
+<h1>right-angled quick tour</h1>
+<section>
+    <p>Здесь мы познакомимся с библиотекой <code>right-angled</code>, увидим на живых примерах ее основные возможности и ссылки
+        на разделы с более детальной информацией по каждому из аспектов библиотеки.
+    </p>
+</section>
+<section>
+    <h3>Table of contents</h3>
+    <ul>
+        <li><a href="quick-tour#common-idea">Идеи, которые были заложены в библиотеку</a></li>
+        <li><a href="quick-tour#airports-service">"бэкенд" для работы с данными для нашего демо</a></li>
+        <li><a href="quick-tour#bootstrap">Подключаем <code>right-angled</code></a></li>
+        <li><a href="quick-tour#use-list">Делаем первый список</a></li>
+        <li><a href="quick-tour#use-sortings">Добавляем сортировки</a></li>
+        <li><a href="quick-tour#use-state">Добавляем progress bar</a></li>
+        <li><a href="quick-tour#use-selection">Добавляем selection</a></li>
+        <li><a href="quick-tour#use-controls">Добавляем пару полезных контролов</a></li>
+        <li><a href="quick-tour#use-paging">Добавляем paging</a></li>
+        <li><a href="quick-tour#use-filters">Добавляем фильтры</a></li>
+    </ul>
+</section>
+<section id="common-idea">
+    <h3>Идеи, которые были заложены в библиотеку</h3>
+    <p>
+        Чтобы знакомство было приятным, давайте сначала озвучим основные идеи, которые заложены в библиотеку.
+        <code>right-angled</code> это библиотека для построения функциональных списков данных (они же таблицы, они же гриды).
+        Еще в ней есть очень полезный selection, и неплохая модель работы с фильтрами. Selection и фильтры могут работать
+        и вообще без списков, но особенно хороши с ними.
+    </p>
+    <p>
+        Главная характеристика, легшая в основу библиотеки, это "ненавязчивость". Которая выражается в следующем.
+    </p>
+    <ul>
+        <li>
+            Библиотека не привязана к фреймворкам типа <code>bootstrap</code> и сама не включает ни единого стиля. Все решения
+            по поводу того, как будет выглядеть приложение, на 100% за вами.
+        </li>
+        <li>
+            Библиотека почти не диктует, что писать в css. Единственное, о чем она вас попросит - определить стили для трех классов:
+            <code>rt-sortable</code>,
+            <code>rt-sort-asc</code> и <code>rt-sort-desc</code>. Эти классы определят, как будут выглядеть сортируемые столбцы
+            ваших списков. Названия этих классов можно поменять на другие.
+        </li>
+        <li>
+            Как вам известно, в angular есть директивы и компоненты. Компоненты это директивы с шаблоном. В <code>right-angled</code>,
+            по возможности все сделано на директивах, которые просто добавят функционал к элементу, нарисованному вами, не
+            влияя на структуру. Естественно, компоненты тоже понадобились, но у всех компонентов шаблон выглядит либо так:
+            <br/> <code>&lt;ng-content&gt;&lt;/ng-content&gt;</code>
+            <br/> либо вот так:
+            <br/> <code>&lt;ng-content *ngIf="someCondition"&gt;&lt;/ng-content&gt;</code>
+            <br/> То есть наши компоненты это просто контейнеры, а не верстка.
+        </li>
+        <li>
+            Расширяемость. Спасибо Angular и идее компонент. Теперь это стало возможным. В директивах и компонентах находится минимум
+            кода. Весь функционал вынесен в сервиса, которые вы можете получить через dependency injection и использовать
+            на свое усмотрение. Как расширяя наш набор компонентов, так и заменяя компоненты <code>right-angled</code>            тем, что больше подходит вам.
+        </li>
+        <li>
+            <code>right-angled</code> старается быть минималистичным. Минимум директив и опций, которые вам придется запоминать.
+        </li>
+        <li>
+            Минимум зависимостей. Единственной зависимостью, помимо самого angular, является написанная мной же библиотека
+            <a target="_blank" href="https://github.com/fshchudlo/e2e4">e2e4</a>. Данная библиотека как раз и реализует весь
+            функционал в абстрактной манере и вообще не имеет зависимостей. В минифицированной версии <code>e2e4</code> весит
+            26 килобайт. <code>right-angled</code> весит 60 килобайт минифицированный.
+        </li>
+    </ul>
+</section>
+<section id="airports-service">
+    <h3>"Бэкенд" для работы с данными для нашего демо</h3>
+    <p>
+        Для работы нам понадобятся данные. Вместо реализации полноценного бэкенда, мы будем использовать простой класс <code>AirportsService</code>,
+        который будет получать с сервера <code>json</code>-файл с данными о 99 аэропортах, и обрабатывать их при помощи
+        <a target="_blank" href="https://lodash.com">lodash</a> прямо в браузере.
+    </p>
+    <p>
+        Для работы с простыми списками мы реализуем метод <code>getAirportsList</code>. Данный метод будет принимать параметр
+        с контрактом
+        <code>AirportsListRequest</code>, который содержит параметры сортировки и фильтрации. Возвращать данный метод будет
+        массив с объектами контракта <code>Airport</code>, то есть просто массив с данными.
+    </p>
+    <p>
+        Поскольку 99 записей для демонстрационного списка многовато, а paging-а у нас поначалу не будет, данный метод выбирает только
+        первые 5 записей используя функцию <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">Array.slice</a>.
+    </p>
+    <p>
+        Для работы с paging мы реализуем метод <code>getAirportsPagedList</code>, который будет принимать параметр с контрактом
+        <code>AirportsPagedListRequest</code>, расширяющий контракт <code>AirportsListRequest</code> свойствами
+        <code>skip</code> и <code>take</code>, указывающими сколько записей при загрузке необходимо проспустить, а сколько
+        загрузить. Возвращать данный метод будет объект с контрактом <code>AirportsListResponse</code>, содержащим массив
+        аэропортов и поля <code>totalCount</code> и <code>loadedCount</code>, указывающие, сколько всего записей имеется
+        на "сервере" без учета paging и сколько записей было загружено в результате текущего запроса.
+    </p>
+    <p>
+        Ниже вы можете увидеть исходный код всех упомянутых классов и интерфейсов.
+    </p>
+    <rt-demo-tab-section>
+        <rt-demo-code-tab url="shared/data/airports-list-request.ts">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="shared/data/sort-parameter.ts">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="shared/data/airports-paged-list-request.ts">
+        </rt-demo-code-tab>
 
-                <rt-demo-code-tab url="shared/data/airport.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="shared/data/list-response.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="shared/data/airports.service.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </section>
-        <section id="bootstrap">
-            <h3>Подключаем <code>right-angled</code></h3>
-            <p>Чтобы подключить <code>right-angled</code> мы импортируем модуль <code>RtModule</code> и подключаем его в
-                <code>AppModule</code>. Также можно подключать функционал по частям. Для этого есть модули <code>RTListsModule</code>,
-                <code>RTSelectionModule</code> и <code>RTFiltersModule</code> и <code>RTMiscModule</code>.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-code-tab url="%2Bquick-tour/bootstrap/app.module.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </section>
-        <section id="use-list">
-            <h3>Делаем первый список</h3>
-            <p>
-                Чтобы создать список, нам необходимо использовать компонент <code>rt-list</code>. Данный компонент принимает
-                обязательный параметр <code>fetchMethod</code> - функцию запроса данных, которую будет вызывать компонент,
-                передавая ей параметры запроса. Возвращать данная функция должна
-                <code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code> с данными.
-            </p>
-            <p>
-                Ниже представлен пример компонента, который обращается к методу <code>getAirportsList</code> описанного выше
-                класса <code>AirportsService</code>. </p>
-            <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-use-list></rt-demo-use-list>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-list/use-list.component.ts">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-list/use-list.component.html">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-            <p>
-                Наш первый список готов. Пока он только самостоятельно делает первый запрос за данными, что не особо-то впечатляет. Давайте
-                добавим ему побольше функционала.
-            </p>
-        </section>
-        <section id="use-sortings">
-            <h3>Добавляем сортировки</h3>
-            <p>
-                На самом деле наш список уже передает параметры сортировок. Нам нужен просто способ указать их на UI. Для этого используется
-                директива <code>rtSort</code>, принимающая в качестве параметра строку с идентификатором
-                сортировки, который будет передаваться на сервер. В простейшем случае он может совпадать с именем столбца,
-                однако помните про <a href="https://en.wikipedia.org/wiki/SQL_injection">sql injection</a>!
-            </p>
-            <p>
-                В примере ниже мы добавили в шаблоне в заголовок таблицы директивы <code>rtSort</code> и теперь по клику
-                на заголовок будет выполняться сортировка. Зажимая <code>Ctrl</code> можно выполнить сортировку по нескольким
-                столбцам.
-            </p>
-            <p>
-                Код компонента остался без изменений.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-use-sortings></rt-demo-use-sortings>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.html">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.ts">
-                </rt-demo-code-tab>
+        <rt-demo-code-tab url="shared/data/airport.ts">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="shared/data/list-response.ts">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="shared/data/airports.service.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+</section>
+<section id="bootstrap">
+    <h3>Подключаем <code>right-angled</code></h3>
+    <p>Чтобы подключить <code>right-angled</code> мы импортируем модуль <code>RtModule</code> и подключаем его в
+        <code>AppModule</code>. Также можно подключать функционал по частям. Для этого есть модули <code>RTListsModule</code>,
+        <code>RTSelectionModule</code> и <code>RTFiltersModule</code> и <code>RTMiscModule</code>.
+    </p>
+    <rt-demo-tab-section>
+        <rt-demo-code-tab url="%2Bquick-tour/bootstrap/app.module.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+</section>
+<section id="use-list">
+    <h3>Делаем первый список</h3>
+    <p>
+        Чтобы создать список, нам необходимо использовать компонент <code>rt-list</code>. Данный компонент принимает обязательный
+        параметр <code>fetchMethod</code> - функцию запроса данных, которую будет вызывать компонент, передавая ей параметры
+        запроса. Возвращать данная функция должна
+        <code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code> с данными.
+    </p>
+    <p>
+        Ниже представлен пример компонента, который обращается к методу <code>getAirportsList</code> описанного выше класса
+        <code>AirportsService</code>. </p>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-use-list></rt-demo-use-list>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-list/use-list.component.ts">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-list/use-list.component.html">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+    <p>
+        Наш первый список готов. Пока он только самостоятельно делает первый запрос за данными, что не особо-то впечатляет. Давайте
+        добавим ему побольше функционала.
+    </p>
+</section>
+<section id="use-sortings">
+    <h3>Добавляем сортировки</h3>
+    <p>
+        На самом деле наш список уже передает параметры сортировок. Нам нужен просто способ указать их на UI. Для этого используется
+        директива <code>rtSort</code>, принимающая в качестве параметра строку с идентификатором сортировки, который
+        будет передаваться на сервер. В простейшем случае он может совпадать с именем столбца, однако помните про <a href="https://en.wikipedia.org/wiki/SQL_injection">sql injection</a>!
+    </p>
+    <p>
+        В примере ниже мы добавили в шаблоне в заголовок таблицы директивы <code>rtSort</code> и теперь по клику на заголовок
+        будет выполняться сортировка. Зажимая <code>Ctrl</code> можно выполнить сортировку по нескольким столбцам.
+    </p>
+    <p>
+        Код компонента остался без изменений.
+    </p>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-use-sortings></rt-demo-use-sortings>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.html">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-sortings/use-sortings.component.ts">
+        </rt-demo-code-tab>
 
-            </rt-demo-tab-section>
-        </section>
+    </rt-demo-tab-section>
+</section>
 
-        <section id="use-state">
-            <h3>Добавляем progress bar</h3>
-            <p>
-                Наш список выглядит не очень хорошо в момент пока загружает данные. Используя компонент <code>rt-list-state-progress</code>                мы можем исправить положение. Данный компонент будет отрисовывать свое внутреннее содержимое во время загрузки
-                данных.
-            </p>
-            <p>
-                В примере ниже мы добавили в шаблон компонент <code>rt-list-state-progress</code>, внутри которого расположен
-                <code>div</code> настиленный отображать progress bar и компонент <code>rt-list-state-done</code>, отображающий
-                надпись, уведомляющую об успешной загрузке данных. Код компонента остался тем же.
-            </p>
-            <p>
-                Аналогичным образом можно отображать контент для состояний, когда произошла ошибка, не было загружено ни одной записи и т.д.
-                Детали в <a href="#" [routerLink]="['/paging-and-state']">этом разделе</a>.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-use-state></rt-demo-use-state>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-state/use-state.component.html">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-state/use-state.component.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
+<section id="use-state">
+    <h3>Добавляем progress bar</h3>
+    <p>
+        Наш список выглядит не очень хорошо в момент пока загружает данные. Используя компонент <code>rt-list-state-progress</code>        мы можем исправить положение. Данный компонент будет отрисовывать свое внутреннее содержимое во время загрузки данных.
+    </p>
+    <p>
+        В примере ниже мы добавили в шаблон компонент <code>rt-list-state-progress</code>, внутри которого расположен
+        <code>div</code> настиленный отображать progress bar и компонент <code>rt-list-state-done</code>, отображающий надпись,
+        уведомляющую об успешной загрузке данных. Код компонента остался тем же.
+    </p>
+    <p>
+        Аналогичным образом можно отображать контент для состояний, когда произошла ошибка, не было загружено ни одной записи и т.д.
+        Детали в <a href="#" [routerLink]="['/paging-and-state']">этом разделе</a>.
+    </p>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-use-state></rt-demo-use-state>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-state/use-state.component.html">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-state/use-state.component.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
 
-        </section>
-        <section id="use-selection">
-            <h3>Добавляем selection</h3>
-            <p>
-                В примере ниже мы добавили в <code>tbody</code> директиву <code>rtSelectionAreaFor</code>, указав тем самым,
-                что он является областью для выбора.
-            </p>
-            <p>В теги <code>tr</code> мы добавили директиву <code>rtSelectByIndex</code>, указав элементу, что он становится
-                выбираемым.
-            </p>
-            <p>При помощи <code>angular</code> директивы <code>class</code> мы добавляем класс <code>selected</code> к элементу
-                <code>tr</code>, когда свойство <code>selected</code> аэропорта становится равным <code>true</code>.
-            </p>
-            <p>
-                Теперь список реагирует на следующие действия:
-            </p>
-            <ul>
-                <li>Клик мышью выбирает элемент.</li>
-                <li>Клик мышью с зажатой клавишей <code>Ctrl</code> выбирает кликнутый элемент сохраняя предыдщий выбор.</li>
-                <li>Клик мышью с зажатой клавишей <code>Shift</code> выбирает последовательность элементов от последнего выбранного
-                    до кликнутого.
-                </li>
-                <li>Нажатие клавиши <code>&uarr;</code> выбирает предыдущий элемент. Или первый элемент списка, если ранее ничего
-                    не было выбрано.</li>
-                <li>Нажатие клавиши <code>&rarr;</code> выбирает следующий элемент. Или первый элемент списка, если ранее ничего
-                    не было выбрано.
-                </li>
-                <li>Нажатие клавиш <code>Ctrl + &uarr;</code> выбирает первый элемент в списке.</li>
-                <li>Нажатие клавиш <code>Ctrl + &rarr;</code> выбирает последний элемент в списке.</li>
-                <li>Нажатие клавиш <code>Ctrl + A</code> выбирает все элементы списка.</li>
-                <li>Нажатие клавиши <code>Tab</code> и <code>Shift + Tab</code> перемещает вас по списку на элемент вверх или
-                    вниз.
-                </li>
-            </ul>
-            <p>
-                С помощью selection можно реализовать множество полезных вещей: master-detail, inline editing, группированные списки, контекстные
-                меню и т.д. И его можно использовать вообще без списков. Все детали доступны в разделе в
-                <a href="#" [routerLink]="['/selection']">selection</a>.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-use-selection></rt-demo-use-selection>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.html">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </section>
-        <section id="use-controls">
-            <h3>Добавляем пару полезных контролов</h3>
-            <p>
-                В примере ниже мы добавили несколько полезных контролов:
-            </p>
-            <ul>
-                <li>При помощи директивы <code>rtLoadData</code> мы реализовали кнопку загрузки данных</li>
-                <li>При помощи директивы <code>rtCancelLoad</code> мы реализовали кнопку отмены загрузки данных (и добавили в
-                    footer отображение информации об этом при помощи компонента <code>rt-list-state-request-canceled</code>)</li>
-                <li>При помощи директивы <code>rtResetSettings</code> мы реализовали кнопку сброса параметров к значениям по
-                    умолчанию. Сейчас эта кнопка сбрасывает только сортировки, но она заиграет в полную силу когда мы добавим
-                    фильтры.
-                </li>
-            </ul>
-            <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-use-controls></rt-demo-use-controls>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.html">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </section>
-        <section id="use-paging">
-            <h3>Добавляем paging</h3>
-            <p>
-                В примере ниже мы добавили в шаблоны сразу два списка, привязанных к одному компоненту, и добавили в списки paged и buffered pager-ы, построенные в разделе про <a href="#" [routerLink]="['/paging-and-state']">paging</a>.
-                Так же мы поменяли в компоненте метод получения данных на <code>getAirportsPagedList</code>.
-            </p>
-            <p>
-                Поскольку контролов для построения pager достаточно много, а это quick tour, мы не будем приводить здесь какие-либо детали. Все необходимое вы можете
-                узнать в <a href="#" [routerLink]="['/paging-and-state']">соответствующем разделе</a>.
-            </p>
-            <p>
-                Обратите так же внимание, что кнопка reset теперь сбрасывает и настройки paging.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-use-paging></rt-demo-use-paging>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-paging/use-paging.component.html">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-paging/use-paging.component.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </section>
-        <section id="use-filters">
-            <h3>Добавляем фильтры</h3>
-            <rt-demo-tab-section>
-                <rt-demo-sample-tab tabTitle="Live demo">
-                    <rt-demo-use-filters></rt-demo-use-filters>
-                </rt-demo-sample-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-filters/use-filters.component.html">
-                </rt-demo-code-tab>
-                <rt-demo-code-tab url="%2Bquick-tour/use-filters/use-filters.component.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </section>
-    </div>
-</div>
+</section>
+<section id="use-selection">
+    <h3>Добавляем selection</h3>
+    <p>
+        В примере ниже мы добавили в <code>tbody</code> директиву <code>rtSelectionAreaFor</code>, указав тем самым, что
+        он является областью для выбора.
+    </p>
+    <p>В теги <code>tr</code> мы добавили директиву <code>rtSelectByIndex</code>, указав элементу, что он становится выбираемым.
+    </p>
+    <p>При помощи <code>angular</code> директивы <code>class</code> мы добавляем класс <code>selected</code> к элементу
+        <code>tr</code>, когда свойство <code>selected</code> аэропорта становится равным <code>true</code>.
+    </p>
+    <p>
+        Теперь список реагирует на следующие действия:
+    </p>
+    <ul>
+        <li>Клик мышью выбирает элемент.</li>
+        <li>Клик мышью с зажатой клавишей <code>Ctrl</code> выбирает кликнутый элемент сохраняя предыдщий выбор.</li>
+        <li>Клик мышью с зажатой клавишей <code>Shift</code> выбирает последовательность элементов от последнего выбранного до
+            кликнутого.
+        </li>
+        <li>Нажатие клавиши <code>&uarr;</code> выбирает предыдущий элемент. Или первый элемент списка, если ранее ничего не
+            было выбрано.</li>
+        <li>Нажатие клавиши <code>&rarr;</code> выбирает следующий элемент. Или первый элемент списка, если ранее ничего не было
+            выбрано.
+        </li>
+        <li>Нажатие клавиш <code>Ctrl + &uarr;</code> выбирает первый элемент в списке.</li>
+        <li>Нажатие клавиш <code>Ctrl + &rarr;</code> выбирает последний элемент в списке.</li>
+        <li>Нажатие клавиш <code>Ctrl + A</code> выбирает все элементы списка.</li>
+        <li>Нажатие клавиши <code>Tab</code> и <code>Shift + Tab</code> перемещает вас по списку на элемент вверх или вниз.
+        </li>
+    </ul>
+    <p>
+        С помощью selection можно реализовать множество полезных вещей: master-detail, inline editing, группированные списки, контекстные
+        меню и т.д. И его можно использовать вообще без списков. Все детали доступны в разделе в
+        <a href="#" [routerLink]="['/selection']">selection</a>.
+    </p>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-use-selection></rt-demo-use-selection>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.html">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-selection/use-selection.component.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+</section>
+<section id="use-controls">
+    <h3>Добавляем пару полезных контролов</h3>
+    <p>
+        В примере ниже мы добавили несколько полезных контролов:
+    </p>
+    <ul>
+        <li>При помощи директивы <code>rtLoadData</code> мы реализовали кнопку загрузки данных</li>
+        <li>При помощи директивы <code>rtCancelLoad</code> мы реализовали кнопку отмены загрузки данных (и добавили в footer
+            отображение информации об этом при помощи компонента <code>rt-list-state-request-canceled</code>)</li>
+        <li>При помощи директивы <code>rtResetSettings</code> мы реализовали кнопку сброса параметров к значениям по умолчанию.
+            Сейчас эта кнопка сбрасывает только сортировки, но она заиграет в полную силу когда мы добавим фильтры.
+        </li>
+    </ul>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-use-controls></rt-demo-use-controls>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.html">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+</section>
+<section id="use-paging">
+    <h3>Добавляем paging</h3>
+    <p>
+        В примере ниже мы добавили в шаблоны сразу два списка, привязанных к одному компоненту, и добавили в списки paged и buffered
+        pager-ы, построенные в разделе про <a href="#" [routerLink]="['/paging-and-state']">paging</a>. Так же мы
+        поменяли в компоненте метод получения данных на <code>getAirportsPagedList</code>.
+    </p>
+    <p>
+        Поскольку контролов для построения pager достаточно много, а это quick tour, мы не будем приводить здесь какие-либо детали.
+        Все необходимое вы можете узнать в <a href="#" [routerLink]="['/paging-and-state']">соответствующем разделе</a>.
+    </p>
+    <p>
+        Обратите так же внимание, что кнопка reset теперь сбрасывает и настройки paging.
+    </p>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-use-paging></rt-demo-use-paging>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-paging/use-paging.component.html">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-paging/use-paging.component.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+</section>
+<section id="use-filters">
+    <h3>Добавляем фильтры</h3>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-use-filters></rt-demo-use-filters>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-filters/use-filters.component.html">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bquick-tour/use-filters/use-filters.component.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+</section>

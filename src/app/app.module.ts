@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RTModule } from 'right-angled';
 
 import { AdditionalConfigurationModule } from './+additional-configuration/additional-configuration.module';
-import { CombinedSampleModule } from './+combined-sample/combined-sample.module';
 import { FiltersModule } from './+filters/filters.module';
 import { ListControlsModule } from './+list-controls/list-controls.module';
 import { MiscDirectivesModule } from './+misc-directives/misc-directives.module';
@@ -29,7 +28,6 @@ import { routing } from './app.routing';
     SharedModule.forRoot(),
     routing,
     AdditionalConfigurationModule,
-    CombinedSampleModule,
     FiltersModule,
     ListControlsModule,
     MiscDirectivesModule,
