@@ -4,10 +4,6 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RTModule } from 'right-angled';
 
-import { LocalStoragePersistenceService } from './shared/persistence/local-storage-persistence-service';
-import { QueryStringPersistenceService } from './shared/persistence/query-string-persistence-service';
-import { SessionStoragePersistenceService } from './shared/persistence/session-storage-persistence-service';
-
 import { AdditionalConfigurationModule } from './+additional-configuration/additional-configuration.module';
 import { CombinedSampleModule } from './+combined-sample/combined-sample.module';
 import { FiltersModule } from './+filters/filters.module';
@@ -22,10 +18,6 @@ import { SharedModule } from './shared/shared.module';
 
 import { DemoAppComponent } from './app.component';
 import { routing } from './app.routing';
-
-RTModule.registerPersistenceService({ multi: true, useClass: LocalStoragePersistenceService });
-RTModule.registerPersistenceService({ multi: true, useClass: SessionStoragePersistenceService });
-RTModule.registerPersistenceService({ multi: true, useClass: QueryStringPersistenceService });
 
 @NgModule({
   bootstrap: [DemoAppComponent],

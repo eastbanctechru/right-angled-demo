@@ -1,10 +1,10 @@
 import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { FiltersService, RtPersistenceService } from 'right-angled';
+import { FiltersService, RtStateService } from 'right-angled';
 
 @Injectable()
-export class LocalStoragePersistenceService implements RtPersistenceService {
+export class LocalStorageStateService implements RtStateService {
     private internalStateKey: string;
 
     constructor( @Optional() @SkipSelf() private activatedRoute: ActivatedRoute) {

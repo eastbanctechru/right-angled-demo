@@ -2,10 +2,10 @@ import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { FiltersService, RtPersistenceService, cloneAsLiteral } from 'right-angled';
+import { FiltersService, RtStateService, cloneAsLiteral } from 'right-angled';
 
 @Injectable()
-export class QueryStringPersistenceService implements RtPersistenceService {
+export class QueryStringStateService implements RtStateService {
     public serializationKey: string = 'rtls';
     constructor(private location: Location, private router: Router) {
     }

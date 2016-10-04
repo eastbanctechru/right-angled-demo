@@ -5,3 +5,6 @@ export { LookupItem } from './data/lookup-item';
 export { AirportsListRequest } from './data/airports-list-request';
 export { AirportsPagedListRequest } from './data/airports-paged-list-request';
 export { ListResponse } from './data/list-response';
+export { LocalStorageStateService } from './state-services/local-storage-state-service';
+export { SessionStorageStateService } from './state-services/session-storage-state-service';
+export { QueryStringStateService } from './state-services/query-string-state-service';
