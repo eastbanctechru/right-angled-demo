@@ -1,4 +1,4 @@
-<rt-list [fetchMethod]="getAirports" #rtList>
+<rt-list [fetchMethod]="getAirports" (onServiceInit)="serviceInit($event)" #rtList>
     <form>
         <div class="row">
             <div class="col-md-4 col-sm-6">

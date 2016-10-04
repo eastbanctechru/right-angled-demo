@@ -56,7 +56,7 @@ export class AirportsService {
 
     private applyFilters(request: AirportsListRequest, airports: Airport[]): Airport[] {
         return _.chain(airports)
-            .filter(item => !request.countryName || item.countryName.toLowerCase().indexOf(request.countryName.toLowerCase()) !== -1)
+            .filter(item => !request.country || (item.countryName || '').toLowerCase().indexOf(request.country.toLowerCase()) !== -1)
             .filter(item => !request.airportName || item.name.toLowerCase().indexOf(request.airportName.toLowerCase()) !== -1)
             .filter(item => request.airportSize === null || request.airportSize === undefined || (item.size === null && request.airportSize === '') || item.size === request.airportSize)
             .filter(item => !request.airportType || item.type === request.airportType)

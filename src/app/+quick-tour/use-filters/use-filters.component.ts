@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { FilterConfig, RtListService, filter } from 'right-angled';
 
-import { filter } from 'right-angled';
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,10 +10,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class UseFiltersComponent {
     @filter public airportName: string = null;
-    @filter public countryName: string = null;
+    @filter({ defaultValue: 'Iceland', parameterName: 'country' } as FilterConfig) public countryName: string = null;
     constructor(public airportsService: AirportsService) {
     }
     getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
         return this.airportsService.getAirportsPagedList(request);
+    }
+    serviceInit(service: RtListService): void {
+        service.filtersService.registerFilterTarget(this);
     }
 }
