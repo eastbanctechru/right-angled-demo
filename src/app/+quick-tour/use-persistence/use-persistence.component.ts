@@ -20,7 +20,7 @@ export class UsePersistenceComponent implements AfterViewInit {
         return this.airportsService.getAirportsPagedList(request);
     }
     ngAfterViewInit(): void {
-        this.listComponent.listService.filtersService.registerFilterTarget(this);
+        this.listComponent.listService.registerFilterTarget(this);
         this.listComponent.listService.registerStateService(this.queryStringStateService);
     }
 }
