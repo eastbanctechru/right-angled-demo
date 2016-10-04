@@ -78,11 +78,12 @@
             }
         }
 
-        .navbar-fixed-bottom {
+        .navbar-bottom {
             height: 60px;
             border: 0;
             padding: 20px 0;
             background-color: $color-gray;
+            margin-bottom: 0;
             @include box-shadow(0 0 15px 0 rgba(0, 0, 0, 0.25));
             a {
                 color: $color-black;
