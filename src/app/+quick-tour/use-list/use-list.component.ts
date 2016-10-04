@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'use-list.component.html'
 })
 export class UseListComponent {
-    constructor(public airportsService: AirportsService) {
+    constructor(private airportsService: AirportsService) {
     }
     getAirports = (request: AirportsListRequest): Observable<Airport[]> => {
         return this.airportsService.getAirportsList(request);

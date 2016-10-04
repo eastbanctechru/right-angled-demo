@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'use-selection.component.html'
 })
 export class UseSelectionComponent {
-    constructor(public airportsService: AirportsService) {
+    constructor(private airportsService: AirportsService) {
     }
     getAirports = (request: AirportsListRequest): Observable<Airport[]> => {
         return this.airportsService.getAirportsList(request);

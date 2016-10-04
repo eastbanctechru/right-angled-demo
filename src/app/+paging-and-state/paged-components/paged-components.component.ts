@@ -10,7 +10,7 @@ import { AirportsListRequest, AirportsService } from '../../shared';
 })
 export class PagedComponentsComponent {
     @ViewChild(ListComponent) public listComponent: ListComponent;
-    constructor(public airportsService: AirportsService) {
+    constructor(private airportsService: AirportsService) {
     }
     public loadData = (requestParams: AirportsListRequest): any => {
         return this.airportsService.getAirportsList(requestParams);

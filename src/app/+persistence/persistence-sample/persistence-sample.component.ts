@@ -7,7 +7,7 @@ import { AirportsListRequest, AirportsService } from '../../shared';
     templateUrl: 'persistence-sample.component.html'
 })
 export class PersistenceSampleComponent {
-    constructor(public airportsService: AirportsService) {
+    constructor(private airportsService: AirportsService) {
         this.airportsService = airportsService;
     }
     public loadData = (requestParams: AirportsListRequest): any => {

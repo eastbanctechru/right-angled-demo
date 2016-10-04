@@ -7,7 +7,7 @@ import { AirportsListRequest, AirportsService } from '../../shared';
     templateUrl: 'reusable-buffered-sample.component.html'
 })
 export class ReusableBufferedListSampleComponent {
-    constructor(public airportsService: AirportsService) {
+    constructor(private airportsService: AirportsService) {
         this.airportsService = airportsService;
     }
     public loadData = (requestParams: AirportsListRequest): any => {

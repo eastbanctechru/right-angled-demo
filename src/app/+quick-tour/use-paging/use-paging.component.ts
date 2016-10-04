@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'use-paging.component.html'
 })
 export class UsePagingComponent {
-    constructor(public airportsService: AirportsService) {
+    constructor(private airportsService: AirportsService) {
     }
     getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
         return this.airportsService.getAirportsPagedList(request);

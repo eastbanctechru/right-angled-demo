@@ -11,7 +11,7 @@ export class StateComponentsComponent {
     private raiseError: boolean = false;
     private returnNoData: boolean = false;
     @ViewChild(ListComponent) public listComponent: ListComponent;
-    constructor(public airportsService: AirportsService) {
+    constructor(private airportsService: AirportsService) {
     }
     public loadData = (requestParams: AirportsPagedListRequest): any => {
         return this.airportsService.getAirportsPagedList(requestParams).map((response: ListResponse) => {
