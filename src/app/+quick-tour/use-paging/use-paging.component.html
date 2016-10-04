@@ -1,0 +1,78 @@
+<rt-list [fetchMethod]="getAirports" #rtList>
+    <form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input rtLoadData type="submit" class="btn btn-primary" title="Load data" value="Load data" />
+                    <input rtCancelLoad type="button" class="btn btn-primary" title="Cancel loading" value="Cancel loading" />
+                    <button rtResetSettings type="button" class="btn btn-primary" title="Reset filters values">Reset filters values</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><span rtSort="iataCode">IATA</span></th>
+                <th><span rtSort="name">Airport name</span></th>
+                <th><span rtSort="countryName">Country</span></th>
+            </tr>
+        </thead>
+        <tbody [rtSelectionAreaFor]="rtList.items">
+            <tr *ngFor="let airport of rtList.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
+                <td>{{airport.iataCode}}</td>
+                <td>{{airport.name}}</td>
+                <td>{{airport.countryName}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <rt-demo-paged-footer>
+                    </rt-demo-paged-footer>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</rt-list>
+
+
+<rt-list [fetchMethod]="getAirports" #rtBList>
+    <form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input rtLoadData type="submit" class="btn btn-primary" title="Load data" value="Load data" />
+                    <input rtCancelLoad type="button" class="btn btn-primary" title="Cancel loading" value="Cancel loading" />
+                    <button rtResetSettings type="button" class="btn btn-primary" title="Reset filters values">Reset filters values</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><span rtSort="iataCode">IATA</span></th>
+                <th><span rtSort="name">Airport name</span></th>
+                <th><span rtSort="countryName">Country</span></th>
+            </tr>
+        </thead>
+        <tbody [rtSelectionAreaFor]="rtBList.items">
+            <tr *ngFor="let airport of rtBList.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
+                <td>{{airport.iataCode}}</td>
+                <td>{{airport.name}}</td>
+                <td>{{airport.countryName}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <rt-demo-buffered-footer>
+                    </rt-demo-buffered-footer>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</rt-list>

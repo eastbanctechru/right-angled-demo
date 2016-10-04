@@ -17,6 +17,7 @@
                 <li><a href="quick-tour#use-state">Добавляем progress bar</a></li>
                 <li><a href="quick-tour#use-selection">Добавляем selection</a></li>
                 <li><a href="quick-tour#use-controls">Добавляем пару полезных контролов</a></li>
+                <li><a href="quick-tour#use-paging">Добавляем paging</a></li>
             </ul>
         </section>
         <section id="common-idea">
@@ -273,6 +274,30 @@
                 <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.html">
                 </rt-demo-code-tab>
                 <rt-demo-code-tab url="%2Bquick-tour/use-controls/use-controls.component.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+        </section>
+        <section id="use-paging">
+            <h3>Добавляем paging</h3>
+            <p>
+                В примере ниже мы добавили в шаблоны сразу два списка, привязанных к одному компоненту, и добавили в списки paged и buffered pager-ы, построенные в разделе про <a href="#" [routerLink]="['/paging-and-state']">paging</a>.
+                Как мы писали в разделе про <a href="quick-tour#airports-service">"бэкенд"</a>, нам так же необходимо вызывать
+                для работы с paging другой метод сервиса. Поэтому мы поменяли в коде компонента вызываемый метод.
+            </p>
+            <p>
+                Поскольку контролов для построения pager достаточно много, мы не будем приводить здесь детали. Все необходимое вы можете
+                узнать в <a href="#" [routerLink]="['/paging-and-state']">соответствующем разделе</a>.
+            </p>
+            <p>
+                Обратите так же внимание, что кнопка reset теперь сбрасывает и настройки paging.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-use-paging></rt-demo-use-paging>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-paging/use-paging.component.html">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bquick-tour/use-paging/use-paging.component.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
         </section>
