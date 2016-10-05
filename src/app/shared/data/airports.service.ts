@@ -39,7 +39,7 @@ export class AirportsService {
             this.http.get(this.airportsUrl)
                 .map(response => (response.json().airports as Airport[]))
                 .map(airports => this.makeItemsSelectable(airports))
-                .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
+                .subscribe(data => this.airportsCache.next(_.cloneDeep(data)), error => this.airportsCache.error(error));
         }
         return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(500);
     }

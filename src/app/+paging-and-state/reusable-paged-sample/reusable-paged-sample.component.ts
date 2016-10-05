@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AirportsListRequest, AirportsService } from '../../shared';
+import { AirportsPagedListRequest, AirportsService } from '../../shared';
 
 @Component({
     selector: 'rt-demo-reusable-paged-sample',
@@ -10,7 +10,7 @@ export class ReusablePagedListSampleComponent {
     constructor(private airportsService: AirportsService) {
         this.airportsService = airportsService;
     }
-    public loadData = (requestParams: AirportsListRequest): any => {
-        return this.airportsService.getAirportsList(requestParams);
+    public loadData = (requestParams: AirportsPagedListRequest): any => {
+        return this.airportsService.getAirportsPagedList(requestParams);
     };
 }
