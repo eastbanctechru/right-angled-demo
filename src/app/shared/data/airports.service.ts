@@ -15,11 +15,12 @@ export class AirportsService {
     private airportsUrl: string = './assets/airports.json';
     private airportsCache: ReplaySubject<Airport[]> = new ReplaySubject<Airport[]>(1);
     constructor(private http: Http) {
-
     }
     public getAirportsList(request: AirportsListRequest, delay: number = 500): Observable<Airport[]> {
         return this
             .getAllAirports()
+            .delay(delay)
+            .map(airports => _.cloneDeep(airports))
             .map(airports => this.applyFilters(request, airports))
             .map(airports => this.applySortings(request, airports))
             .map(airports => airports.slice(0, 5));
@@ -27,6 +28,8 @@ export class AirportsService {
     public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 500): Observable<ListResponse> {
         return this
             .getAllAirports()
+            .delay(delay)
+            .map(airports => _.cloneDeep(airports))
             .map(airports => this.applyFilters(request, airports))
             .map(airports => this.applySortings(request, airports))
             .map(airports => this.applyPaging(request, airports));
@@ -34,14 +37,16 @@ export class AirportsService {
 
     private getAllAirports(): Observable<Airport[]> {
         // we use optional "delay" parameter to simulate backend latency
-        // also we "cache" result sunce we get all of the items
+        // also we "cache" result since we get all of the items
         if (!this.airportsCache.observers.length) {
+            this.airportsCache.complete();
+            this.airportsCache = new ReplaySubject<Airport[]>(1);
             this.http.get(this.airportsUrl)
                 .map(response => (response.json().airports as Airport[]))
                 .map(airports => this.makeItemsSelectable(airports))
-                .subscribe(data => this.airportsCache.next(_.cloneDeep(data)), error => this.airportsCache.error(error));
+                .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
         }
-        return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(500);
+        return this.airportsCache;
     }
 
     private applySortings(request: AirportsListRequest, data: Airport[]): Airport[] {

@@ -18,11 +18,13 @@ export class LookupsService {
         // we use optional "delay" parameter to simulate backend latency
         // also we "cache" result sunce we get all of the items
         if (!this.airportsCache.observers.length) {
+            this.airportsCache.complete();
+            this.airportsCache = new ReplaySubject<Airport[]>(1);
             this.http.get(this.airportsUrl)
                 .map(response => (response.json().airports as Airport[]))
                 .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
         }
-        return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(500);
+        return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(delay);
 
     }
     private transformToLookup(data: Array<string>): Array<LookupItem> {
