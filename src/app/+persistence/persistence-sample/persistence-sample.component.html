@@ -3,7 +3,24 @@
         <rt-demo-filter-area #filter [rtRegisterAsFilter]="filter">
         </rt-demo-filter-area>
         <table class="table table-striped">
-            <thead rt-demo-sortable-header>
+            <thead>
+                <tr>
+                    <th class="t-col-row-number">
+                        <span>&#8470;</span>
+                    </th>
+                    <th class="t-col-iata-code">
+                        <span [rtSort]="'iataCode'">IATA</span>
+                    </th>
+                    <th class="t-col-airport-name">
+                        <span [rtSort]="'name'">Airport name</span>
+                    </th>
+                    <th class="t-col-city-name">
+                        <span [rtSort]="'cityName'">City</span>
+                    </th>
+                    <th class="t-col-country-name">
+                        <span [rtSort]="'countryName'">Country</span>
+                    </th>
+                </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let airport of list.items, let index=index">
@@ -13,16 +30,13 @@
                     </td>
                     <td>{{airport.iataCode}}</td>
                     <td>{{airport.name}}</td>
-                    <td>{{airport.timeZone}}</td>
                     <td>{{airport.cityName}}</td>
                     <td>{{airport.countryName}}</td>
-                    <td>{{airport.region}}</td>
-                    <td>{{airport.size || 'unspecified'}}</td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="9">
+                    <td colspan="6">
                         <rt-demo-paged-footer></rt-demo-paged-footer>
                     </td>
                 </tr>

@@ -6,6 +6,7 @@ import { AirportsListRequest, AirportsService, LocalStorageStateService, QuerySt
 @Component({
     providers: [LocalStorageStateService, QueryStringStateService, SessionStorageStateService],
     selector: 'rt-demo-persistence-sample',
+    styleUrls: ['persistence-sample.component.scss'],
     templateUrl: 'persistence-sample.component.html'
 })
 export class PersistenceSampleComponent implements AfterViewInit {

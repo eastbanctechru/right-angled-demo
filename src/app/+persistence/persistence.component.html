@@ -2,9 +2,8 @@
 <h3>Table of contents</h3>
 <ul>
     <li><a href="persistence#common-idea">Общая идея</a></li>
-    <li><a href="persistence#bootstrap">Как подключить</a></li>
     <li><a href="persistence#service-implementations">Примеры реализаций контракта <code>RtStateService</code></a></li>
-    <li><a href="persistence#live-demo">Работающий пример</a></li>
+    <li><a href="persistence#live-demo">Подключение и использование реализованных сервисов</a></li>
 </ul>
 <section id="common-idea">
     <h3>Общая идея</h3>
@@ -36,51 +35,20 @@
         собственных.
     </p>
 </section>
-<section id="bootstrap">
-    <h3>Как подключить</h3>
-    <p>
-        Для того чтобы сохранять настройки списков вам необходимо:
-    </p>
-    <ol>
-        <li>Реализовать сервис (или сервисы), наследующие абстрактный класс <code>RtStateService</code>
-            <rt-demo-tab-section>
-                <rt-demo-code-tab [fromLib]="true" url="core/state-service.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-            <p>Метод <code>getState</code> должен возвращать сохраненные ранее настройки. Данный метод будет вызываться списком
-                при инициализации, чтобы восстановить состояние перед использованием.</p>
-            <p>Метод <code>persistState</code> будет вызываться списком при каждой загрузке данных. То есть логика такова, что
-                если пользователь поменял какие-либо параметры и "подтвердил", что это то, что ему нужно, нажатием кнопки
-                "загрузить", то мы можем запомнить эти параметры. В зависимости от потребностей, можно вызвать
-                <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getrequeststate">getRequestState</a>                или
-                <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getpersistedstate">getPersistedState</a>                переданного объекта <code>filtersService</code>.
-            </p>
-
-        </li>
-        <li>
-            <p>Зарегистрировать реализованные сервисы в контейнере</p>
-            <p>
-                Для этого необходимо вызвать метод <code>RtModule.registerStateService</code> либо <code>RtListModule.registerStateService</code>                передав в качестве параметра объект с настройками, аналогичными настройкам, доступным при регистрации провайдера
-                в angular dependency injection.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-code-tab url="%2Bpersistence/bootstrap/app.module.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </li>
-    </ol>
-    <aside>
-        <p>
-            Возможна ситуация, когда вы зарегистрируете несколько провайдеров для <code>RtStateService</code>, используя
-            <a href="https://angular.io/docs/ts/latest/api/core/index/ClassProvider-interface.html">флаг multi</a>. В таком
-            случае разумным будет вопрос: а что, если несколько провайдеров вернут настройки для одного и того же параметра?</p>
-        <p> Ответ следующий: методы <code>getState</code> будут вызваны в том же порядке, в котором вы зарегистрировали ваши
-            сервиса. Итоговое состояние будет собрано посредством вызова <code>Object.assign(&#123;&#125;, state1, state2, ...)</code>
-        </p>
-    </aside>
-</section>
 <section id="service-implementations">
     <h3>Примеры реализаций контракта <code>RtStateService</code></h3>
+    <p>Прежде всего, необходимо реализовать сервис (или сервисы), наследующие абстрактный класс <code>RtStateService</code></p>
+    <rt-demo-tab-section>
+        <rt-demo-code-tab [fromLib]="true" url="core/state-service.ts">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+    <p>Метод <code>getState</code> будет вызываться списком при инициализации и должен возвращать сохраненные раннее настройки.</p>
+    <p>Метод <code>persistState</code> будет вызываться списком при каждой загрузке данных. То есть логика такова, что если
+        пользователь поменял какие-либо параметры и "подтвердил", что это то, что ему нужно, нажатием кнопки "загрузить",
+        то мы можем запомнить эти параметры. В зависимости от потребностей, можно вызвать
+        <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getrequeststate">getRequestState</a>        или
+        <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getpersistedstate">getPersistedState</a>        переданного объекта <code>filtersService</code>.
+    </p>
     <p>
         Ниже вы можете увидеть три простейших примера сервисов, реализующих <code>RtStateService</code> и сохраняющих состояние
         списка в <code>localStorage</code>, <code>sessionStorage</code> и <code>queryString</code>.
@@ -118,20 +86,48 @@
             чтобы перезаписать текущий url, не меняя историю в браузере.
         </li>
     </ul>
+
 </section>
 <section id="live-demo">
-    <h3>Работающий пример</h3>
-    <p>
-        Ну и куда же без живого примера. Ниже расположен список, в котором использованы реализации <code>RtStateService</code>        для <code>queryString</code>, <code>sessionStorage</code> и <code>localStorage</code>, описанные выше.
-    </p>
-    <rt-demo-tab-section>
-        <rt-demo-sample-tab tabTitle="Live demo">
-            <rt-demo-persistence-sample></rt-demo-persistence-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="%2Bpersistence/persistence-sample/persistence-sample.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="%2Bpersistence/persistence-sample/persistence-sample.component.html">
-        </rt-demo-code-tab>
-    </rt-demo-tab-section>
-
+    <h3>Подключение и использование реализованных сервисов</h3>
+    <p>Далее нам необходимо зарегистрировать реализованные сервисы. Здесь возможны два варианта:</p>
+    <ol>
+        <li>
+            <p>Регистрация в конкретном списке. Для этого необходимо в компоненте, использующем список, инстанцировать через
+                DI нужные вам сервисы, и зарегистрировать их в запрошенном при помощи <code>angular</code> декоратора
+                <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html">ViewChild</a>                компоненте <code>rt-list</code> \
+            </p>
+            <p>
+                Ниже расположен пример, реализующий данный подход.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-sample-tab tabTitle="Live demo">
+                    <rt-demo-persistence-sample></rt-demo-persistence-sample>
+                </rt-demo-sample-tab>
+                <rt-demo-code-tab url="%2Bpersistence/persistence-sample/persistence-sample.component.ts">
+                </rt-demo-code-tab>
+                <rt-demo-code-tab url="%2Bpersistence/persistence-sample/persistence-sample.component.html">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+        </li>
+        <li>
+            <p>
+                Регистрация во всех списках одновременно. Для этого необходимо вызвать метод <code>RtModule.registerStateService</code>                либо <code>RtListModule.registerStateService</code> передав в качестве параметра объект с настройками, аналогичными
+                настройкам, доступным при регистрации провайдера в angular dependency injection.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-code-tab url="%2Bpersistence/bootstrap/app.module.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+        </li>
+    </ol>
+    <aside>
+        <p>
+            Возможна ситуация, когда вы зарегистрируете несколько провайдеров для <code>RtStateService</code>, используя
+            <a href="https://angular.io/docs/ts/latest/api/core/index/ClassProvider-interface.html">флаг multi</a>. В таком
+            случае разумным будет вопрос: а что, если несколько провайдеров вернут настройки для одного и того же параметра?</p>
+        <p> Ответ следующий: методы <code>getState</code> будут вызваны в том же порядке, в котором вы зарегистрировали ваши
+            сервиса. Итоговое состояние будет собрано посредством вызова <code>Object.assign(&#123;&#125;, state1, state2, ...)</code>
+        </p>
+    </aside>
 </section>
