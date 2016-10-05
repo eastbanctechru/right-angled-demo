@@ -3,7 +3,7 @@
 <ul>
     <li><a href="persistence#common-idea">Общая идея</a></li>
     <li><a href="persistence#bootstrap">Как подключить</a></li>
-    <li><a href="persistence#service-implementations">Примеры реализаций контракта <code>RtPersistenceService</code></a></li>
+    <li><a href="persistence#service-implementations">Примеры реализаций контракта <code>RtStateService</code></a></li>
     <li><a href="persistence#live-demo">Работающий пример</a></li>
 </ul>
 <section id="common-idea">
@@ -42,9 +42,9 @@
         Для того чтобы сохранять настройки списков вам необходимо:
     </p>
     <ol>
-        <li>Реализовать сервис (или сервисы), наследующие абстрактный класс <code>RtPersistenceService</code>
+        <li>Реализовать сервис (или сервисы), наследующие абстрактный класс <code>RtStateService</code>
             <rt-demo-tab-section>
-                <rt-demo-code-tab [fromLib]="true" url="core/persistence-service.ts">
+                <rt-demo-code-tab [fromLib]="true" url="core/state-service.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
             <p>Метод <code>getPersistedState</code> должен возвращать сохраненные ранее настройки. Данный метод будет вызываться
@@ -71,7 +71,7 @@
     </ol>
     <aside>
         <p>
-            Возможна ситуация, когда вы зарегистрируете несколько провайдеров для <code>RtPersistenceService</code>, используя
+            Возможна ситуация, когда вы зарегистрируете несколько провайдеров для <code>RtStateService</code>, используя
             <a href="https://angular.io/docs/ts/latest/api/core/index/ClassProvider-interface.html">флаг multi</a>. В таком
             случае разумным будет вопрос: а что, если несколько провайдеров вернут настройки для одного и того же параметра?</p>
         <p> Ответ следующий: методы <code>getPersistedState</code> будут вызваны в том же порядке, в котором вы зарегистрировали
@@ -80,17 +80,17 @@
     </aside>
 </section>
 <section id="service-implementations">
-    <h3>Примеры реализаций контракта <code>RtPersistenceService</code></h3>
+    <h3>Примеры реализаций контракта <code>RtStateService</code></h3>
     <p>
-        Ниже вы можете увидеть три простейших примера сервисов, реализующих <code>RtPersistenceService</code> и сохраняющих
+        Ниже вы можете увидеть три простейших примера сервисов, реализующих <code>RtStateService</code> и сохраняющих
         состояние списка в <code>localStorage</code>, <code>sessionStorage</code> и <code>queryString</code>.
     </p>
     <rt-demo-tab-section>
-        <rt-demo-code-tab url="shared/persistence/local-storage-persistence-service.ts">
+        <rt-demo-code-tab url="shared/state-services/local-storage-state-service.ts">
         </rt-demo-code-tab>
-        <rt-demo-code-tab url="shared/persistence/session-storage-persistence-service.ts">
+        <rt-demo-code-tab url="shared/state-services/session-storage-state-service.ts">
         </rt-demo-code-tab>
-        <rt-demo-code-tab url="shared/persistence/query-string-persistence-service.ts">
+        <rt-demo-code-tab url="shared/state-services/query-string-state-service.ts">
         </rt-demo-code-tab>
     </rt-demo-tab-section>
 
@@ -122,7 +122,7 @@
 <section id="live-demo">
     <h3>Работающий пример</h3>
     <p>
-        Ну и куда же без живого примера. Ниже расположен список, в котором использованы реализации <code>RtPersistenceService</code>        для <code>queryString</code>, <code>sessionStorage</code> и <code>localStorage</code>, описанные выше.
+        Ну и куда же без живого примера. Ниже расположен список, в котором использованы реализации <code>RtStateService</code>        для <code>queryString</code>, <code>sessionStorage</code> и <code>localStorage</code>, описанные выше.
     </p>
 </section>
 <rt-demo-persistence-sample></rt-demo-persistence-sample>
