@@ -20,7 +20,7 @@ export class LocalStorageStateService implements RtStateService {
         }
     };
 
-    public getPersistedState(): any {
+    public getState(): any {
         let res = window.localStorage.getItem(this.internalStateKey);
         if (res === null) {
             return undefined;

@@ -20,7 +20,7 @@ export class SessionStorageStateService implements RtStateService {
         }
     };
 
-    public getPersistedState(): any {
+    public getState(): any {
         let res = window.sessionStorage.getItem(this.internalStateKey);
         if (res === null) {
             return undefined;

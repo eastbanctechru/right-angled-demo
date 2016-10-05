@@ -47,8 +47,8 @@
                 <rt-demo-code-tab [fromLib]="true" url="core/state-service.ts">
                 </rt-demo-code-tab>
             </rt-demo-tab-section>
-            <p>Метод <code>getPersistedState</code> должен возвращать сохраненные ранее настройки. Данный метод будет вызываться
-                списком при инициализации, чтобы восстановить состояние перед использованием.</p>
+            <p>Метод <code>getState</code> должен возвращать сохраненные ранее настройки. Данный метод будет вызываться списком
+                при инициализации, чтобы восстановить состояние перед использованием.</p>
             <p>Метод <code>persistState</code> будет вызываться списком при каждой загрузке данных. То есть логика такова, что
                 если пользователь поменял какие-либо параметры и "подтвердил", что это то, что ему нужно, нажатием кнопки
                 "загрузить", то мы можем запомнить эти параметры. В зависимости от потребностей, можно вызвать
@@ -60,7 +60,7 @@
         <li>
             <p>Зарегистрировать реализованные сервисы в контейнере</p>
             <p>
-                Для этого необходимо вызвать метод <code>RtModule.registerPersistenceService</code> либо <code>RtListModule.registerPersistenceService</code>                передав в качестве параметра объект с настройками, аналогичными настройкам, доступным при регистрации провайдера
+                Для этого необходимо вызвать метод <code>RtModule.registerStateService</code> либо <code>RtListModule.registerStateService</code>                передав в качестве параметра объект с настройками, аналогичными настройкам, доступным при регистрации провайдера
                 в angular dependency injection.
             </p>
             <rt-demo-tab-section>
@@ -74,16 +74,16 @@
             Возможна ситуация, когда вы зарегистрируете несколько провайдеров для <code>RtStateService</code>, используя
             <a href="https://angular.io/docs/ts/latest/api/core/index/ClassProvider-interface.html">флаг multi</a>. В таком
             случае разумным будет вопрос: а что, если несколько провайдеров вернут настройки для одного и того же параметра?</p>
-        <p> Ответ следующий: методы <code>getPersistedState</code> будут вызваны в том же порядке, в котором вы зарегистрировали
-            ваши сервиса. Итоговое состояние будет собрано посредством вызова <code>Object.assign(&#123;&#125;, state1, state2, ...)</code>
+        <p> Ответ следующий: методы <code>getState</code> будут вызваны в том же порядке, в котором вы зарегистрировали ваши
+            сервиса. Итоговое состояние будет собрано посредством вызова <code>Object.assign(&#123;&#125;, state1, state2, ...)</code>
         </p>
     </aside>
 </section>
 <section id="service-implementations">
     <h3>Примеры реализаций контракта <code>RtStateService</code></h3>
     <p>
-        Ниже вы можете увидеть три простейших примера сервисов, реализующих <code>RtStateService</code> и сохраняющих
-        состояние списка в <code>localStorage</code>, <code>sessionStorage</code> и <code>queryString</code>.
+        Ниже вы можете увидеть три простейших примера сервисов, реализующих <code>RtStateService</code> и сохраняющих состояние
+        списка в <code>localStorage</code>, <code>sessionStorage</code> и <code>queryString</code>.
     </p>
     <rt-demo-tab-section>
         <rt-demo-code-tab url="shared/state-services/local-storage-state-service.ts">
@@ -95,8 +95,8 @@
     </rt-demo-tab-section>
 
     <p>
-        Сервисы <code>RtLocalStoragePersistenceService</code> и <code>RtSessionStoragePersistenceService</code> ни чем не
-        примечательны кроме того, что инжектят объект <a target="_blank" href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html">ActivatedRoute</a>        и на его основе строят ключ для сериализации/десериализации настроек списка.
+        Сервисы <code>RtLocalStorageStateService</code> и <code>RtSessionStorageStateService</code> ни чем не примечательны
+        кроме того, что инжектят объект <a target="_blank" href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html">ActivatedRoute</a>        и на его основе строят ключ для сериализации/десериализации настроек списка.
     </p>
     <aside>
         <p>
@@ -106,7 +106,7 @@
         </p>
     </aside>
     <p>
-        Сервис <code>RtQueryStringPersistenceService</code> чуть сложнее. Вот ключевые моменты:
+        Сервис <code>RtQueryStringStateService</code> чуть сложнее. Вот ключевые моменты:
     </p>
     <ul>
         <li>
@@ -124,5 +124,14 @@
     <p>
         Ну и куда же без живого примера. Ниже расположен список, в котором использованы реализации <code>RtStateService</code>        для <code>queryString</code>, <code>sessionStorage</code> и <code>localStorage</code>, описанные выше.
     </p>
+    <rt-demo-tab-section>
+        <rt-demo-sample-tab tabTitle="Live demo">
+            <rt-demo-persistence-sample></rt-demo-persistence-sample>
+        </rt-demo-sample-tab>
+        <rt-demo-code-tab url="%2Bpersistence/persistence-sample/persistence-sample.component.ts">
+        </rt-demo-code-tab>
+        <rt-demo-code-tab url="%2Bpersistence/persistence-sample/persistence-sample.component.html">
+        </rt-demo-code-tab>
+    </rt-demo-tab-section>
+
 </section>
-<rt-demo-persistence-sample></rt-demo-persistence-sample>

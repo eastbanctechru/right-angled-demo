@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'right-angled';
 
-import { LookupsService } from '../data/lookups.service';
+import { LookupsService } from '../../shared/index';
 
 @Component({
     selector: 'rt-demo-additional-filter',

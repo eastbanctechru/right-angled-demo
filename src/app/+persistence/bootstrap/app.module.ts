@@ -3,13 +3,13 @@ import { RTModule } from 'right-angled';
 
 import { AppComponent } from './app.component';
 
-import { PersistenceServiceFactory } from './persistence-service-factory';
-import { PersistenceServiceImplementation } from './persistence-service-implementation';
-import { persistenceServiceSingleton } from './persistence-service-singleton';
+import { StateServiceFactory } from './state-service-factory';
+import { StateServiceImplementation } from './state-service-implementation';
+import { stateServiceSingleton } from './state-service-singleton';
 
-RTModule.registerPersistenceService({ multi: true, useClass: PersistenceServiceImplementation });
-RTModule.registerPersistenceService({ multi: true, useFactory: PersistenceServiceFactory });
-RTModule.registerPersistenceService({ multi: true, useValue: persistenceServiceSingleton });
+RTModule.registerStateService({ multi: true, useClass: StateServiceImplementation });
+RTModule.registerStateService({ multi: true, useFactory: StateServiceFactory });
+RTModule.registerStateService({ multi: true, useValue: stateServiceSingleton });
 
 @NgModule({
     bootstrap: [AppComponent],

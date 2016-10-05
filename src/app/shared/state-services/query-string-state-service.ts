@@ -18,7 +18,7 @@ export class QueryStringStateService implements RtStateService {
         path = path.indexOf('?') === -1 ? path : path.substring(0, path.indexOf('?'));
         this.location.replaceState(path, this.serializeQueryParams(params));
     }
-    public getPersistedState(): Object {
+    public getState(): Object {
         const restoredState = {};
         let routerState = this.router.routerState.snapshot.root.queryParams[this.serializationKey] ? JSON.parse(decodeURIComponent(this.router.routerState.snapshot.root.queryParams[this.serializationKey])) : {};
 
