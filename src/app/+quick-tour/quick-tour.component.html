@@ -316,7 +316,6 @@
         <li>При нажатии кнопки "Reset settings" значения данных полей сбрасываются в значения по умолчанию. Для поля <code>airportName</code>            это его первоначальное значение, то есть <code>null</code>. А для поля <code>countryName</code> это указанное
             через настройки значение "Iceland".</li>
     </ul>
-
     <rt-demo-tab-section>
         <rt-demo-sample-tab tabTitle="Live demo">
             <rt-demo-use-filters></rt-demo-use-filters>
@@ -330,6 +329,26 @@
 </section>
 <section id="use-persistence">
     <h3>Добавляем управление состоянием</h3>
+    <p>
+        В примере ниже мы импортировали сервис <code>QueryStringStateService</code>, разработанный в разделе <a href="#"
+            [routerLink]="['/persistence']">Persist lists state</a> и зарегистрировали его в хуке <code>ngAfterViewInit</code>        аналогично тому, как мы сделали это в примере с фильтрами.
+    </p>
+    <p>
+        Теперь при каждой загрузке данных состояние параметров будет отражаться в <code>queryString</code>. Если вы поменяете
+        какие-либо параметры и обновите страницу, то вы можете заметить, что значения параметров восстановились при перезагрузке
+        (правда вы не заметите это с paging, потому что автозагрузка данных отключена, а кнопка <code>Load data</code> всегда
+        сбрасывает paging на первую страницу)
+    </p>
+    <p>
+        Так же вы могли заметить, что мы воспользовались опцией <code>loadOnInit</code> компонента <code>rt-list</code>,
+        чтобы отключить автоматическую загрузку данных и не писать ничего в <code>queryString</code>, пока вы не дочитали
+        до данного раздела. Почитать про все настройки компонента <code>rt-list</code> вы можете <a href="#" [routerLink]="['/list-controls']">в этом разделе</a>.
+    </p>
+    <p>
+        Естественно, отражение в <code>queryString</code> это не единственный способ работы с состоянием списка. Более детально
+        вы можете узнать об этом в упомянутом выше разделе <a href="#" [routerLink]="['/persistence']">Persist lists state</a>.
+    </p>
+
     <rt-demo-tab-section>
         <rt-demo-sample-tab tabTitle="Live demo">
             <rt-demo-use-persistence></rt-demo-use-persistence>
