@@ -45,9 +45,8 @@
     <p>Метод <code>getState</code> будет вызываться списком при инициализации и должен возвращать сохраненные раннее настройки.</p>
     <p>Метод <code>persistState</code> будет вызываться списком при каждой загрузке данных. То есть логика такова, что если
         пользователь поменял какие-либо параметры и "подтвердил", что это то, что ему нужно, нажатием кнопки "загрузить",
-        то мы можем запомнить эти параметры. В зависимости от потребностей, можно вызвать
-        <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getrequeststate">getRequestState</a>        или
-        <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getpersistedstate">getPersistedState</a>        переданного объекта <code>filtersService</code>.
+        то мы можем запомнить эти параметры. Для этого мы вызываем метод
+        <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/filtersservice.html#getrequeststate">getRequestState</a> переданного объекта <code>filtersService</code>, передавая ему, при необходимости, делегат для фильтрации результата.
     </p>
     <p>
         Ниже вы можете увидеть три простейших примера сервисов, реализующих <code>RtStateService</code> и сохраняющих состояние
