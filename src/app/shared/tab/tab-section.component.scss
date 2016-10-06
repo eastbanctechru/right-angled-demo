@@ -3,8 +3,12 @@
     margin: 35px 0;
 }
 :host /deep/ rt-demo-sample-tab>div {
-    background: $color-muted-grey;
+    background: $color-white;
     padding: 15px;
+}
+:host /deep/ .tab-body {
+    border: 1px solid #4fc3f7;
+    padding: 0;
 }
 
 ul {
