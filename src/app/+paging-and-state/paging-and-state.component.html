@@ -122,6 +122,31 @@
             инициализации списка и в него же будет выставляться значение при сбросе настроек списка (вы можете узнать детали
             в разделе про <a href="#" [routerLink]="['/filters']">работу с фильтрами</a>). По умолчанию равен 20.
         </p>
+
+        <aside>
+            <p>
+                Вы так же можете изменить указанные настройки глобально. Для этого необходимо импортировать сервис <code>PagedPager</code>                из библиотеки <code>right-angled</code> и установить одноименные значения в статическом объекте <code>settings</code>.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-code-tab url="%2Bpaging-and-state/global-configuration/app.component.paged.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+            <p>
+                Порядок применения параметров следующий:
+            </p>
+            <ol>
+                <li>
+                    Значение, указанное в объекте <code>settings</code>
+                </li>
+                <li>
+                    Значение, указанное в параметрах компонента <code>rt-paged-pager</code>
+                </li>
+                <li>
+                    Значение, восстановленное через <a href="#" [routerLink]="['/persistence']">RtStateService</a>, если
+                    таковой зарегистрирован.
+                </li>
+            </ol>
+        </aside>
     </section>
     <section id="paged-directives">
         <h3>Directives for implementing paged pager UI</h3>
@@ -200,6 +225,15 @@
             инициализации списка и в него же будет выставляться значение при сбросе настроек списка (вы можете узнать детали
             в разделе про <a href="#" [routerLink]="['/filters']">работу с фильтрами</a>). По умолчанию равен 20.
         </p>
+         <aside>
+            <p>
+                Аналогично как с <code>PagedPager</code>, вы можете изменить указанные настройки глобально. Для этого необходимо импортировать сервис <code>BufferedPager</code>                из библиотеки <code>right-angled</code> и установить одноименные значения в статическом объекте <code>settings</code>.
+            </p>
+            <rt-demo-tab-section>
+                <rt-demo-code-tab url="%2Bpaging-and-state/global-configuration/app.component.buffered.ts">
+                </rt-demo-code-tab>
+            </rt-demo-tab-section>
+        </aside>
     </section>
     <section id="buffered-directives">
         <h3>Directives for implementing buffered pager UI</h3>
