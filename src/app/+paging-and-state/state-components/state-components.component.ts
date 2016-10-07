@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ListComponent } from 'right-angled';
+import { ListDirective } from 'right-angled';
 
 import { Airport, AirportsListRequest, AirportsService } from '../../shared';
 
@@ -10,7 +10,7 @@ import { Airport, AirportsListRequest, AirportsService } from '../../shared';
 export class StateComponentsComponent {
     private raiseError: boolean = false;
     private returnNoData: boolean = false;
-    @ViewChild(ListComponent) public listComponent: ListComponent;
+    @ViewChild(ListDirective) public listDirective: ListDirective;
     constructor(private airportsService: AirportsService) {
     }
     public loadData = (requestParams: AirportsListRequest): any => {
@@ -28,10 +28,10 @@ export class StateComponentsComponent {
     };
     public loadEmptyData(): void {
         this.returnNoData = true;
-        this.listComponent.reloadData();
+        this.listDirective.reloadData();
     };
     public raiseErrorOnLoad(): void {
         this.raiseError = true;
-        this.listComponent.reloadData();
+        this.listDirective.reloadData();
     };
 }

@@ -1,4 +1,4 @@
-<rt-list [fetchMethod]="getAirports" #rtList>
+<div class="table-responsive" [rtList]="getAirports" #list="rtList">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -8,11 +8,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let airport of rtList.items">
+            <tr *ngFor="let airport of list.items">
                 <td>{{airport.iataCode}}</td>
                 <td>{{airport.name}}</td>
                 <td>{{airport.countryName}}</td>
             </tr>
         </tbody>
     </table>
-</rt-list>
+</div>

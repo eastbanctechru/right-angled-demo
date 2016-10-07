@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { ListComponent } from 'right-angled';
+import { Component } from '@angular/core';
 
 import { AirportsPagedListRequest, AirportsService } from '../../shared';
 
@@ -9,7 +8,6 @@ import { AirportsPagedListRequest, AirportsService } from '../../shared';
     templateUrl: 'paged-components.component.html'
 })
 export class PagedComponentsComponent {
-    @ViewChild(ListComponent) public listComponent: ListComponent;
     constructor(private airportsService: AirportsService) {
     }
     public loadData = (requestParams: AirportsPagedListRequest): any => {

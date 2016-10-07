@@ -1,4 +1,4 @@
-<rt-list [fetchMethod]="loadData" [loadOnInit]="false" #rtList="rtList">
+<div [rtList]="loadData" #list="rtList" [loadOnInit]="false">
     <div class="row">
         <div class="col-md-12 toolbar">
             <ul>
@@ -16,7 +16,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-md-12" *ngFor="let airport of rtList.items">
+        <div class="col-md-12" *ngFor="let airport of list.items">
             <div class="item">{{airport.name}}</div>
         </div>
         <div class="col-md-12">
@@ -47,4 +47,4 @@
             </div>
         </div>
     </div>
-</rt-list>
+</div>

@@ -1,7 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdditionalConfigurationRoutes } from './+additional-configuration/additional-configuration.routes';
 import { FiltersRoutes } from './+filters/filters.routes';
 import { ListControlsRoutes } from './+list-controls/list-controls.routes';
 import { MiscDirectivesRoutes } from './+misc-directives/misc-directives.routes';
@@ -12,7 +11,6 @@ import { SelectionRoutes } from './+selection/selection.routes';
 import { SortingsRoutes } from './+sortings/sortings.routes';
 
 const appRoutes: Routes = [
-    ...AdditionalConfigurationRoutes,
     ...FiltersRoutes,
     ...ListControlsRoutes,
     ...SelectionRoutes,

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { ListComponent } from 'right-angled';
+import { ListDirective } from 'right-angled';
 
 import { AirportsListRequest, AirportsService, LocalStorageStateService, QueryStringStateService, SessionStorageStateService } from '../../shared';
 
@@ -10,7 +10,7 @@ import { AirportsListRequest, AirportsService, LocalStorageStateService, QuerySt
     templateUrl: 'persistence-sample.component.html'
 })
 export class PersistenceSampleComponent implements AfterViewInit {
-    @ViewChild(ListComponent) public listComponent: ListComponent;
+    @ViewChild(ListDirective) public listDirective: ListDirective;
     constructor(private airportsService: AirportsService, private queryStringStateService: QueryStringStateService, private localStorageStateService: LocalStorageStateService, private sessionStorageStateService: SessionStorageStateService) {
         this.airportsService = airportsService;
     }
@@ -18,8 +18,8 @@ export class PersistenceSampleComponent implements AfterViewInit {
         return this.airportsService.getAirportsList(requestParams);
     };
     ngAfterViewInit(): void {
-        this.listComponent.listService.registerFilterTarget(this);
-        this.listComponent.listService.registerStateService(this.localStorageStateService, this.sessionStorageStateService, this.queryStringStateService);
+        this.listDirective.listService.registerFilterTarget(this);
+        this.listDirective.listService.registerStateService(this.localStorageStateService, this.sessionStorageStateService, this.queryStringStateService);
     }
 
 }

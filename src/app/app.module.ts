@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RTModule } from 'right-angled';
 
-import { AdditionalConfigurationModule } from './+additional-configuration/additional-configuration.module';
 import { FiltersModule } from './+filters/filters.module';
 import { ListControlsModule } from './+list-controls/list-controls.module';
 import { MiscDirectivesModule } from './+misc-directives/misc-directives.module';
@@ -27,7 +26,6 @@ import { routing } from './app.routing';
     RTModule,
     SharedModule.forRoot(),
     routing,
-    AdditionalConfigurationModule,
     FiltersModule,
     ListControlsModule,
     MiscDirectivesModule,

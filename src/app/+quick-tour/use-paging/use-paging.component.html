@@ -1,4 +1,4 @@
-<rt-list [fetchMethod]="getAirports" #rtList>
+<div class="table-responsive" [rtList]="getAirports" #list="rtList">
     <form>
         <div class="row">
             <div class="col-md-12">
@@ -19,8 +19,8 @@
                 <th><span rtSort="countryName">Country</span></th>
             </tr>
         </thead>
-        <tbody [rtSelectionAreaFor]="rtList.items">
-            <tr *ngFor="let airport of rtList.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
+        <tbody [rtSelectionAreaFor]="list.items">
+            <tr *ngFor="let airport of list.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
                 <td>{{airport.iataCode}}</td>
                 <td>{{airport.name}}</td>
                 <td>{{airport.countryName}}</td>
@@ -35,10 +35,10 @@
             </tr>
         </tfoot>
     </table>
-</rt-list>
+</div>
 
 
-<rt-list [fetchMethod]="getAirports" #rtBList>
+<div class="table-responsive" [rtList]="getAirports" #buffList="rtList">
     <form>
         <div class="row">
             <div class="col-md-12">
@@ -59,8 +59,8 @@
                 <th><span rtSort="countryName">Country</span></th>
             </tr>
         </thead>
-        <tbody [rtSelectionAreaFor]="rtBList.items">
-            <tr *ngFor="let airport of rtBList.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
+        <tbody [rtSelectionAreaFor]="buffList.items">
+            <tr *ngFor="let airport of buffList.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
                 <td>{{airport.iataCode}}</td>
                 <td>{{airport.name}}</td>
                 <td>{{airport.countryName}}</td>
@@ -75,4 +75,4 @@
             </tr>
         </tfoot>
     </table>
-</rt-list>
+</div>
