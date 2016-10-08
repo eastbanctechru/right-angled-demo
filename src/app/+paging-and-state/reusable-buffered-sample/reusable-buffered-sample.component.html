@@ -1,8 +1,7 @@
 <div class="table-responsive" [rtList]="loadData" #list="rtList">
-    <table class="table table-striped" [rtSelectionAreaFor]="list.items">
+    <table class="table table-striped" rtSelectionArea>
         <thead>
             <tr>
-                <th class="t-col-row-number">&#8470;</th>
                 <th class="t-col-iata-code">IATA</th>
                 <th class="t-col-airport-name">Airport name</th>
                 <th class="t-col-city-name">City</th>
@@ -10,11 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let airport of list.items, let index=index" [class.selected]="airport.selected" [rtSelectByIndex]="index">
-                <td>
-                    <rt-row-number [index]="index">
-                    </rt-row-number>
-                </td>
+            <tr *ngFor="let airport of list.items" [class.selected]="airport.selected" [rtSelectable]="airport">
                 <td>{{airport.iataCode}}</td>
                 <td>{{airport.name}}</td>
                 <td>{{airport.cityName}}</td>
@@ -23,7 +18,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="6">
+                <td colspan="4">
                     <rt-demo-buffered-footer></rt-demo-buffered-footer>
                 </td>
             </tr>

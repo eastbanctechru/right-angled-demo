@@ -1,5 +1,5 @@
-<div class="item" [class.selected]="selected" [rtSelectByIndex]="index" (itemSelected)="onSelected($event)" (itemDeselected)="onDeselected($event)">
-    {{country}}
+<div class="item" [class.selected]="selected">
+    {{country.name}}
 </div>
 <div *ngIf="selected">
     {{this.countryInfo|async|json}}

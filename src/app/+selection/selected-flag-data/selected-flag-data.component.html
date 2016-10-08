@@ -1,0 +1,10 @@
+<div class="row" rtSelectionArea>
+    <div class="col-md-12" *ngFor="let country of countries" [rtSelectable]="country">
+        <div *ngIf="!country.selected" class="item" [class.selected]="country.selected">
+            {{country.name}}
+        </div>
+        <div *ngIf="country.selected" class="item" [class.selected]="country.selected">
+            <input class="form-control" type="text" rtStopEvents="mouseup" rtFocusOnRender [(ngModel)]="country.name" name="name" />
+        </div>
+    </div>
+</div>

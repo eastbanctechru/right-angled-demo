@@ -7,7 +7,7 @@ import { CountriesService } from '../countries.service';
     templateUrl: 'options.component.html'
 })
 export class OptionsComponent {
-    public horizontal: boolean = true;
+    public horizontal: boolean = false;
     public multiple: boolean = true;
     public toggleOnly: boolean = false;
     public autoSelectFirst: boolean = false;
@@ -17,7 +17,7 @@ export class OptionsComponent {
     }
     public reload(): void {
         this.countries = [];
-        this.countriesService.getSomeCountries(6)
+        this.countriesService.getSomeCountries(6, 500)
             .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
     }
 }

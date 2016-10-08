@@ -15,9 +15,9 @@ export class SelectionEventsComponent {
     }
 
     public onItemSelected(evt: RtSelectionEvent): void {
-        alertify.log(`${evt.item} - selection handled by area`);
+        alertify.log(`${evt.item.name} - selection handled by area`);
     }
     public onItemDeselected(evt: RtSelectionEvent): void {
-        alertify.log(`${evt.item} - deselection handled by area`);
+        alertify.log(`${evt.item.name} - deselection handled by area`);
     }
 }

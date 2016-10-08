@@ -10,6 +10,6 @@ import { CountriesService } from '../countries.service';
 export class SelectionCheckboxComponent {
     public regions: any;
     constructor(public countriesService: CountriesService) {
-        this.regions = this.countriesService.getRegionsWithCountriesAndAirports().share();
+        this.regions = this.countriesService.getRegionsWithCountriesAndAirports();
     }
 }

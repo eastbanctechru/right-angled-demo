@@ -8,6 +8,7 @@ import { CustomTrackByComponent } from './custom-track-by/custom-track-by.compon
 import { OptionsComponent } from './options/options.component';
 import { SelectAllComponent } from './select-all/select-all.component';
 import { SelectedFlagComponent } from './selected-flag/selected-flag.component';
+import { SelectedFlagDataComponent } from './selected-flag-data/selected-flag-data.component';
 import { SelectionCheckboxComponent } from './selection-checkbox/selection-checkbox.component';
 import { CountryDetailsComponent } from './selection-events/country-details/country-details.component';
 import { SelectionEventsComponent } from './selection-events/selection-events.component';
@@ -26,6 +27,7 @@ import { CountriesService } from './countries.service';
         OptionsComponent,
         SelectAllComponent,
         SelectedFlagComponent,
+        SelectedFlagDataComponent,
         SelectionCheckboxComponent,
         SelectionEventsComponent,
         SelectionComponent,
@@ -38,6 +40,7 @@ import { CountriesService } from './countries.service';
         OptionsComponent,
         SelectAllComponent,
         SelectedFlagComponent,
+        SelectedFlagDataComponent,
         SelectionCheckboxComponent,
         SelectionEventsComponent,
         SelectionComponent,

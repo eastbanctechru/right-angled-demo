@@ -15,7 +15,7 @@ export class CustomTrackByComponent {
         this.countries = [];
         this.countriesService
             .getSomeCountries(5, 700)
-            .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
+            .subscribe(countries => this.countries = countries);
     }
     public trackByName(index: number, country: any): string {
         return country.name;

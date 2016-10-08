@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { SelectionAreaForDirective } from 'right-angled';
+
+import { SelectionAreaDirective } from 'right-angled';
 
 import { CountriesService } from '../countries.service';
 
@@ -8,7 +9,7 @@ import { CountriesService } from '../countries.service';
     templateUrl: 'service-view-child.component.html'
 })
 export class ServiceViewChildComponent {
-    @ViewChild(SelectionAreaForDirective) public selectionArea: SelectionAreaForDirective;
+    @ViewChild(SelectionAreaDirective) public selectionArea: SelectionAreaDirective;
     public countries: Array<any> = new Array<any>();
     constructor(public countriesService: CountriesService) {
         this.countriesService.getSomeCountries()

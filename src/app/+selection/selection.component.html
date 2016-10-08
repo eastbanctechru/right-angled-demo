@@ -44,16 +44,10 @@
 
     <h3>Простейший пример</h3>
     <p>
-        Общая идея заключается в пометке HTML элемента, представляющего собой область выбора, директивой <code>rtSelectionAreaFor</code>.
-        В качестве обязательного параметра директива принимает коллекцию элементов, выбор из которой предстоит осуществлять
+        Общая идея заключается в пометке HTML элемента, представляющего собой область выбора, директивой <code>rtSelectionArea</code>.
     </p>
     <p>
-        В примере кода ниже обратите внимание на то, что Observable, возвращаемый методом <code>getSomeCountries</code>,
-        использует метод <code>share</code>, чтобы директива <code>ngFor</code> и <code>rtSelectionAreaFor</code> были привязаны
-        к одной и той же подписке.
-    </p>
-    <p>
-        Элементы, отрисованые внутри отмеченной области и помеченые директивой <code>rtSelectByIndex</code> становятся доступными
+        Элементы, отрисованые внутри отмеченной области и помеченные директивой <code>rtSelectable</code> становятся доступными
         для выбора посредством следующих действий:
     </p>
     <ul>
@@ -86,9 +80,9 @@
 <section id="additional-options">
     <h3>Дополнительные опции</h3>
     <p>
-        Директива <code>rtSelectionAreaFor</code> содержит множество рубильников, включая и выключая которые мы можем тонко
+        Директива <code>rtSelectionArea</code> содержит множество рубильников, включая и выключая которые мы можем тонко
         настраивать работу selection. Ниже указан их список и пример. Значения по умолчанию в примере аналогичны значениям
-        по умолчанию в <code>rtSelectionAreaFor</code>
+        по умолчанию в <code>rtSelectionArea</code>.
     </p>
     <ul>
         <li><code>horizontal</code> - обработчики selection реагируют на стрелки влево-вправо, вместо вверх-вних.</li>
@@ -117,9 +111,10 @@
     <section id="handle-selection-selected">
         <h4>Флаг "selected"</h4>
         <p>
-            Если в элементе объявить флаг <code>selected</code>, то его значение будет обновляться автоматически. Базовый
-            пример такого подхода вы уже увидели в демо выше, поэтому ниже показан чуть более интересный пример - реализация
-            inline-редактирования на основе флага selected.
+            Директива <code>rtSelectable</code> содержит флаг <code>selected</code>, ссылаясь на который можно реагировать
+            на изменения состояния элемента. Пример такого подхода вы уже увидели в демо выше, где на основании этого фалага
+            выставляется класс "selected", подвечивающий выбранные элементы. Ниже показан чуть более интересный пример -
+            реализация inline-редактирования на основе флага selected.
         </p>
         <aside>
             <p>
@@ -138,6 +133,20 @@
             <rt-demo-code-tab url="%2Bselection/selected-flag/selected-flag.component.html">
             </rt-demo-code-tab>
         </rt-demo-tab-section>
+        <p>
+            Вы так же можете объявить свойство <code>selected</code> непосредственно в вашем элементе данных. В таком случае,
+            оно так же будет проставляться автоматически.
+        </p>
+        <rt-demo-tab-section>
+            <rt-demo-sample-tab tabTitle="'selected' flag">
+                <rt-demo-selected-flag-data></rt-demo-selected-flag-data>
+            </rt-demo-sample-tab>
+            <rt-demo-code-tab url="%2Bselection/selected-flag-data/selected-flag-data.component.ts">
+            </rt-demo-code-tab>
+            <rt-demo-code-tab url="%2Bselection/selected-flag-data/selected-flag-data.component.html">
+            </rt-demo-code-tab>
+        </rt-demo-tab-section>
+
     </section>
     <section id="handle-selection-events">
         <h4>События</h4>
@@ -149,13 +158,13 @@
             У нас есть три события, на которые мы можем подписаться: <code>itemSelected</code>, <code>itemDeselected</code>            и <code>selectionChanged</code>. Обработчики которых получают параметр, реализующий контракт <code>RtSelectionEvent</code>.
         </p>
         <p>
-            События генерируются как директивой <code>rtSelectByIndex</code>, так и <code>rtSelectionAreaFor</code>, поэтому
-            обработчики могут быть объявлены на любом из уровней.
+            События генерируются как директивами <code>rtSelectable</code> и <code>rtSelectionCheckboxFor</code>, так и <code>rtSelectionArea</code>,
+            поэтому обработчики могут быть объявлены на любом из уровней.
         </p>
         <p>
             Ниже вы можете увидеть пример в котором обработчики <code>itemSelected</code> и <code>itemDeselected</code> уровня
-            <code>rtSelectionAreaFor</code> выводят на UI уведомления о том, что элеменет был выбран. Обработчики уровня
-            элемента, в свою очередь, при выборе обращаются к сервису <a target="_blank" href="https://restcountries.eu">restcountries.eu</a>            и отображают полученную из него информацию о стране.
+            <code>rtSelectionArea</code> выводят на UI уведомления о том, что элеменет был выбран. Обработчики уровня элемента,
+            в свою очередь, при выборе обращаются к сервису <a target="_blank" href="https://restcountries.eu">restcountries.eu</a>            и отображают полученную из него информацию о стране.
         </p>
         <rt-demo-tab-section>
             <rt-demo-sample-tab tabTitle="selection events">
@@ -178,9 +187,9 @@
             стиле)
         </p>
         <p>
-            Данный сервис указан в коллекции <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>            для <code>rtSelectionAreaFor</code>. Поэтому, способ доступа к <code>SelectionService</code> в вашем компоненте
+            Данный сервис указан в коллекции <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>            для <code>rtSelectionArea</code>. Поэтому, способ доступа к <code>SelectionService</code> в вашем компоненте
             зависит от того, где в иерархии компонентов ваш компонент располагается. Если он расположен внутри компонента
-            <code>rtSelectionAreaFor</code>, то вам достаточно указать данный сервис в качестве параметра конструктора вашего
+            <code>rtSelectionArea</code>, то вам достаточно указать данный сервис в качестве параметра конструктора вашего
             компонента.
         </p>
         <rt-demo-tab-section>
@@ -196,8 +205,8 @@
         </rt-demo-tab-section>
 
         <p>
-            Если компонент, которому необходимо получить доступ, является родительским для <code>rtSelectionAreaFor</code>,
-            то вы можете получить дочерний <code>rtSelectionAreaFor</code> при помощи декоратора <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html">ViewChild</a>            и использовать его public свойство selectionService для работы с selection.
+            Если компонент, которому необходимо получить доступ, является родительским для <code>rtSelectionArea</code>,
+            то вы можете получить дочерний <code>rtSelectionArea</code> при помощи декоратора <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html">ViewChild</a>            и использовать его public свойство selectionService для работы с selection.
         </p>
         <rt-demo-tab-section>
             <rt-demo-sample-tab tabTitle="RtSelectionService and ViewChild">
@@ -223,7 +232,7 @@
         </h4>
         <p>
             Вы можете пометить данными директивами кнопки (или не кнопки) расположенные внутри области
-            <code>rtSelectionAreaFor</code> и по клику на них будет выполняться select/deselect всех элементов в коллекции.
+            <code>rtSelectionArea</code> и по клику на них будет выполняться select/deselect всех элементов в коллекции.
         </p>
         <p>
             Обе директивы имеют дополнительный параметр <code>recursive</code>, который по умолчанию равен true и позволяет
@@ -234,9 +243,9 @@
         </p>
         <aside>
             <p>
-                Обратите внимание, что директива <code>rtSelectionAreaFor</code> перенесена на уровень элемента <code>table</code>.
+                Обратите внимание, что директива <code>rtSelectionArea</code> перенесена на уровень элемента <code>table</code>.
                 Это нужно чтобы директивы <code>rtSelectAll</code> и <code>rtDeselectAll</code> получили корректный инстанс
-                <code>rtSelectionAreaFor</code>, через который они и работают.
+                <code>rtSelectionArea</code>, через который они и работают.
             </p>
         </aside>
         <rt-demo-tab-section>
@@ -258,7 +267,8 @@
             по элементам.
         </p>
         <p>
-            На такие случаи директива <code>rtSelectionCheckboxFor</code> используется вместо <code>rtSelectByIndex</code>            и так же принимает в качестве параметра индекс элемента.
+            На такие случаи директива <code>rtSelectionCheckboxFor</code> используется вместо <code>rtSelectable</code> и
+            так же принимает в качестве параметра индекс элемента.
         </p>
         <p>
             Директива <code>rtCheckAll</code> заменяет собой директивы <code>rtSelectAll</code> и <code>rtDeselectAll</code>            и так же принимает в качестве параметра флаг <code>recursive</code>.

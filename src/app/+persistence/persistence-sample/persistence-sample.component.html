@@ -4,9 +4,6 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th class="t-col-row-number">
-                    <span>&#8470;</span>
-                </th>
                 <th class="t-col-iata-code">
                     <span [rtSort]="'iataCode'">IATA</span>
                 </th>
@@ -22,11 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let airport of list.items, let index=index">
-                <td>
-                    <rt-row-number [index]="index">
-                    </rt-row-number>
-                </td>
+            <tr *ngFor="let airport of list.items">
                 <td>{{airport.iataCode}}</td>
                 <td>{{airport.name}}</td>
                 <td>{{airport.cityName}}</td>
@@ -35,7 +28,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="6">
+                <td colspan="4">
                     <rt-demo-paged-footer></rt-demo-paged-footer>
                 </td>
             </tr>
