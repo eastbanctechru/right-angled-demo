@@ -7,13 +7,9 @@ import { CountriesService } from '../countries.service';
     templateUrl: 'selected-flag.component.html'
 })
 export class SelectedFlagComponent {
-    public countries: any;
+    public countries: Array<any> = new Array<any>();
     constructor(public countriesService: CountriesService) {
-        this.countries = this.countriesService.getSomeCountries()
-            .map(this.convertToSelectable)
-            .share();
-    }
-    public convertToSelectable(countries: Array<string>): Array<any> {
-        return countries.map(country => ({ name: country, selected: false }));
+        this.countriesService.getSomeCountries()
+            .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
     }
 }

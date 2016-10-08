@@ -8,10 +8,12 @@ import { RtSelectionEvent } from 'right-angled';
     templateUrl: 'selection-events.component.html'
 })
 export class SelectionEventsComponent {
-    public countries: any;
+    public countries: Array<any> = new Array<any>();
     constructor(public countriesService: CountriesService) {
-        this.countries = this.countriesService.getSomeCountries();
+        this.countriesService.getSomeCountries()
+            .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
     }
+
     public onItemSelected(evt: RtSelectionEvent): void {
         alertify.log(`${evt.item} - selection handled by area`);
     }

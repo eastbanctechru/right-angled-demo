@@ -9,6 +9,6 @@ import { CountriesService } from '../countries.service';
 export class SelectAllComponent {
     public regions: any;
     constructor(public countriesService: CountriesService) {
-        this.regions = this.countriesService.getRegionsWithCountriesAndAirports();
+        this.regions = this.countriesService.getRegionsWithCountriesAndAirports().share();
     }
 }

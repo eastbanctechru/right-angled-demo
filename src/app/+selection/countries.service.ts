@@ -13,35 +13,30 @@ export class CountriesService {
     constructor(private http: Http) {
 
     }
-    private getAirports(delay: number): Observable<Array<Airport>> {
+    private getAirports(): Observable<Array<Airport>> {
         if (!this.airportsCache.observers.length) {
             this.airportsCache.complete();
             this.airportsCache = new ReplaySubject<Airport[]>(1);
             this.http.get(this.airportsUrl)
-                .map(response => (response.json().airports as Array<Airport>))
+                .map(response => (response.json().airports as Airport[]))
                 .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
         }
-        return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(delay).share();
+        return this.airportsCache;
     }
 
-    public getRegions(delay: number = 0): Observable<Array<string>> {
-        return this.getAirports(delay)
-            .map(airports => _.chain(airports).map((item: Airport) => (item.region)).uniq().value())
-            .share();
-    }
     public getSomeCountries(countriesCount: number = 5, delay: number = 0): Observable<Array<string>> {
-        return this.getAirports(delay)
+        return this.getAirports()
+            .delay(delay)
             .map(airports =>
                 _.chain(airports)
                     .map((item: Airport) => (item.countryName))
                     .filter(c => !!c)
                     .uniq()
                     .take(countriesCount)
-                    .value())
-            .share();
+                    .value());
     }
-    public getRegionsWithCountriesAndAirports(delay: number = 0): Observable<Array<any>> {
-        return this.getAirports(delay).map(airports => (
+    public getRegionsWithCountriesAndAirports(): Observable<Array<any>> {
+        return this.getAirports().map(airports => (
             _.chain(airports)
                 .groupBy(item => item.region)
                 .map((groupedByRegion, regionName) => (
@@ -66,7 +61,7 @@ export class CountriesService {
                 .filter(region => region.countries.length > 1)
                 .orderBy(region => region.name)
                 .value()
-        )).share();
+        ));
     }
     public getCountryInfo(countryName: string, delay: number = 0): Observable<any> {
         return this.http.get(`https://restcountries.eu/rest/v1/name/${countryName}`).map(response => (response.json())).delay(delay);

@@ -36,8 +36,7 @@ export class AirportsService {
     }
 
     private getAllAirports(): Observable<Airport[]> {
-        // we use optional "delay" parameter to simulate backend latency
-        // also we "cache" result since we get all of the items
+        // we "cache" result since we get all of the items
         if (!this.airportsCache.observers.length) {
             this.airportsCache.complete();
             this.airportsCache = new ReplaySubject<Airport[]>(1);
