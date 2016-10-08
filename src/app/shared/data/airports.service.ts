@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import * as _ from 'lodash';
-import { SortDirection } from 'right-angled';
+
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
@@ -9,6 +9,7 @@ import { Airport } from './airport';
 import { AirportsListRequest } from './airports-list-request';
 import { AirportsPagedListRequest } from './airports-paged-list-request';
 import { ListResponse } from './list-response';
+import { SortDirection } from './sort-parameter';
 
 @Injectable()
 export class AirportsService {
