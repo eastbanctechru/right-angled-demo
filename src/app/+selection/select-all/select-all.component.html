@@ -16,18 +16,18 @@
         </ul>
     </div>
     <div class="col-md-12" *ngFor="let region of regions | async">
-        <div class="col-md-12 item" [class.selected]="region.selected" [rtSelectable]="region">
+        <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="region" #rts="rtSelectable">
             {{region.name}} ({{region.countries.length}} countries)
         </div>
 
-        <div class="col-md-12" *ngIf="region.selected" rtSelectionArea>
+        <div class="col-md-12" *ngIf="rts.selected" rtSelectionArea>
             <div *ngFor="let country of region.countries">
-                <div class="col-md-12 item" [class.selected]="country.selected" [rtSelectable]="country" style="background-color: darkcyan;">
+                <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="country" #rts="rtSelectable" style="background-color: darkcyan;">
                     {{country.name}} ({{country.airports.length}} airports)
                 </div>
-                <div class="col-md-12" *ngIf="country.selected" rtSelectionArea>
+                <div class="col-md-12" *ngIf="rts.selected" rtSelectionArea>
                     <div *ngFor="let airport of country.airports">
-                        <div class="col-md-12 item" [class.selected]="airport.selected" [rtSelectable]="airport" style="background-color: darkorange;">
+                        <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable" style="background-color: darkorange;">
                             {{airport.name}} ({{airport.iataCode}})
                         </div>
                     </div>
