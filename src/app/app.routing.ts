@@ -8,7 +8,6 @@ import { PagingAndStatesRoutes } from './+paging-and-state/paging-and-state.rout
 import { PersistenceRoutes } from './+persistence/persistence.routes';
 import { QuickTourRoutes } from './+quick-tour/quick-tour.routes';
 import { SelectionRoutes } from './+selection/selection.routes';
-import { SortingsRoutes } from './+sortings/sortings.routes';
 
 const appRoutes: Routes = [
     ...FiltersRoutes,
@@ -18,7 +17,6 @@ const appRoutes: Routes = [
     ...PagingAndStatesRoutes,
     ...PersistenceRoutes,
     ...QuickTourRoutes,
-    ...SortingsRoutes,
     { path: '**', redirectTo: '' }
 ];
 

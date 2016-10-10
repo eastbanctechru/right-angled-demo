@@ -11,7 +11,6 @@ import { PagingAndStateModule } from './+paging-and-state/paging-and-state.modul
 import { PersistenceModule } from './+persistence/persistence.module';
 import { QuickTourModule } from './+quick-tour/quick-tour.module';
 import { SelectionModule } from './+selection/selection.module';
-import { SortingsModule } from './+sortings/sortings.module';
 import { SharedModule } from './shared/shared.module';
 
 import { DemoAppComponent } from './app.component';
@@ -32,7 +31,6 @@ import { routing } from './app.routing';
     PagingAndStateModule,
     PersistenceModule,
     QuickTourModule,
-    SelectionModule,
-    SortingsModule]
+    SelectionModule]
 })
 export class AppModule { }
