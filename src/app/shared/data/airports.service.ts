@@ -43,7 +43,6 @@ export class AirportsService {
             this.airportsCache = new ReplaySubject<Airport[]>(1);
             this.http.get(this.airportsUrl)
                 .map(response => (response.json().airports as Airport[]))
-                .map(airports => this.makeItemsSelectable(airports))
                 .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
         }
         return this.airportsCache;
@@ -55,17 +54,12 @@ export class AirportsService {
         return _.orderBy(data, fieldNames, directions);
     }
 
-    private makeItemsSelectable(data: Airport[]): Airport[] {
-        return _.forEach(data, item => { (item as any).selected = false; });
-    }
-
     private applyFilters(request: AirportsListRequest, airports: Airport[]): Airport[] {
         return _.chain(airports)
             .filter(item => !request.country || (item.countryName || '').toLowerCase().indexOf(request.country.toLowerCase()) !== -1)
             .filter(item => !request.airportName || item.name.toLowerCase().indexOf(request.airportName.toLowerCase()) !== -1)
             .filter(item => request.airportSize === null || request.airportSize === undefined || (item.size === null && request.airportSize === '') || item.size === request.airportSize)
             .filter(item => !request.airportType || item.type === request.airportType)
-            .forEach(item => { (item as any).selected = false; })
             .value();
     }
     private applyPaging(request: AirportsPagedListRequest, airports: Airport[]): ListResponse {
