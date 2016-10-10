@@ -1,5 +1,5 @@
 <div class="item" [class.selected]="selected">
-    {{country.name}}
+    {{country}}
 </div>
 <div *ngIf="selected">
     {{this.countryInfo|async|json}}

@@ -7,9 +7,9 @@ import { CountriesService } from '../countries.service';
     templateUrl: 'service-injection.component.html'
 })
 export class ServiceInjectionComponent {
-    public countries: Array<any> = new Array<any>();
+    public countries: Array<string> = new Array<string>();
     constructor(public countriesService: CountriesService) {
         this.countriesService.getSomeCountries()
-            .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
+            .subscribe(countries => this.countries = countries);
     }
 }

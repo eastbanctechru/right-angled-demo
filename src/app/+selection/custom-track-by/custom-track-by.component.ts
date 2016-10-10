@@ -7,7 +7,7 @@ import { CountriesService } from '../countries.service';
     templateUrl: 'custom-track-by.component.html'
 })
 export class CustomTrackByComponent {
-    public countries: Array<any> = [];
+    public countries: Array<string> = [];
     constructor(public countriesService: CountriesService) {
         this.reload();
     }

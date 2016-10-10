@@ -8,10 +8,10 @@ import { RtSelectionEvent } from 'right-angled';
     templateUrl: 'selection-events.component.html'
 })
 export class SelectionEventsComponent {
-    public countries: Array<any> = new Array<any>();
+    public countries: Array<string> = new Array<string>();
     constructor(public countriesService: CountriesService) {
         this.countriesService.getSomeCountries()
-            .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
+            .subscribe(countries => this.countries = countries);
     }
 
     public onItemSelected(evt: RtSelectionEvent): void {

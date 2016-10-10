@@ -10,10 +10,10 @@ import { CountriesService } from '../countries.service';
 })
 export class ServiceViewChildComponent {
     @ViewChild(SelectionAreaDirective) public selectionArea: SelectionAreaDirective;
-    public countries: Array<any> = new Array<any>();
+    public countries: Array<string> = new Array<string>();
     constructor(public countriesService: CountriesService) {
         this.countriesService.getSomeCountries()
-            .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
+            .subscribe(countries => this.countries = countries);
     }
     public displaySelectedItems(): void {
         alertify.alert(this.selectionArea.selectionService.getSelectedElements().map((c: any) => c.name).join(';'));

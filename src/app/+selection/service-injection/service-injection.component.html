@@ -2,9 +2,9 @@
     <div class="col-md-12 toolbar">
         <rt-demo-nested-button></rt-demo-nested-button>
     </div>
-    <div class="col-md-12" *ngFor="let country of countries">
-        <div class="item" [class.selected]="country.selected" [rtSelectable]="country">
-            {{country.name}}
+    <div class="col-md-12" *ngFor="let country of countries" [rtSelectable]="country" #rts="rtSelectable">
+        <div class="item" [class.selected]="rts.selected">
+            {{country}}
         </div>
     </div>
 </div>
