@@ -1,45 +1,41 @@
 <div class="table-responsive" [rtList]="getAirports" #list="rtList">
-    <form>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <input rtLoadData type="submit" class="btn btn-load" title="Load data" value="Load data" />
-                    <input rtCancelLoad type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" />
-                    <button rtResetSettings type="button" class="btn btn-reset" title="Reset settings">Reset settings</button>
-                </div>
-            </div>
-        </div>
-    </form>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th><span rtSort="iataCode">IATA</span></th>
-                <th><span rtSort="name">Airport name</span></th>
-                <th><span rtSort="countryName">Country</span></th>
-            </tr>
-        </thead>
-        <tbody rtSelectionArea>
-            <tr *ngFor="let airport of list.items" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
-                <td>{{airport.iataCode}}</td>
-                <td>{{airport.name}}</td>
-                <td>{{airport.countryName}}</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">
-                    <rt-list-state-progress>
-                        <div></div>
-                    </rt-list-state-progress>
-                    <rt-list-state-done>
-                        Data was loaded sucessfully.
-                    </rt-list-state-done>
-                    <rt-list-state-request-canceled>
-                        Request was cancelled.
-                    </rt-list-state-request-canceled>
+	<form>
+		<div class="form-group">
+			<input rtLoadData type="submit" class="btn btn-load" title="Load data" value="Load data" />
+			<input rtCancelLoad type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" />
+			<button rtResetSettings type="button" class="btn btn-reset" title="Reset settings">Reset settings</button>
+		</div>
+	</form>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><span rtSort="iataCode">IATA</span></th>
+				<th><span rtSort="name">Airport name</span></th>
+				<th><span rtSort="countryName">Country</span></th>
+			</tr>
+		</thead>
+		<tbody rtSelectionArea>
+			<tr *ngFor="let airport of list.items" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
+				<td>{{airport.iataCode}}</td>
+				<td>{{airport.name}}</td>
+				<td>{{airport.countryName}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<rt-list-state-progress>
+						<div></div>
+					</rt-list-state-progress>
+					<rt-list-state-done>
+						Data was loaded sucessfully.
+					</rt-list-state-done>
+					<rt-list-state-request-canceled>
+						Request was cancelled.
+					</rt-list-state-request-canceled>
 
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </div>

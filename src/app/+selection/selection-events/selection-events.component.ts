@@ -8,7 +8,7 @@ import { RtSelectionEvent } from 'right-angled';
     templateUrl: 'selection-events.component.html'
 })
 export class SelectionEventsComponent {
-    public countries: Array<string> = new Array<string>();
+    public countries: Array<any> = new Array<any>();
     constructor(public countriesService: CountriesService) {
         this.countriesService.getSomeCountries()
             .subscribe(countries => this.countries = countries);

@@ -10,6 +10,6 @@ export class SelectedFlagDataComponent {
     public countries: Array<any> = new Array<any>();
     constructor(public countriesService: CountriesService) {
         this.countriesService.getSomeCountries()
-            .subscribe(countries => this.countries = countries.map(country => ({ name: country, selected: false })));
+            .subscribe(countries => this.countries = countries.map(country => ({ name: country.name, selected: false })));
     }
 }

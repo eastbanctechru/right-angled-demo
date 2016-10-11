@@ -11,7 +11,7 @@ export class OptionsComponent {
     public multiple: boolean = true;
     public toggleOnly: boolean = false;
     public autoSelectFirst: boolean = false;
-    public countries: Array<string> = [];
+    public countries: Array<any> = [];
     constructor(public countriesService: CountriesService) {
         this.reload();
     }

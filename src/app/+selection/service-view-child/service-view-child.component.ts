@@ -10,7 +10,7 @@ import { CountriesService } from '../countries.service';
 })
 export class ServiceViewChildComponent {
     @ViewChild(SelectionAreaDirective) public selectionArea: SelectionAreaDirective;
-    public countries: Array<string> = new Array<string>();
+    public countries: Array<any> = new Array<any>();
     constructor(public countriesService: CountriesService) {
         this.countriesService.getSomeCountries()
             .subscribe(countries => this.countries = countries);

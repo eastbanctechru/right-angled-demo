@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "typescript.tsdk": "node_modules/typescript/lib/",
     "files.exclude": {
         "**/esm": true,
         "**/*.d.ts": {
@@ -18,4 +17,6 @@
         "**/esm": true,
         "**/coverage": true
     }
+,
+"typescript.check.workspaceVersion": false
 }

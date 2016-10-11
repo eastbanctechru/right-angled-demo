@@ -8,3 +8,4 @@ export { ListResponse } from './data/list-response';
 export { LocalStorageStateService } from './state-services/local-storage-state-service';
 export { SessionStorageStateService } from './state-services/session-storage-state-service';
 export { QueryStringStateService } from './state-services/query-string-state-service';
+export { ExtendedFilterConfig } from './state-services/extended-filter-config';
