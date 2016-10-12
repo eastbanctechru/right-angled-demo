@@ -329,8 +329,8 @@
 <section id="use-persistence">
     <h3>Добавляем управление состоянием</h3>
     <p>
-        В примере ниже мы импортировали сервис <code>QueryStringStateService</code>, разработанный в разделе <a href="#"
-            [routerLink]="['/persistence']">Persist lists state</a> и зарегистрировали его в хуке <code>ngAfterViewInit</code>        аналогично тому, как мы сделали это в примере с фильтрами.
+        В примере ниже мы добавили в шаблон директиву <code>rtSerializeToQueryString</code>, разработанную в разделе <a href="#"
+            [routerLink]="['/persistence']">Persist lists state</a>.
     </p>
     <p>
         Теперь при каждой загрузке данных состояние параметров будет отражаться в <code>queryString</code>. Если вы поменяете
