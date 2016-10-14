@@ -1,75 +1,91 @@
 <h1>List controls</h1>
 <section>
-    <h3>Table of contents</h3>
-    <ul>
-        <li><a href="list-controls#common-idea">Общая идея</a></li>
-        <li><a href="list-controls#bootstrap">Как подключить</a></li>
-        <li><a href="list-controls#rt-list">Директива <code>rtList</code></a>
-            <ul>
-                <li>
-                    <a href="list-controls#rt-list-param">Директива <code>rtList</code></a>
-                </li>
-                <li>
-                    <a href="list-controls#load-on-init">Параметр <code>loadOnInit</code></a>
-                </li>
-                <li>
-                    <a href="list-controls#default-sortings">Параметр <code>defaultSortings</code></a>
-                </li>
-                <li>
-                    <a href="list-controls#service-init">Событие <code>onServiceInit</code></a>
-                </li>
-                <li>
-                    <a href="list-controls#service-inited">Событие <code>onServiceInited</code></a>
-                </li>
-                <li>
-                    <a href="list-controls#destroy-all">Уничтожение элементов списка и метод <code>destroyAll</code></a>
-                </li>
-            </ul>
-        </li>
-        <li><a href="list-controls#rt-sort">Директива <code>rtSort</code></a></li>
-        <li><a href="list-controls#rt-row-number">Компонент <code>rt-row-number</code></a></li>
-        <li><a href="list-controls#load-data">Директива <code>rtLoadData</code></a></li>
-        <li><a href="list-controls#cancel-load">Директива <code>rtCancelLoad</code></a></li>
-        <li><a href="list-controls#reset-settings">Директива <code>rtResetSettings</code></a></li>
-    </ul>
+	<h3>Table of contents</h3>
+	<ul>
+		<li><a href="list-controls#common-idea">Общая идея</a></li>
+		<li><a href="list-controls#bootstrap">Как подключить</a></li>
+		<li><a href="list-controls#rt-list">Директива <code>rtList</code></a>
+			<ul>
+				<li>
+					<a href="list-controls#rt-list-param">Директива <code>rtList</code></a>
+				</li>
+				<li>
+					<a href="list-controls#load-on-init">Параметр <code>loadOnInit</code></a>
+				</li>
+				<li>
+					<a href="list-controls#default-sortings">Параметр <code>defaultSortings</code></a>
+				</li>
+				<li>
+					<a href="list-controls#service-init">Событие <code>onServiceInit</code></a>
+				</li>
+				<li>
+					<a href="list-controls#service-inited">Событие <code>onServiceInited</code></a>
+				</li>
+				<li>
+					<a href="list-controls#destroy-all">Уничтожение элементов списка и метод <code>destroyAll</code></a>
+				</li>
+			</ul>
+		</li>
+		<li><a href="list-controls#rt-sort">Директива <code>rtSort</code></a></li>
+		<li><a href="list-controls#rt-row-number">Компонент <code>rt-row-number</code></a></li>
+		<li><a href="list-controls#load-controls">Директивы <code>rtLoadData</code>, <code>rtReloadData</code>, <code>rtCancelLoad</code></a></li>
+		<li><a href="list-controls#reset-settings">Директива <code>rtResetSettings</code></a></li>
+	</ul>
 </section>
 <section id="common-idea">
-    <h3>Общая идея</h3>
+	<h3>Общая идея</h3>
 </section>
 <section id="bootstrap">
-    <h3>Как подключить</h3>
+	<h3>Как подключить</h3>
 </section>
 <section id="rt-list">
-    <h3>Директива <code>rtList</code></h3>
+	<h3>Директива <code>rtList</code></h3>
 
-    <section id="rt-list-param">
-        <h4>Директива <code>rtList</code></h4>
-    </section>
-    <section id="load-on-init">
-        <h4>Параметр <code>loadOnInit</code></h4>
-    </section>
-    <section id="default-sortings">
-        <h4>Параметр <code>defaultSortings</code></h4>
-    </section>
-    <section id="service-init">
-        <h4>Событие <code>onServiceInit</code></h4>
-    </section>
-    <section id="service-inited">
-        <h4>Событие <code>onServiceInited</code></h4>
-    </section>
+	<section id="rt-list-param">
+		<h4>Директива <code>rtList</code></h4>
+	</section>
+	<section id="load-on-init">
+		<h4>Параметр <code>loadOnInit</code></h4>
+	</section>
+	<section id="default-sortings">
+		<h4>Параметр <code>defaultSortings</code></h4>
+	</section>
+	<section id="service-init">
+		<h4>Событие <code>onServiceInit</code></h4>
+	</section>
+	<section id="service-inited">
+		<h4>Событие <code>onServiceInited</code></h4>
+	</section>
 </section>
 <section id="rt-sort">
-    <h3>Директива <code>rtSort</code></h3>
+	<h3>Директива <code>rtSort</code></h3>
 </section>
 <section id="rt-row-number">
-    <h3>Компонент <code>rt-row-number</code></h3>
+	<h3>Компонент <code>rt-row-number</code></h3>
 </section>
-<section id="load-data">
-    <h3>Директива <code>rtLoadData</code></h3>
-</section>
-<section id="cancel-load">
-    <h3>Директива <code>rtCancelLoad</code></h3>
+<section id="load-controls">
+	<h3>Директивы <code>rtLoadData</code>, <code>rtReloadData</code>, <code>rtCancelLoad</code></h3>
+	<p>
+		Данные директивы позволяют добавить к HTML-элементу функционал загрузки данных, перезагрузки данных (загрузка со сбросом
+		пейджинга) и отмены запроса. Данные директивы не требуют каких-либо параметров или настроек.
+	</p>
+	<p>
+		Так же данные директивы выставляют значения для свойства <code>disabled</code> в зависимости от текущего состояния списка.
+		Например, блокируя кнопку загрузки, если запрос за данными уже выполняется.
+	</p>
+	<p>
+		Логичнее всего добавлять данные директивы к кнопкам. Но в принципе их можно добавить к любому элементу, на который можно
+		кликнуть, и у которого есть свойство <code>disabled<code>.
+	</p>
 </section>
 <section id="reset-settings">
-    <h3>Директива <code>rtResetSettings</code></h3>
+	<h3>Директива <code>rtResetSettings</code></h3>
+		<p>
+			Данная директива относится скорее с фильтрами, поскольку даже не имеет зависимости от <code>RtListService</code>.
+			Однако, она одинаково хорошо работает и для списков, и без них. Данная директива не требует каких-либо параметров.
+		</p>
+		<p>
+			Назначение данной директивы - сбрасывать настройки фильтров (а так же пейджинга, и сортировок, которые тоже настроены при
+			помощи аннотации <a href="#" [routerLink]="['/filters']">@filter</a>)
+		</p>
 </section>
