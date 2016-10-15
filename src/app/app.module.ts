@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulartics2-google-analytics';
 import { RTModule } from 'right-angled';
 
 import { FiltersModule } from './+filters/filters.module';
@@ -25,12 +27,16 @@ import { routing } from './app.routing';
     RTModule,
     SharedModule.forRoot(),
     routing,
+    Angulartics2Module.forRoot(),
     FiltersModule,
     ListControlsModule,
     MiscDirectivesModule,
     PagingAndStateModule,
     PersistenceModule,
     QuickTourModule,
-    SelectionModule]
+    SelectionModule],
+  providers: [
+    Angulartics2GoogleAnalytics
+  ]
 })
 export class AppModule { }
