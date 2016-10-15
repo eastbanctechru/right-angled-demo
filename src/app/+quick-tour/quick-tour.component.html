@@ -125,13 +125,24 @@
 <section id="use-list">
 	<h3>Делаем первый список</h3>
 	<p>
-		Чтобы создать список, нам необходимо добавить к элементу директиву <code>rtДist</code>, принимающую обязательный параметр-функцию
-		для запроса данных списка. Возвращать данная функция должна
-		<code>Promise</code>, <code>Observable</code> или <code>EventEmitter</code> с данными.
+		Итак, приступим.
 	</p>
+	<p> Ниже привеен код примера, который мы и превратим в список. Как вы можете заметить, это простейший <code>angular</code>-компонент
+		с шаблоном, представляющим собой обычную верстку с использованием <code>bootstrap</code>. Использование <code>bootstrap</code>		не явлется необходимым, просто мы использовали для стилизации наших примеров его, предположив, что для большинства разработчиков
+		он будет знаком и верстка с его использованием будет наиболее привычна.
+	</p>
+	<rt-demo-tab-section>
+		<rt-demo-code-tab url="%2Bquick-tour/starter/starter.component.ts">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="%2Bquick-tour/starter/starter.component.html">
+		</rt-demo-code-tab>
+	</rt-demo-tab-section>
 	<p>
-		Ниже представлен пример компонента, который обращается к методу <code>getAirportsList</code> описанного выше класса
-		<code>AirportsService</code>. </p>
+		Чтобы превратить компонент в список, нам необходимо добавить в шаблоне директиву <code>rtList</code>. Данная директива
+		принимает один параметр - функцию для запроса данных списка. Возвращать данная функция должна
+		<code>Promise</code>превратить данный компонент в <code>Observable</code> или <code>EventEmitter</code>. Для этого мы заинжектим
+		в наш компонент объект типа <code>AirportsService</code> и воспользуемся его методом <code>getAirportsList</code>.
+	</p>
 	<rt-demo-tab-section>
 		<rt-demo-sample-tab tabTitle="Live demo">
 			<rt-demo-use-list></rt-demo-use-list>
