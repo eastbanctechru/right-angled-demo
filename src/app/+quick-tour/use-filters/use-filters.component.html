@@ -1,4 +1,4 @@
-<div [rtList]="getAirports" #list="rtList">
+<div [rtList]="getAirports" #list="rtList" (onServiceInit)="onServiceInit($event)">
 	<form>
 		<div class="row">
 			<div class="col-md-4 col-sm-6">

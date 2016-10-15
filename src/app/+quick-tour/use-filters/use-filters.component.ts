@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { FilterConfig, ListDirective, filter } from 'right-angled';
+import { Component } from '@angular/core';
+import { FilterConfig, RtListService, filter } from 'right-angled';
 
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 import { Observable } from 'rxjs/Observable';
@@ -8,8 +8,7 @@ import { Observable } from 'rxjs/Observable';
     selector: 'rt-demo-use-filters',
     templateUrl: 'use-filters.component.html'
 })
-export class UseFiltersComponent implements AfterViewInit {
-    @ViewChild(ListDirective) public listDirective: ListDirective;
+export class UseFiltersComponent {
     @filter public airportName: string = null;
     @filter({ defaultValue: 'Iceland', parameterName: 'country' } as FilterConfig) public countryName: string = null;
 
@@ -18,7 +17,7 @@ export class UseFiltersComponent implements AfterViewInit {
     getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
         return this.airportsService.getAirportsPagedList(request);
     }
-    ngAfterViewInit(): void {
-        this.listDirective.listService.registerFilterTarget(this);
+    onServiceInit(listService: RtListService): void {
+        listService.registerFilterTarget(this);
     }
 }
