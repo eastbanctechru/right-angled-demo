@@ -4,8 +4,9 @@ import { QuickTourComponent } from './quick-tour.component';
 
 export const QuickTourRoutes: Routes = [
     {
-        component: QuickTourComponent,
-        path: ''
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'quick-tour'
     },
     {
         component: QuickTourComponent,
