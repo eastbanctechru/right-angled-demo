@@ -1,0 +1,35 @@
+<div [rtList]="getAirports" #list="rtList">
+	<form>
+		<div class="form-group">
+			<input rtLoadData type="submit" class="btn btn-load" title="Load data" value="Load data" (click)="list.loadData()" [disabled]="list.busy" />
+			<input rtLoadData type="submit" class="btn btn-load" title="Reload data" value="Reload data" (click)="list.reloadData()" [disabled]="list.busy" />
+			<input rtCancelLoad type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" (click)="list.cancelRequests()" [disabled]="list.ready"/>
+		</div>
+	</form>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><span rtSort="iataCode">IATA</span></th>
+					<th><span rtSort="name">Airport name</span></th>
+					<th><span rtSort="countryName">Country</span></th>
+				</tr>
+			</thead>
+			<tbody rtSelectionArea>
+				<tr *ngFor="let airport of list.items" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
+					<td>{{airport.iataCode}}</td>
+					<td>{{airport.name}}</td>
+					<td>{{airport.countryName}}</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">
+						<rt-demo-paged-footer>
+						</rt-demo-paged-footer>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

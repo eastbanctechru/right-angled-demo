@@ -5,9 +5,11 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ListControlsComponent } from './list-controls.component';
 
+import { UseRtListComponent } from './use-rt-list/use-rt-list.component';
+
 @NgModule({
-    declarations: [ListControlsComponent],
-    exports: [ListControlsComponent],
+    declarations: [ListControlsComponent, UseRtListComponent],
+    exports: [ListControlsComponent, UseRtListComponent],
     imports: [CommonModule, SharedModule, RouterModule]
 })
 export class ListControlsModule {
