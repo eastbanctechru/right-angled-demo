@@ -17,6 +17,7 @@
                 background: url('./assets/images/logo.png') center center no-repeat;
             }
             .navbar-nav {
+                margin: 0;
                 > li {
                     > .dropdown-toggle {
                         display: block;
@@ -247,6 +248,9 @@
         }
     }
 
+    .table-responsive {
+        border: 0;
+    } 
     .table { 
         thead {
             tr {
