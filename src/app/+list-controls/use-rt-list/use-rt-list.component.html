@@ -1,9 +1,10 @@
 <div [rtList]="getAirports" #list="rtList">
 	<form>
 		<div class="form-group">
-			<input rtLoadData type="submit" class="btn btn-load" title="Load data" value="Load data" (click)="list.loadData()" [disabled]="list.busy" />
-			<input rtLoadData type="submit" class="btn btn-load" title="Reload data" value="Reload data" (click)="list.reloadData()" [disabled]="list.busy" />
-			<input rtCancelLoad type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" (click)="list.cancelRequests()" [disabled]="list.ready"/>
+			<input type="submit" class="btn btn-load" title="Load data" value="Load data" (click)="list.loadData()" [disabled]="list.busy" />
+			<input type="submit" class="btn btn-load" title="Reload data" value="Reload data" (click)="list.reloadData()" [disabled]="list.busy" />
+			<input type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" (click)="list.cancelRequests()" [disabled]="list.ready"/>
+			<button type="button" class="btn btn-reset" title="Reset settings" (click)="list.resetSettings()">Reset settings</button>
 		</div>
 	</form>
 	<div class="table-responsive">
