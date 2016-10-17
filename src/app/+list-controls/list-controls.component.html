@@ -58,6 +58,46 @@
 </section>
 <section id="rt-sort">
 	<h3>Директива <code>rtSort</code></h3>
+	<p>
+		Данная директива предназначена для настройки сортировок списка. Директива принимает в качестве обязательного параметра идентификатор
+		сортировки, который будет передаваться в запросе за данными.
+	</p>
+	<p>
+		Ниже расположен живой пример списка с сортировкам, а так же объявления контрактов <code>SortParameter</code> и <code>AirportsListRequest</code>.
+		Моменты, на которые следует обратить внимание, следующие:
+	</p>
+	<ul>
+		<li>
+			К элементу, помеченному данной директивой, добавляется класс <code>rt-sortable</code>. С помощью данного класса вы можете
+			настроить стили, сигнализирующие, что элемент сортируемый. Например, в наших примерах это появление двунаправленной стрелки
+			справа от элемента при наведении мыши.
+		</li>
+		<li>
+			При клике по элементу переданный параметр-идентификатор добавляется в коллекцию примененных сортировок с направлением
+			<code>Asc</code> и тут же вызывается метод загрузки данных, в который передается массив <code>sortings</code> с указанной
+			сортировкой в указанном направлении. К самому элементу добавляется класс <code>rt-sort-asc</code>, с помощью которого
+			можно настилить внешний вид отсортированного столбца.
+		</li>
+		<li>
+			При повторном клике направление сортировки меняется на противоположное и выполняется запрос за данными. Класс <code>rt-sort-asc</code>			элемента изменяется на <code>rt-sort-desc</code>.
+		</li>
+		<li>
+			С помощью клика с зажатой клавишей <code>Ctrl</code> можно настроить сортировку по нескольким полям. В таком случае, в
+			массив <code>sortings</code> будет передаваться несколько значений.
+		</li>
+	</ul>
+	<rt-demo-tab-section>
+		<rt-demo-sample-tab tabTitle="Live demo">
+			<rt-demo-use-sortings></rt-demo-use-sortings>
+		</rt-demo-sample-tab>
+		<rt-demo-code-tab url="%2Blist-controls/use-sortings/use-sortings.component.html">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="shared/data/airports-list-request.ts">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="shared/data/sort-parameter.ts">
+		</rt-demo-code-tab>
+
+	</rt-demo-tab-section>
 </section>
 <section id="rt-row-number">
 	<h3>Компонент <code>rt-row-number</code></h3>
@@ -72,8 +112,6 @@
 		<rt-demo-sample-tab tabTitle="Live demo">
 			<rt-demo-use-row-number></rt-demo-use-row-number>
 		</rt-demo-sample-tab>
-		<rt-demo-code-tab url="%2Blist-controls/use-row-number/use-row-number.component.ts">
-		</rt-demo-code-tab>
 		<rt-demo-code-tab url="%2Blist-controls/use-row-number/use-row-number.component.html">
 		</rt-demo-code-tab>
 	</rt-demo-tab-section>
@@ -114,8 +152,6 @@
 		<rt-demo-sample-tab tabTitle="Live demo">
 			<rt-demo-use-rt-list></rt-demo-use-rt-list>
 		</rt-demo-sample-tab>
-		<rt-demo-code-tab url="%2Blist-controls/use-rt-list/use-rt-list.component.ts">
-		</rt-demo-code-tab>
 		<rt-demo-code-tab url="%2Blist-controls/use-rt-list/use-rt-list.component.html">
 		</rt-demo-code-tab>
 	</rt-demo-tab-section>

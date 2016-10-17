@@ -7,10 +7,11 @@ import { ListControlsComponent } from './list-controls.component';
 
 import { UseRowNumberComponent } from './use-row-number/use-row-number.component';
 import { UseRtListComponent } from './use-rt-list/use-rt-list.component';
+import { UseSortingsComponent } from './use-sortings/use-sortings.component';
 
 @NgModule({
-    declarations: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent],
-    exports: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent],
+    declarations: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent, UseSortingsComponent],
+    exports: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent, UseSortingsComponent],
     imports: [CommonModule, SharedModule, RouterModule]
 })
 export class ListControlsModule {
