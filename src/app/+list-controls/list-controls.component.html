@@ -27,7 +27,7 @@
 			</ul>
 		</li>
 		<li><a href="list-controls#rt-sort">Директива <code>rtSort</code></a></li>
-		<li><a href="list-controls#rt-row-number">Компонент <code>rt-row-number</code></a></li>
+		<li><a href="list-controls#rt-row-number"><code>rtRowNumber</code> pipe</a></li>
 		<li><a href="list-controls#load-controls">Директивы <code>rtLoadData</code>, <code>rtReloadData</code>, <code>rtCancelLoad</code> и <code>rtResetSettings</code></a></li>
 	</ul>
 </section>
@@ -100,13 +100,14 @@
 	</rt-demo-tab-section>
 </section>
 <section id="rt-row-number">
-	<h3>Компонент <code>rt-row-number</code></h3>
-	<p>Данный компонент может быть использован в шаблонах элемента списка для автоматической нумерации строк. Компонент автоматически
-		распознает с каким пейджером он работает и проставляет соответствующим образом номера, например, начиная нумерацию не с
-		1, а с 21 для второй страницы постраничного списка.
+	<h3><code>rtRowNumber</code> pipe</h3>
+	<p>Данный pipe может быть использован в шаблонах элемента списка для автоматической нумерации строк. Он распознает с каким
+		пейджером работает и проставляет соответствующим образом номера, например, начиная нумерацию не с 1, а с 21 для второй
+		страницы постраничного списка.
 	</p>
 	<p>
-		Данная директива принимает обязательный параметр <code>index</code>, на основе которого и будет считаться номер строки.
+		Данный pipe применяется к значению <code>index</code>, представляющему собой индекс текущего элемента в
+		коллекции. Также pipe-у необходимо передать директиву <code>rtList</code> в качестве параметра.
 	</p>
 	<rt-demo-tab-section>
 		<rt-demo-sample-tab tabTitle="Live demo">
