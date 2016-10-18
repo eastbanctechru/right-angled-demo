@@ -28,7 +28,7 @@
 		</li>
 		<li><a href="list-controls#rt-sort">Директива <code>rtSort</code></a></li>
 		<li><a href="list-controls#rt-row-number"><code>rtRowNumber</code> pipe</a></li>
-		<li><a href="list-controls#load-controls">Директивы <code>rtLoadData</code>, <code>rtReloadData</code>, <code>rtCancelLoad</code> и <code>rtResetSettings</code></a></li>
+		<li><a href="list-controls#load-methods">Методы и свойства <code>rtList</code></a></li>
 	</ul>
 </section>
 <section id="common-idea">
@@ -117,37 +117,33 @@
 		</rt-demo-code-tab>
 	</rt-demo-tab-section>
 </section>
-<section id="load-controls">
-	<h3>Директивы <code>rtLoadData</code>, <code>rtReloadData</code>, <code>rtCancelLoad</code>, <code>rtResetSettings</code></h3>
-	<p>
-		Данные директивы позволяют добавить к HTML-элементам следующий функционал:
-	</p>
+<section id="list-methods">
+	<h3>Методы <code>loadData</code>, <code>reloadData</code>, <code>cancelRequests</code>, <code>resetSettings</code></h3>
 	<ul>
 		<li>
-			<code>rtLoadData</code> - при клике на элемент, помеченный данной директивой, будет выполняться загрузка данных в список.
+			<code>loadData</code> - выполняет загрузку данных в список.
 		</li>
 		<li>
-			<code>rtReloadData</code> - при клике на элемент, помеченный данной директивой, будет выполняться перезагрузка (загрузка
+			<code>reloadData</code> - выполняет перезагрузку (загрузку
 			со сбросом параметров пейджинга) данных в список.
 		</li>
 		<li>
-			<code>rtCancelLoad</code> - при клике на элемент, помеченный данной директивой, будет происходить отмена выполняющегося
+			<code>cancelRequests</code> - выполняет отмену выполняющегося
 			в данный момент времени запроса данных для списка.
 		</li>
 		<li>
-			<code>rtResetSettings</code> - при клике на элемент, помеченный данной директивой, будет выполняться сброс параметров
+			<code>resetSettings</code> - выполняет сброс параметров
 			списка (сортировки, пейджинг, фильтры).
+		</li>
+		<li>
+			<code>busy</code> - возвращает <code>true</code> если в данный момент времени выполняется запрос за данными.
+		</li>
+		<li>
+			<code>ready</code> - возвращает <code>true</code> если в данный момент времени запрос за данными НЕ выполняется.
 		</li>
 	</ul>
 	<p>
-		Так же данные директивы выставляют значения для свойства <code>disabled</code> в зависимости от текущего состояния списка.
-		Например, блокируя кнопку загрузки, если запрос за данными уже выполняется.
-	</p>
-	<p>
-		Стоит заметить, что можно обойтись вообще без использования директив, поскольку все необходимые свойства и методы есть у
-		директивы
-		<code>rtList</code>. Ниже приведен пример списка, у которого все кнопки сделаны с использованем свойств и методов директивы
-		<code>rtList</code>.
+		Ниже приведен пример списка с четырьмя кнопками, использующими описанные выше методы и свойства.
 	</p>
 	<rt-demo-tab-section>
 		<rt-demo-sample-tab tabTitle="Live demo">

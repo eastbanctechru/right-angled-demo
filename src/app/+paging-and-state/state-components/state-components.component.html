@@ -3,10 +3,10 @@
         <div class="col-md-12 toolbar">
             <ul>
                 <li>
-                    <button rtLoadData type="button" class="btn btn-primary">Load data</button>
+                    <button (click)="list.loadData()" [disabled]="list.busy" type="button" class="btn btn-primary">Load data</button>
                 </li>
                 <li>
-                    <button rtCancelLoad type="button" class="btn btn-primary">Cancel loading</button>
+                    <button (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-primary">Cancel loading</button>
                 </li>
                 <li>
                     <button type="button" class="btn btn-primary" (click)="raiseErrorOnLoad()">Raise error on load</button>

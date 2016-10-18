@@ -15,9 +15,9 @@
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<div class="form-group">
-					<input rtLoadData type="submit" class="btn btn-load" title="Load data" value="Load data" />
-					<input rtCancelLoad type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" />
-					<button rtResetSettings type="button" class="btn btn-reset" title="Reset settings">Reset settings</button>
+					<input (click)="list.loadData()" [disabled]="list.busy" type="submit" class="btn btn-load" title="Load data" value="Load data" />
+					<input (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" />
+					<button (click)="list.resetSettings()" [disabled]="list.busy" type="button" class="btn btn-reset" title="Reset settings">Reset settings</button>
 				</div>
 			</div>
 		</div>
