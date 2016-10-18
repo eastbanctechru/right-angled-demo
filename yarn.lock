@@ -2037,10 +2037,6 @@ diff@^2.2.1, diff@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/diff/-/diff-2.2.3.tgz#60eafd0d28ee906e4e8ff0a52c1229521033bf99"
 
-diff@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-3.0.1.tgz#a52d90cc08956994be00877bff97110062582c35"
-
 diffie-hellman@^5.0.0:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/diffie-hellman/-/diffie-hellman-5.0.2.tgz#b5835739270cfe26acf632099fded2a07f209e5e"
@@ -6383,9 +6379,9 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-right-angled@^0.28.5:
-  version "0.28.5"
-  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-0.28.5.tgz#8fe46becdcec777dd2f1ea381f715fc79dc64da3"
+right-angled@0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-0.29.0.tgz#ac3a572e21dec67eace3d28a700725313a22abd0"
   dependencies:
     "@angular/common" "~2.1.0"
     "@angular/core" "~2.1.0"
@@ -7265,13 +7261,12 @@ ts-loader@^0.8.2:
     object-assign "^2.0.0"
     semver "^5.0.1"
 
-ts-node@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-1.4.0.tgz#915ea0952f9f350d218ff18463ea88f4133314f5"
+ts-node@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-1.5.2.tgz#d1376ad812447fd01b27d9e3367e2484b181eea2"
   dependencies:
     arrify "^1.0.0"
     chalk "^1.1.1"
-    diff "^3.0.0"
     make-error "^1.1.1"
     minimist "^1.2.0"
     mkdirp "^0.5.1"

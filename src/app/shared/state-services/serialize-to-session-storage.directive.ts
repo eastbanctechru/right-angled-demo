@@ -1,5 +1,5 @@
 import { Directive, OnDestroy, OnInit } from '@angular/core';
-import { RtListService } from 'right-angled';
+import { RtList } from 'right-angled';
 
 import { SessionStorageStateService } from './session-storage-state-service';
 
@@ -8,12 +8,12 @@ import { SessionStorageStateService } from './session-storage-state-service';
     selector: '[rtSerializeToSessionStorage]'
 })
 export class SerializeToSessionStorageDirective implements OnInit, OnDestroy {
-    constructor(private listService: RtListService, private stateService: SessionStorageStateService) {
+    constructor(private list: RtList, private stateService: SessionStorageStateService) {
     }
     public ngOnInit(): void {
-        this.listService.registerStateService(this.stateService);
+        this.list.registerStateService(this.stateService);
     }
     public ngOnDestroy(): void {
-        this.listService.removeStateService(this.stateService);
+        this.list.removeStateService(this.stateService);
     }
 }

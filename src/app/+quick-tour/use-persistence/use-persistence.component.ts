@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FilterConfig, RtListService, filter } from 'right-angled';
+import { FilterConfig, RtList, filter } from 'right-angled';
 
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +17,7 @@ export class UsePersistenceComponent {
     getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
         return this.airportsService.getAirportsPagedList(request);
     }
-    onServiceInit(listService: RtListService): void {
-        listService.registerFilterTarget(this);
+    onListInit(list: RtList): void {
+        list.registerFilterTarget(this);
     }
 }

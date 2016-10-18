@@ -1,5 +1,5 @@
 import { Directive, Input, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
-import { RtListService } from 'right-angled';
+import { RtList } from 'right-angled';
 
 import { QueryStringStateService } from './query-string-state-service';
 
@@ -9,13 +9,13 @@ import { QueryStringStateService } from './query-string-state-service';
 })
 export class SerializeToQueryStringDirective implements OnInit, OnDestroy, OnChanges {
     @Input('rtSerializeToQueryString') public serializationKey: string;
-    constructor(private listService: RtListService, private stateService: QueryStringStateService) {
+    constructor(private list: RtList, private stateService: QueryStringStateService) {
     }
     public ngOnInit(): void {
-        this.listService.registerStateService(this.stateService);
+        this.list.registerStateService(this.stateService);
     }
     public ngOnDestroy(): void {
-        this.listService.removeStateService(this.stateService);
+        this.list.removeStateService(this.stateService);
     }
     public ngOnChanges(changes: { serializationKey?: SimpleChange }): void {
         if (changes.serializationKey && changes.serializationKey.currentValue) {
