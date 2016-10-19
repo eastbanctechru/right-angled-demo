@@ -1,17 +1,17 @@
-<div class="row" rtSelectionArea>
+<div class="row" rtSelectionArea #selectionArea="rtSelectionArea">
     <div class="col-md-12 toolbar">
         <ul>
             <li>
-                <button class="btn btn-primary" title="Select all items" rtSelectAll [recursive]="false">Select all</button>
+                <button class="btn btn-primary" title="Select all items" (click)="selectionArea.selectionService.selectAll(false)">Select all</button>
             </li>
             <li>
-                <button class="btn btn-primary" title="Deselect all items" rtDeselectAll [recursive]="false">Deselect all</button>
+                <button class="btn btn-primary" title="Deselect all items" (click)="selectionArea.selectionService.deselectAll(false)">Deselect all</button>
             </li>
             <li>
-                <button class="btn btn-primary" title="Select all items" rtSelectAll>Select all recursivelly</button>
+                <button class="btn btn-primary" title="Select all items" (click)="selectionArea.selectionService.selectAll()">Select all recursivelly</button>
             </li>
             <li>
-                <button class="btn btn-primary" title="Deselect all items" rtDeselectAll>Deselect all recursivelly</button>
+                <button class="btn btn-primary" title="Deselect all items" (click)="selectionArea.selectionService.deselectAll()">Deselect all recursivelly</button>
             </li>
         </ul>
     </div>

@@ -1,16 +1,4 @@
 <div class="row" rtSelectionArea>
-    <div class="col-md-12 toolbar">
-        <ul>
-            <li>
-                <label class="checkbox-inline">
-                    <input type="checkbox" rtCheckAll [recursive]="false" />Check all</label>
-            </li>
-            <li>
-                <label class="checkbox-inline">
-                    <input type="checkbox" rtCheckAll/>Check all recursively</label>
-            </li>
-        </ul>
-    </div>
     <div class="col-md-12" *ngFor="let region of regions | async">
         <div class="col-md-12 item" [class.selected]="region.selected">
             <label class="checkbox-inline">
