@@ -22,7 +22,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3" *ngIf="!useAdvancedFilters">
+        <div class="col-md-3">
             <div class="form-group">
                 <input (click)="list.loadData()" [disabled]="list.busy" type="submit" class="btn btn-load" title="Load data from server" />
                 <input (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-cancel" title="Cancel loading" />
@@ -30,8 +30,4 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="useAdvancedFilters">
-        <rt-demo-additional-filter #additional [rtRegisterAsFilter]="additional"></rt-demo-additional-filter>
-    </div>
-    <div class="arrow-icon" [ngClass]="{collapsed: !useAdvancedFilters}" (click)="toggleAdvancedFilters()" [title]="useAdvancedFilters?'Disable advanced filters':'Enable advanced filters'"></div>
 </form>

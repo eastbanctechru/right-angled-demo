@@ -1,12 +1,12 @@
-<div class="table-responsive" [rtList]="getAirports" #list="rtList">
+<div class="table-responsive">
 	<form>
 		<div class="form-group">
-			<input (click)="list.loadData()" [disabled]="list.busy" type="submit" class="btn btn-load" title="Load data" value="Load data" />
-			<input (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-cancel" title="Cancel loading" value="Cancel loading" />
-			<button (click)="list.resetSettings()" [disabled]="list.busy" type="button" class="btn btn-reset" title="Reset settings">Reset settings</button>
+			<input (click)="list.loadData()" [disabled]="list.busy" type="submit" class="btn btn-load" title="Load data" />
+			<input (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-cancel" title="Cancel loading"/>
+			<button (click)="list.resetSettings()" [disabled]="list.busy" type="button" class="btn btn-reset" title="Reset settings"></button>
 		</div>
 	</form>
-	<table class="table table-striped">
+	<table class="table table-striped" [rtList]="getAirports" #list="rtList">
 		<thead>
 			<tr>
 				<th><span rtSort="iataCode">IATA</span></th>

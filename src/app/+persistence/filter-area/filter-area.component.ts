@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { filter } from 'right-angled';
+import { Component, Input, OnInit } from '@angular/core';
+import { ListDirective, filter } from 'right-angled';
 
 import { LookupsService } from '../../shared/index';
 
@@ -9,7 +9,7 @@ import { LookupsService } from '../../shared/index';
     templateUrl: 'filter-area.component.html'
 })
 export class FilterAreaComponent implements OnInit {
-    public useAdvancedFilters: boolean = false;
+    @Input() public list: ListDirective = null;
     @filter() public airportName: string = null;
     @filter('airportSize') public selectedAirportSize: string = null;
     @filter('airportType') public selectedAirportType: string = null;
@@ -20,8 +20,5 @@ export class FilterAreaComponent implements OnInit {
     public ngOnInit(): void {
         this.airportSizes = this.lookupsService.getAirportSizeLookups();
         this.airportTypes = this.lookupsService.getAirportTypeLookups();
-    }
-    public toggleAdvancedFilters(): void {
-        this.useAdvancedFilters = !this.useAdvancedFilters;
     }
 }
