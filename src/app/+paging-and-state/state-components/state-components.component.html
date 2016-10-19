@@ -1,4 +1,4 @@
-<div class="row" [rtList]="loadData" #list="rtList" [loadOnInit]="false">
+<div class="row" [rtList]="loadData" #list="rtList" [loadOnInit]="false" rtSelectionArea>
 	<div class="col-md-12 toolbar">
 		<ul>
 			<li>
@@ -15,8 +15,8 @@
 			</li>
 		</ul>
 	</div>
-	<div class="col-md-12" *ngFor="let airport of list.items">
-		<div class="item">{{airport.name}}</div>
+	<div class="col-md-12" *ngFor="let airport of list.items" [rtSelectable]="airport" #rts="rtSelectable">
+		<div class="item" [class.selected]="rts.selected">{{airport.name}}</div>
 	</div>
 	<div class="col-md-12">
 		<div class="pager">

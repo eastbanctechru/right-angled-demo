@@ -15,6 +15,9 @@
     cursor: pointer;
     margin: 1px 0;
 }
+:host /deep/ .item.selected {
+    background-color: $color-blue !important;
+}
 :host /deep/ thead {
     th.t-col-iata-code {
         width: 10%;

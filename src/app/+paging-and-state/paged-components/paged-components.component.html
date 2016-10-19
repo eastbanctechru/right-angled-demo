@@ -1,6 +1,6 @@
-<div class="row" [rtList]="loadData" #list="rtList">
-    <div class="col-md-12" *ngFor="let airport of list.items">
-        <div class="item">{{airport.name}}</div>
+<div class="row" [rtList]="loadData" #list="rtList" rtSelectionArea>
+    <div class="col-md-12" *ngFor="let airport of list.items" [rtSelectable]="airport" #rts="rtSelectable">
+        <div class="item" [class.selected]="rts.selected">{{airport.name}}</div>
     </div>
     <div class="col-md-12">
         <div class="pager">
