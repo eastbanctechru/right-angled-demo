@@ -14,11 +14,7 @@
 				<li><a href="selection#additional-methods">Работа с <code>rtSelectionArea</code> в шаблоне</a></li>
 			</ul>
 		</li>
-		<li><a href="selection#additional-directives">Дополнительные директивы</a>
-			<ul>
-				<li><a href="selection#additional-directives-checkboxes"><code>rtSelectionCheckboxFor</code></a></li>
-			</ul>
-		</li>
+		<li><a href="selection#additional-directives-checkboxes"><code>rtSelectionCheckboxFor</code></a></li>
 		<li><a href="selection#additional-settings-trackBy">trackBy function</a></li>
 		<li><a href="selection#prevent-stop-events">preventEventsDefaults и stopEventsPropagation</a></li>
 	</ul>
@@ -86,7 +82,8 @@
 			Имеет смысл только при включенной настройке <code>multiple</code>.</li>
 		<li><code>multiple</code> - по умолчанию true. Позволяет выполнять множественный выбор элементов.</li>
 		<li><code>autoSelectFirst</code> - при каждой перезагрузке данных первая запись будет выбираться автоматически, если не выбрано
-			ничего.</li>
+			ничего.
+		</li>
 	</ul>
 
 	<rt-demo-tab-section>
@@ -214,19 +211,20 @@
 		</rt-demo-tab-section>
 
 	</section>
-    <section id="additional-methods">
+	<section id="additional-methods">
 		<h4>
 			Работа с <code>rtSelectionArea</code> в шаблоне
 		</h4>
 		<p>
-			Вы можете создать в шаблоне переменную, ссылающуюся на <code>rtSelectionArea</code> и обращаться к нему из обработчиков события.
+			Вы можете создать в шаблоне переменную, ссылающуюся на <code>rtSelectionArea</code> и обращаться к нему из обработчиков
+			события.
 		</p>
 		<p>
 			Ниже вы можете увидеть пример кнопок, использующих методы <code>selectionService.selectAll</code> и <code>selectionService.deselectAll</code>.
 		</p>
 		<p>
-            Данные два метода перегружены в библиотеке <code>right-angled</code> и позволяют опционально выполнять рекурсивный selection. 
-            В остальном контракт совпадает с описанным в документации по <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/selectionservice.html">SelectionService</a> библиотеки <a target="_blank" href="https://fshchudlo.github.io/e2e4">e2e4</a>.
+			Данные два метода перегружены в библиотеке <code>right-angled</code> и позволяют опционально выполнять рекурсивный selection.
+			В остальном контракт совпадает с описанным в документации по <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/selectionservice.html">SelectionService</a>			библиотеки <a target="_blank" href="https://fshchudlo.github.io/e2e4">e2e4</a>.
 		</p>
 		<rt-demo-tab-section>
 			<rt-demo-sample-tab tabTitle="selectAll и deselectAll">
@@ -241,30 +239,22 @@
 	</section>
 </section>
 
-<section id="additional-directives">
-	<h3>Дополнительные директивы</h3>
+<section id="additional-directives-checkboxes">
+	<h3><code>rtSelectionCheckboxFor</code></h3>
 	<p>
-		На всякий случай у нас припасено еще несколько полезных директив.
+		Данная директива будет полезна в том случае, если вам нужно реализовать модель выбора при помощи checkbox-ов вместо клика
+		по элементам.
 	</p>
-	<section id="additional-directives-checkboxes">
-		<h4><code>rtSelectionCheckboxFor</code></h4>
-		<p>
-			Данная директива будет полезна в том случае, если вам нужно реализовать модель выбора при помощи checkbox-ов вместо клика
-			по элементам.
-		</p>
-		<rt-demo-tab-section>
-			<rt-demo-sample-tab tabTitle="rtSelectionCheckboxFor">
-				<rt-demo-selection-checkbox></rt-demo-selection-checkbox>
-			</rt-demo-sample-tab>
-			<rt-demo-code-tab url="%2Bselection/selection-checkbox/selection-checkbox.component.ts">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="%2Bselection/selection-checkbox/selection-checkbox.component.html">
-			</rt-demo-code-tab>
-		</rt-demo-tab-section>
-	</section>
+	<rt-demo-tab-section>
+		<rt-demo-sample-tab tabTitle="rtSelectionCheckboxFor">
+			<rt-demo-selection-checkbox></rt-demo-selection-checkbox>
+		</rt-demo-sample-tab>
+		<rt-demo-code-tab url="%2Bselection/selection-checkbox/selection-checkbox.component.ts">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="%2Bselection/selection-checkbox/selection-checkbox.component.html">
+		</rt-demo-code-tab>
+	</rt-demo-tab-section>
 </section>
-
-
 <section id="additional-settings-trackBy">
 	<h3>trackBy function</h3>
 	<p>
