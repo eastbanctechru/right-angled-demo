@@ -6,11 +6,11 @@
             margin-bottom: 0;
             background-color: $color-blue;
             @include border-radius(0);
-            @include box-shadow(0 0 15px 0 rgba(0, 0, 0, .65));
+            @include box-shadow(0 0 10px 0 rgba(0, 0, 0, .65));
             .navbar-brand {
-                width: 138px;
-                height: 44px;
-                margin-top: 18px;
+                width: 190px;
+                height: 28px;
+                margin-top: 25px;
                 margin-bottom: 18px;
                 margin-left: 0 !important;
                 padding: 0;
@@ -22,7 +22,7 @@
                     > .dropdown-toggle {
                         display: block;
                         line-height: 20px;
-                        padding: 40px 25px 20px 25px;
+                        padding: 30px 25px 20px 25px;
                         color: $color-white;
                         @include opacity(.85);
                         &:hover, &:focus {
@@ -66,26 +66,54 @@
                             }
                         }
                     }
+                    @media (max-width: 768px)
+                    {
+                        .dropdown-menu {
+                            right: 0;
+                            left: inherit;
+                        }
+                    }
                 }
             }
         }
 
         .layout {
             min-height: 100vh;
-            padding: 110px 0;
-            h1, h2, h3, h4, h5, h6 {
+            padding: 70px 0;
+            h1, h2 {
+                color: #049AE6;
+            }
+            h3, h4, h5, h6 {
                 color: $color-blue;
                 margin-bottom: 20px;
             }
-        }
+            ul {
+                li {
+                    background: url(assets/images/list-item.png) no-repeat left top;
+                    background-repeat: no-repeat;
+                    background-position-y: 8px;
+                    padding-left: 10px;
+                    list-style: none;
+                }
+                &.agenda{
+                    li{
+                        padding-left: 0;
+                        background: none;
+                    }
+                }
+            }
+            a {
+                color: #147391;
+            }
 
+        }
         .navbar-bottom {
             height: 60px;
             border: 0;
             padding: 20px 0;
             background-color: $color-gray;
             margin-bottom: 0;
-            @include box-shadow(0 0 15px 0 rgba(0, 0, 0, 0.25));
+            @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.25));
             a {
                 color: $color-black;
             }
@@ -142,7 +170,7 @@
                     display: inline-block;
                     padding-right: 5px;
                     padding-left: 5px;
-            }
+                }
             }
         }
 
@@ -203,8 +231,8 @@
     }
 
     section {
-        margin-top: -80px;
-        padding-top: 80px;
+        margin-top: -72px;
+        padding-top: 72px;
     }
 
     aside {

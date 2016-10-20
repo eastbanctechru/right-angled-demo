@@ -19,18 +19,18 @@
     margin-bottom: 0;
 }
 
-ul {
+ul.tabs {
     background-color: $color-light-blue;
     padding-top: 10px;
-    padding-left: 5px;
-    margin-bottom: 0px;
+    padding-left: 0;
+    margin-bottom: 0;
     overflow: hidden;
     width: 100%;
     li {
     display: inline-block;
     border: none;
     min-width: 25%;
-    padding: 0px 1px;
+    padding: 0 0 0 1px;
     button.btn {
         padding: 6px 24px;
         font-size: 13px;
