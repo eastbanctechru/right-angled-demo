@@ -6,4 +6,4 @@
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
 Demo project for [right-angled](https://github.com/fshchudlo/right-angled) library
-This project is available on gh-pages [here](fshchudlo.github.io/right-angled-demo)
+This project is available on gh-pages [here](https://fshchudlo.github.io/right-angled-demo)
