@@ -7,7 +7,6 @@
 <section>
 	<h3>Table of contents</h3>
 	<ul class="agenda">
-		<li><a href="quick-tour#airports-service">"Бэкенд" для работы с данными для нашего демо</a></li>
 		<li><a href="quick-tour#bootstrap">Подключаем <code>right-angled</code></a></li>
 		<li><a href="quick-tour#use-list">Делаем первый список</a></li>
 		<li><a href="quick-tour#use-sortings">Добавляем сортировки</a></li>
@@ -17,52 +16,10 @@
 		<li><a href="quick-tour#use-paging">Добавляем paging</a></li>
 		<li><a href="quick-tour#use-filters">Добавляем фильтры</a></li>
 		<li><a href="quick-tour#use-state">Добавляем управление состоянием</a></li>
+		<li><a href="quick-tour#airports-service">"Бэкенд" для работы с данными для нашего демо</a></li>
 	</ul>
 </section>
-<section id="airports-service">
-	<h3>"Бэкенд" для работы с данными для нашего демо</h3>
-	<p>
-		Для работы нам понадобятся данные. Вместо реализации полноценного бэкенда, мы будем использовать простой класс <code>AirportsService</code>,
-		который будет получать с сервера <code>json</code>-файл с данными о 99 аэропортах, и обрабатывать их при помощи
-		<a target="_blank" href="https://lodash.com">lodash</a> прямо в браузере.
-	</p>
-	<p>
-		Для работы с простыми списками мы реализуем метод <code>getAirportsList</code>. Данный метод будет принимать параметр с
-		контрактом
-		<code>AirportsListRequest</code>, который содержит параметры сортировки и фильтрации. Возвращать данный метод будет массив
-		с объектами контракта <code>Airport</code>, то есть просто массив с данными.
-	</p>
-	<p>
-		Поскольку 99 записей для демонстрационного списка многовато, а paging-а у нас поначалу не будет, данный метод выбирает только
-		первые 5 записей используя функцию <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">Array.slice</a>.
-	</p>
-	<p>
-		Для работы с paging мы реализуем метод <code>getAirportsPagedList</code>, который будет принимать параметр с контрактом
-		<code>AirportsPagedListRequest</code>, расширяющий контракт <code>AirportsListRequest</code> свойствами
-		<code>skip</code> и <code>take</code>, указывающими сколько записей при загрузке необходимо проспустить, а сколько загрузить.
-		Возвращать данный метод будет объект с контрактом <code>AirportsListResponse</code>, содержащим массив аэропортов и поля
-		<code>totalCount</code> и <code>loadedCount</code>, указывающие, сколько всего записей имеется на "сервере" без учета paging
-		и сколько записей было загружено в результате текущего запроса.
-	</p>
-	<p>
-		Ниже вы можете увидеть исходный код всех упомянутых классов и интерфейсов.
-	</p>
-	<rt-demo-tab-section>
-		<rt-demo-code-tab url="shared/data/airports-list-request.ts">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="shared/data/sort-parameter.ts">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="shared/data/airports-paged-list-request.ts">
-		</rt-demo-code-tab>
 
-		<rt-demo-code-tab url="shared/data/airport.ts">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="shared/data/list-response.ts">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="shared/data/airports.service.ts">
-		</rt-demo-code-tab>
-	</rt-demo-tab-section>
-</section>
 <section id="bootstrap">
 	<h3>Подключаем <code>right-angled</code></h3>
 	<p>Чтобы подключить <code>right-angled</code> мы импортируем модуль <code>RtModule</code> и подключаем его в
@@ -225,7 +182,8 @@
 	<p>
 		В примере ниже мы добавили в шаблоны сразу два списка, привязанных к одному компоненту, и добавили в списки paged и buffered
 		pager-ы, описанные в разделе про <a href="#" [routerLink]="['/paging-and-state']">paging</a>. Говоря кратко - в <code>right-angled</code>		есть десяток директив, которые могут быть использованы для построения pager-а. Вы можете собрать из них переиспользуемый
-		компонент, который можно будет использовать для всех списков в вашем проекте. Именно это мы и сделали в указанном разделе, а здесь используем результат.
+		компонент, который можно будет использовать для всех списков в вашем проекте. Именно это мы и сделали в указанном разделе,
+		а здесь используем результат.
 	</p>
 	<p>
 		Так же мы поменяли в компоненте метод получения данных на <code>getAirportsPagedList</code>.
@@ -309,6 +267,50 @@
 		<rt-demo-code-tab url="%2Bquick-tour/use-persistence/use-persistence.component.ts">
 		</rt-demo-code-tab>
 		<rt-demo-code-tab url="%2Bquick-tour/use-persistence/use-persistence.component.html">
+		</rt-demo-code-tab>
+	</rt-demo-tab-section>
+</section>
+<section id="airports-service">
+	<h3>"Бэкенд" для работы с данными для нашего демо</h3>
+	<p>
+		Для работы нам понадобятся данные. Вместо реализации полноценного бэкенда, мы будем использовать простой класс <code>AirportsService</code>,
+		который будет получать с сервера <code>json</code>-файл с данными о 99 аэропортах, и обрабатывать их при помощи
+		<a target="_blank" href="https://lodash.com">lodash</a> прямо в браузере.
+	</p>
+	<p>
+		Для работы с простыми списками мы реализуем метод <code>getAirportsList</code>. Данный метод будет принимать параметр с
+		контрактом
+		<code>AirportsListRequest</code>, который содержит параметры сортировки и фильтрации. Возвращать данный метод будет массив
+		с объектами контракта <code>Airport</code>, то есть просто массив с данными.
+	</p>
+	<p>
+		Поскольку 99 записей для демонстрационного списка многовато, а paging-а у нас поначалу не будет, данный метод выбирает только
+		первые 5 записей используя функцию <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">Array.slice</a>.
+	</p>
+	<p>
+		Для работы с paging мы реализуем метод <code>getAirportsPagedList</code>, который будет принимать параметр с контрактом
+		<code>AirportsPagedListRequest</code>, расширяющий контракт <code>AirportsListRequest</code> свойствами
+		<code>skip</code> и <code>take</code>, указывающими сколько записей при загрузке необходимо проспустить, а сколько загрузить.
+		Возвращать данный метод будет объект с контрактом <code>AirportsListResponse</code>, содержащим массив аэропортов и поля
+		<code>totalCount</code> и <code>loadedCount</code>, указывающие, сколько всего записей имеется на "сервере" без учета paging
+		и сколько записей было загружено в результате текущего запроса.
+	</p>
+	<p>
+		Ниже вы можете увидеть исходный код всех упомянутых классов и интерфейсов.
+	</p>
+	<rt-demo-tab-section>
+		<rt-demo-code-tab url="shared/data/airports-list-request.ts">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="shared/data/sort-parameter.ts">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="shared/data/airports-paged-list-request.ts">
+		</rt-demo-code-tab>
+
+		<rt-demo-code-tab url="shared/data/airport.ts">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="shared/data/list-response.ts">
+		</rt-demo-code-tab>
+		<rt-demo-code-tab url="shared/data/airports.service.ts">
 		</rt-demo-code-tab>
 	</rt-demo-tab-section>
 </section>
