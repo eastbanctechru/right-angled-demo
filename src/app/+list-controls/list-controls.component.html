@@ -7,13 +7,7 @@
 		<li><a href="list-controls#rt-list">Директива <code>rtList</code></a>
 			<ul>
 				<li>
-					<a href="list-controls#rt-list-param">Директива <code>rtList</code></a>
-				</li>
-				<li>
 					<a href="list-controls#load-on-init">Параметр <code>loadOnInit</code></a>
-				</li>
-				<li>
-					<a href="list-controls#default-sortings">Параметр <code>defaultSortings</code></a>
 				</li>
 				<li>
 					<a href="list-controls#on-list-init">Событие <code>onListInit</code></a>
@@ -22,8 +16,12 @@
 					<a href="list-controls#after-list-inited">Событие <code>afterListInit</code></a>
 				</li>
 				<li>
-					<a href="list-controls#destroy-all">Уничтожение элементов списка и метод <code>destroyAll</code></a>
+					<a href="list-controls#list-methods">Вспомогательные методы и свойства директивы <code>rtList</code></a>
 				</li>
+				<li>
+					<a href="list-controls#default-sortings">Параметр <code>defaultSortings</code></a>
+				</li>
+
 			</ul>
 		</li>
 		<li><a href="list-controls#rt-sort">Директива <code>rtSort</code></a></li>
@@ -33,27 +31,105 @@
 </section>
 <section id="common-idea">
 	<h3>Общая идея</h3>
+	<p>
+		При работе со списками все начинается с директивы <code>rtList</code>. Она представляет собой root для dependency injection
+		и конфигурирует зависимости для вложенных компонентов (paging-контролы, директивы сортировки и т.д.).
+	</p>
+	<p>
+		В качестве необходимого минимума для данной директивы необходимо указать метод, который список будет вызывать для получения
+		данных. Данный метод должен принимать один параметр, в который будут переданы параметры запроса. Передаваемые параметры
+		следуют контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>		для простых списков и <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>		для paged-списков.
+	</p>
+	<p>
+		Возвращать данный метод должен <code>Observable</code>, <code>Promise</code> либо <code>EventEmitter</code>, представляющий
+		собой результирующие данные. Для простых списков данные могут быть просто массивом элементов. Для paged-списков ответ должен
+		следовать контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>
+	</p>
 </section>
 <section id="bootstrap">
 	<h3>Как подключить</h3>
+	<p>Функционал списков поставляется в модуле <code>RTListsModule</code> Также можно импортировать модуль <code>RtModule</code>,
+		включающий в себя функционал всей библиотеки целиком.
+	</p>
+	<rt-demo-tab-section>
+		<rt-demo-code-tab url="%2Blist-controls/bootstrap/app.module.ts">
+		</rt-demo-code-tab>
+	</rt-demo-tab-section>
 </section>
 <section id="rt-list">
-	<h3>Директива <code>rtList</code></h3>
-
-	<section id="rt-list-param">
-		<h4>Директива <code>rtList</code></h4>
-	</section>
+	<h3>Свойства директивы <code>rtList</code></h3>
 	<section id="load-on-init">
 		<h4>Параметр <code>loadOnInit</code></h4>
-	</section>
-	<section id="default-sortings">
-		<h4>Параметр <code>defaultSortings</code></h4>
+		<p>Данный параметр указывает списку, что необходимо автоматически загрузить данные после того, как список проинициализирован.
+			Данный параметр по умолчанию равен <code>true</code></p>
 	</section>
 	<section id="on-list-init">
 		<h4>Событие <code>onListInit</code></h4>
+		<p>
+			Данное событие позволяет встроиться в конвеер инициализации списка и выполнить дополнительную настройку перед первой загрузкой
+			данных. Например, можно зарегистрировать объект с настройками фильтра при помощи вызова метода <code>RtList.registerFilterTarget</code>,
+			передаваемого в качестве параметра сервиса <code>RtList</code> (если ваш фильтр представляет собой отдельный компонент,
+			то гораздо проще использовать директиву <a href="#" [routerLink]="['/filters']">rtRegisterAsFilter</a>, регистрируя фильтр
+			прямо в шаблоне).
+		</p>
+		<p>
+			Данное событие генерируется после того, как сработыет хук
+			<a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-class.html">AfterViewInit</a> и выполняется первая
+			отрисовка шаблона.
+		</p>
 	</section>
 	<section id="on-list-inited">
 		<h4>Событие <code>afterListInit</code></h4>
+		<p>
+			Данное событие вызывается после того, как была выполнена инициализация списка и он готов к использованию.
+		</p>
+		<p>
+			Данный обработчик может пригодиться, к примеру, если вы отключили опцию <a href="list-controls#load-on-init">Параметр <code>loadOnInit</code></a>,
+			поскольку вам надо загрузить дополнительные данные перед началом работы и вам необходимо вызвать метод <code>loadData</code>			самостоятельно.
+		</p>
+		<p>
+			Данное событие, как и предыдущее, принимает в качестве параметра объекти типа <code>RtList</code>, представляющий собой
+			сервис для работы со списком.
+		</p>
+	</section>
+	<section id="list-methods">
+		<h4>Вспомогательные методы и свойства директивы <code>rtList</code></h4>
+		<p>В директиве <code>rtList</code> содержится ряд полезных методов и свойств, которые позволяют легко реализовать типичные
+			сценарии (к примеру, кнопку перезагрузки данных). Ниже приведен список методов и свойств:
+		</p>
+		<ul>
+			<li>
+				Метод <code>loadData</code> - выполняет загрузку данных в список.
+			</li>
+			<li>
+				Метод <code>reloadData</code> - выполняет перезагрузку (загрузку со сбросом параметров пейджинга) данных в список.
+			</li>
+			<li>
+				Метод <code>cancelRequests</code> - выполняет отмену выполняющегося в данный момент времени запроса данных для списка.
+			</li>
+			<li>
+				Метод <code>resetSettings</code> - выполняет сброс параметров списка (сортировки, пейджинг, фильтры).
+			</li>
+			<li>
+				Свойство <code>busy</code> - возвращает <code>true</code> если в данный момент времени выполняется запрос за данными.
+			</li>
+			<li>
+				Свойство <code>ready</code> - возвращает <code>true</code> если в данный момент времени запрос за данными НЕ выполняется.
+			</li>
+		</ul>
+		<p>
+			Ниже приведен пример списка с четырьмя кнопками, использующими описанные выше методы и свойства.
+		</p>
+		<rt-demo-tab-section>
+			<rt-demo-sample-tab tabTitle="Live demo">
+				<rt-demo-use-rt-list></rt-demo-use-rt-list>
+			</rt-demo-sample-tab>
+			<rt-demo-code-tab url="%2Blist-controls/use-rt-list/use-rt-list.component.html">
+			</rt-demo-code-tab>
+		</rt-demo-tab-section>
+	</section>
+	<section id="default-sortings">
+		<h4>Параметр <code>defaultSortings</code></h4>
 	</section>
 </section>
 <section id="rt-sort">
@@ -106,50 +182,14 @@
 		страницы постраничного списка.
 	</p>
 	<p>
-		Данный pipe применяется к значению <code>index</code>, представляющему собой индекс текущего элемента в
-		коллекции. Также pipe-у необходимо передать директиву <code>rtList</code> в качестве параметра.
+		Данный pipe применяется к значению <code>index</code>, представляющему собой индекс текущего элемента в коллекции. Также
+		pipe-у необходимо передать директиву <code>rtList</code> в качестве параметра.
 	</p>
 	<rt-demo-tab-section>
 		<rt-demo-sample-tab tabTitle="Live demo">
 			<rt-demo-use-row-number></rt-demo-use-row-number>
 		</rt-demo-sample-tab>
 		<rt-demo-code-tab url="%2Blist-controls/use-row-number/use-row-number.component.html">
-		</rt-demo-code-tab>
-	</rt-demo-tab-section>
-</section>
-<section id="list-methods">
-	<h3>Методы <code>loadData</code>, <code>reloadData</code>, <code>cancelRequests</code>, <code>resetSettings</code></h3>
-	<ul>
-		<li>
-			<code>loadData</code> - выполняет загрузку данных в список.
-		</li>
-		<li>
-			<code>reloadData</code> - выполняет перезагрузку (загрузку
-			со сбросом параметров пейджинга) данных в список.
-		</li>
-		<li>
-			<code>cancelRequests</code> - выполняет отмену выполняющегося
-			в данный момент времени запроса данных для списка.
-		</li>
-		<li>
-			<code>resetSettings</code> - выполняет сброс параметров
-			списка (сортировки, пейджинг, фильтры).
-		</li>
-		<li>
-			<code>busy</code> - возвращает <code>true</code> если в данный момент времени выполняется запрос за данными.
-		</li>
-		<li>
-			<code>ready</code> - возвращает <code>true</code> если в данный момент времени запрос за данными НЕ выполняется.
-		</li>
-	</ul>
-	<p>
-		Ниже приведен пример списка с четырьмя кнопками, использующими описанные выше методы и свойства.
-	</p>
-	<rt-demo-tab-section>
-		<rt-demo-sample-tab tabTitle="Live demo">
-			<rt-demo-use-rt-list></rt-demo-use-rt-list>
-		</rt-demo-sample-tab>
-		<rt-demo-code-tab url="%2Blist-controls/use-rt-list/use-rt-list.component.html">
 		</rt-demo-code-tab>
 	</rt-demo-tab-section>
 </section>
