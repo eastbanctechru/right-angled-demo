@@ -9,6 +9,67 @@ html, body {
         outline: none !important;
     }
 }
+h1, h2 {
+    color: #049AE6;
+}
+
+h3, h4, h5, h6 {
+    color: $color-blue;
+    margin-bottom: 20px;
+}
+
+ul {
+    li {
+        background: url('../assets/images/list-item.png') no-repeat left top;
+        background-repeat: no-repeat;
+        background-position-y: 8px;
+        padding-left: 10px;
+        list-style: none;
+    }
+
+    &.agenda {
+        li {
+            padding-left: 0;
+            background: none;
+        }
+        @media (max-width: 768px) {
+          padding-left: 15px;
+          li{
+            padding-top: 2px;
+          }
+          ul{
+              padding-left: 15px;
+            }
+        }
+
+    }
+}
+
+a {
+    color: #147391;
+}
+
+section {
+    margin-top: -72px;
+    padding-top: 72px;
+}
+
+aside {
+    p {
+        vertical-align: middle;
+    }
+
+    padding: 15px;
+    margin: 20px 0 20px 25px;
+    border: 1px solid $color-muted-grey;
+    border-left-width: 5px;
+    border-left-color: $color-blue;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    @media (max-width: 768px) {
+      margin-left: 0;
+    }
+}
 
 .app-loader {
     width: 100%;
@@ -140,24 +201,6 @@ form {
     }
 }
 
-section {
-    margin-top: -72px;
-    padding-top: 72px;
-}
-
-aside {
-    p {
-        vertical-align: middle;
-    }
-
-    padding: 15px;
-    margin: 20px 0 20px 25px;
-    border: 1px solid $color-muted-grey;
-    border-left-width: 5px;
-    border-left-color: $color-blue;
-    background-position: 10px center;
-    background-repeat: no-repeat;
-}
 
 .rt-sortable {
     position: relative;

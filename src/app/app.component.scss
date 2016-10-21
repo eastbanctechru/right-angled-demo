@@ -13,35 +13,6 @@
         min-height: 100vh;
         padding: 70px 0;
 
-        h1, h2 {
-            color: #049AE6;
-        }
-
-        h3, h4, h5, h6 {
-            color: $color-blue;
-            margin-bottom: 20px;
-        }
-
-        ul {
-            li {
-                background: url(assets/images/list-item.png) no-repeat left top;
-                background-repeat: no-repeat;
-                background-position-y: 8px;
-                padding-left: 10px;
-                list-style: none;
-            }
-
-            &.agenda {
-                li {
-                    padding-left: 0;
-                    background: none;
-                }
-            }
-        }
-
-        a {
-            color: #147391;
-        }
     }
 
     .navbar-bottom {
