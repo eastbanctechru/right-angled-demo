@@ -18,5 +18,7 @@
         "**/coverage": true
     }
 ,
+"editor.detectIndentation": false,
+
 "typescript.check.workspaceVersion": false
 }

@@ -7,74 +7,7 @@
             background-color: $color-blue;
             @include border-radius(0);
             @include box-shadow(0 0 10px 0 rgba(0, 0, 0, .65));
-            .navbar-brand {
-                width: 190px;
-                height: 28px;
-                margin-top: 25px;
-                margin-bottom: 18px;
-                margin-left: 0 !important;
-                padding: 0;
-                background: url('./assets/images/logo.png') center center no-repeat;
-            }
-            .navbar-nav {
-                margin: 0;
-                > li {
-                    > .dropdown-toggle {
-                        display: block;
-                        line-height: 20px;
-                        padding: 30px 25px 20px 25px;
-                        color: $color-white;
-                        @include opacity(.85);
-                        &:hover, &:focus {
-                            background-color: transparent;
-                            @include opacity(1);
-                        }
-                    }
-                    &:hover {
-                        > .dropdown-toggle {
-                            color: $color-white;
-                            background-color: transparent;
-                            @include opacity(1);
-                            cursor: pointer;
-                            &:hover, &:focus {
-                                background-color: transparent;
-                            }
-                        }
-                        .dropdown-menu {
-                            height: 245px;
-                        }
-                    }
-                    .dropdown-menu {
-                        display: block;
-                        overflow: hidden;
-                        height: 0;
-                        min-width: 100%;
-                        padding: 0;
-                        margin: -5px 0 0;
-                        @include border-radius(0);
-                        border:0;
-                        @include box-shadow(0 2px 5px 0 rgba(0, 0, 0, 0.45));
-                        @include transition(height .25s ease-in-out);
-                        li:first-child {
-                            border-top:5px solid $color-yellow;
-                        }
-                        a {
-                            color: $color-black;
-                            padding: 10px 18px;
-                            &:hover, &:focus {
-                                background-color: $color-gray;
-                            }
-                        }
-                    }
-                    @media (max-width: 768px)
-                    {
-                        .dropdown-menu {
-                            right: 0;
-                            left: inherit;
-                        }
-                    }
-                }
-            }
+            
         }
 
         .layout {

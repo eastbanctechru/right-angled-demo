@@ -17,10 +17,11 @@ import { SharedModule } from './shared/shared.module';
 
 import { DemoAppComponent } from './app.component';
 import { routing } from './app.routing';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   bootstrap: [DemoAppComponent],
-  declarations: [DemoAppComponent],
+  declarations: [DemoAppComponent, HeaderComponent],
   imports: [BrowserModule,
     HttpModule,
     FormsModule,
