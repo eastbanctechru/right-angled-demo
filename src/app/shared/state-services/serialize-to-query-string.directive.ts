@@ -5,10 +5,10 @@ import { QueryStringStateService } from './query-string-state-service';
 
 @Directive({
     providers: [QueryStringStateService],
-    selector: '[rtSerializeToQueryString]'
+    selector: '[rtDemoSerializeToQueryString]'
 })
 export class SerializeToQueryStringDirective implements OnInit, OnDestroy, OnChanges {
-    @Input('rtSerializeToQueryString') public serializationKey: string;
+    @Input('rtDemoSerializeToQueryString') public serializationKey: string;
     constructor(private list: RtList, private stateService: QueryStringStateService) {
     }
     public ngOnInit(): void {

@@ -23,7 +23,7 @@
 		</div>
 	</form>
 	<div class="table-responsive">
-		<table class="table table-striped" [rtList]="getAirports" #list="rtList" [loadOnInit]="false" rtSerializeToQueryString (onListInit)="onListInit($event)">
+		<table class="table table-striped" [rtList]="getAirports" #list="rtList" [loadOnInit]="false" rtDemoSerializeToQueryString (onListInit)="onListInit($event)">
 			<thead>
 				<tr>
 					<th><span rtSort="iataCode">IATA</span></th>

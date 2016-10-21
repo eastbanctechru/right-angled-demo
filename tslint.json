@@ -83,7 +83,7 @@
       "kebab-case"
     ],
     "directive-selector-type": [
-      false,
+      true,
       "attribute"
     ],
     "component-selector-type": [
@@ -91,12 +91,12 @@
       "element"
     ],
     "directive-selector-prefix": [
-      false,
-      "rt"
+      true,
+      "rtDemo"
     ],
     "component-selector-prefix": [
       true,
-      "rt"
+      "rt-demo"
     ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -110,10 +110,12 @@
     "pipe-naming": [
       true,
       "camelCase",
-      "rt"
+      "rtDemo"
     ],
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "import-destructuring-spacing": true
+    "import-destructuring-spacing": true,
+    "templates-use-public": true,
+    "invoke-injectable": true
   }
 }

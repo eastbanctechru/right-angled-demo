@@ -5,7 +5,7 @@ import { LocalStorageStateService } from './local-storage-state-service';
 
 @Directive({
     providers: [LocalStorageStateService],
-    selector: '[rtSerializeToLocalStorage]'
+    selector: '[rtDemoSerializeToLocalStorage]'
 })
 export class SerializeToLocalStorageDirective implements OnInit, OnDestroy {
     constructor(private list: RtList, private stateService: LocalStorageStateService) {

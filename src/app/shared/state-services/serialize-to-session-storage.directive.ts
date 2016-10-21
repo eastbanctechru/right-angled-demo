@@ -5,7 +5,7 @@ import { SessionStorageStateService } from './session-storage-state-service';
 
 @Directive({
     providers: [SessionStorageStateService],
-    selector: '[rtSerializeToSessionStorage]'
+    selector: '[rtDemoSerializeToSessionStorage]'
 })
 export class SerializeToSessionStorageDirective implements OnInit, OnDestroy {
     constructor(private list: RtList, private stateService: SessionStorageStateService) {

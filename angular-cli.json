@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.17",
+    "version": "1.0.0-beta.18",
     "name": "right-angled-demo"
   },
   "apps": [
@@ -43,7 +43,19 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "prefixInterfaces": false
+    "styleExt": "scss",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
   }
 }
