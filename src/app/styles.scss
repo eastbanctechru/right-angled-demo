@@ -4,10 +4,12 @@
 html, body {
     background: $color-light-grey;
     font-size: $font-medium;
+
     * {
         outline: none !important;
     }
 }
+
 .app-loader {
     width: 100%;
     height: 100vh;

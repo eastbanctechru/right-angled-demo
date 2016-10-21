@@ -1,11 +1,14 @@
 @import '../../../shared.scss';
+
 :host {
     text-align: right;
     display: block;
+
     > * {
         display: block;
     }
-    rt-list-state-done{
+
+    rt-list-state-done {
         text-align: right;
     }
 }
@@ -17,6 +20,7 @@ a {
     color: $color-light-blue;
     margin: 0 3px;
     @include opacity(.85);
+
     &:hover, &:focus {
         @include opacity(1);
         text-decoration: none;

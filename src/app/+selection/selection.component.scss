@@ -4,9 +4,10 @@
     text-decoration: underline;
 }
 
-:host /deep/ .col-md-4,:host /deep/ .options {
+:host /deep/ .col-md-4, :host /deep/ .options {
     padding: 5px;
 }
+
 :host /deep/ .item {
     background-color: rebeccapurple;
     padding: 25px;
@@ -15,6 +16,7 @@
     cursor: pointer;
     margin: 1px 0;
 }
+
 :host /deep/ .item.selected {
     background-color: $color-blue !important;
 }

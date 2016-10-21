@@ -1,15 +1,19 @@
 @import '../../shared.scss';
-:host>div {
+
+:host > div {
     margin: 35px 0;
 }
-:host /deep/ rt-demo-sample-tab>div {
+
+:host /deep/ rt-demo-sample-tab > div {
     background: #fafafa;
     padding: 15px;
 }
+
 :host /deep/ .tab-body {
     border: 1px solid #4fc3f7;
     padding: 0;
 }
+
 :host /deep/ pre {
     min-height: 250px;
     max-height: 800px;
@@ -26,26 +30,29 @@ ul.tabs {
     margin-bottom: 0;
     overflow: hidden;
     width: 100%;
+
     li {
-    display: inline-block;
-    border: none;
-    min-width: 25%;
-    padding: 0 0 0 1px;
-    background: none;
-    button.btn {
-        padding: 6px 24px;
-        font-size: 13px;
-        background-color: $color-blue;
-        color: $color-white;
+        display: inline-block;
         border: none;
-        border-radius: 0;
-        width: 100%;
-    }
+        min-width: 25%;
+        padding: 0 0 0 1px;
+        background: none;
+
+        button.btn {
+            padding: 6px 24px;
+            font-size: 13px;
+            background-color: $color-blue;
+            color: $color-white;
+            border: none;
+            border-radius: 0;
+            width: 100%;
+        }
     }
 
     li.active, li.active button.btn {
         border-color: $color-muted-grey;
-        button.btn{
+
+        button.btn {
             color: #333;
             background: $color-muted-grey;
             padding: 7px 24px;
