@@ -11,9 +11,9 @@ import { ReusablePagedListSampleComponent } from './reusable-paged-sample/reusab
 import { StateComponentsComponent } from './state-components/state-components.component';
 
 @NgModule({
-    declarations: [BufferedComponentsComponent, ReusableBufferedListSampleComponent, ReusablePagedListSampleComponent, PagedComponentsComponent, PagingAndStateComponent, StateComponentsComponent],
-    exports: [BufferedComponentsComponent, ReusableBufferedListSampleComponent, ReusablePagedListSampleComponent, PagedComponentsComponent, PagingAndStateComponent, StateComponentsComponent],
-    imports: [CommonModule, RouterModule, SharedModule]
+  declarations: [BufferedComponentsComponent, ReusableBufferedListSampleComponent, ReusablePagedListSampleComponent, PagedComponentsComponent, PagingAndStateComponent, StateComponentsComponent],
+  exports: [BufferedComponentsComponent, ReusableBufferedListSampleComponent, ReusablePagedListSampleComponent, PagedComponentsComponent, PagingAndStateComponent, StateComponentsComponent],
+  imports: [CommonModule, RouterModule, SharedModule]
 })
 export class PagingAndStateModule {
 }

@@ -3,7 +3,8 @@
 		<div class="form-group">
 			<input type="submit" class="btn btn-load" title="Load data" (click)="list.loadData()" [disabled]="list.busy" />
 			<input type="submit" class="btn btn-load" title="Reload data" (click)="list.reloadData()" [disabled]="list.busy" />
-			<input type="button" class="btn btn-cancel" title="Cancel loading" (click)="list.cancelRequests()" [disabled]="list.ready"/>
+			<input type="button" class="btn btn-cancel" title="Cancel loading" (click)="list.cancelRequests()" [disabled]="list.ready"
+			/>
 			<button type="button" class="btn btn-reset" title="Reset settings" (click)="list.resetSettings()" [disabled]="list.busy"></button>
 		</div>
 	</form>
@@ -20,7 +21,7 @@
 				<tr *ngFor="let airport of list.items" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
 					<td>{{airport.iataCode}}</td>
 					<td>{{airport.name}}</td>
-					
+
 					<td>{{airport.countryName}}</td>
 				</tr>
 			</tbody>

@@ -10,14 +10,14 @@ import { QuickTourRoutes } from './+quick-tour/quick-tour.routes';
 import { SelectionRoutes } from './+selection/selection.routes';
 
 const appRoutes: Routes = [
-    ...FiltersRoutes,
-    ...ListControlsRoutes,
-    ...SelectionRoutes,
-    ...MiscDirectivesRoutes,
-    ...PagingAndStatesRoutes,
-    ...PersistenceRoutes,
-    ...QuickTourRoutes,
-    { path: '**', redirectTo: '' }
+  ...FiltersRoutes,
+  ...ListControlsRoutes,
+  ...SelectionRoutes,
+  ...MiscDirectivesRoutes,
+  ...PagingAndStatesRoutes,
+  ...PersistenceRoutes,
+  ...QuickTourRoutes,
+  { path: '**', redirectTo: '' }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

@@ -10,9 +10,9 @@ import { UseRtListComponent } from './use-rt-list/use-rt-list.component';
 import { UseSortingsComponent } from './use-sortings/use-sortings.component';
 
 @NgModule({
-    declarations: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent, UseSortingsComponent],
-    exports: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent, UseSortingsComponent],
-    imports: [CommonModule, SharedModule, RouterModule]
+  declarations: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent, UseSortingsComponent],
+  exports: [ListControlsComponent, UseRtListComponent, UseRowNumberComponent, UseSortingsComponent],
+  imports: [CommonModule, SharedModule, RouterModule]
 })
 export class ListControlsModule {
 }

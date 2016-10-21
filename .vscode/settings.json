@@ -1,24 +1,23 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "files.exclude": {
-        "**/esm": true,
-        "**/*.d.ts": {
-            "when": "$(basename).ts"
-        },
-        "**/*.js.map": {
-            "when": "$(basename)"
-        },
-        "**/*.js": {
-            "when": "$(basename).ts"
-        }
+  "files.exclude": {
+    "**/esm": true,
+    "**/*.d.ts": {
+      "when": "$(basename).ts"
     },
-    "search.exclude": {
-        "**/docs": true,
-        "**/esm": true,
-        "**/coverage": true
+    "**/*.js.map": {
+      "when": "$(basename)"
+    },
+    "**/*.js": {
+      "when": "$(basename).ts"
     }
-,
-"editor.detectIndentation": false,
-
-"typescript.check.workspaceVersion": false
+  },
+  "search.exclude": {
+    "**/docs": true,
+    "**/esm": true,
+    "**/coverage": true
+  },
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "typescript.check.workspaceVersion": false
 }

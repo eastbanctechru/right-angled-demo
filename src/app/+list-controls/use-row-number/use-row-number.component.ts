@@ -4,13 +4,13 @@ import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../s
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-    selector: 'rt-demo-use-row-number',
-    templateUrl: 'use-row-number.component.html'
+  selector: 'rt-demo-use-row-number',
+  templateUrl: 'use-row-number.component.html'
 })
 export class UseRowNumberComponent {
-    constructor(private airportsService: AirportsService) {
-    }
-    getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
-        return this.airportsService.getAirportsPagedList(request);
-    }
+  constructor(private airportsService: AirportsService) {
+  }
+  getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
+  return this.airportsService.getAirportsPagedList(request);
+  }
 }

@@ -24,9 +24,9 @@ import { SerializeToSessionStorageDirective } from './state-services/serialize-t
 })
 export class SharedModule {
   public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [AirportsService, LookupsService]
-    };
+  return {
+    ngModule: SharedModule,
+    providers: [AirportsService, LookupsService]
+  };
   }
 }

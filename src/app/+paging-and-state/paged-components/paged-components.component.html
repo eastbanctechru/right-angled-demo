@@ -1,25 +1,25 @@
 <div class="row" [rtList]="loadData" #list="rtList" rtSelectionArea>
-    <div class="col-md-12" *ngFor="let airport of list.items" [rtSelectable]="airport" #rts="rtSelectable">
-        <div class="item" [class.selected]="rts.selected">{{airport.name}}</div>
-    </div>
-    <div class="col-md-12">
-        <div class="pager">
-            <rt-list-state-progress>
-                Загружаю данные...
-            </rt-list-state-progress>
+  <div class="col-md-12" *ngFor="let airport of list.items" [rtSelectable]="airport" #rts="rtSelectable">
+    <div class="item" [class.selected]="rts.selected">{{airport.name}}</div>
+  </div>
+  <div class="col-md-12">
+    <div class="pager">
+      <rt-list-state-progress>
+        Загружаю данные...
+      </rt-list-state-progress>
 
-            <rt-list-state-done>
-                <rt-paged-pager [defaultPageSize]="5" #rtPager>
-                    <span rtGoToFirstPage title="go to first page"></span>
-                    <span rtGoToPreviousPage title="go to previous page"></span>
-                    <input rtSelectOnFocus rtPageNumber type="text" class="form-control" maxlength="4" />
-                    <span rtGoToNextPage title="go to next page"></span>
-                    <span rtGoToLastPage title="go to last page"></span>
-                    <span>Displaying records {{rtPager.pager.displayFrom}} - {{rtPager.pager.displayTo}} of {{rtPager.pager.totalCount}}.</span>
-                    <span>Page size</span>
-                    <input rtSelectOnFocus rtPageSize type="text" class="form-control" maxlength="3" />
-                </rt-paged-pager>
-            </rt-list-state-done>
-        </div>
+      <rt-list-state-done>
+        <rt-paged-pager [defaultPageSize]="5" #rtPager>
+          <span rtGoToFirstPage title="go to first page"></span>
+          <span rtGoToPreviousPage title="go to previous page"></span>
+          <input rtSelectOnFocus rtPageNumber type="text" class="form-control" maxlength="4" />
+          <span rtGoToNextPage title="go to next page"></span>
+          <span rtGoToLastPage title="go to last page"></span>
+          <span>Displaying records {{rtPager.pager.displayFrom}} - {{rtPager.pager.displayTo}} of {{rtPager.pager.totalCount}}.</span>
+          <span>Page size</span>
+          <input rtSelectOnFocus rtPageSize type="text" class="form-control" maxlength="3" />
+        </rt-paged-pager>
+      </rt-list-state-done>
     </div>
+  </div>
 </div>

@@ -9,8 +9,8 @@ import { SelectOnFocusComponent } from './select-on-focus/select-on-focus.compon
 import { StopEventsComponent } from './stop-events/stop-events.component';
 
 @NgModule({
-    declarations: [MiscDirectivesComponent, FocusOnRenderComponent, SelectOnFocusComponent, StopEventsComponent, PreventDefaultsComponent],
-    exports: [MiscDirectivesComponent, FocusOnRenderComponent, SelectOnFocusComponent, StopEventsComponent, PreventDefaultsComponent],
-    imports: [CommonModule, SharedModule]
+  declarations: [MiscDirectivesComponent, FocusOnRenderComponent, SelectOnFocusComponent, StopEventsComponent, PreventDefaultsComponent],
+  exports: [MiscDirectivesComponent, FocusOnRenderComponent, SelectOnFocusComponent, StopEventsComponent, PreventDefaultsComponent],
+  imports: [CommonModule, SharedModule]
 })
 export class MiscDirectivesModule { }

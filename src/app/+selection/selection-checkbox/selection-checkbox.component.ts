@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { CountriesService } from '../countries.service';
 
 @Component({
-    selector: 'rt-demo-selection-checkbox',
-    styleUrls: ['selection-checkbox.component.scss'],
-    templateUrl: 'selection-checkbox.component.html'
+  selector: 'rt-demo-selection-checkbox',
+  styleUrls: ['selection-checkbox.component.scss'],
+  templateUrl: 'selection-checkbox.component.html'
 })
 export class SelectionCheckboxComponent {
-    public regions: any;
-    constructor(public countriesService: CountriesService) {
-        this.regions = this.countriesService.getRegionsWithCountriesAndAirports();
-    }
+  public regions: any;
+  constructor(public countriesService: CountriesService) {
+    this.regions = this.countriesService.getRegionsWithCountriesAndAirports();
+  }
 }

@@ -12,8 +12,8 @@ RTModule.registerStateService({ multi: true, useFactory: StateServiceFactory });
 RTModule.registerStateService({ multi: true, useValue: stateServiceSingleton });
 
 @NgModule({
-    bootstrap: [AppComponent],
-    declarations: [AppComponent],
-    imports: [RTModule]
+  bootstrap: [AppComponent],
+  declarations: [AppComponent],
+  imports: [RTModule]
 })
 export class AppModule { }

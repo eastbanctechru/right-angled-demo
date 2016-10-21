@@ -15,9 +15,9 @@ import { UseSortingsComponent } from './use-sortings/use-sortings.component';
 import { UseStateComponent } from './use-state/use-state.component';
 
 @NgModule({
-    declarations: [QuickTourComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
-    exports: [QuickTourComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
-    imports: [CommonModule, SharedModule, FormsModule, RouterModule]
+  declarations: [QuickTourComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
+  exports: [QuickTourComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
+  imports: [CommonModule, SharedModule, FormsModule, RouterModule]
 })
 export class QuickTourModule {
 }

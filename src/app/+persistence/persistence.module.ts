@@ -8,9 +8,9 @@ import { PersistenceSampleComponent } from './persistence-sample/persistence-sam
 import { PersistenceComponent } from './persistence.component';
 
 @NgModule({
-    declarations: [PersistenceComponent, FilterAreaComponent, PersistenceSampleComponent],
-    exports: [PersistenceComponent, FilterAreaComponent, PersistenceSampleComponent],
-    imports: [CommonModule, RouterModule, SharedModule]
+  declarations: [PersistenceComponent, FilterAreaComponent, PersistenceSampleComponent],
+  exports: [PersistenceComponent, FilterAreaComponent, PersistenceSampleComponent],
+  imports: [CommonModule, RouterModule, SharedModule]
 })
 export class PersistenceModule {
 }

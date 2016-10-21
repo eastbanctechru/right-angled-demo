@@ -4,13 +4,13 @@ import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../s
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-    selector: 'rt-demo-use-sortings',
-    templateUrl: 'use-sortings.component.html'
+  selector: 'rt-demo-use-sortings',
+  templateUrl: 'use-sortings.component.html'
 })
 export class UseSortingsComponent {
-    constructor(private airportsService: AirportsService) {
-    }
-    getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
-        return this.airportsService.getAirportsPagedList(request);
-    }
+  constructor(private airportsService: AirportsService) {
+  }
+  getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
+  return this.airportsService.getAirportsPagedList(request);
+  }
 }

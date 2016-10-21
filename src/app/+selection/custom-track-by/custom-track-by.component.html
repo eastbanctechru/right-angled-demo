@@ -1,10 +1,10 @@
 <div class="toolbar">
-    <button type="button" class="btn btn-primary" title="Reload data" (click)="reload()">Reload data</button>
+  <button type="button" class="btn btn-primary" title="Reload data" (click)="reload()">Reload data</button>
 </div>
 <div class="row" rtSelectionArea [trackBy]="trackByName">
-    <div class="col-md-12" *ngFor="let country of countries" [rtSelectable]="country" #rts="rtSelectable">
-        <div class="item" [class.selected]="rts.selected">
-            {{country.name}}
-        </div>
+  <div class="col-md-12" *ngFor="let country of countries" [rtSelectable]="country" #rts="rtSelectable">
+    <div class="item" [class.selected]="rts.selected">
+      {{country.name}}
     </div>
+  </div>
 </div>

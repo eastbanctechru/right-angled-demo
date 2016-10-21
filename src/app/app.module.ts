@@ -23,21 +23,21 @@ import { HeaderComponent } from './header/header.component';
   bootstrap: [DemoAppComponent],
   declarations: [DemoAppComponent, HeaderComponent],
   imports: [BrowserModule,
-    HttpModule,
-    FormsModule,
-    RTModule,
-    SharedModule.forRoot(),
-    routing,
-    Angulartics2Module.forRoot(),
-    FiltersModule,
-    ListControlsModule,
-    MiscDirectivesModule,
-    PagingAndStateModule,
-    PersistenceModule,
-    QuickTourModule,
-    SelectionModule],
+  HttpModule,
+  FormsModule,
+  RTModule,
+  SharedModule.forRoot(),
+  routing,
+  Angulartics2Module.forRoot(),
+  FiltersModule,
+  ListControlsModule,
+  MiscDirectivesModule,
+  PagingAndStateModule,
+  PersistenceModule,
+  QuickTourModule,
+  SelectionModule],
   providers: [
-    Angulartics2GoogleAnalytics
+  Angulartics2GoogleAnalytics
   ]
 })
 export class AppModule { }

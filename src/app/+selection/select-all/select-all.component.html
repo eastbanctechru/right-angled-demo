@@ -1,38 +1,38 @@
 <div class="row" rtSelectionArea #selectionArea="rtSelectionArea">
-    <div class="col-md-12 toolbar">
-        <ul>
-            <li>
-                <button class="btn btn-primary" title="Select all items" (click)="selectionArea.selectionService.selectAll(false)">Select all</button>
-            </li>
-            <li>
-                <button class="btn btn-primary" title="Deselect all items" (click)="selectionArea.selectionService.deselectAll(false)">Deselect all</button>
-            </li>
-            <li>
-                <button class="btn btn-primary" title="Select all items" (click)="selectionArea.selectionService.selectAll()">Select all recursivelly</button>
-            </li>
-            <li>
-                <button class="btn btn-primary" title="Deselect all items" (click)="selectionArea.selectionService.deselectAll()">Deselect all recursivelly</button>
-            </li>
-        </ul>
+  <div class="col-md-12 toolbar">
+    <ul>
+      <li>
+        <button class="btn btn-primary" title="Select all items" (click)="selectionArea.selectionService.selectAll(false)">Select all</button>
+      </li>
+      <li>
+        <button class="btn btn-primary" title="Deselect all items" (click)="selectionArea.selectionService.deselectAll(false)">Deselect all</button>
+      </li>
+      <li>
+        <button class="btn btn-primary" title="Select all items" (click)="selectionArea.selectionService.selectAll()">Select all recursivelly</button>
+      </li>
+      <li>
+        <button class="btn btn-primary" title="Deselect all items" (click)="selectionArea.selectionService.deselectAll()">Deselect all recursivelly</button>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-12" *ngFor="let region of regions | async">
+    <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="region" #rts="rtSelectable">
+      {{region.name}} ({{region.countries.length}} countries)
     </div>
-    <div class="col-md-12" *ngFor="let region of regions | async">
-        <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="region" #rts="rtSelectable">
-            {{region.name}} ({{region.countries.length}} countries)
-        </div>
 
-        <div class="col-md-12" *ngIf="rts.selected" rtSelectionArea>
-            <div *ngFor="let country of region.countries">
-                <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="country" #rts="rtSelectable" style="background-color: darkcyan;">
-                    {{country.name}} ({{country.airports.length}} airports)
-                </div>
-                <div class="col-md-12" *ngIf="rts.selected" rtSelectionArea>
-                    <div *ngFor="let airport of country.airports">
-                        <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable" style="background-color: darkorange;">
-                            {{airport.name}} ({{airport.iataCode}})
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-12" *ngIf="rts.selected" rtSelectionArea>
+      <div *ngFor="let country of region.countries">
+        <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="country" #rts="rtSelectable" style="background-color: darkcyan;">
+          {{country.name}} ({{country.airports.length}} airports)
         </div>
+        <div class="col-md-12" *ngIf="rts.selected" rtSelectionArea>
+          <div *ngFor="let airport of country.airports">
+            <div class="col-md-12 item" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable" style="background-color: darkorange;">
+              {{airport.name}} ({{airport.iataCode}})
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

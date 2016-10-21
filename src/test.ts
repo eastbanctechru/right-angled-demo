@@ -22,10 +22,10 @@ Promise.all([
 ])
   // First, initialize the Angular testing environment.
   .then(([testing, testingBrowser]) => {
-    testing.getTestBed().initTestEnvironment(
-      testingBrowser.BrowserDynamicTestingModule,
-      testingBrowser.platformBrowserDynamicTesting()
-    );
+  testing.getTestBed().initTestEnvironment(
+    testingBrowser.BrowserDynamicTestingModule,
+    testingBrowser.platformBrowserDynamicTesting()
+  );
   })
   // Then we find all the tests.
   .then(() => require.context('./', true, /\.spec\.ts/))

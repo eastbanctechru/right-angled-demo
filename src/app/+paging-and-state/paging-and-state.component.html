@@ -1,290 +1,290 @@
 <h2>Paging and lists state</h2>
 <h3>Table of contents</h3>
 <ul class="agenda">
-    <li><a href="paging-and-state#common-idea">Общая идея</a></li>
-    <li><a href="paging-and-state#bootstrap">Как подключить</a></li>
-    <li><a href="paging-and-state#state-components">Компоненты состояния</a></li>
-    <li>
-        <a href="paging-and-state#paged-components">Implementing paged pager</a>
-        <ul>
-            <li>
-                <a href="paging-and-state#paged-pager">Использование <code>rt-paged-pager</code> component</a>
-            </li>
-            <li>
-                <a href="paging-and-state#paged-directives">Directives for implementing paged pager UI</a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a href="paging-and-state#buffered-components">Implementing buffered pager</a>
-        <ul>
-            <li>
-                <a href="paging-and-state#buffered-pager">Использование <code>rt-buffered-pager</code> component</a>
-            </li>
-            <li>
-                <a href="paging-and-state#buffered-directives">Directives for implementing buffered pager UI</a>
-            </li>
-        </ul>
-    </li>
-    <li><a href="paging-and-state#reusable-component">Samples of complete reusable pagers</a></li>
+  <li><a href="paging-and-state#common-idea">Общая идея</a></li>
+  <li><a href="paging-and-state#bootstrap">Как подключить</a></li>
+  <li><a href="paging-and-state#state-components">Компоненты состояния</a></li>
+  <li>
+    <a href="paging-and-state#paged-components">Implementing paged pager</a>
+    <ul>
+      <li>
+        <a href="paging-and-state#paged-pager">Использование <code>rt-paged-pager</code> component</a>
+      </li>
+      <li>
+        <a href="paging-and-state#paged-directives">Directives for implementing paged pager UI</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="paging-and-state#buffered-components">Implementing buffered pager</a>
+    <ul>
+      <li>
+        <a href="paging-and-state#buffered-pager">Использование <code>rt-buffered-pager</code> component</a>
+      </li>
+      <li>
+        <a href="paging-and-state#buffered-directives">Directives for implementing buffered pager UI</a>
+      </li>
+    </ul>
+  </li>
+  <li><a href="paging-and-state#reusable-component">Samples of complete reusable pagers</a></li>
 </ul>
 <section id="common-idea">
-    <h3>Общая идея</h3>
-    <p>
-        Для работы с paging в нашей библиотеке реализовано множество небольших контролов, ни один из которых не влияет на стили вашего
-        конечного приложения. Идея заключается в том, что вы можете самостоятельно собрать нужный вам пейджер с нужной вам
-        версткой, стилями и функционалом.
-    </p>
-    <p>
-        Ниже мы перечислим все имеющиеся компоненты и директивы, касающиеся paging-а и отображения текущего состояния списка. В конце
-        мы представим вариантs собранных pagers для paged и buffered списков.
-    </p>
+  <h3>Общая идея</h3>
+  <p>
+    Для работы с paging в нашей библиотеке реализовано множество небольших контролов, ни один из которых не влияет на стили вашего
+    конечного приложения. Идея заключается в том, что вы можете самостоятельно собрать нужный вам пейджер с нужной вам
+    версткой, стилями и функционалом.
+  </p>
+  <p>
+    Ниже мы перечислим все имеющиеся компоненты и директивы, касающиеся paging-а и отображения текущего состояния списка. В конце
+    мы представим вариантs собранных pagers для paged и buffered списков.
+  </p>
 </section>
 <section id="bootstrap">
-    <h3>Как подключить</h3>
-    <p>Данный функционал поставляется вместе с функционалом списков в модуле <code>RTListsModule</code> Также можно импортировать
-        модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки целиком.
-    </p>
-    <rt-demo-tab-section>
-        <rt-demo-code-tab url="%2Bpaging-and-state/bootstrap/app.module.ts">
-        </rt-demo-code-tab>
-    </rt-demo-tab-section>
+  <h3>Как подключить</h3>
+  <p>Данный функционал поставляется вместе с функционалом списков в модуле <code>RTListsModule</code> Также можно импортировать
+    модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки целиком.
+  </p>
+  <rt-demo-tab-section>
+    <rt-demo-code-tab url="%2Bpaging-and-state/bootstrap/app.module.ts">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="state-components">
-    <h3>Компоненты состояния</h3>
-    <p>
-        Суть данного набора компонентов проста: каждый из них является котейнером для контента, и отображается только когда список
-        находится в одном из возможных состояний <a target="_blank" href="http://fshchudlo.github.io/e2e4/enums/progressstate.html">ProgressState</a>.
-    </p>
-    <p>
-        Например, при помощи компонента <code>rt-list-state-progress</code> вы можете отобразить spinner на время загрузки
-        данных.
-    </p>
-    <rt-demo-tab-section>
-        <rt-demo-sample-tab tabTitle="State components">
-            <rt-demo-state-components></rt-demo-state-components>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="%2Bpaging-and-state/state-components/state-components.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="%2Bpaging-and-state/state-components/state-components.component.html">
-        </rt-demo-code-tab>
-    </rt-demo-tab-section>
-    <h4>rt-list-state-initial</h4>
-    <p>
-        Отображает внутреннее содержимое пока списком не выполнено ни одного запроса
-    </p>
-    <h4>rt-list-state-progress</h4>
-    <p>
-        Отображает внутреннее содержимое пока список выполняет запрос данных. Идеально подходит для отображения progress bar.
-    </p>
-    <h4>rt-list-state-no-data</h4>
-    <p>
-        Отображает внутреннее содержимое когда список закончил выполнение запроса и было возвращено 0 записей.
-    </p>
-    <h4>rt-list-state-request-canceled</h4>
-    <p>
-        Отображает внутреннее содержимое если запрос данных был отменен (например нажатием кнопки с директивой <code>rtCancelLoad</code>).
-    </p>
-    <h4>rt-list-state-failed</h4>
-    <p>
-        Отображает внутреннее содержимое если последний запрос данных вернул ошибку.
-    </p>
-    <h4>rt-list-state-done</h4>
-    <p>
-        Отображает внутреннее содержимое если последний запрос данных был выполнен без ошибок и было возвращено больше нуля записей.
-    </p>
+  <h3>Компоненты состояния</h3>
+  <p>
+    Суть данного набора компонентов проста: каждый из них является котейнером для контента, и отображается только когда список
+    находится в одном из возможных состояний <a target="_blank" href="http://fshchudlo.github.io/e2e4/enums/progressstate.html">ProgressState</a>.
+  </p>
+  <p>
+    Например, при помощи компонента <code>rt-list-state-progress</code> вы можете отобразить spinner на время загрузки
+    данных.
+  </p>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab tabTitle="State components">
+      <rt-demo-state-components></rt-demo-state-components>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="%2Bpaging-and-state/state-components/state-components.component.ts">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="%2Bpaging-and-state/state-components/state-components.component.html">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
+  <h4>rt-list-state-initial</h4>
+  <p>
+    Отображает внутреннее содержимое пока списком не выполнено ни одного запроса
+  </p>
+  <h4>rt-list-state-progress</h4>
+  <p>
+    Отображает внутреннее содержимое пока список выполняет запрос данных. Идеально подходит для отображения progress bar.
+  </p>
+  <h4>rt-list-state-no-data</h4>
+  <p>
+    Отображает внутреннее содержимое когда список закончил выполнение запроса и было возвращено 0 записей.
+  </p>
+  <h4>rt-list-state-request-canceled</h4>
+  <p>
+    Отображает внутреннее содержимое если запрос данных был отменен (например нажатием кнопки с директивой <code>rtCancelLoad</code>).
+  </p>
+  <h4>rt-list-state-failed</h4>
+  <p>
+    Отображает внутреннее содержимое если последний запрос данных вернул ошибку.
+  </p>
+  <h4>rt-list-state-done</h4>
+  <p>
+    Отображает внутреннее содержимое если последний запрос данных был выполнен без ошибок и было возвращено больше нуля записей.
+  </p>
 </section>
 <section id="paged-components">
-    <h3>Implementing paged pager</h3>
-    <section id="paged-pager">
-        <h3>Использование <code>rt-paged-pager</code> component</h3>
-        <p>
-            Прежде всего, чтобы реализовать paged pager, необходимо использовать компонент <code>rt-paged-pager</code>. Данный
-            компонент регистрирует себя в листе, таким образом список получает функциональность paging. Так же данный компонент
-            служит контейнером для целого ряда компонент и директив, при помощи которых реализуется pager.
-        </p>
-        <p>
-            Данный компонент имеет следующие параметры настройки:
-        </p>
-        <h4>rtMinPageSize = "&lt;number&gt;"</h4>
-        <p>
-            Позволяет указать минимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
-            0.
-        </p>
-        <h4>rtMaxPageSize = "&lt;number&gt;"</h4>
-        <p>
-            Позволяет указать минимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
-            200.
-        </p>
-        <h4>rtDefaultPageSize = "&lt;number&gt;"</h4>
-        <p>
-            Позволяет указать значение по умолчанию для свойства <code>take</code>. Указанное значение будет применено при
-            инициализации списка и в него же будет выставляться значение при сбросе настроек списка (вы можете узнать детали
-            в разделе про <a href="#" [routerLink]="['/filters']">работу с фильтрами</a>). По умолчанию равен 20.
-        </p>
+  <h3>Implementing paged pager</h3>
+  <section id="paged-pager">
+    <h3>Использование <code>rt-paged-pager</code> component</h3>
+    <p>
+      Прежде всего, чтобы реализовать paged pager, необходимо использовать компонент <code>rt-paged-pager</code>. Данный
+      компонент регистрирует себя в листе, таким образом список получает функциональность paging. Так же данный компонент
+      служит контейнером для целого ряда компонент и директив, при помощи которых реализуется pager.
+    </p>
+    <p>
+      Данный компонент имеет следующие параметры настройки:
+    </p>
+    <h4>rtMinPageSize = "&lt;number&gt;"</h4>
+    <p>
+      Позволяет указать минимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
+      0.
+    </p>
+    <h4>rtMaxPageSize = "&lt;number&gt;"</h4>
+    <p>
+      Позволяет указать минимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
+      200.
+    </p>
+    <h4>rtDefaultPageSize = "&lt;number&gt;"</h4>
+    <p>
+      Позволяет указать значение по умолчанию для свойства <code>take</code>. Указанное значение будет применено при
+      инициализации списка и в него же будет выставляться значение при сбросе настроек списка (вы можете узнать детали
+      в разделе про <a href="#" [routerLink]="['/filters']">работу с фильтрами</a>). По умолчанию равен 20.
+    </p>
 
-        <aside>
-            <p>
-                Вы так же можете изменить указанные настройки глобально. Для этого необходимо импортировать сервис <code>PagedPager</code>                из библиотеки <code>right-angled</code> и установить одноименные значения в статическом объекте <code>settings</code>.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-code-tab url="%2Bpaging-and-state/global-configuration/app.component.paged.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-            <p>
-                Порядок применения параметров следующий:
-            </p>
-            <ol>
-                <li>
-                    Значение, указанное в объекте <code>settings</code>
-                </li>
-                <li>
-                    Значение, указанное в параметрах компонента <code>rt-paged-pager</code>
-                </li>
-                <li>
-                    Значение, восстановленное через <a href="#" [routerLink]="['/persistence']">RtStateService</a>, если
-                    таковой зарегистрирован.
-                </li>
-            </ol>
-        </aside>
-    </section>
-    <section id="paged-directives">
-        <h3>Directives for implementing paged pager UI</h3>
-        <h4>rtPageNumber</h4>
-        <p>
-            Элемент <code>input</code> помеченный данной директивой получает функциональность перехода на другую страницу
-            списка. Вводимые значения ограничиваются рядом правил. Например, нельзя указать значение большее, чем общее число
-            страниц в списке. Так же по нажатию клавиши <code>Enter</code> на данном элементе будет выполняться перезагрузка
-            данных
-        </p>
-        <h4>rtPageSize</h4>
-        <p>
-            Элемент <code>input</code> помеченный данной директивой получает функциональность изменения размера страницы
-            списка. Вводимые значения ограничиваются рядом правил. Например, нельзя указать значение большее, чем
-            <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/pagedpager.html#maxpagesize">maxPageSize</a>.
-            Так же по нажатию клавиши <code>Enter</code> на данном элементе будет выполняться перезагрузка данных
-        </p>
-        <h4>rtGoToFirstPage</h4>
-        <p>
-            При клике по элементу помеченному данной директивой будет выполняться переход на первую страницу paged списка. Так же у элемента
-            будет автоматически выставляться свойство
-            <code>disabled</code> в зависимости от доступности данного действия
-        </p>
-        <h4>rtGoToPreviousPage</h4>
-        <p>
-            При клике по элементу помеченному данной директивой будет выполняться переход на предыдущую страницу paged списка. Так же
-            у элемента будет автоматически выставляться свойство
-            <code>disabled</code> в зависимости от доступности данного действия
-        </p>
-        <h4>rtGoToNextPage</h4>
-        <p>
-            При клике по элементу помеченному данной директивой будет выполняться переход на следующую страницу paged списка. Так же
-            у элемента будет автоматически выставляться свойство
-            <code>disabled</code> в зависимости от доступности данного действия
-        </p>
-        <h4>rtGoToLastPage</h4>
-        <p>
-            При клике по элементу помеченному данной директивой будет выполняться переход на последнюю страницу paged списка. Так же
-            у элемента будет автоматически выставляться свойство
-            <code>disabled</code> в зависимости от доступности данного действия
-        </p>
-    </section>
-    <rt-demo-tab-section>
-        <rt-demo-sample-tab tabTitle="Paged list components">
-            <rt-demo-paged-components></rt-demo-paged-components>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="%2Bpaging-and-state/paged-components/paged-components.component.ts">
+    <aside>
+      <p>
+        Вы так же можете изменить указанные настройки глобально. Для этого необходимо импортировать сервис <code>PagedPager</code>         з библиотеки <code>right-angled</code> и установить одноименные значения в статическом объекте <code>settings</code>.
+      </p>
+      <rt-demo-tab-section>
+        <rt-demo-code-tab url="%2Bpaging-and-state/global-configuration/app.component.paged.ts">
         </rt-demo-code-tab>
-        <rt-demo-code-tab url="%2Bpaging-and-state/paged-components/paged-components.component.html">
-        </rt-demo-code-tab>
-    </rt-demo-tab-section>
+      </rt-demo-tab-section>
+      <p>
+        Порядок применения параметров следующий:
+      </p>
+      <ol>
+        <li>
+          Значение, указанное в объекте <code>settings</code>
+        </li>
+        <li>
+          Значение, указанное в параметрах компонента <code>rt-paged-pager</code>
+        </li>
+        <li>
+          Значение, восстановленное через <a href="#" [routerLink]="['/persistence']">RtStateService</a>, если
+          таковой зарегистрирован.
+        </li>
+      </ol>
+    </aside>
+  </section>
+  <section id="paged-directives">
+    <h3>Directives for implementing paged pager UI</h3>
+    <h4>rtPageNumber</h4>
+    <p>
+      Элемент <code>input</code> помеченный данной директивой получает функциональность перехода на другую страницу
+      списка. Вводимые значения ограничиваются рядом правил. Например, нельзя указать значение большее, чем общее число
+      страниц в списке. Так же по нажатию клавиши <code>Enter</code> на данном элементе будет выполняться перезагрузка
+      данных
+    </p>
+    <h4>rtPageSize</h4>
+    <p>
+      Элемент <code>input</code> помеченный данной директивой получает функциональность изменения размера страницы
+      списка. Вводимые значения ограничиваются рядом правил. Например, нельзя указать значение большее, чем
+      <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/pagedpager.html#maxpagesize">maxPageSize</a>.
+      Так же по нажатию клавиши <code>Enter</code> на данном элементе будет выполняться перезагрузка данных
+    </p>
+    <h4>rtGoToFirstPage</h4>
+    <p>
+      При клике по элементу помеченному данной директивой будет выполняться переход на первую страницу paged списка. Так же у элемента
+      будет автоматически выставляться свойство
+      <code>disabled</code> в зависимости от доступности данного действия
+    </p>
+    <h4>rtGoToPreviousPage</h4>
+    <p>
+      При клике по элементу помеченному данной директивой будет выполняться переход на предыдущую страницу paged списка. Так же
+      у элемента будет автоматически выставляться свойство
+      <code>disabled</code> в зависимости от доступности данного действия
+    </p>
+    <h4>rtGoToNextPage</h4>
+    <p>
+      При клике по элементу помеченному данной директивой будет выполняться переход на следующую страницу paged списка. Так же
+      у элемента будет автоматически выставляться свойство
+      <code>disabled</code> в зависимости от доступности данного действия
+    </p>
+    <h4>rtGoToLastPage</h4>
+    <p>
+      При клике по элементу помеченному данной директивой будет выполняться переход на последнюю страницу paged списка. Так же
+      у элемента будет автоматически выставляться свойство
+      <code>disabled</code> в зависимости от доступности данного действия
+    </p>
+  </section>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab tabTitle="Paged list components">
+      <rt-demo-paged-components></rt-demo-paged-components>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="%2Bpaging-and-state/paged-components/paged-components.component.ts">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="%2Bpaging-and-state/paged-components/paged-components.component.html">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="buffered-components">
-    <h3>Implementing buffered pager</h3>
-    <section id="buffered-pager">
-        <h3>Использование <code>rt-buffered-pager</code> component</h3>
-        <p>
-            Как и в случае с paged pager, все начинается с компонента-контейнера, но на этот раз это <code>rt-buffered-pager</code>.
-        </p>
-        <p>
-            Данный компонент имеет следующие параметры настройки:
-        </p>
-        <h4>rtMinRowCount = "&lt;number&gt;"</h4>
-        <p>
-            Позволяет указать минимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
-            0.
-        </p>
-        <h4>rtMaxRowCount = "&lt;number&gt;"</h4>
-        <p>
-            Позволяет указать максимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
-            200.
-        </p>
-        <h4>rtDefaultRowCount = "&lt;number&gt;"</h4>
-        <p>
-            Позволяет указать значение по умолчанию для свойства <code>take</code>. Указанное значение будет применено при
-            инициализации списка и в него же будет выставляться значение при сбросе настроек списка (вы можете узнать детали
-            в разделе про <a href="#" [routerLink]="['/filters']">работу с фильтрами</a>). По умолчанию равен 20.
-        </p>
-         <aside>
-            <p>
-                Аналогично как с <code>PagedPager</code>, вы можете изменить указанные настройки глобально. Для этого необходимо импортировать сервис <code>BufferedPager</code>                из библиотеки <code>right-angled</code> и установить одноименные значения в статическом объекте <code>settings</code>.
-            </p>
-            <rt-demo-tab-section>
-                <rt-demo-code-tab url="%2Bpaging-and-state/global-configuration/app.component.buffered.ts">
-                </rt-demo-code-tab>
-            </rt-demo-tab-section>
-        </aside>
-    </section>
-    <section id="buffered-directives">
-        <h3>Directives for implementing buffered pager UI</h3>
-        <h4>rtLoadMore</h4>
-        <p>
-            При клике по элементу, помеченному данной директивой, будет выполняться подгрузка следующего набора записей. Так же у элемента
-            будет автоматически выставлено свойство <code>disabled</code>, когда в список будут подгружены все
-            записи.
-        </p>
-        <h4>rtRowCount</h4>
-        <p>
-            Элемент <code>input</code> помеченный данной директивой получает функциональность изменения количества элементов
-            для подгрузки. Вводимые значения ограничиваются рядом правил. Например, нельзя указать значение большее, чем
-            <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/bufferedpager.html#maxrowcount">maxRowCount</a>.
-            Так же по нажатию клавиши <code>Enter</code> на данном элементе будет выполняться подгрузка следующего фрагмента
-            данных и автоматически будет выставлено свойство <code>disabled</code>, когда в список будут подгружены все записи
-        </p>
-    </section>
-    <rt-demo-tab-section>
-        <rt-demo-sample-tab tabTitle="Buffered list components">
-            <rt-demo-buffered-components></rt-demo-buffered-components>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="%2Bpaging-and-state/buffered-components/buffered-components.component.ts">
+  <h3>Implementing buffered pager</h3>
+  <section id="buffered-pager">
+    <h3>Использование <code>rt-buffered-pager</code> component</h3>
+    <p>
+      Как и в случае с paged pager, все начинается с компонента-контейнера, но на этот раз это <code>rt-buffered-pager</code>.
+    </p>
+    <p>
+      Данный компонент имеет следующие параметры настройки:
+    </p>
+    <h4>rtMinRowCount = "&lt;number&gt;"</h4>
+    <p>
+      Позволяет указать минимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
+      0.
+    </p>
+    <h4>rtMaxRowCount = "&lt;number&gt;"</h4>
+    <p>
+      Позволяет указать максимальное возможное значение для параметра <code>take</code> пейджера. По умолчанию равен
+      200.
+    </p>
+    <h4>rtDefaultRowCount = "&lt;number&gt;"</h4>
+    <p>
+      Позволяет указать значение по умолчанию для свойства <code>take</code>. Указанное значение будет применено при
+      инициализации списка и в него же будет выставляться значение при сбросе настроек списка (вы можете узнать детали
+      в разделе про <a href="#" [routerLink]="['/filters']">работу с фильтрами</a>). По умолчанию равен 20.
+    </p>
+     <aside>
+      <p>
+        Аналогично как с <code>PagedPager</code>, вы можете изменить указанные настройки глобально. Для этого необходимо импортировать сервис <code>BufferedPager</code>        из библиотеки <code>right-angled</code> и установить одноименные значения в статическом объекте <code>settings</code>.
+      </p>
+      <rt-demo-tab-section>
+        <rt-demo-code-tab url="%2Bpaging-and-state/global-configuration/app.component.buffered.ts">
         </rt-demo-code-tab>
-        <rt-demo-code-tab url="%2Bpaging-and-state/buffered-components/buffered-components.component.html">
-        </rt-demo-code-tab>
-    </rt-demo-tab-section>
+      </rt-demo-tab-section>
+    </aside>
+  </section>
+  <section id="buffered-directives">
+    <h3>Directives for implementing buffered pager UI</h3>
+    <h4>rtLoadMore</h4>
+    <p>
+      При клике по элементу, помеченному данной директивой, будет выполняться подгрузка следующего набора записей. Так же у элемента
+      будет автоматически выставлено свойство <code>disabled</code>, когда в список будут подгружены все
+      записи.
+    </p>
+    <h4>rtRowCount</h4>
+    <p>
+      Элемент <code>input</code> помеченный данной директивой получает функциональность изменения количества элементов
+      для подгрузки. Вводимые значения ограничиваются рядом правил. Например, нельзя указать значение большее, чем
+      <a target="_blank" href="http://fshchudlo.github.io/e2e4/classes/bufferedpager.html#maxrowcount">maxRowCount</a>.
+      Так же по нажатию клавиши <code>Enter</code> на данном элементе будет выполняться подгрузка следующего фрагмента
+      данных и автоматически будет выставлено свойство <code>disabled</code>, когда в список будут подгружены все записи
+    </p>
+  </section>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab tabTitle="Buffered list components">
+      <rt-demo-buffered-components></rt-demo-buffered-components>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="%2Bpaging-and-state/buffered-components/buffered-components.component.ts">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="%2Bpaging-and-state/buffered-components/buffered-components.component.html">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="reusable-component">
-    <h3>Samples of complete reusable pagers</h3>
-    <p>
-        Ниже вы можете увидеть живые примеры буферного и paged списков, в которых в качестве футера используются полностью изолированный
-        компоненты, использующие все описанные выше компоненты и директивы.
-    </p>
-    <rt-demo-tab-section>
-        <rt-demo-sample-tab tabTitle="Buffered pager">
-            <rt-demo-reusable-buffered-sample></rt-demo-reusable-buffered-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.html">
-        </rt-demo-code-tab>
-    </rt-demo-tab-section>
+  <h3>Samples of complete reusable pagers</h3>
+  <p>
+    Ниже вы можете увидеть живые примеры буферного и paged списков, в которых в качестве футера используются полностью изолированный
+    компоненты, использующие все описанные выше компоненты и директивы.
+  </p>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab tabTitle="Buffered pager">
+      <rt-demo-reusable-buffered-sample></rt-demo-reusable-buffered-sample>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.ts">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.html">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 
-    <rt-demo-tab-section>
-        <rt-demo-sample-tab tabTitle="Paged pager">
-            <rt-demo-reusable-paged-sample></rt-demo-reusable-paged-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.html">
-        </rt-demo-code-tab>
-    </rt-demo-tab-section>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab tabTitle="Paged pager">
+      <rt-demo-reusable-paged-sample></rt-demo-reusable-paged-sample>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.ts">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.html">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>

@@ -15,3 +15,232 @@ html, body {
     height: 100vh;
     background: url('../assets/images/app-loader.gif') center center no-repeat;
 }
+
+.btn-primary {
+    background-color: $color-light-blue;
+    border-color: $color-light-blue;
+    @include border-radius(0);
+
+    &:hover,
+    &:focus {
+        background-color: $color-btn-primary-focus;
+        border-color: $color-btn-primary-focus;
+    }
+
+    &:active {
+        background-color: $color-btn-primary-active;
+        border-color: $color-btn-primary-active;
+        @include box-shadow(none);
+    }
+}
+
+.btn {
+    &.btn-reset {
+        margin-top: 21px;
+        margin-bottom: -5px;
+        @include img-button();
+        @include icon-reset();
+    }
+
+    &.btn-load {
+        margin-top: 21px;
+        margin-bottom: -5px;
+        @include img-button();
+        @include icon-load();
+    }
+
+    &.btn-cancel {
+        margin-top: 21px;
+        margin-bottom: -5px;
+        @include img-button();
+        @include icon-cancel();
+    }
+}
+
+div.toolbar {
+    text-align: right;
+    padding-bottom: 15px;
+
+    ul {
+        padding-left: 0;
+        margin-left: -5px;
+        list-style: none;
+        text-align: right;
+        margin-right: -5px;
+        margin-bottom: 0;
+
+        li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+            background: none;
+        }
+    }
+}
+
+rt-list-state-done,
+rt-list-state-request-canceled,
+rt-list-state-request-initial,
+rt-list-state-request-failed,
+rt-list-state-request-no-data,
+rt-list-state-progress {
+    display: block;
+    text-align: center;
+}
+
+rt-list-state-progress > div {
+    display: inline-block;
+    width: 128px;
+    height: 16px;
+    background: url('../assets/images/line-progress.gif') center center no-repeat;
+}
+
+rt-demo-paged-footer, rt-demo-buffered-footer, div.pager {
+    display: block;
+
+    .form-control {
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        padding: 6px 6px;
+        vertical-align: middle;
+    }
+}
+
+form {
+    label {
+        color: $color-muted;
+        font-weight: normal;
+        line-height: 1.5;
+    }
+
+    margin-bottom: 15px;
+
+    .btn {
+        margin-top: 21px;
+        margin-bottom: -5px;
+
+        & + .btn {
+            margin-left: 5px;
+        }
+    }
+}
+
+
+.form-control {
+    color: $color-black;
+    @include border-radius(0);
+    @include box-shadow(0 0 3px 0 $color-gray);
+    border-color: $color-gray;
+
+    &:hover,
+    &:focus {
+        @include box-shadow(0 0 3px 0 $color-gray);
+        border-color: $color-light-blue;
+    }
+}
+
+section {
+    margin-top: -72px;
+    padding-top: 72px;
+}
+
+aside {
+    p {
+        vertical-align: middle;
+    }
+
+    padding: 15px;
+    margin: 20px 0 20px 25px;
+    border: 1px solid $color-muted-grey;
+    border-left-width: 5px;
+    border-left-color: $color-blue;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+}
+
+.rt-sortable {
+    position: relative;
+    padding-right: 45px;
+    cursor: pointer;
+
+    &:after {
+        content: '';
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -11px;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    &:hover {
+        &:after {
+            background-image: url('../assets/images/sortable.png');
+        }
+    }
+
+    &.rt-sort-asc:after {
+        background-image: url('../assets/images/sort-asc.png');
+    }
+
+    &.rt-sort-desc:after {
+        background-image: url('../assets/images/sort-desc.png');
+    }
+}
+
+.table-responsive {
+    border: 0;
+}
+
+.table {
+    thead {
+        tr {
+            th {
+                background-color: $color-light-blue;
+                color: $color-white;
+                text-transform: uppercase;
+                border-bottom-color: $color-gray;
+                padding: 15px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            background-color: $color-white;
+
+            td {
+                padding: 10px 20px;
+                border-top-color: $color-gray;
+            }
+
+            &:nth-of-type(even) {
+                background-color: $color-striped;
+            }
+
+            &:hover {
+                background-color: $color-gray;
+            }
+
+            &.selected {
+                background-color: $color-selected;
+            }
+        }
+    }
+
+    tfoot {
+        tr {
+            background-color: $color-gray;
+
+            td {
+                border-top: 0;
+                padding-right: 40px;
+                vertical-align: middle;
+            }
+        }
+    }
+}
