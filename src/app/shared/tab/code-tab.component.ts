@@ -30,7 +30,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
   }
   public ngOnChanges(changes: { url?: SimpleChange, fromLib: SimpleChange }): void {
     if (changes.url) {
-      this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1);
+      this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1).replace('tsfake', 'ts');
       this.src = this.http.get((this.fromLib ? this.libBaseUrl : this.baseUrl) + this.url)
         .map(res => {
           return res.text();
