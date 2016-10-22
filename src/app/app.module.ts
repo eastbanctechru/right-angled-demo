@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulartics2-google-analytics';
 import { RTModule } from 'right-angled';
@@ -26,6 +27,7 @@ import { HeaderComponent } from './header/header.component';
   HttpModule,
   FormsModule,
   RTModule,
+  RouterModule,
   SharedModule.forRoot(),
   routing,
   Angulartics2Module.forRoot(),
