@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ListDirective, filter } from 'right-angled';
 
-import { LookupsService } from '../../shared/index';
+import { LookupsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-filter-area',
