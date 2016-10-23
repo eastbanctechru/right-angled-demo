@@ -2,6 +2,7 @@
 {
   "files.exclude": {
     "**/esm": true,
+    "**/dist": true,
     "**/*.d.ts": {
       "when": "$(basename).ts"
     },

@@ -1,4 +1,4 @@
-<h2>List controls</h2>
+<h2>Working with lists</h2>
 <section>
 	<h3>Table of contents</h3>
 	<ul class="agenda">
@@ -19,7 +19,7 @@
 					<a href="list-controls#list-methods">Вспомогательные методы и свойства директивы <code>rtList</code></a>
 				</li>
 				<li>
-					<a href="list-controls#default-sortings">Параметр <code>defaultSortings</code></a>
+					<a href="list-controls#default-sortings">Параметр <code>defaultSortings</code> директивы <code>rtList</code></a>
 				</li>
 
 			</ul>
@@ -32,8 +32,8 @@
 <section id="common-idea">
 	<h3>Общая идея</h3>
 	<p>
-		При работе со списками все начинается с директивы <code>rtList</code>. Она представляет собой root для dependency injection
-		и конфигурирует зависимости для вложенных компонентов (paging-контролы, директивы сортировки и т.д.).
+		При работе со списками все начинается с директивы <code>rtList</code>. Она представляет собой root container для dependency
+		injection и конфигурирует зависимости для вложенных компонентов (paging-контролы, директивы сортировки и т.д.).
 	</p>
 	<p>
 		В качестве необходимого минимума для данной директивы необходимо указать метод, который список будет вызывать для получения
@@ -41,9 +41,8 @@
 		следуют контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>		для простых списков и <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>		для paged-списков.
 	</p>
 	<p>
-		Возвращать данный метод должен <code>Observable</code>, <code>Promise</code> либо <code>EventEmitter</code>, представляющий
-		собой результирующие данные. Для простых списков данные могут быть просто массивом элементов. Для paged-списков ответ должен
-		следовать контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>
+		Возвращать данный метод должен <code>Observable</code>, <code>Promise</code> либо <code>EventEmitter</code>, прдставляющий
+		для простых списков простой массив элементов. Для paged-списков ответ должен следовать контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>
 	</p>
 </section>
 <section id="bootstrap">
@@ -61,7 +60,7 @@
 	<section id="load-on-init">
 		<h4>Параметр <code>loadOnInit</code></h4>
 		<p>Данный параметр указывает списку, что необходимо автоматически загрузить данные после того, как список проинициализирован.
-			Данный параметр по умолчанию равен <code>true</code></p>
+			По умолчанию равен <code>true</code></p>
 	</section>
 	<section id="on-list-init">
 		<h4>Событие <code>onListInit</code></h4>
@@ -74,7 +73,7 @@
 		</p>
 		<p>
 			Данное событие генерируется после того, как сработыет хук
-			<a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-class.html">AfterViewInit</a> и выполняется первая
+			<a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-class.html">AfterViewInit</a> и выполнена первая
 			отрисовка шаблона.
 		</p>
 	</section>
@@ -84,12 +83,7 @@
 			Данное событие вызывается после того, как была выполнена инициализация списка и он готов к использованию.
 		</p>
 		<p>
-			Данный обработчик пригодится, к примеру, если вы отключили опцию <a href="list-controls#load-on-init"><code>loadOnInit</code></a>,
-			поскольку вам надо загрузить дополнительные данные перед началом работы. В обработчике данного события вы можете вызвать
-			метод <code>loadData</code> самостоятельно.
-		</p>
-		<p>
-			Данное событие, как и предыдущее, принимает в качестве параметра объекти типа <code>RtList</code>, представляющий собой
+			Данное событие, как и предыдущее, передает в качестве параметра объекти типа <code>RtList</code>, представляющий собой
 			сервис для работы со списком.
 		</p>
 	</section>
@@ -106,7 +100,7 @@
 				Метод <code>reloadData</code> - выполняет перезагрузку (загрузку со сбросом параметров пейджинга) данных в список.
 			</li>
 			<li>
-				Метод <code>cancelRequests</code> - выполняет отмену выполняющегося в данный момент времени запроса данных для списка.
+				Метод <code>cancelRequests</code> - выполняет отмену выполняющегося в данный момент времени запроса данных.
 			</li>
 			<li>
 				Метод <code>resetSettings</code> - выполняет сброс параметров списка (сортировки, пейджинг, фильтры).
@@ -130,7 +124,33 @@
 		</rt-demo-tab-section>
 	</section>
 	<section id="default-sortings">
-		<h4>Параметр <code>defaultSortings</code></h4>
+		<h4>Параметр <code>defaultSortings</code> директивы <code>rtList</code></h4>
+		<p>
+			Данный параметр позволяет задать для списка сортировки по умолчанию. Сортировки будут применены сразу при создании списка
+			и в них же будет сбрасываться значение сортировок при вызове метода <code>resetSettings</code>.
+		</p>
+		<p>
+			В качестве значения данный параметр принимает массив объектов, удовлетворяющих контракту <code>SortParameter</code>
+		</p>
+		<p>
+			Выставлять сортировки по умолчанию можно любой момент жизни списка. Если в момент выставления сортировок по умолчанию список
+			еще не был отсортирован, то данные сортировки применятся автоматически.
+		</p>
+		<p>
+			Ниже приведен пример списка, у которого по умолчанию выставлены сортировки по названию аэропорта в прямом порядке и стране
+			нахождения в обратном, а так же код контракта <code>SortParameter</code>.
+		</p>
+		<rt-demo-tab-section>
+			<rt-demo-sample-tab tabTitle="Live demo">
+				<rt-demo-default-sortings></rt-demo-default-sortings>
+			</rt-demo-sample-tab>
+			<rt-demo-code-tab url="%2Blist-controls/default-sortings/default-sortings.component.html">
+			</rt-demo-code-tab>
+			<rt-demo-code-tab url="shared/data/sort-parameter.ts">
+			</rt-demo-code-tab>
+
+		</rt-demo-tab-section>
+
 	</section>
 </section>
 <section id="rt-sort">
@@ -140,8 +160,8 @@
 		сортировки, который будет передаваться в запросе за данными.
 	</p>
 	<p>
-		Ниже расположен живой пример списка с сортировкам, а так же объявления контрактов <code>SortParameter</code> и <code>AirportsListRequest</code>.
-		Моменты, на которые следует обратить внимание, следующие:
+		Ниже расположен живой пример списка с сортировкам, а так же контракт <code>AirportsListRequest</code>. Моменты, на которые
+		следует обратить внимание:
 	</p>
 	<ul class="bulleted">
 		<li>
@@ -171,9 +191,6 @@
 		</rt-demo-code-tab>
 		<rt-demo-code-tab url="shared/data/airports-list-request.ts">
 		</rt-demo-code-tab>
-		<rt-demo-code-tab url="shared/data/sort-parameter.ts">
-		</rt-demo-code-tab>
-
 	</rt-demo-tab-section>
 </section>
 <section id="rt-row-number">
