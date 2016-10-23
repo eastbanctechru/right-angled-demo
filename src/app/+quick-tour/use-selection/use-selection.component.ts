@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Airport, AirportsListRequest, AirportsService } from '../../shared';
-import { Observable } from 'rxjs/Observable';
+import { AirportsListRequest, AirportsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-use-selection',
@@ -10,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 export class UseSelectionComponent {
   constructor(private airportsService: AirportsService) {
   }
-  getAirports = (request: AirportsListRequest): Observable<Airport[]> => {
+  getAirports = (request: AirportsListRequest) => {
     return this.airportsService.getAirportsList(request);
   }
 }
