@@ -1,0 +1,13 @@
+:host /deep/ .options {
+    padding: 0 1px 15px;
+}
+
+:host /deep/ .checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline
+{
+  margin-left: 0;
+}
+
+:host /deep/ .checkbox-inline, .radio-inline
+{
+  margin-right: 10px;
+}

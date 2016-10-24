@@ -4,8 +4,14 @@
     text-decoration: underline;
 }
 
-:host /deep/ .col-md-4, :host /deep/ .options {
-    padding: 5px;
+:host /deep/ .row {
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+:host /deep/ [class*=col-] {
+    padding-right: 1px;
+    padding-left: 1px;
 }
 
 :host /deep/ .item {

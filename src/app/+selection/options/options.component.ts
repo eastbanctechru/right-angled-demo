@@ -4,6 +4,7 @@ import { CountriesService } from '../countries.service';
 
 @Component({
   selector: 'rt-demo-options',
+  styleUrls: ['options.component.scss'],
   templateUrl: 'options.component.html'
 })
 export class OptionsComponent {
@@ -17,8 +18,7 @@ export class OptionsComponent {
   }
   public reload(): void {
     this.countries = [];
-    this.countriesService.getSomeCountries(6, 500)
-    .delay(100000)
+    this.countriesService.getSomeCountries(12, 500)
       .subscribe(countries => this.countries = countries);
   }
 }

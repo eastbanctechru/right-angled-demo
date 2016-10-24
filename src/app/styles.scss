@@ -148,6 +148,29 @@ div.toolbar {
             padding-left: 5px;
         }
     }
+    @media (max-width: 768px)
+    {
+      ul {
+        &:after {
+          content:'';
+          clear: both;
+          display: table;
+        }
+
+        &:before {
+          content:'';
+          clear: both;
+        }
+        li {
+              width: 50%;
+              float: left;
+              padding-top: 5px;
+              .btn {
+                width: 100%;
+              }
+        } 
+      } 
+    }
 }
 
 rt-list-state-done,
