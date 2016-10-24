@@ -1,7 +1,8 @@
-<div class="navbar-header">
-	<a class="navbar-brand" href="#" [routerLink]="['/quick-tour']"></a>
-
-	<ul class="nav navbar-nav pull-right" (click)="active=!active">
+<nav class="navbar">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="#" [routerLink]="['/quick-tour']"></a>
+	</div>
+	<ul class="nav navbar-nav navbar-right" (click)="active=!active">
 		<li class="dropdown" [class.active]="active">
 			<span class="dropdown-toggle text-uppercase">Docs<span class="caret"></span></span>
 			<ul class="dropdown-menu">
@@ -29,4 +30,4 @@
 			</ul>
 		</li>
 	</ul>
-</div>
+</nav>
