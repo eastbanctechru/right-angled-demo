@@ -11,6 +11,13 @@
     rt-list-state-done {
         text-align: right;
     }
+    @media (max-width:768px)
+    {
+      rt-list-state-done {
+        text-align: left;
+        padding-left: 15px;
+      }
+    }
 }
 
 a {

@@ -90,13 +90,17 @@ aside {
     border-color: $color-light-blue;
     @include border-radius(0);
 
-    &:hover,
-    &:focus {
+    &:hover, &:focus {
         background-color: $color-btn-primary-focus;
         border-color: $color-btn-primary-focus;
     }
 
     &:active {
+      &:focus{
+        background-color: $color-btn-primary-active;
+        border-color: $color-btn-primary-active;
+        @include box-shadow(none);
+      }
         background-color: $color-btn-primary-active;
         border-color: $color-btn-primary-active;
         @include box-shadow(none);
@@ -294,3 +298,42 @@ form {
         }
     }
 }
+
+section.alertify-alert {
+  padding-top: 0;
+  margin-top: 0;
+  @include box-shadow(none);
+  @include border-radius(0);
+}
+.alertify-button-ok {
+    @include box-shadow(none);
+    @include border-radius(0);
+    background: $color-light-blue;
+    border-color: $color-light-blue;
+    color: $color-white;
+    text-decoration: none;
+    text-shadow: none;
+    
+    &:hover, &:focus {
+        @include box-shadow(none);
+        @include border-radius(0);
+        background: $color-btn-primary-focus;
+        border-color: $color-btn-primary-focus;
+        color: $color-white;
+        text-decoration: none;
+    }
+    &:active {
+      &:focus{
+        background: $color-btn-primary-active;
+        border-color: $color-btn-primary-active;
+        color: $color-white;
+        text-decoration: none;
+        @include box-shadow(none);
+      }
+        background: $color-btn-primary-active;
+        border-color: $color-btn-primary-active;
+        color: $color-white;
+        text-decoration: none;
+        @include box-shadow(none);
+    }
+  }
