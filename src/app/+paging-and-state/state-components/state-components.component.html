@@ -1,48 +1,63 @@
-<div class="row" [rtList]="loadData" #list="rtList" [loadOnInit]="false" rtSelectionArea>
-	<div class="col-md-12 toolbar">
-		<ul>
-			<li>
-				<button (click)="list.loadData()" [disabled]="list.busy" type="button" class="btn btn-primary">Load data</button>
-			</li>
-			<li>
-				<button (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-primary">Cancel loading</button>
-			</li>
-			<li>
-				<button type="button" class="btn btn-primary" (click)="raiseErrorOnLoad()">Raise error on load</button>
-			</li>
-			<li>
-				<button type="button" class="btn btn-primary" (click)="loadEmptyData()">Load empty list</button>
-			</li>
-		</ul>
-	</div>
-	<div class="col-md-12" *ngFor="let airport of list.items" [rtSelectable]="airport" #rts="rtSelectable">
-		<div class="item" [class.selected]="rts.selected">{{airport.name}}</div>
-	</div>
-	<div class="col-md-12">
-		<div class="pager">
-			<rt-list-state-initial>
-				Пока ничего не произошло. Нажмите любую из кнопок вверху
-			</rt-list-state-initial>
-			<!-- Вы будете видеть это сообщение пока выполняется загрузка данных. -->
-			<rt-list-state-progress>
-				Загружаю данные...
-			</rt-list-state-progress>
-			<!-- Вы увидите это сообщение если запрос не вернет данные. -->
-			<rt-list-state-no-data>
-				Данные не найдены
-			</rt-list-state-no-data>
-			<!-- Вы увидите это сообщение если нажмете кнопку "отменить запрос" когда он будет выполняться. -->
-			<rt-list-state-request-canceled>
-				Запрос был отменен
-			</rt-list-state-request-canceled>
-			<!-- Вы увидите это сообщение если нажмете кнопку "Raise error on load". -->
-			<rt-list-state-failed>
-				При запросе данных произошла ошибка
-			</rt-list-state-failed>
-			<!-- Вы увидите это сообщение если нажмете кнопку "загрузить данные". -->
-			<rt-list-state-done>
-				Данные успешно загружены
-			</rt-list-state-done>
-		</div>
-	</div>
+<div class="toolbar">
+	<ul>
+		<li>
+			<button (click)="list.loadData()" [disabled]="list.busy" type="button" class="btn btn-primary">Load data</button>
+		</li>
+		<li>
+			<button (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-primary">Cancel loading</button>
+		</li>
+		<li>
+			<button type="button" class="btn btn-primary" (click)="raiseErrorOnLoad()">Raise error on load</button>
+		</li>
+		<li>
+			<button type="button" class="btn btn-primary" (click)="loadEmptyData()">Load empty list</button>
+		</li>
+	</ul>
+</div>
+<div class="table-responsive">
+	<table class="table table-striped" [rtList]="loadData" [loadOnInit]="false" #list="rtList">
+		<thead>
+			<tr>
+				<th><span rtSort="iataCode">IATA</span></th>
+				<th><span rtSort="name">Airport name</span></th>
+				<th><span rtSort="countryName">Country</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let airport of list.items">
+				<td>{{airport.iataCode}}</td>
+				<td>{{airport.name}}</td>
+				<td>{{airport.countryName}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<rt-list-state-initial>
+						Пока ничего не произошло. Нажмите любую из кнопок вверху
+					</rt-list-state-initial>
+					<!-- Вы будете видеть это сообщение пока выполняется загрузка данных. -->
+					<rt-list-state-progress>
+						Загружаю данные...
+					</rt-list-state-progress>
+					<!-- Вы увидите это сообщение если запрос не вернет данные. -->
+					<rt-list-state-no-data>
+						Данные не найдены
+					</rt-list-state-no-data>
+					<!-- Вы увидите это сообщение если нажмете кнопку "отменить запрос" когда он будет выполняться. -->
+					<rt-list-state-request-canceled>
+						Запрос был отменен
+					</rt-list-state-request-canceled>
+					<!-- Вы увидите это сообщение если нажмете кнопку "Raise error on load". -->
+					<rt-list-state-failed>
+						При запросе данных произошла ошибка
+					</rt-list-state-failed>
+					<!-- Вы увидите это сообщение если нажмете кнопку "загрузить данные". -->
+					<rt-list-state-done>
+						Данные успешно загружены
+					</rt-list-state-done>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </div>

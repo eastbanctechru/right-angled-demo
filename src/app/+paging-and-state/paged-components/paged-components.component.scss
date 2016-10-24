@@ -1,13 +1,6 @@
 @import '../../shared.scss';
 
-:host /deep/ .pager {
-    text-align: right;
-    display: block;
-
-    > * {
-        display: block;
-    }
-
+:host /deep/ {
     span[rtGoToFirstPage], span[rtGoToPreviousPage], span[rtGoToNextPage], span[rtGoToLastPage] {
         display: inline-block;
         width: 24px;

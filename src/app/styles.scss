@@ -175,9 +175,9 @@ div.toolbar {
 
 rt-list-state-done,
 rt-list-state-request-canceled,
-rt-list-state-request-initial,
-rt-list-state-request-failed,
-rt-list-state-request-no-data,
+rt-list-state-initial,
+rt-list-state-failed,
+rt-list-state-no-data,
 rt-list-state-progress {
     display: block;
     text-align: center;
@@ -190,16 +190,8 @@ div.line-progress {
     background: url('../assets/images/line-progress.gif') center center no-repeat;
 }
 
-rt-demo-paged-footer, rt-demo-buffered-footer, div.pager {
+rt-demo-paged-footer, rt-demo-buffered-footer {
     display: block;
-
-    .form-control {
-        display: inline-block;
-        width: 50px;
-        text-align: center;
-        padding: 6px 6px;
-        vertical-align: middle;
-    }
 }
 
 form {
@@ -317,6 +309,13 @@ form {
                 border-top: 0;
                 padding-right: 40px;
                 vertical-align: middle;
+                    .form-control {
+                        display: inline-block;
+                        width: 50px;
+                        text-align: center;
+                        padding: 6px 6px;
+                        vertical-align: middle;
+                    }
             }
         }
     }
