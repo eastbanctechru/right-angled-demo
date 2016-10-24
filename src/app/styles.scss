@@ -160,8 +160,8 @@ rt-list-state-progress {
     text-align: center;
 }
 
-rt-list-state-progress > div {
-    display: inline-block;
+div.line-progress {
+    margin: 0 auto;
     width: 128px;
     height: 16px;
     background: url('../assets/images/line-progress.gif') center center no-repeat;
