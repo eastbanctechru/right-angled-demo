@@ -1,4 +1,4 @@
-<div [rtList]="loadData" #list="rtList" [loadOnInit]="false">
+<div [rtList]="loadData" #list="rtList" [loadOnInit]="false" (onListInit)="onListInit($event)">
 	<rt-demo-filter-area [list]="list" #filter [rtRegisterAsFilter]="filter">
 	</rt-demo-filter-area>
 	<div class="table-responsive">

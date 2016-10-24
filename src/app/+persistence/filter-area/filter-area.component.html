@@ -10,7 +10,7 @@
       <div class="form-group">
         <label>Airport type</label>
         <select class="form-control" [(ngModel)]="selectedAirportType" name="airportType">
-          <option *ngFor="let type of airportTypes | async" [value]="type.key">{{type.value}}</option>
+          <option *ngFor="let type of airportTypes" [value]="type.key">{{type.value}}</option>
         </select>
       </div>
     </div>
@@ -18,7 +18,7 @@
       <div class="form-group">
         <label>Airport size</label>
         <select class="form-control" [(ngModel)]="selectedAirportSize" name="airportSize">
-          <option *ngFor="let size of airportSizes | async" [value]="size.key">{{size.value}}</option>
+          <option *ngFor="let size of airportSizes" [value]="size.key">{{size.value}}</option>
         </select>
       </div>
     </div>

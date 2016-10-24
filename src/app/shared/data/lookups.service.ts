@@ -14,7 +14,7 @@ export class LookupsService {
   constructor(private http: Http) {
 
   }
-  private getAirports(delay: number): Observable<Array<Airport>> {
+  private getAirports(): Observable<Array<Airport>> {
     // we use optional "delay" parameter to simulate backend latency
     // also we "cache" result sunce we get all of the items
     if (!this.airportsCache.observers.length) {
@@ -24,7 +24,7 @@ export class LookupsService {
         .map(response => (response.json().airports as Airport[]))
         .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
     }
-    return this.airportsCache.map(airports => _.cloneDeep(airports)).delay(delay);
+    return this.airportsCache;
 
   }
   private transformToLookup(data: Array<string>): Array<LookupItem> {
@@ -37,30 +37,18 @@ export class LookupsService {
     } as LookupItem]).orderBy(item => item.value).value();
   }
 
-  public getCountryLookups(region?: string, delay: number = 0): Observable<Array<LookupItem>> {
-    return this.getAirports(delay)
-      .map(airports => this.transformToLookup(
-        _.chain(airports)
-          .filter(item => !region || item.region === region)
-          .map((item: Airport) => item.countryName).uniq()
-          .value()));
-  }
-  public getCityLookups(country?: string, delay: number = 0): Observable<Array<LookupItem>> {
-    return this.getAirports(delay)
-      .map(airports => this.transformToLookup(
-        _.chain(airports)
-          .filter(item => !country || item.countryName === country)
-          .map((item: Airport) => item.cityName).uniq()
-          .value()));
-  }
-
   public getAirportTypeLookups(delay: number = 0): Observable<Array<LookupItem>> {
-    return this.getAirports(delay).map(airports => this.transformToLookup(_.chain(airports).map(item => item.type).uniq().value()));
+    return this.getAirports()
+      .delay(delay)
+      .map(airports => _.cloneDeep(airports))
+      .map(airports => this.transformToLookup(_.chain(airports).map(item => item.type).filter((item) => item !== 'closed').uniq().value()));
   }
   public getAirportSizeLookups(delay: number = 0): Observable<Array<LookupItem>> {
-    return this.getAirports(delay).map(airports => this.transformToLookup(_.chain(airports).map(item => item.size).uniq().value()));
-  }
-  public getRegionLookups(delay: number = 0): Observable<Array<LookupItem>> {
-    return this.getAirports(delay).map(airports => this.transformToLookup(_.chain(airports).map((item: Airport) => item.region).uniq().value()));
+    debugger;
+    return this.getAirports()
+      .delay(delay)
+      .map(airports => _.cloneDeep(airports))
+      .map(airports => this.transformToLookup(
+        _.chain(airports).map(item => item.size).uniq().value()));
   }
 }

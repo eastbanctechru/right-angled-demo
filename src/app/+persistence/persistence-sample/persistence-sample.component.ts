@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RtList } from 'right-angled';
 
-import { AirportsListRequest, AirportsService, LocalStorageStateService, QueryStringStateService, SessionStorageStateService } from '../../shared';
+import { AirportsPagedListRequest, AirportsService, LocalStorageStateService, QueryStringStateService, SessionStorageStateService } from '../../shared';
 
 @Component({
   providers: [LocalStorageStateService, QueryStringStateService, SessionStorageStateService],
@@ -13,8 +13,8 @@ export class PersistenceSampleComponent {
   constructor(private airportsService: AirportsService, private queryStringStateService: QueryStringStateService, private localStorageStateService: LocalStorageStateService, private sessionStorageStateService: SessionStorageStateService) {
     this.airportsService = airportsService;
   }
-  public loadData = (requestParams: AirportsListRequest): any => {
-    return this.airportsService.getAirportsList(requestParams);
+  public loadData = (requestParams: AirportsPagedListRequest): any => {
+    return this.airportsService.getAirportsPagedList(requestParams);
   };
   onListInit(list: RtList): void {
     list.registerFilterTarget(this);

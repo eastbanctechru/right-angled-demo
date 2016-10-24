@@ -12,7 +12,7 @@ import { TabSectionComponent } from './tab-section.component';
   `
 })
 export class SampleTabComponent extends Tab {
-  @Input() public tabTitle: string;
+  public tabTitle: string = 'Live demo';
   constructor(tabs: TabSectionComponent) {
     super(tabs);
   }
