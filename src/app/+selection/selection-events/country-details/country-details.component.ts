@@ -9,12 +9,15 @@ import { CountriesService } from '../../countries.service';
 export class CountryDetailsComponent {
   @Input() public country: any;
   public selected: boolean = false;
+  public loading: boolean = false;
   public countryInfo: any = null;
   constructor(private countriesService: CountriesService) {
   }
   public onSelected(): void {
     this.selected = true;
+    this.loading = true;
     this.countryInfo = this.countriesService.getCountryInfo(this.country.name);
+    this.countryInfo.subscribe(() => this.loading = false);
   }
   public onDeselected(): void {
     this.selected = false;

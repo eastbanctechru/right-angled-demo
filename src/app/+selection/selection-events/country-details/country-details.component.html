@@ -2,5 +2,9 @@
 	{{country.name}}
 </div>
 <div *ngIf="selected">
-	{{this.countryInfo|async|json}}
+	<div *ngIf="loading" class="line-progress">
+	</div>
+	<div *ngIf="!loading">
+    {{countryInfo|async|json}}
+	</div>
 </div>
