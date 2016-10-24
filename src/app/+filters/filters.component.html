@@ -2,20 +2,43 @@
 <section>
 	<h3>Table of contents</h3>
 	<ul class="agenda">
-		<li><a href="list-controls#common-idea">Общая идея</a></li>
-		<li><a href="list-controls#bootstrap">Как подключить</a></li>
-		<li><a href="list-controls#filter">Аннотация <code>@filter</code></a></li>
+		<li><a href="filters#common-idea">Общая идея</a></li>
+		<li><a href="filters#bootstrap">Как подключить</a></li>
+		<li><a href="filters#filter-annotation">Аннотация <code>@filter</code></a></li>
 		<li>
-			<a href="list-controls#filter-registration">Регистрация объекта как filter target</a>
+			<a href="filters#filter-registration">Регистрация объекта как filter target</a>
 			<ul>
 				<li>
-					<a href="list-controls#register-as-filter">Директива <code>rtRegisterAsFilter</code></a>
+					<a href="filters#constructor-injection">Injection of <code>FiltersService</code> via constructor</a>
 				</li>
 				<li>
-					<a href="list-controls#view-child">Injection via <code>@ViewChild</code></a>
+					<a href="filters#register-as-filter"><code>rtRegisterAsFilter</code> directive</a>
+				</li>
+				<li>
+					<a href="filters#list-init"><code>onListInit</code> list event</a>
 				</li>
 			</ul>
 		</li>
-		<li><a href="list-controls#reset-settings">Директива <code>rtResetSettings</code></a></li>
 	</ul>
+</section>
+<section id="common-idea">
+	<h3>Общая идея</h3>
+</section>
+<section id="bootstrap">
+	<h3>Как подключить</h3>
+</section>
+<section id="filter-annotation">
+	<h3>Аннотация <code>@filter</code></h3>
+</section>
+<section id="filter-registration">
+	<h3>Регистрация объекта как filter target</h3>
+	<section id="constructor-injection">
+		<h4>Injection of <code>FiltersService</code> via constructor</h4>
+	</section>
+	<section id="register-as-filter">
+		<h4><code>rtRegisterAsFilter</code> directive</h4>
+	</section>
+	<section id="list-init">
+		<h4><code>onListInit</code> list event</h4>
+	</section>
 </section>
