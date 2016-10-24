@@ -9,7 +9,7 @@
     padding: 15px;
 }
 
-:host /deep/ .tab-body {
+:host /deep/ div.tab-body {
     border: 1px solid #4fc3f7;
     padding: 0;
 }
@@ -33,8 +33,14 @@ ul.tabs {
     li {
         display: inline-block;
         border: none;
-        min-width: 25%;
-        padding: 0 0 0 1px;
+        width: 25%;
+        @media (max-width: 768px) {
+          width: 33%;
+        }
+
+        & + li{
+          padding-left: 1px;
+        }
         button.btn {
             padding: 6px 24px;
             font-size: 13px;
@@ -43,15 +49,18 @@ ul.tabs {
             border: none;
             border-radius: 0;
             width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 
     li.active, li.active button.btn {
-        border-color: $color-muted-grey;
+        border-color: #fafafa;
 
         button.btn {
             color: #333;
-            background: $color-muted-grey;
+            background: #fafafa;
             padding: 7px 24px;
         }
     }
