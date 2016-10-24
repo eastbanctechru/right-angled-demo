@@ -1,28 +1,33 @@
 @import '../shared.scss';
 
-:host /deep/ section:target h3 {
-    text-decoration: underline;
-}
+:host /deep/ {
 
-:host /deep/ .row {
-    margin-right: -5px;
-    margin-left: -5px;
+div[rtSelectionArea]
+{
+  div[rtSelectionArea]{
+    padding: 0 15px;
+  }
 }
+    .row {
+        margin-right: -5px;
+        margin-left: -5px;
+    }
 
-:host /deep/ [class*=col-] {
-    padding-right: 1px;
-    padding-left: 1px;
-}
+    [class*=col-] {
+        padding-right: 1px;
+        padding-left: 1px;
+    }
 
-:host /deep/ .item {
-    background-color: rebeccapurple;
-    padding: 25px;
-    color: $color-white;
-    text-align: center;
-    cursor: pointer;
-    margin: 1px 0;
-}
+    .item {
+        background-color: rebeccapurple;
+        padding: 25px;
+        color: $color-white;
+        text-align: center;
+        cursor: pointer;
+        margin: 1px 0;
+    }
 
-:host /deep/ .item.selected {
-    background-color: $color-blue !important;
+    .item.selected {
+        background-color: $color-blue !important;
+    }
 }

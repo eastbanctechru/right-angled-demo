@@ -58,8 +58,11 @@ code {
 }
 
 section {
-    margin-top: -72px;
-    padding-top: 72px;
+    margin-top: -60px;
+    padding-top: 60px;
+    &:target h3 {
+      text-decoration: underline;
+    }
 }
 
 aside {

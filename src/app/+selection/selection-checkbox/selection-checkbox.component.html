@@ -7,14 +7,14 @@
     </div>
     <div class="col-md-12" *ngIf="region.selected" rtSelectionArea>
       <div *ngFor="let country of region.countries">
-        <div class="col-md-12 item" [class.selected]="country.selected" style="background-color: darkcyan;">
+        <div class="col-md-12 item" [class.selected]="country.selected">
           <label class="checkbox-inline">
           <input type="checkbox" [rtSelectionCheckboxFor]="country" /> {{country.name}} ({{country.airports.length}}
           airports)</label>
         </div>
         <div class="col-md-12" *ngIf="country.selected" rtSelectionArea>
           <div *ngFor="let airport of country.airports">
-            <div class="col-md-12 item" [class.selected]="airport.selected" style="background-color: darkorange;">
+            <div class="col-md-12 item" [class.selected]="airport.selected">
               <label class="checkbox-inline">
               <input type="checkbox" [rtSelectionCheckboxFor]="airport" /> {{airport.name}} ({{airport.iataCode}})
               </label>
