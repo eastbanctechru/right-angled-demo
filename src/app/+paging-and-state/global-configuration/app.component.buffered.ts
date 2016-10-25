@@ -1,7 +1,7 @@
-import { PagedPager } from 'right-angled';
+import { BufferedPager } from 'right-angled';
 
-PagedPager.settings.defaultPageSize = 10;
-PagedPager.settings.minPageSize = 5;
-PagedPager.settings.maxPageSize = 1000;
+BufferedPager.settings.defaultRowCount = 10;
+BufferedPager.settings.minRowCount = 5;
+BufferedPager.settings.maxRowCount = 1000;
 
 export class AppComponent { }
