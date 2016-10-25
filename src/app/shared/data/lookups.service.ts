@@ -44,7 +44,6 @@ export class LookupsService {
       .map(airports => this.transformToLookup(_.chain(airports).map(item => item.type).filter((item) => item !== 'closed').uniq().value()));
   }
   public getAirportSizeLookups(delay: number = 0): Observable<Array<LookupItem>> {
-    debugger;
     return this.getAirports()
       .delay(delay)
       .map(airports => _.cloneDeep(airports))
