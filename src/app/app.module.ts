@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulartics2-google-analytics';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulartics2-ga';
 import { RTModule } from 'right-angled';
 
 import { FiltersModule } from './+filters/filters.module';

@@ -263,9 +263,9 @@ angular2-template-loader@^0.5.0:
     codecov "^1.0.1"
     loader-utils "^0.2.15"
 
-angulartics2@^1.1.11:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-1.1.11.tgz#1227faa479affb555328480c8bb68d3019b6d749"
+angulartics2@1.1.12:
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-1.1.12.tgz#f945fd46284b949ff441fc2987bf6c7aa4685261"
 
 ansi-escapes@^1.1.0:
   version "1.4.0"
