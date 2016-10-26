@@ -15,11 +15,11 @@
 </rt-list-state-progress>
 <rt-list-state-done>
   <rt-paged-pager [defaultPageSize]="5" #rtPager>
-    <span rtGoToFirstPage title="go to first page"></span>
-    <span rtGoToPreviousPage title="go to previous page"></span>
+    <span class="go-to-first-page" [class.disabled]="!rtPager.canMoveBackward" (click)="rtPager.goToFirstPage()" title="go to first page"></span>
+    <span class="go-to-prev-page" [class.disabled]="!rtPager.canMoveBackward" (click)="rtPager.goToPreviousPage()" title="go to previous page"></span>
     <input rtSelectOnFocus rtPageNumber type="text" class="form-control" maxlength="4" />
-    <span rtGoToNextPage title="go to next page"></span>
-    <span rtGoToLastPage title="go to last page"></span>
+    <span class="go-to-next-page" [class.disabled]="!rtPager.canMoveForward" (click)="rtPager.goToNextPage()" title="go to next page"></span>
+    <span class="go-to-last-page" [class.disabled]="!rtPager.canMoveForward" (click)="rtPager.goToLastPage()" title="go to last page"></span>
     <span>Displaying records {{rtPager.pager.displayFrom}} - {{rtPager.pager.displayTo}} of {{rtPager.pager.totalCount}}.</span>
     <span>Page size</span>
     <input rtSelectOnFocus rtPageSize type="text" class="form-control" maxlength="3" />

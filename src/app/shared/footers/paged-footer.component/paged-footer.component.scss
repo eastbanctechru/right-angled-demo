@@ -13,7 +13,7 @@
     }
 }
 
-span[rtGoToFirstPage], span[rtGoToPreviousPage], span[rtGoToNextPage], span[rtGoToLastPage] {
+span.go-to-first-page, span.go-to-prev-page, span.go-to-next-page, span.go-to-last-page {
     display: inline-block;
     width: 24px;
     height: 21px;
@@ -26,24 +26,24 @@ span[rtGoToFirstPage], span[rtGoToPreviousPage], span[rtGoToNextPage], span[rtGo
         @include opacity(.85);
     }
 
-    &[disabled='true'] {
+    &.disabled {
         cursor: no-drop;
         @include opacity(.45);
     }
 }
 
-span[rtGoToFirstPage] {
+span.go-to-first-page {
     background-image: url('./assets/images/go-to-first-page.png');
 }
 
-span[rtGoToPreviousPage] {
+span.go-to-prev-page {
     background-image: url('./assets/images/go-to-prev-page.png');
 }
 
-span[rtGoToNextPage] {
+span.go-to-next-page {
     background-image: url('./assets/images/go-to-next-page.png');
 }
 
-span[rtGoToLastPage] {
+span.go-to-last-page {
     background-image: url('./assets/images/go-to-last-page.png');
 }
