@@ -46,10 +46,15 @@
             }
 
             .dropdown-menu {
-                height: 240px;
+                height: 280px;
 
                 @media (max-width: 768px ) {
                   height: 336px;
+                }
+                @media (max-height: 400px) {
+                    max-height: 240px;
+                    overflow-y: auto;
+                    height: 240px;
                 }
             }
         }
