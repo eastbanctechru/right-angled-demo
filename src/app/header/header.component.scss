@@ -79,6 +79,9 @@
                 &:hover, &:focus {
                     background-color: $color-hover-blue;
                 }
+                &.link-active {
+                    background-color: $color-light-blue;
+                }
             }
 
             @media (max-width:768px) {

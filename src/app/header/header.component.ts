@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 
 })
 export class HeaderComponent {
-  public active: boolean = false;
+  public isActive: boolean = false;
 }
