@@ -14,23 +14,26 @@ declare const PR: {
   selector: 'rt-demo-code-tab',
   template: `
   <div [hidden]="!isActive">
-    <pre>{{src | async}}</pre>
+    <div [hidden]="contentReady" class="spinner"></div>
+    <pre [hidden]="!contentReady">{{src | async}}</pre>
   </div>
   `
 })
 export class CodeTabComponent extends Tab implements OnChanges {
-  public isActive: boolean;
+  public contentLoadStarted: boolean = false;
+  public contentReady: boolean = false;
   public baseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled-demo/master/src/app/';
   public libBaseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled/master/src/';
   public src: Observable<any> = Observable.empty();
   @Input() public url: string;
   @Input() public fromLib: boolean;
-  constructor(tabs: TabSectionComponent, private http: Http, private elementRef: ElementRef) {
-    super(tabs);
+  constructor(private tabSection: TabSectionComponent, private http: Http, private elementRef: ElementRef) {
+    super();
   }
-  public ngOnChanges(changes: { url?: SimpleChange, fromLib: SimpleChange }): void {
-    if (changes.url) {
-      this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1).replace('tsfake', 'ts');
+  public activate(): void {
+    super.activate();
+    if (!this.contentLoadStarted) {
+      this.contentLoadStarted = true;
       this.src = this.http.get((this.fromLib ? this.libBaseUrl : this.baseUrl) + this.url)
         .map(res => {
           return res.text();
@@ -43,10 +46,17 @@ export class CodeTabComponent extends Tab implements OnChanges {
                 pre.className = 'prettyprint';
                 PR.prettyPrint(null, this.elementRef.nativeElement);
                 clearInterval(timer);
+                this.contentReady = true;
               }
             }
           }, 50);
         });
+    }
+  }
+  public ngOnChanges(changes: { url?: SimpleChange, fromLib: SimpleChange }): void {
+    if (changes.url && !this.tabTitle) {
+      this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1).replace('tsfake', 'ts');
+      this.tabSection.addTab(this);
     }
   }
 }

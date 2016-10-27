@@ -13,7 +13,8 @@ import { TabSectionComponent } from './tab-section.component';
 })
 export class SampleTabComponent extends Tab {
   public tabTitle: string = 'Live demo';
-  constructor(tabs: TabSectionComponent) {
-    super(tabs);
+  constructor(tabSection: TabSectionComponent) {
+    super();
+    tabSection.addTab(this);
   }
 }
