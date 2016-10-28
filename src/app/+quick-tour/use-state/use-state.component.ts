@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { AirportsListRequest, AirportsService } from '../../shared';
+import { Airport, AirportsListRequest, AirportsService } from '../../shared';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'rt-demo-use-state',
@@ -9,7 +10,7 @@ import { AirportsListRequest, AirportsService } from '../../shared';
 export class UseStateComponent {
   constructor(private airportsService: AirportsService) {
   }
-  getAirports = (request: AirportsListRequest) => {
+  getAirports = (request: AirportsListRequest): Observable<Airport[]> => {
     return this.airportsService.getAirportsList(request);
   }
 }

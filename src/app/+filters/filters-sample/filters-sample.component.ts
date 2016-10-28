@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RtList, filter } from 'right-angled';
 
-import { AirportsService, LookupItem, LookupsService } from '../../shared';
+import { AirportsService, ListResponse, LookupItem, LookupsService } from '../../shared';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'rt-demo-filters-sample',
@@ -22,12 +23,12 @@ export class FiltersSampleComponent {
     this.lookupsService.getAirportTypeLookups().subscribe(types => this.airportTypes = types);
   }
 
-  getAirports = (request: any) => {
+  public getAirports = (request: any): Observable<ListResponse> => {
     this.lastRequest = request;
     return this.airportsService.getAirportsPagedList(request);
   }
 
-  onListInit(list: RtList): void {
+  public onListInit(list: RtList): void {
     list.registerFilterTarget(this);
   }
 }
