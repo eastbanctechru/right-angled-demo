@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { RtList, filter } from 'right-angled';
 
-import { AirportsPagedListRequest, AirportsService, ListResponse, LookupItem, LookupsService } from '../../shared';
-import { Observable } from 'rxjs/Observable';
+import { AirportsService, LookupItem, LookupsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-filters-sample',
@@ -11,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class FiltersSampleComponent {
   public airportSizes: Array<LookupItem>;
   public airportTypes: Array<LookupItem>;
+  public lastRequest: any = '';
 
   @filter public airportName: string = null;
   @filter public country: string = null;
@@ -22,7 +22,8 @@ export class FiltersSampleComponent {
     this.lookupsService.getAirportTypeLookups().subscribe(types => this.airportTypes = types);
   }
 
-  getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
+  getAirports = (request: any) => {
+    this.lastRequest = request;
     return this.airportsService.getAirportsPagedList(request);
   }
 

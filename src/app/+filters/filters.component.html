@@ -61,6 +61,10 @@
 		<code>onListInit</code>. Теперь значения этих полей автоматически попадают в запрос на сервер, сбрасываются кнопкой "reset
 		settings", сериализуются в <code>queryString</code> и восстанавливаются из <code>queryString</code> при обновлении страницы.
 	</p>
+	<p>
+		Дополнительно, под таблицей мы отображаем при помощи <a href="https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html" target="_blank">json pipe</a> параметры последнего выполненного запроса,
+		чтобы вы могли оценить, в каком виде параметры отправляются на сервер.
+	</p>
 	<rt-demo-tab-section>
 		<rt-demo-sample-tab>
 			<rt-demo-filters-sample></rt-demo-filters-sample>
@@ -79,8 +83,9 @@
 		в нужный компонент сервис <code>FiltersService</code> и указать его в коллекции <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>		вашего компонента.
 	</p>
 	<p>
-		Но, если вы планируете пользоваться описанной ниже директивой <code>rtRegisterAsFilter</code>, то необходимо будет также импортировать
-		модуль <code>RTFiltersModule</code>. Или модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки <code>right-angled</code>		целиком
+		Но, если вы планируете пользоваться описанной ниже директивой <code>rtRegisterAsFilter</code>, то необходимо будет также
+		импортировать модуль <code>RTFiltersModule</code>. Или модуль <code>RtModule</code>, включающий в себя функционал всей
+		библиотеки <code>right-angled</code> целиком
 	</p>
 	<rt-demo-tab-section>
 		<rt-demo-code-tab url="%2Bfilters/bootstrap/app.module.tsfake">
