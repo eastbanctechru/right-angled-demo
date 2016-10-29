@@ -4,7 +4,7 @@
 	<ul class="agenda">
 		<li><a href="filters#common-idea">Общая идея</a></li>
 		<li><a href="filters#bootstrap">Как подключить</a></li>
-		<li><a href="filters#filter-annotation">Аннотация <code>@filter</code></a></li>
+		<li><a href="filters#filter-annotation">Параметры аннотации <code>@filter</code></a></li>
 		<li>
 			<a href="filters#filter-registration">Регистрация объекта как filter target</a>
 			<ul>
@@ -62,8 +62,9 @@
 		settings", сериализуются в <code>queryString</code> и восстанавливаются из <code>queryString</code> при обновлении страницы.
 	</p>
 	<p>
-		Дополнительно, под таблицей мы отображаем при помощи <a href="https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html" target="_blank">json pipe</a> параметры последнего выполненного запроса,
-		чтобы вы могли оценить, в каком виде параметры отправляются на сервер.
+		Дополнительно, под таблицей мы отображаем при помощи <a href="https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html"
+			target="_blank">json pipe</a> параметры последнего выполненного запроса, чтобы вы могли оценить, в каком виде параметры
+		отправляются на сервер.
 	</p>
 	<rt-demo-tab-section>
 		<rt-demo-sample-tab>
@@ -94,7 +95,56 @@
 
 </section>
 <section id="filter-annotation">
-	<h3>Аннотация <code>@filter</code></h3>
+	<h3>Параметры аннотации <code>@filter</code></h3>
+	<p>
+		При использовании аннотации <code>@filter</code> можно указать ряд дополнительных параметров, при помощи контракта <a target="_blank"
+			href="https://fshchudlo.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a>. Если вы используете <code>@filter</code>		без параметров, то данные настройки инициализируются значениями по умолчанию, которые мы перечислим ниже.
+	</p>
+	<p>
+		Так же возможно использование аннотации <code>@filter</code> с параметром-строкой. В таком случае будут использованы настройки
+		по умолчанию, но переданным параметром-строкой будет проинициалирован параметр <code>parameterName</code>. То есть данная
+		перегрузка это shorthand, позволяющий поменять только название параметра.
+	</p>
+	<p>
+		Параметры объекта <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a>		имеют следующее значение:
+	</p>
+	<ul class="bulleted">
+		<li>
+			<code>parameterName</code> - имя параметра, которое будет использоваться при сериализации/десериализации значений. По
+			умолчанию значение данного свойства равно имени аннотируемого свойства.
+		</li>
+		<li><code>coerce</code> - указывает, что значение параметра при десериализации необходимо принудительно приводить к типу. Например,
+			это означает, что строка "null" будет сконвертирована в <code>null</code>, строка "true" в булево значение
+			<code>true</code>, строка "1.0" в число <code>1.0</code> и т.д. Такой подход полезен, когда значения, например, считываются
+			из <code>queryString</code>. По умолчанию данный параметр имеет значение <code>true</code>.
+		</li>
+		<li>
+			<code>defaultValue</code> - значение по умолчанию, в которое будет сбрасываться аннотированное свойство при сбросе параметров.
+			Если данный параметр не был указан, то <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			запомнит в качестве значения по умолчанию значение аннотированного свойства в момент первого использования любого из методов
+			<a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>.
+		</li>
+		<li>
+			<code>emptyIsNull</code> - означает, что <code>falsy</code>-значения должны конвертироваться в
+			<code>null</code> при передаче в качестве параметра. По умолчанию данное параметр равен <code>false</code>.
+		</li>
+		<li>
+			<code>ignoreOnAutoMap</code> - если данный параметр равен <code>true</code>, то значение не будет разбираться и применяться
+			к аннотированному свойству при восстановлении значений функцией <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html#applyparams">applyparams</a>.
+			По умолчанию данный параметр имеет значение <code>false</code>.
+		</li>
+		<li>
+			<code>parseFormatter</code> - кастомная функция, которая будет использоваться при разборе значений. Например, может быть
+			полезна, когда ваш параметр представляет собой сложный объект с несколькими полями и вы используете сериализацию в queryString.
+			При восстановлении состояния из <code>queryString</code> вы можете конструировать свой сложный объект из сериализованного
+			состояния, которое будет передано в данную функцию в качестве параметра.
+		</li>
+		<li>
+			<code>serializeFormatter</code> - кастомная функция, которая может быть использована для сериализации значения свойства.
+			Так же может быть полезна, если ваше свойство представляет собой сложный объект, который необходио превращать в параметр
+			при помощи кастомной логики. Дополнительно, при сериализации параметров <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			проверяет, не имеет ли параметр метода <code>toRequest</code>. Если такой метод имеется, то <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			вызывает его и использует полученное значения в качестве сериализованного. Это позволяет повторно использовать логику
+			сериализации, а не copy-paste ее при использовании объекта в качестве <code>@filter</code> во множестве мест.
+		</li>
+	</ul>
 </section>
 <section id="filter-registration">
 	<h3>Регистрация объекта как filter target</h3>
