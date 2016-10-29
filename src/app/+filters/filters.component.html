@@ -81,7 +81,7 @@
 	<p>
 		Сам по себе функционал фильтров подразумевает простой импорт аннотации <code>@filter</code> и пометку ей свойств вашего
 		компонента. Если вы хотите использовать функционал фильтров по отдельности от списков, то вам так же необходимо импортировать
-		в нужный компонент сервис <code>FiltersService</code> и указать его в коллекции <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>		вашего компонента.
+		в нужный компонент сервис <code>RtFiltersService</code> и указать его в коллекции <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>		вашего компонента.
 	</p>
 	<p>
 		Но, если вы планируете пользоваться описанной ниже директивой <code>rtRegisterAsFilter</code>, то необходимо будет также
@@ -101,6 +101,11 @@
 			href="https://fshchudlo.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a>. Если вы используете <code>@filter</code>		без параметров, то данные настройки инициализируются значениями по умолчанию, которые мы перечислим ниже.
 	</p>
 	<p>
+		Так же вы можете передавать любые кастомные свойства в объект-параметр аннотации <code>@filter</code>. Например, это может
+		быть полезно, чтобы фильтровать параметры по переданному кастомному признаку. К примеру, мы используем кастомное свойство
+		<code>persistable</code>, чтобы сохранять только часть состояния в разделе про <a href="#" [routerLink]="['/persistence']">state persistence</a>
+	</p>
+	<p>
 		Так же возможно использование аннотации <code>@filter</code> с параметром-строкой. В таком случае будут использованы настройки
 		по умолчанию, но переданным параметром-строкой будет проинициалирован параметр <code>parameterName</code>. То есть данная
 		перегрузка это shorthand, позволяющий поменять только название параметра.
@@ -112,11 +117,32 @@
 		<li>
 			<code>parameterName</code> - имя параметра, которое будет использоваться при сериализации/десериализации значений. По
 			умолчанию значение данного свойства равно имени аннотируемого свойства.
+			<rt-demo-tab-section>
+				<rt-demo-sample-tab>
+					<rt-demo-parameter-name-sample></rt-demo-parameter-name-sample>
+				</rt-demo-sample-tab>
+				<rt-demo-code-tab url="%2Bfilters/parameter-name-sample/parameter-name-sample.component.ts">
+				</rt-demo-code-tab>
+				<rt-demo-code-tab url="%2Bfilters/parameter-name-sample/parameter-name-sample.component.html">
+				</rt-demo-code-tab>
+			</rt-demo-tab-section>
+
 		</li>
 		<li><code>coerce</code> - указывает, что значение параметра при десериализации необходимо принудительно приводить к типу. Например,
 			это означает, что строка "null" будет сконвертирована в <code>null</code>, строка "true" в булево значение
 			<code>true</code>, строка "1.0" в число <code>1.0</code> и т.д. Такой подход полезен, когда значения, например, считываются
 			из <code>queryString</code>. По умолчанию данный параметр имеет значение <code>true</code>.
+
+			<rt-demo-tab-section>
+				<rt-demo-sample-tab>
+					<rt-demo-coerce-sample></rt-demo-coerce-sample>
+				</rt-demo-sample-tab>
+				<rt-demo-code-tab url="%2Bfilters/coerce-sample/coerce-sample.component.ts">
+				</rt-demo-code-tab>
+				<rt-demo-code-tab url="%2Bfilters/coerce-sample/coerce-sample.component.html">
+				</rt-demo-code-tab>
+			</rt-demo-tab-section>
+
 		</li>
 		<li>
 			<code>defaultValue</code> - значение по умолчанию, в которое будет сбрасываться аннотированное свойство при сбросе параметров.
@@ -149,7 +175,7 @@
 <section id="filter-registration">
 	<h3>Регистрация объекта как filter target</h3>
 	<section id="constructor-injection">
-		<h4>Injection of <code>FiltersService</code> via constructor</h4>
+		<h4>Injection of <code>RtFiltersService</code> via constructor</h4>
 	</section>
 	<section id="register-as-filter">
 		<h4><code>rtRegisterAsFilter</code> directive</h4>
