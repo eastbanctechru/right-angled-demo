@@ -66,6 +66,7 @@
 			target="_blank">json pipe</a> параметры последнего выполненного запроса, чтобы вы могли оценить, в каком виде параметры
 		отправляются на сервер.
 	</p>
+  
 	<rt-demo-tab-section>
 		<rt-demo-sample-tab>
 			<rt-demo-filters-sample></rt-demo-filters-sample>
@@ -148,10 +149,28 @@
 			<code>defaultValue</code> - значение по умолчанию, в которое будет сбрасываться аннотированное свойство при сбросе параметров.
 			Если данный параметр не был указан, то <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			запомнит в качестве значения по умолчанию значение аннотированного свойства в момент первого использования любого из методов
 			<a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>.
+			<rt-demo-tab-section>
+				<rt-demo-sample-tab>
+					<rt-demo-default-value-sample></rt-demo-default-value-sample>
+				</rt-demo-sample-tab>
+				<rt-demo-code-tab url="%2Bfilters/default-value-sample/default-value-sample.component.ts">
+				</rt-demo-code-tab>
+				<rt-demo-code-tab url="%2Bfilters/default-value-sample/default-value-sample.component.html">
+				</rt-demo-code-tab>
+			</rt-demo-tab-section>
 		</li>
 		<li>
 			<code>emptyIsNull</code> - означает, что <code>falsy</code>-значения должны конвертироваться в
 			<code>null</code> при передаче в качестве параметра. По умолчанию данное параметр равен <code>false</code>.
+			<rt-demo-tab-section>
+				<rt-demo-sample-tab>
+					<rt-demo-empty-is-null-sample></rt-demo-empty-is-null-sample>
+				</rt-demo-sample-tab>
+				<rt-demo-code-tab url="%2Bfilters/empty-is-null-sample/empty-is-null-sample.component.ts">
+				</rt-demo-code-tab>
+				<rt-demo-code-tab url="%2Bfilters/empty-is-null-sample/empty-is-null-sample.component.html">
+				</rt-demo-code-tab>
+			</rt-demo-tab-section>
 		</li>
 		<li>
 			<code>ignoreOnAutoMap</code> - если данный параметр равен <code>true</code>, то значение не будет разбираться и применяться
