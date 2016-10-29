@@ -5,7 +5,6 @@ import { LookupsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-filter-area',
-  styleUrls: ['filter-area.component.scss'],
   templateUrl: 'filter-area.component.html'
 })
 export class FilterAreaComponent implements OnInit {

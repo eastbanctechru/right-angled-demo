@@ -7,6 +7,7 @@ import { RTModule } from 'right-angled';
 import { AirportsService } from './data/airports.service';
 import { LookupsService } from './data/lookups.service';
 
+import { FilterAreaComponent } from './filter-area/filter-area.component';
 import { BufferedFooterComponent } from './footers/buffered-footer.component/buffered-footer.component';
 import { PagedFooterComponent } from './footers/paged-footer.component/paged-footer.component';
 import { CodeTabComponent } from './tab/code-tab.component';
@@ -18,8 +19,8 @@ import { SerializeToQueryStringDirective } from './state-services/serialize-to-q
 import { SerializeToSessionStorageDirective } from './state-services/serialize-to-session-storage.directive';
 
 @NgModule({
-  declarations: [BufferedFooterComponent, PagedFooterComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent, SerializeToLocalStorageDirective, SerializeToSessionStorageDirective, SerializeToQueryStringDirective],
-  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, PagedFooterComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent, SerializeToLocalStorageDirective, SerializeToSessionStorageDirective, SerializeToQueryStringDirective],
+  declarations: [BufferedFooterComponent, PagedFooterComponent, FilterAreaComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent, SerializeToLocalStorageDirective, SerializeToSessionStorageDirective, SerializeToQueryStringDirective],
+  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, FilterAreaComponent, PagedFooterComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent, SerializeToLocalStorageDirective, SerializeToSessionStorageDirective, SerializeToQueryStringDirective],
   imports: [CommonModule, FormsModule, RTModule]
 })
 export class SharedModule {

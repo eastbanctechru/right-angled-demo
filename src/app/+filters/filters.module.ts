@@ -10,10 +10,11 @@ import { FiltersSampleComponent } from './filters-sample/filters-sample.componen
 import { FiltersComponent } from './filters.component';
 import { IgnoreOnAutoMapSampleComponent } from './ignore-on-auto-map-sample/ignore-on-auto-map-sample.component';
 import { ParameterNameSampleComponent } from './parameter-name-sample/parameter-name-sample.component';
+import { RegisterAsFilterSampleComponent } from './register-as-filter-sample/register-as-filter-sample.component';
 
 @NgModule({
-  declarations: [FiltersComponent, FiltersSampleComponent, CoerceSampleComponent, DefaultValueSampleComponent, EmptyIsNullSampleComponent, IgnoreOnAutoMapSampleComponent, ParameterNameSampleComponent],
-  exports: [FiltersComponent, FiltersSampleComponent, CoerceSampleComponent, DefaultValueSampleComponent, EmptyIsNullSampleComponent, IgnoreOnAutoMapSampleComponent, ParameterNameSampleComponent],
+  declarations: [FiltersComponent, FiltersSampleComponent, CoerceSampleComponent, DefaultValueSampleComponent, EmptyIsNullSampleComponent, IgnoreOnAutoMapSampleComponent, ParameterNameSampleComponent, RegisterAsFilterSampleComponent],
+  exports: [FiltersComponent, FiltersSampleComponent, CoerceSampleComponent, DefaultValueSampleComponent, EmptyIsNullSampleComponent, IgnoreOnAutoMapSampleComponent, ParameterNameSampleComponent, RegisterAsFilterSampleComponent],
   imports: [CommonModule, SharedModule, RouterModule]
 })
 export class FiltersModule {

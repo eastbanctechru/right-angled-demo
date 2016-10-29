@@ -6,7 +6,6 @@ import { AirportsPagedListRequest, AirportsService, LocalStorageStateService, Qu
 @Component({
   providers: [LocalStorageStateService, QueryStringStateService, SessionStorageStateService],
   selector: 'rt-demo-persistence-sample',
-  styleUrls: ['persistence-sample.component.scss'],
   templateUrl: 'persistence-sample.component.html'
 })
 export class PersistenceSampleComponent {
@@ -17,7 +16,6 @@ export class PersistenceSampleComponent {
     return this.airportsService.getAirportsPagedList(requestParams);
   };
   onListInit(list: RtList): void {
-    list.registerFilterTarget(this);
     list.registerStateService(this.localStorageStateService, this.sessionStorageStateService, this.queryStringStateService);
   }
 }
