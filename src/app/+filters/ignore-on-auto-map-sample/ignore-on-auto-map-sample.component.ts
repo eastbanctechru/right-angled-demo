@@ -9,7 +9,7 @@ import { FilterConfig, RtFiltersService, filter } from 'right-angled';
 export class IgnoreOnAutoMapSampleComponent {
   public valueForAutoMappedField: string = 'new value';
   public valueForIgnoredField: string = 'new value';
-  @filter public autoMappedField: string = 'current value';
+  @filter() public autoMappedField: string = 'current value';
   @filter(<FilterConfig>{ ignoreOnAutoMap: true }) public ignoredField: string = 'current value';
 
   constructor(private filtersService: RtFiltersService) {

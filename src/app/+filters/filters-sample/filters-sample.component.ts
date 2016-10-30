@@ -13,10 +13,10 @@ export class FiltersSampleComponent {
   public airportTypes: Array<LookupItem>;
   public lastRequest: any = '';
 
-  @filter public airportName: string = null;
-  @filter public country: string = null;
-  @filter public airportSize: string = null;
-  @filter public airportType: string = null;
+  @filter() public airportName: string = null;
+  @filter() public country: string = null;
+  @filter() public airportSize: string = null;
+  @filter() public airportType: string = null;
 
   constructor(private airportsService: AirportsService, private lookupsService: LookupsService) {
     this.lookupsService.getAirportSizeLookups().subscribe(sizes => this.airportSizes = sizes);

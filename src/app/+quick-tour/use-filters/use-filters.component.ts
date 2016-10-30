@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'use-filters.component.html'
 })
 export class UseFiltersComponent {
-  @filter public airportName: string = null;
+  @filter() public airportName: string = null;
   @filter(<FilterConfig>{ defaultValue: 'Iceland', parameterName: 'country' }) public countryName: string = null;
 
   constructor(private airportsService: AirportsService) {

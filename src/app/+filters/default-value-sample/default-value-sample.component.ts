@@ -9,7 +9,7 @@ import { FilterConfig, RtFiltersService, filter } from 'right-angled';
 export class DefaultValueSampleComponent {
   public lastRequest: any = '';
 
-  @filter public defaultField: string = null;
+  @filter() public defaultField: string = null;
   @filter(<FilterConfig>{ defaultValue: 'abracadabra' }) public configuredField: string = null;
 
   constructor(private filtersService: RtFiltersService) {

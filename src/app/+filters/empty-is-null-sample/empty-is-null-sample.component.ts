@@ -9,7 +9,7 @@ import { FilterConfig, RtFiltersService, filter } from 'right-angled';
 export class EmptyIsNullSampleComponent {
   public lastRequest: any = '';
 
-  @filter public defaultField: string = '';
+  @filter() public defaultField: string = '';
   @filter(<FilterConfig>{ emptyIsNull: true }) public configuredField: string = '';
 
   constructor(private filtersService: RtFiltersService) {

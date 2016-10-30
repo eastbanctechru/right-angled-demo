@@ -9,7 +9,7 @@ import { FilterConfig, RtFiltersService, filter } from 'right-angled';
 export class CoerceSampleComponent {
   public lastRequest: any = '';
 
-  @filter public defaultField: string = null;
+  @filter() public defaultField: string = null;
   @filter(<FilterConfig>{ coerce: false }) public configuredField: string = null;
 
   constructor(private filtersService: RtFiltersService) {
