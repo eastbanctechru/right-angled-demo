@@ -22,14 +22,15 @@
 <section id="common-idea">
 	<h3>Общая идея</h3>
 	<p>
-		Функицонал selection позволяет реализовать на UI выбор элементов из произвольного набора данных. Также, при помощи selection
-		можно легко реализовать такие сценарии как accordion, группированые списки, отображение master-details, inline edit и т.д.
+		Функционал selection позволяет реализовать на UI выбор элементов из произвольного набора данных. Также, при помощи selection
+		можно легко реализовать такие сценарии как accordion, группированные списки, отображение master-details, inline edit и
+		т.д.
 	</p>
 </section>
 <section id="bootstrap">
 	<h3>Как подключить</h3>
 	<p>Чтобы подключить функционал selection, импортируйте модуль <code>RtSelectionModule</code> из библиотеки <code>right-angled</code>.
-		Также можно импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки <code>right-angled</code> целиком.
+		Также можно импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки <code>right-angled</code>		целиком.
 	</p>
 	<rt-demo-tab-section>
 		<rt-demo-code-tab url="%2Bselection/bootstrap/app.module.tsfake">
@@ -108,7 +109,7 @@
 			Директива <code>rtSelectable</code> содержит флаг <code>selected</code>, ссылаясь на который можно реагировать на изменения
 			состояния элемента. Пример такого подхода вы уже увидели в демо выше, где на основе значения этого флага выставляется
 			класс
-			<code>selected</code>, подвечивающий выбранные элементы. Ниже показан чуть более интересный пример - реализация inline-редактирования
+			<code>selected</code>, подсвечивающий выбранные элементы. Ниже показан чуть более интересный пример - реализация inline-редактирования
 			на основе флага selected.
 		</p>
 		<rt-demo-tab-section>
@@ -125,7 +126,8 @@
 			<p>
 				В данном примере мы используем <a href="#" [routerLink]="['/misc-directives']">вспомогательные директивы</a>
 				<code>rtFocusOnRender</code> и
-				<code>rtStopEvents</code> для автоустановки фокуса в элементе <code>input</code> и чтобы предотвратить bubbling события
+				<code>rtStopEvents</code> для автоматической установки фокуса в элементе <code>input</code> и чтобы предотвратить bubbling
+				события
 				<code>mouseup</code>, который будет приводить к deselect-у строки.
 			</p>
 		</aside>
@@ -162,7 +164,7 @@
 		<p>
 			Ниже вы можете увидеть пример, в котором обработчики <code>itemSelected</code> и <code>itemDeselected</code> уровня
 			<code>rtSelectionArea</code> выводят на UI уведомления о том, что элемент был выбран. Обработчик уровня элемента, в свою
-			очередь обращается к сервису <a target="_blank" href="https://restcountries.eu">restcountries.eu</a> и отображают полученную
+			очередь обращается к сервису <a target="_blank" href="https://restcountries.eu">restcountries.eu</a> и отображает полученную
 			из него информацию о стране.
 		</p>
 		<rt-demo-tab-section>
@@ -311,7 +313,7 @@
 	<p>
 		Смысл заключается в том, что selection при успешной обработке события мыши или клавиатуры, вызывает методы <a target="_blank"
 			href="https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation">stopPropagation</a> и <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault">preventDefault</a>.
-		Это нужно, к примеру, чтобы при нажатии <code>Ctrl + A</code> не выбирался весь текст на странице. При нажатии на <code>&uarr;</code>		и <code>&rarr;</code> не скроллилась вся страница и т.д.
+		Это нужно, к примеру, чтобы при нажатии <code>Ctrl + A</code> не выбирался весь текст на странице. При нажатии на <code>&uarr;</code>		и <code>&rarr;</code> не прокручивалась вся страница и т.д.
 	</p>
 	<p>
 		Но если такое поведение стало для вас проблемой, вы можете отключить его.

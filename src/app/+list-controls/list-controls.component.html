@@ -38,10 +38,7 @@
 		<code>RtList</code>.
 	</p>
 	<p>
-		Данный метод должен принимать один параметр с настройками запроса, который следует контракту
-		<a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html">ListRequest</a> для простых списков
-		и <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a> для
-		paged-списков.
+		Данный метод должен принимать один параметр с настройками запроса, который следует контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>		для простых списков и <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>		для paged-списков.
 	</p>
 	<p>
 		Если вы настраиваете фильтры для списка (о том как это сделать рассказано в <a href="#" [routerLink]="['/filters']">разделе про работы с фильтрами</a>),
@@ -60,8 +57,9 @@
 </section>
 <section id="bootstrap">
 	<h3>Как подключить</h3>
-	<p>Функционал списков поставляется в модуле <code>RTListsModule</code> Также можно импортировать модуль <code>RtModule</code>,
-		включающий в себя функционал всей библиотеки <code>right-angled</code> целиком.
+	<p>
+		Для работы со списками необходимо импортировать модуль <code>RTListsModule</code> и подключить его в вашем <code>AppModule</code>.
+		Так же вы можете импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки <code>right-angled</code>		целиком.
 	</p>
 	<rt-demo-tab-section>
 		<rt-demo-code-tab url="%2Blist-controls/bootstrap/app.module.tsfake">
@@ -155,12 +153,12 @@
 	<section id="on-list-init">
 		<h4>Событие <code>onListInit</code></h4>
 		<p>
-			Данное событие генерируется после того, как сработыет хук
+			Данное событие генерируется после того, как сработает хук
 			<a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-class.html">AfterViewInit</a> и выполнена первая
 			отрисовка шаблона.
 		</p>
 		<p>
-			При помощи него можно встроиться в конвеер инициализации сервиса <code>RtList</code> и выполнить дополнительную настройку
+			При помощи него можно встроиться в конвейер инициализации сервиса <code>RtList</code> и выполнить дополнительную настройку
 			перед первой загрузкой данных. </p>
 		<p>
 			Например, можно зарегистрировать объект с настройками фильтра, вызвав метод <code>RtList.registerFilterTarget</code> передаваемого
@@ -198,7 +196,7 @@
 		</li>
 		<li>
 			При клике по столбцу, переданный параметр-идентификатор добавляется в коллекцию сортировок с направлением
-			<code>Asc</code> и тут же вызывается метод <code>RtList.loadData</code>. Выбранные cортировки будут переданы в качестве
+			<code>Asc</code> и тут же вызывается метод <code>RtList.loadData</code>. Выбранные сортировки будут переданы в качестве
 			свойства
 			<a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>.
 			При повторном клике направление сортировки меняется на противоположное и снова выполняется запрос за данными.
