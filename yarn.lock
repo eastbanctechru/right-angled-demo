@@ -6434,9 +6434,9 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-right-angled:
-  version "0.31.2"
-  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-0.31.2.tgz#cef93c405a789a25e130cbc1d5543bceac69064d"
+right-angled@0.32.0:
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-0.32.0.tgz#c3d3966aff678316287e599239037e0c68d4eda6"
   dependencies:
     "@angular/common" "~2.1.2"
     "@angular/core" "~2.1.2"
