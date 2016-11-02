@@ -66,6 +66,6 @@ export class CountriesService {
       ));
   }
   public getCountryInfo(countryName: string, delay: number = 0): Observable<any> {
-    return this.http.get(`https://restcountries.eu/rest/v1/name/${countryName}`).map(response => (response.json())).delay(delay);
+    return this.http.get(`https://restcountries.eu/rest/v1/name/${countryName}`).map(response => (response.json()[0])).delay(delay);
   }
 }
