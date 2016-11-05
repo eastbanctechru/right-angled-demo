@@ -68,7 +68,9 @@
     "build:prod:e2e": "npm run clean:dist && npm run sass && webpack",
     "watch": "npm run watch:dev",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
-    "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch"
+    "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
+    "deploy": "npm run rewrite-base-url && gh-pages -d dist\\client",
+    "rewrite-base-url": "replace \"href=\\\"/\\\"\" \"href=\\\"/right-angled-demo/\\\"\" dist/client/index.html dist/client/404.html"
   },
   "dependencies": {
     "@angular/common": "2.2.0-rc.0",
@@ -111,6 +113,7 @@
     "es6-promise": "~3.3.0",
     "es6-promise-loader": "~1.0.2",
     "express": "4.14.0",
+    "gh-pages": "^0.11.0",
     "html-webpack-plugin": "~2.24.1",
     "imports-loader": "~0.6.5",
     "ip": "~1.1.3",
@@ -131,6 +134,7 @@
     "phantomjs-prebuilt": "~2.1.13",
     "protractor": "~4.0.8",
     "raw-loader": "~0.5.1",
+    "replace": "^0.3.0",
     "rimraf": "~2.5.4",
     "source-map-loader": "~0.1.5",
     "string-replace-loader": "~1.0.5",
