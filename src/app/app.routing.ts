@@ -9,7 +9,7 @@ import { PersistenceRoutes } from './+persistence/persistence.routes';
 import { QuickTourRoutes } from './+quick-tour/quick-tour.routes';
 import { SelectionRoutes } from './+selection/selection.routes';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   ...FiltersRoutes,
   ...ListControlsRoutes,
   ...SelectionRoutes,

@@ -17,13 +17,13 @@ import { SharedModule } from './shared/shared.module';
 import { routing } from './app.routing';
 
 export const APP_IMPORTS = [BrowserModule,
+  Angulartics2Module.forRoot(),
   HttpModule,
   FormsModule,
   RTModule,
   RouterModule,
   SharedModule.forRoot(),
   routing,
-  Angulartics2Module.forRoot(),
   FiltersModule,
   ListControlsModule,
   MiscDirectivesModule,

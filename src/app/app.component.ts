@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Angulartics2 } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulartics2-ga';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/dist/providers/ga/angulartics2-ga';
 import 'rxjs/Rx';
 
 @Component({
   selector: 'rt-demo-app',
-  styleUrls: ['app.component.scss'],
+  styleUrls: ['app.component.css'],
   templateUrl: 'app.component.html'
 })
 export class DemoAppComponent {

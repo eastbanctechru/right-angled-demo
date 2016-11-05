@@ -4,7 +4,7 @@ import { Tab } from './tab-base';
 
 @Component({
   selector: 'rt-demo-tab-section',
-  styleUrls: ['tab-section.component.scss'],
+  styleUrls: ['tab-section.component.css'],
   templateUrl: 'tab-section.component.html'
 })
 export class TabSectionComponent {
