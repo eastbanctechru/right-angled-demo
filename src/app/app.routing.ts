@@ -1,23 +1,17 @@
 import { ModuleWithProviders } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { FiltersRoutes } from './+filters/filters.routes';
-import { ListControlsRoutes } from './+list-controls/list-controls.routes';
-import { MiscDirectivesRoutes } from './+misc-directives/misc-directives.routes';
-import { PagingAndStatesRoutes } from './+paging-and-state/paging-and-state.routes';
-import { PersistenceRoutes } from './+persistence/persistence.routes';
-import { QuickTourRoutes } from './+quick-tour/quick-tour.routes';
-import { SelectionRoutes } from './+selection/selection.routes';
+import { QuickTourRoutes } from './quick-tour/quick-tour.routes';
 
 export const appRoutes: Routes = [
-  ...FiltersRoutes,
-  ...ListControlsRoutes,
-  ...SelectionRoutes,
-  ...MiscDirectivesRoutes,
-  ...PagingAndStatesRoutes,
-  ...PersistenceRoutes,
+  { loadChildren: '+filters/filters.module#FiltersModule', path: 'filters' },
+  { loadChildren: '+list-controls/list-controls.module#ListControlsModule', path: 'list-controls' },
+  { loadChildren: '+misc-directives/misc-directives.module#MiscDirectivesModule', path: 'misc-directives' },
+  { loadChildren: '+paging-and-state/paging-and-state.module#PagingAndStateModule', path: 'paging-and-state' },
+  { loadChildren: '+selection/selection.module#SelectionModule', path: 'selection' },
+  { loadChildren: '+persistence/persistence.module#PersistenceModule', path: 'persistence' },
   ...QuickTourRoutes,
   { path: '**', redirectTo: '' }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules });

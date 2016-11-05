@@ -46,7 +46,8 @@ exports.STORE_DEV_TOOLS = 'monitor'
 exports.EXCLUDE_SOURCE_MAPS = [
   // these packages have problems with their sourcemaps
   root('node_modules/@angular'),
-  root('node_modules/rxjs')
+  root('node_modules/rxjs'),
+  root('node_modules/e2e4')
 ]
 
 exports.MY_COPY_FOLDERS = [
