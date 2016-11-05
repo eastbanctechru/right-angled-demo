@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -20,6 +20,7 @@ declare const PR: {
   `
 })
 export class CodeTabComponent extends Tab implements OnChanges {
+  public isActive: boolean;
   public contentLoadStarted: boolean = false;
   public contentReady: boolean = false;
   public baseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled-demo/master/src/app/';
@@ -53,7 +54,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
         });
     }
   }
-  public ngOnChanges(changes: { url?: SimpleChange, fromLib: SimpleChange }): void {
+  public ngOnChanges(changes: any): void {
     if (changes.url && !this.tabTitle) {
       this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1).replace('tsfake', 'ts');
       this.tabSection.addTab(this);

@@ -12,6 +12,7 @@ import { TabSectionComponent } from './tab-section.component';
   `
 })
 export class SampleTabComponent extends Tab {
+  public isActive: boolean;
   public tabTitle: string = 'Live demo';
   constructor(tabSection: TabSectionComponent) {
     super();

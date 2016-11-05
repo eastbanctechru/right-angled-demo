@@ -6,7 +6,8 @@
   "rules": {
     "only-arrow-functions": false,
     "interface-name": [
-      true, "never-prefix"
+      true,
+      "never-prefix"
     ],
     "linebreak-style": "CRLF",
     "max-line-length": [
@@ -59,10 +60,11 @@
         "variable-declaration": "nospace"
       }
     ],
-    "variable-name": [true,
-        "ban-keywords",
-        "check-format",
-        "allow-pascal-case"
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
     ],
     "whitespace": [
       true,
@@ -116,6 +118,7 @@
     "directive-class-suffix": true,
     "import-destructuring-spacing": true,
     "templates-use-public": true,
-    "invoke-injectable": true
+    "invoke-injectable": true,
+    "no-access-missing-member": true
   }
 }
