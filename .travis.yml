@@ -15,4 +15,4 @@ before_script:
 - npm install
 
 script: 
-- npm run e2e
+- npm run compile:dev
