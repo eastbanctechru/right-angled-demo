@@ -32,4 +32,3 @@ export const APP_IMPORTS = [BrowserModule,
   QuickTourModule,
   SelectionModule
 ];
-
