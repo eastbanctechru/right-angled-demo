@@ -4,7 +4,7 @@ import { FiltersComponent } from './filters.component';
 
 export const FiltersRoutes: Routes = [
   {
-  component: FiltersComponent,
-  path: 'filters'
+    component: FiltersComponent,
+    path: ''
   }
 ];

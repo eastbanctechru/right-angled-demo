@@ -4,7 +4,7 @@ import { MiscDirectivesComponent } from './misc-directives.component';
 
 export const MiscDirectivesRoutes: Routes = [
   {
-  component: MiscDirectivesComponent,
-  path: 'misc-directives'
+    component: MiscDirectivesComponent,
+    path: ''
   }
 ];

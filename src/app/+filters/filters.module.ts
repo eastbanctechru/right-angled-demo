@@ -8,6 +8,7 @@ import { DefaultValueSampleComponent } from './default-value-sample/default-valu
 import { EmptyIsNullSampleComponent } from './empty-is-null-sample/empty-is-null-sample.component';
 import { FiltersSampleComponent } from './filters-sample/filters-sample.component';
 import { FiltersComponent } from './filters.component';
+import { FiltersRoutes } from './filters.routes';
 import { IgnoreOnAutoMapSampleComponent } from './ignore-on-auto-map-sample/ignore-on-auto-map-sample.component';
 import { ParameterNameSampleComponent } from './parameter-name-sample/parameter-name-sample.component';
 import { RegisterAsFilterSampleComponent } from './register-as-filter-sample/register-as-filter-sample.component';
@@ -15,7 +16,7 @@ import { RegisterAsFilterSampleComponent } from './register-as-filter-sample/reg
 @NgModule({
   declarations: [FiltersComponent, FiltersSampleComponent, CoerceSampleComponent, DefaultValueSampleComponent, EmptyIsNullSampleComponent, IgnoreOnAutoMapSampleComponent, ParameterNameSampleComponent, RegisterAsFilterSampleComponent],
   exports: [FiltersComponent, FiltersSampleComponent, CoerceSampleComponent, DefaultValueSampleComponent, EmptyIsNullSampleComponent, IgnoreOnAutoMapSampleComponent, ParameterNameSampleComponent, RegisterAsFilterSampleComponent],
-  imports: [CommonModule, SharedModule, RouterModule]
+  imports: [CommonModule, SharedModule, RouterModule.forChild(FiltersRoutes)]
 })
 export class FiltersModule {
 }

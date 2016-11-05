@@ -62,15 +62,15 @@ $indent-unit: 8px;
 }
 
 @mixin icon-reset() {
-    background-image: url('../assets/images/reset.png');
+    background-image: url('./assets/images/reset.png');
 }
 
 @mixin icon-load() {
-    background-image: url('../assets/images/load.png');
+    background-image: url('./assets/images/load.png');
 }
 
 @mixin icon-cancel() {
-    background-image: url('../assets/images/cancel.png');
+    background-image: url('./assets/images/cancel.png');
 }
 
 /* mixins */

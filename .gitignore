@@ -32,3 +32,22 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+# Dist #
+/dist/
+/__build__/**
+.webpack.json
+/src/assets/bower_components/
+
+# Coverage #
+/coverage/
+
+/output/
+/src/compiled/
+.awcache/
+/src/app/**/*.css
+ts-node
+/**/*.ngfactory.ts
+/**/*.css.ts
+/**/*.css.shim.ts
+dll/

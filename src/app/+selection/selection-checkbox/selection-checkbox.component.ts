@@ -4,7 +4,7 @@ import { CountriesService } from '../countries.service';
 
 @Component({
   selector: 'rt-demo-selection-checkbox',
-  styleUrls: ['selection-checkbox.component.scss'],
+  styleUrls: ['selection-checkbox.component.css'],
   templateUrl: 'selection-checkbox.component.html'
 })
 export class SelectionCheckboxComponent {

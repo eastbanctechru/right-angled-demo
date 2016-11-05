@@ -5,6 +5,6 @@ import { PersistenceComponent } from './persistence.component';
 export const PersistenceRoutes: Routes = [
   {
     component: PersistenceComponent,
-    path: 'persistence'
+    path: ''
   }
 ];
