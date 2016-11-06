@@ -69,7 +69,7 @@
     "watch": "npm run watch:dev",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
     "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
-    "deploy": "npm run rewrite-base-url && gh-pages -d dist\\client",
+    "deploy": "npm run compile:dev && npm run rewrite-base-url && gh-pages -d dist\\client",
     "rewrite-base-url": "replace \"href=\\\"/\\\"\" \"href=\\\"/right-angled-demo/\\\"\" dist/client/index.html dist/client/404.html"
   },
   "dependencies": {
