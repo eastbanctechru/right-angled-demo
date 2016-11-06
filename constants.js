@@ -60,7 +60,10 @@ exports.MY_COPY_FOLDERS = [
   { from: 'node_modules/bootstrap/dist/css/bootstrap.min.css' },
   { from: 'node_modules/alertify/themes/alertify.core.css' },
   { from: 'node_modules/alertify/themes/alertify.bootstrap.css' },
-  { from: 'node_modules/alertify/lib/alertify.min.js' }
+  { from: 'node_modules/alertify/lib/alertify.min.js' },
+  { from: 'node_modules/prismjs/prism.js' },
+  { from: 'node_modules/prismjs/components/prism-typescript.js' },
+  { from: 'node_modules/prismjs/themes/prism.css' }
 ]
 
 exports.MY_POLYFILL_DLLS = [
