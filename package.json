@@ -63,7 +63,7 @@
     "build:aot:prod:e2e": "npm run clean:dist && npm run sass && webpack",
     "build:aot:dev": "npm run clean:dist && npm run sass && webpack",
     "build:dev": "npm run clean:dist && npm run sass && webpack",
-    "build:dll": "npm run clean:dll && npm run sass && webpack",
+    "build:dll": "npm run clean:dll && npm run sass && webpack --display-error-details",
     "build:prod": "npm run clean:dist && npm run sass && webpack",
     "build:prod:e2e": "npm run clean:dist && npm run sass && webpack",
     "watch": "npm run watch:dev",
