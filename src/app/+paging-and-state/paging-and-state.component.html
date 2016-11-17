@@ -11,10 +11,16 @@
     <a href="paging-and-state#paged-directives">Additional paged pager directives</a>
   </li>
   <li>
+    <a href="paging-and-state#reusable-paged-pager">Пример переиспользуемого paged pager</a>
+  </li>
+  <li>
     <a href="paging-and-state#buffered-pager">Использование <code>rt-buffered-pager</code> component</a>
   </li>
   <li>
     <a href="paging-and-state#buffered-directives">Additional buffered pager directives</a>
+  </li>
+  <li>
+    <a href="paging-and-state#reusable-buffered-pager">Пример переиспользуемого buffered pager</a>
   </li>
 </ul>
 <section id="common-idea">
@@ -142,8 +148,11 @@
   <p>
     Возвращает <code>true</code> если возможен переход на страницу вперед (т.е. если текущая страница pager-а не последняя).
   </p>
+</section>
+<section id="reusable-paged-pager">
+  <h3>Пример переиспользуемого paged pager</h3>
   <p>
-    Ниже вы можете увидеть реализацию paged pager-а и живое демо использующего его списка его работы.
+    Ниже вы можете увидеть реализацию готового, повторно используемого paged pager-а и демо использующего его списка.
   </p>
   <aside>
     <p>
@@ -153,11 +162,11 @@
   </aside>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
-      <rt-demo-reusable-buffered-sample></rt-demo-reusable-buffered-sample>
+      <rt-demo-reusable-paged-sample></rt-demo-reusable-paged-sample>
     </rt-demo-sample-tab>
-    <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.html">
+    <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.html">
     </rt-demo-code-tab>
-    <rt-demo-code-tab url="shared/footers/buffered-footer.component/buffered-footer.component.ts">
+    <rt-demo-code-tab url="shared/footers/paged-footer.component/paged-footer.component.ts">
     </rt-demo-code-tab>
   </rt-demo-tab-section>
 
@@ -230,8 +239,11 @@
   <p>
     Так же по нажатию клавиши <code>Enter</code> на данном элементе будет выполняться подгрузка следующего фрагмента данных.
   </p>
+</section>
+<section id="reusable-buffered-pager">
+  <h3>Пример переиспользуемого buffered pager</h3>
   <p>
-    Ниже вы можете увидеть реализацию buffered pager-а и живое демо использующего его списка его работы.
+    Ниже вы можете увидеть реализацию готового, повторно используемого buffered pager-а и демо использующего его списка.
   </p>
   <aside>
     <p>
