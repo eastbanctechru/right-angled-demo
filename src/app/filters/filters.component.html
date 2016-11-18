@@ -38,7 +38,7 @@
 	</p>
 	<aside>
 		<p>
-			Сервис <code>RtFiltersService</code> является наследником сервиса <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			из библиотеки <a target="_blank" href="https://fshchudlo.github.io/e2e4">e2e4</a> и имеет тот же самый контракт. Если
+			Сервис <code>RtFiltersService</code> является наследником сервиса <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			из библиотеки <a target="_blank" href="https://eastbanctechru.github.io/e2e4">e2e4</a> и имеет тот же самый контракт. Если
 			вам понадобится инжектить в свои компоненты данный сервис, то необходимо регистрировать в коллекции <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>			класс <code>RtFiltersService</code>, поскольку он помечен декоратором
 			<a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Injectable-decorator.html">Injectable</a>.
 		</p>
@@ -95,7 +95,7 @@
 	<h3>Параметры аннотации <code>@filter</code></h3>
 	<p>
 		При использовании аннотации <code>@filter</code> можно указать ряд дополнительных параметров, в соответствии с контрактом
-		<a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a>. Когда вы используете
+		<a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a>. Когда вы используете
 		аннотацию <code>@filter</code> без параметров, то данный config все равно создается и инициализируется значениями по умолчанию,
 		которые мы перечислим ниже.
 	</p>
@@ -113,7 +113,7 @@
 		перегрузка это shorthand, позволяющий поменять только название параметра.
 	</p>
 	<p>
-		Параметры объекта <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a>		имеют следующее значение:
+		Параметры объекта <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a>		имеют следующее значение:
 	</p>
 	<ul class="bulleted">
 		<li>
@@ -148,8 +148,8 @@
 		</li>
 		<li>
 			<code>defaultValue</code> - значение по умолчанию, в которое будет сбрасываться аннотированное свойство при сбросе параметров.
-			Если данный параметр не был указан, то <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			запомнит в качестве значения по умолчанию значение аннотированного свойства в момент первого использования любого из методов
-			<a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>.
+			Если данный параметр не был указан, то <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>			запомнит в качестве значения по умолчанию значение аннотированного свойства в момент первого использования любого из методов
+			<a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>.
 			<rt-demo-tab-section>
 				<rt-demo-sample-tab>
 					<rt-demo-default-value-sample></rt-demo-default-value-sample>
@@ -175,7 +175,7 @@
 		</li>
 		<li>
 			<code>ignoreOnAutoMap</code> - если данный параметр равен <code>true</code>, то значение не будет разбираться и применяться
-			к аннотированному свойству при восстановлении значений функцией <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a>.
+			к аннотированному свойству при восстановлении значений функцией <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a>.
 			По умолчанию данный параметр имеет значение <code>false</code>.
 			<rt-demo-tab-section>
 				<rt-demo-sample-tab>
@@ -196,8 +196,8 @@
 			аннотируемого свойства.
 			<aside>
 				<p>
-					При сериализации параметров <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a>					также проверяет наличие у объекта-параметра метода <code>toRequest</code>. Если такой метод имеется, то <a target="_blank"
-						href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html">FiltersService</a> вызывает его и использует результат
+					При сериализации параметров <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>					также проверяет наличие у объекта-параметра метода <code>toRequest</code>. Если такой метод имеется, то <a target="_blank"
+						href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a> вызывает его и использует результат
 					в качестве значения параметра. Это позволяет повторно использовать логику сериализации, а не copy-paste ее в параметре
 					<code>serializeFormatter</code> в случае, если один и тот же класс используется в качестве фильтра во множестве мест.
 				</p>
@@ -209,7 +209,7 @@
 	<h3>Регистрация объекта-фильтра при помощи директивы <code>rtRegisterAsFilter</code></h3>
 	<p>
 		Для того, чтобы сервис <code>RtFiltersService</code> узнал о нашем объекте как об источнике параметров и начал использовать
-		его свойства для построения фильтров, нам необходимо зарегистрировать наш объект при помощи метода <a target="_blank" href="https://fshchudlo.github.io/e2e4/classes/filtersservice.html#registerfiltertarget">registerFilterTarget</a>
+		его свойства для построения фильтров, нам необходимо зарегистрировать наш объект при помощи метода <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#registerfiltertarget">registerFilterTarget</a>
 	</p>
 	<p>
 		В самом первом примере этого раздела вы могли увидеть, как мы выполняем регистрацию нашего компонента в качестве фильтра

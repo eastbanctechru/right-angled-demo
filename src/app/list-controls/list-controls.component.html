@@ -38,7 +38,7 @@
 		<code>RtList</code>.
 	</p>
 	<p>
-		Данный метод должен принимать один параметр с настройками запроса, который следует контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>		для простых списков и <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>		для paged-списков.
+		Данный метод должен принимать один параметр с настройками запроса, который следует контракту <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>		для простых списков и <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>		для paged-списков.
 	</p>
 	<p>
 		Если вы настраиваете фильтры для списка (о том как это сделать рассказано в <a href="#" [routerLink]="['/filters']">разделе про работы с фильтрами</a>),
@@ -47,11 +47,11 @@
 	<p>
 		Возвращать данный метод должен <code>Observable</code>, <code>Promise</code> либо <code>EventEmitter</code>. Для простых
 		списков он должен содержать массив с записями. Для paged-списков ответ должен следовать контракту
-		<a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>.
+		<a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>.
 	</p>
 	<aside>
-		Для простого списка response так же может следовать контракту <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>.
-		В таком случае в полях <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html#totalcount">totalCount</a>		и <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html#loadedcount">loadedCount</a> должно
+		Для простого списка response так же может следовать контракту <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>.
+		В таком случае в полях <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#totalcount">totalCount</a>		и <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#loadedcount">loadedCount</a> должно
 		находиться одно и то же значение, равное длине массива с записями.
 	</aside>
 </section>
@@ -128,7 +128,7 @@
 				Свойство <code>ready</code> - возвращает <code>true</code> если в данный момент времени запрос за данными НЕ выполняется.
 			</li>
 			<li>
-				Свойство <code>items</code> - возвращает массив с элементами, переданными в свойстве объекта <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listresponse.html#items">ListResponse.items</a>				и представляющее собой набор записей.
+				Свойство <code>items</code> - возвращает массив с элементами, переданными в свойстве объекта <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#items">ListResponse.items</a>				и представляющее собой набор записей.
 			</li>
 		</ul>
 		<aside>
@@ -198,7 +198,7 @@
 			При клике по столбцу, переданный параметр-идентификатор добавляется в коллекцию сортировок с направлением
 			<code>Asc</code> и тут же вызывается метод <code>RtList.loadData</code>. Выбранные сортировки будут переданы в качестве
 			свойства
-			<a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>.
+			<a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>.
 			При повторном клике направление сортировки меняется на противоположное и снова выполняется запрос за данными.
 		</li>
 		<li>
@@ -207,7 +207,7 @@
 		</li>
 		<li>
 			С помощью клика с зажатой клавишей <code>Ctrl</code> можно настроить сортировку по нескольким полям. В таком случае, в
-			массив <a target="_blank" href="https://fshchudlo.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>			будет передано несколько значений.
+			массив <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>			будет передано несколько значений.
 		</li>
 	</ul>
 	<rt-demo-tab-section>

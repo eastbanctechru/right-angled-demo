@@ -18,8 +18,8 @@ export class CodeTabComponent extends Tab implements OnChanges {
   public isActive: boolean;
   public contentLoadStarted: boolean = false;
   public contentReady: boolean = false;
-  public baseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled-demo/master/src/app/';
-  public libBaseUrl: string = 'https://raw.githubusercontent.com/fshchudlo/right-angled/master/src/';
+  public baseUrl: string = 'https://raw.githubusercontent.com/eastbanctechru/right-angled-demo/master/src/app/';
+  public libBaseUrl: string = 'https://raw.githubusercontent.com/eastbanctechru/right-angled/master/src/';
   public src: Observable<any> = Observable.empty();
   @Input() public url: string;
   @Input() public fromLib: boolean;
