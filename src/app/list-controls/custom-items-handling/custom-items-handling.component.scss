@@ -1,0 +1,14 @@
+@import '../../shared.scss';
+
+:host /deep/ div.mask {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    background: url(./assets/images/circle.gif) center center no-repeat;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    opacity: 0.6;
+}
