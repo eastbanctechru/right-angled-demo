@@ -1,11 +1,11 @@
 {
-  "name": "angular-webpack2-starter",
-  "version": "1.12.0",
-  "description": "Angular and Webpack 2 Starter",
-  "author": "Qdouble <qdouble@gmail.com>",
+  "name": "right-angled-demo",
+  "version": "0.0.0",
+  "description": "Demo site for right-angled library",
+  "author": "EastBanc Technologies",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qdouble/angular-webpack2-starter.git"
+    "url": "git+https://github.com/eastbanctechru/right-angled-demo.git"
   },
   "scripts": {
     "postinstall": "npm run sass && npm run build:dll",
@@ -152,9 +152,9 @@
     "webpack-dev-middleware": "~1.8.1",
     "webpack-dev-server": "2.1.0-beta.9"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/qdouble/angular-webpack2-starter/issues"
+    "url": "https://github.com/eastbanctechru/right-angled-demo/issues"
   },
-  "homepage": "https://github.com/qdouble/angular-webpack2-starter#readme"
+  "homepage": "https://github.com/eastbanctechru/right-angled-demo#readme"
 }
