@@ -1,5 +1,7 @@
 # right-angled-demo
 
+This project is based on [angular-webpack2-starter](https://github.com/qdouble/angular-webpack2-starter).
+
 [![Build Status](https://travis-ci.org/eastbanctechru/right-angled-demo.svg?branch=master)](https://travis-ci.org/eastbanctechru/right-angled-demo)
 [![Dependency Status](https://david-dm.org/eastbanctechru/right-angled-demo.svg)](https://david-dm.org/eastbanctechru/right-angled-demo)
 [![devDependency Status](https://david-dm.org/eastbanctechru/right-angled-demo/dev-status.svg)](https://david-dm.org/eastbanctechru/right-angled-demo?type=dev)
