@@ -1,323 +1,323 @@
 <h2>Selection</h2>
 <section>
-	<h3>Table of contents</h3>
-	<ul class="agenda">
-		<li><a href="selection#common-idea">Общая идея</a></li>
-		<li><a href="selection#bootstrap">Как подключить</a></li>
-		<li><a href="selection#basic-use">Простейший пример</a></li>
-		<li><a href="selection#additional-options">Дополнительные опции</a></li>
-		<li><a href="selection#handle-selection">Взаимодействие с selection</a>
-			<ul>
-				<li><a href="selection#handle-selection-selected">Флаг "selected"</a></li>
-				<li><a href="selection#handle-selection-events">События</a></li>
-				<li><a href="selection#selection-service">Работа с <code>RtSelectionService</code></a></li>
-				<li><a href="selection#additional-methods">Работа с <code>rtSelectionArea</code> в шаблоне</a></li>
-			</ul>
-		</li>
-		<li><a href="selection#additional-directives-checkboxes">Директива <code>rtSelectionCheckboxFor</code></a></li>
-		<li><a href="selection#additional-settings-trackBy"><code>trackBy</code> function</a></li>
-		<li><a href="selection#prevent-stop-events">Параметры <code>preventEventsDefaults</code> и <code>stopEventsPropagation</code></a></li>
-	</ul>
+  <h3>Contents</h3>
+  <ul class="agenda">
+    <li><a href="selection#common-idea">General idea</a></li>
+    <li><a href="selection#bootstrap">How to bootstrap</a></li>
+    <li><a href="selection#basic-use">The simplest example</a></li>
+    <li><a href="selection#additional-options">Selection configuration options</a></li>
+    <li><a href="selection#handle-selection">Interacting with the selection model</a>
+      <ul>
+        <li><a href="selection#handle-selection-selected"><code>selected</code> flag</a></li>
+        <li><a href="selection#handle-selection-events">Events</a></li>
+        <li><a href="selection#selection-service">Injecting the <code>RtSelectionService</code></a></li>
+        <li><a href="selection#additional-methods">Working with <code>rtSelectionArea</code> from template</a></li>
+      </ul>
+    </li>
+    <li><a href="selection#additional-directives-checkboxes"><code>rtSelectionCheckboxFor</code> Directive</a></li>
+    <li><a href="selection#additional-settings-trackBy"><code>trackBy</code> Function</a></li>
+    <li><a href="selection#prevent-stop-events"><code>preventEventsDefaults</code> and <code>stopEventsPropagation</code> Parameters</a></li>
+  </ul>
 </section>
 <section id="common-idea">
-	<h3>Общая идея</h3>
-	<p>
-		Функционал selection позволяет реализовать на UI выбор элементов из произвольного набора данных. Также, при помощи selection
-		можно легко реализовать такие сценарии как accordion, группированные списки, отображение master-details, inline edit и
-		т.д.
-	</p>
+  <h3>General idea</h3>
+  <p>
+    The selection functionality allows implementing UI interaction for selecting elements from the arbitrary set of items. Also,
+    with the help of the selection model it is easy to implement accordions, grouped lists, display of master-details, inline
+    data editing and so on.
+  </p>
 </section>
 <section id="bootstrap">
-	<h3>Как подключить</h3>
-	<p>Чтобы подключить функционал selection, импортируйте модуль <code>RtSelectionModule</code> из библиотеки <code>right-angled</code>.
-		Также можно импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки <code>right-angled</code>		целиком.
-	</p>
-	<rt-demo-tab-section>
-		<rt-demo-code-tab url="selection/bootstrap/app.module.tsfake">
-		</rt-demo-code-tab>
-	</rt-demo-tab-section>
+  <h3>How to bootstrap</h3>
+  <p>
+    To work with selection functionality you should import the <code>RTSelectionModule</code> module from <code>right-angled</code>    library and add it into your <code>AppModule</code> <code>imports</code> array. You can also use <code>RTModule</code>    which includes the functionality of the entire library.
+  </p>
+  <rt-demo-tab-section>
+    <rt-demo-code-tab url="selection/bootstrap/app.module.tsfake">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="basic-use">
 
-	<h3>Простейший пример</h3>
-	<p>
-		Общая идея заключается в пометке HTML элемента, представляющего собой область выбора, директивой <code>rtSelectionArea</code>.
-		Элементы внутри данной области, помеченные директивой <code>rtSelectable</code>, становятся элементами выбора. В коде компонента,
-		как правило, никаких специфичных действий не требуется, все делается в шаблоне. Для работы с selection доступны следующие
-		команды:
-	</p>
-	<ul class="bulleted">
-		<li>Клик мышью выбирает кликнутый элемент сбрасывая предыдущий выбор.</li>
-		<li>Клик мышью с зажатой клавишей <code>Ctrl</code> выбирает кликнутый элемент, сохраняя предыдущий выбор.</li>
-		<li>Клик мышью с зажатой клавишей <code>Shift</code> выбирает последовательность элементов от последнего выбранного до кликнутого.
-		</li>
-		<li>Нажатие клавиши <code>&uarr;</code> выбирает предыдущий элемент.</li>
-		<li>Нажатие клавиши <code>&darr;</code> выбирает следующий элемент.</li>
-		<li>Нажатие клавиш <code>Ctrl + &uarr;</code> выбирает первый элемент в списке.</li>
-		<li>Нажатие клавиш <code>Ctrl + &darr;</code> выбирает последний элемент в списке.</li>
-		<li>Нажатие клавиш <code>Ctrl + A</code> выбирает все элементы списка.</li>
-		<li>Нажатие клавиши <code>Tab</code> и <code>Shift + Tab</code> перемещает вас по списку на элемент вверх или вниз.
-		</li>
-	</ul>
-	<rt-demo-tab-section>
-		<rt-demo-sample-tab>
-			<rt-demo-basic-usage></rt-demo-basic-usage>
-		</rt-demo-sample-tab>
-		<rt-demo-code-tab url="selection/basic-usage/basic-usage.component.html">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="selection/basic-usage/basic-usage.component.ts">
-		</rt-demo-code-tab>
-	</rt-demo-tab-section>
+  <h3>The simplest example</h3>
+  <p>
+    First of all, we mark an HTML element which represents the selection area by the <code>rtSelectionArea</code> directive.
+    Second, we mark the elements placed inside such area by the <code>rtSelectable</code> directive. This makes such elements
+    selectable. That is all we need to do to get selection functionality. Now, the following commands are available:
+  </p>
+  <ul class="bulleted">
+    <li>Simple mouse click selects clicked element, and deselects the previously selected elements.</li>
+    <li>Mouse click with the held <code>Ctrl</code> key selects clicked element keeping the previous selections.</li>
+    <li>Mouse click with the held <code>Shift</code> key selects the range of the elements from the last one selected to the
+      clicked one.
+    </li>
+    <li>Pressing <code>&uarr;</code> key moves selection to the previous element.</li>
+    <li>Pressing <code>&darr;</code> key moves selection to the next element.</li>
+    <li><code>Shift + &uarr;</code> combination adds previous element to the collection of the selected elements.</li>
+    <li><code>Shift + &darr;</code> combination adds next element to the collection of the selected elements.</li>
+    <li><code>Ctrl + &uarr;</code> combination selects the first element in the list.</li>
+    <li><code>Ctrl + &darr;</code> combination selects the last element in the list.</li>
+    <li><code>Ctrl + A</code> combination selects all elements in the list.</li>
+    <li>Pressing <code>Tab</code> and <code>Shift + Tab</code> moves you up and down the list.
+    </li>
+  </ul>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab>
+      <rt-demo-basic-usage></rt-demo-basic-usage>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="selection/basic-usage/basic-usage.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="selection/basic-usage/basic-usage.component.ts">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="additional-options">
-	<h3>Дополнительные опции</h3>
-	<p>
-		Директива <code>rtSelectionArea</code> содержит множество рубильников, включая и выключая которые мы можем тонко настраивать
-		работу selection. Ниже приведен их список и пример, демонстрирующий их работу. Значения по умолчанию в примере аналогичны
-		значениям по умолчанию в директиве <code>rtSelectionArea</code>.
-	</p>
-	<ul class="bulleted">
-		<li><code>horizontal</code> - если <code>true</code>, обработчики selection начинают реагировать на стрелки на стрелки "влево-вправо",
-			вместо стрелок "вверх-вниз".</li>
-		<li><code>toggleOnly</code> - если включить данную опцию, то снять selection с элемента можно только повторно кликнув по нему.
-			Имеет смысл только при включенной настройке <code>multiple</code>.</li>
-		<li><code>multiple</code> - если <code>true</code>, то можно выбрать несколько элементов одновременно.</li>
-		<li><code>autoSelectFirst</code> - если <code>true</code>, то при каждой перезагрузке данных, если ничего не выбрано, первый
-			элемент будет выбираться автоматически.
-		</li>
-	</ul>
+  <h3>Selection configuration options</h3>
+  <p>
+    <code>rtSelectionArea</code> directive contains several toggle switches, which can be used to configure selection behavior.
+    Below you can see the description of this options and the example demonstrating their work.
+  </p>
+  <ul class="bulleted">
+    <li><code>horizontal (default value is false)</code> - if you switch on this option, the keyboard handler starts handling
+      the <code>right</code> and
+      <code>left</code> arrow keys instead of the <code>up</code> and <code>down</code> arrow keys.</li>
+    <li><code>toggleOnly (default value is false)</code> - if you switch on this option, the element selection can be cleared
+      only after second click on it. This behavior can be useful for touch devices. Obviously, this option makes sense only
+      when the <code>multiple</code> option is switched on.</li>
+    <li><code>multiple (default value is true)</code> - it is possible to select multiple elements at a time if this option is
+      switched on.</li>
+    <li><code>autoSelectFirst (default value is false)</code> - specifies that the first element of collection will be selected
+      automatically on every data loading.
+    </li>
+  </ul>
 
-	<rt-demo-tab-section>
-		<rt-demo-sample-tab>
-			<rt-demo-options></rt-demo-options>
-		</rt-demo-sample-tab>
-		<rt-demo-code-tab url="selection/options/options.component.html">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="selection/options/options.component.ts">
-		</rt-demo-code-tab>
-	</rt-demo-tab-section>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab>
+      <rt-demo-options></rt-demo-options>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="selection/options/options.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="selection/options/options.component.ts">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="handle-selection">
-	<h3>Взаимодействие с selection</h3>
-	<p>
-		Для того, чтобы selection имел смысл, нужен способ выполнять определенные действия в зависимости от того, выбран или нет
-		определенный элемент. Для выполнения таких действий есть следующие опции:
-	</p>
-	<section id="handle-selection-selected">
-		<h4>Флаг "selected"</h4>
-		<p>
-			Директива <code>rtSelectable</code> содержит флаг <code>selected</code>, ссылаясь на который можно реагировать на изменения
-			состояния элемента. Пример такого подхода вы уже увидели в демо выше, где на основе значения этого флага выставляется
-			класс
-			<code>selected</code>, подсвечивающий выбранные элементы. Ниже показан чуть более интересный пример - реализация inline-редактирования
-			на основе флага selected.
-		</p>
-		<rt-demo-tab-section>
-			<rt-demo-sample-tab>
-				<rt-demo-selected-flag></rt-demo-selected-flag>
-			</rt-demo-sample-tab>
-			<rt-demo-code-tab url="selection/selected-flag/selected-flag.component.html">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="selection/selected-flag/selected-flag.component.ts">
-			</rt-demo-code-tab>
-		</rt-demo-tab-section>
+  <h3>Interacting with the selection model</h3>
+  <p>
+    To imply sense into selection, you need a way to execute particular actions depending on whether the element is selected
+    or not. There are the following options for these actions:
+  </p>
+  <section id="handle-selection-selected">
+    <h4><code>selected</code> flag</h4>
+    <p>
+      <code>rtSelectable</code> directive contains <code>selected</code> flag, which can be used to respond on the element
+      selection state changes. The example of such approach is demonstrated in the example above, where we apply the <code>selected</code>      class to the selectable element depending on <code>selected</code> flag state. Below there is a more interesting example
+      showing the inline-editing functionality implemented with the <code>selected</code> flag.
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-selected-flag></rt-demo-selected-flag>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="selection/selected-flag/selected-flag.component.html">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="selection/selected-flag/selected-flag.component.ts">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
 
-		<aside>
-			<p>
-				В данном примере мы используем <a href="#" [routerLink]="['/misc-directives']">вспомогательные директивы</a>
-				<code>rtFocusOnRender</code> и
-				<code>rtStopEvents</code> для автоматической установки фокуса в элементе <code>input</code> и чтобы предотвратить bubbling
-				события
-				<code>mouseup</code>, который будет приводить к deselect-у строки.
-			</p>
-		</aside>
+    <aside>
+      <p>
+        In the example above we are using couple of the <a href="#" [routerLink]="['/misc-directives']">miscellaneous directives</a>:
+        <code>rtFocusOnRender</code> directive which sets focus on <code>input</code> element when its rendered and
+        <code>rtStopEvents</code> directive to prevent bubbling of the <code>mouseup</code> event which can cause unnecessary
+        row deselection.
+      </p>
+    </aside>
 
-		<p>
-			Вы так же можете объявить свойство <code>selected</code> непосредственно в вашем элементе данных. В таком случае, selection
-			будет обновлять значение в зависимости от текущего состояния selection.
-		</p>
-		<rt-demo-tab-section>
-			<rt-demo-sample-tab>
-				<rt-demo-selected-flag-data></rt-demo-selected-flag-data>
-			</rt-demo-sample-tab>
-			<rt-demo-code-tab url="selection/selected-flag-data/selected-flag-data.component.html">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="selection/selected-flag-data/selected-flag-data.component.ts">
-			</rt-demo-code-tab>
-		</rt-demo-tab-section>
+    <p>
+      You can also implement the <code>selected</code> property in your data element. In this case the selection model will
+      update this flag depending on the current state of selection. </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-selected-flag-data></rt-demo-selected-flag-data>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="selection/selected-flag-data/selected-flag-data.component.html">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="selection/selected-flag-data/selected-flag-data.component.ts">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
 
-	</section>
-	<section id="handle-selection-events">
-		<h4>События</h4>
-		<p>
-			Вторым способом обработки selection являются события. По сути это и есть основной способ, первый же используется преимущественно
-			как shorthand для отображения состояния selection на UI.
-		</p>
-		<p>
-			У нас есть три события, на которые мы можем подписаться: <code>itemSelected</code>, <code>itemDeselected</code> и <code>selectionChanged</code>.
-			Обработчики которых получают параметр, реализующий контракт <code>RtSelectionEvent</code> из библиотеки <code>right-angled</code>.
-		</p>
-		<p>
-			События генерируются как директивами элементов выбора (<code>rtSelectable</code>, <code>rtSelectionCheckboxFor</code>),
-			так и всей <code>rtSelectionArea</code>.
-		</p>
-		<p>
-			Ниже вы можете увидеть пример, в котором обработчики <code>itemSelected</code> и <code>itemDeselected</code> уровня
-			<code>rtSelectionArea</code> выводят на UI уведомления о том, что элемент был выбран. Обработчик уровня элемента, в свою
-			очередь обращается к сервису <a target="_blank" href="https://restcountries.eu">restcountries.eu</a> и отображает полученную
-			из него информацию о стране.
-		</p>
-		<rt-demo-tab-section>
-			<rt-demo-sample-tab>
-				<rt-demo-selection-events></rt-demo-selection-events>
-			</rt-demo-sample-tab>
-			<rt-demo-code-tab url="selection/selection-events/selection-events.component.html">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="selection/selection-events/selection-events.component.ts">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab [fromLib]="true" url="core/selection/selection-event.ts">
-			</rt-demo-code-tab>
-		</rt-demo-tab-section>
-	</section>
+  </section>
+  <section id="handle-selection-events">
+    <h4>Events</h4>
+    <p>
+      The second way to process selection is events. In fact, it is the main approach; the first one is used mainly as shorthand
+      to reflect the selection state on UI.
+    </p>
+    <p>
+      There are three events on which we can subscribe <code>itemSelected</code>, <code>itemDeselected</code>, and <code>selectionChanged</code>.
+      All of them produce the parameter that implements <code>RTSelectionEvent</code> contract from <code>right-angled</code>      library.
+    </p>
+    <p>
+      The events are generated by the <code>rtSelectable</code> directive as well as by the <code>rtSelectionArea</code>.
+    </p>
+    <p>
+      Below you can see the example demonstrating the following features:
+    </p>
+    <ul>
+      <li><code>itemSelected</code> and <code>itemDeselected</code> handlers of the <code>rtSelectionArea</code> level display
+        notifications that the element has been selected or deselected.</li>
+      <li>The handler of the <code>rtSelectable</code> element level, uses <a target="_blank" href="https://restcountries.eu">restcountries.eu</a>        service to fetch and display the detailed information about the country.</li>
+    </ul>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-selection-events></rt-demo-selection-events>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="selection/selection-events/selection-events.component.html">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="selection/selection-events/selection-events.component.ts">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab [fromLib]="true" url="core/selection/selection-event.ts">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </section>
 
-	<section id="selection-service">
-		<h4>Работа с <code>RtSelectionService</code></h4>
-		<p>
-			Данный подход наиболее гибок, поскольку дает доступ ко множеству методов работы с selection. Полный контракт работы с selection
-			вы можете посмотреть <a target="_blank" href="http://eastbanctechru.github.io/e2e4/interfaces/selectionservice.html">здесь</a>.
-		</p>
-		<p>
-			Сервис <code>RtSelectionService</code> указан в коллекции <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>			для <code>rtSelectionArea</code>. Поэтому, способ доступа к <code>SelectionService</code> в вашем компоненте зависит от
-			того, где в иерархии компонентов ваш компонент располагается. Если он расположен внутри компонента
-			<code>rtSelectionArea</code>, то вам достаточно указать данный сервис в качестве параметра конструктора вашего компонента.
-		</p>
-		<p>
-			В примере ниже мы реализуем кастомную кнопку, в которую инжектим сервис <code>RtSelectionService</code> и при клике на
-			кнопку вызываем метод <code>getSelectedElements</code>, чтобы получить набор выбранных элементов и показать во всплывающем
-			окне.
-		</p>
-		<rt-demo-tab-section>
-			<rt-demo-sample-tab>
-				<rt-demo-service-injection></rt-demo-service-injection>
-			</rt-demo-sample-tab>
-			<rt-demo-code-tab url="selection/service-injection/service-injection.component.html">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="selection/service-injection/service-injection.component.ts">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="selection/service-injection/nested-button.component.ts">
-			</rt-demo-code-tab>
-		</rt-demo-tab-section>
+  <section id="selection-service">
+    <h4>Injecting the <code>RtSelectionService</code></h4>
+    <p>
+      This approach is the most flexible, because it gives the access to full selection functionality. You can see the full description
+      of the selection contract <a target="_blank" href="http://eastbanctechru.github.io/e2e4/interfaces/selectionservice.html">here</a>.
+    </p>
+    <p>
+      The <code>RTSelectionService</code> service is configured as provider for <code>rtSelectionArea</code> directive. So
+      the way to access <code>RTSelectionService</code> from your component depends on where your component is located. If
+      your component is located inside the <code>rtSelectionArea</code> component, you can simply specify <code>RTSelectionService</code>      as a parameter of your component constructor.
+    </p>
+    <p>
+      In the example below we have implemented the custom button component which injects the <code>RTSelectionService</code>      service and calls its <code>getSelectedElements</code> method on button click to display currently selected elements
+      in the popup.
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-service-injection></rt-demo-service-injection>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="selection/service-injection/service-injection.component.html">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="selection/service-injection/service-injection.component.ts">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="selection/service-injection/nested-button.component.ts">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
 
-		<p>
-			Если компонент, которому необходимо получить доступ к <code>RtSelectionService</code>, является родителем для <code>rtSelectionArea</code>,
-			то вы можете получить ссылку на <code>rtSelectionArea</code> используя декоратор <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html">ViewChild</a>			и использовать его public свойство selectionService для работы с selection.
-		</p>
-		<p>
-			Пример ниже аналогичен предыдущему, но вместо кастомной нопки мы реализуем обработчик события прямо в компоненте и используем
-			<code>rtSelectionArea</code> запрошенный при помощи декоратора <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html">ViewChild</a>.
-		</p>
-		<rt-demo-tab-section>
-			<rt-demo-sample-tab>
-				<rt-demo-service-view-child></rt-demo-service-view-child>
-			</rt-demo-sample-tab>
-			<rt-demo-code-tab url="selection/service-view-child/service-view-child.component.html">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="selection/service-view-child/service-view-child.component.ts">
-			</rt-demo-code-tab>
-		</rt-demo-tab-section>
+    <p>
+      If you want to implement the component placed as a parent for the element with the <code>rtSelectionArea</code> directive,
+      you can reference <code>rtSelectionArea</code> using the <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html">ViewChild</a>      decorator and use its <code>selectionService</code> property to access selection functionality.
+    </p>
+    <p>
+      The example below implements the same scenario as the previous one, but, instead of the custom component, we implement click
+      event handler right in our sample component and use <code>rtSelectionArea</code> requested by the <a target="_blank"
+        href="https://angular.io/docs/ts/latest/api/core/index/ViewChild-decorator.html">ViewChild</a> decorator. .
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-service-view-child></rt-demo-service-view-child>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="selection/service-view-child/service-view-child.component.html">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="selection/service-view-child/service-view-child.component.ts">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
 
-	</section>
-	<section id="additional-methods">
-		<h4>
-			Работа с <code>rtSelectionArea</code> прямо в шаблоне
-		</h4>
-		<p>
-			Вы можете создать в шаблоне переменную, ссылающуюся на <code>rtSelectionArea</code> и обращаться к нему из обработчиков
-			события.
-		</p>
-		<p>
-			Ниже вы можете увидеть пример кнопок, использующих методы <code>selectionService.selectAll</code> и <code>selectionService.deselectAll</code>.
-		</p>
-		<aside>
-			<p>
-				Методы <code>selectionService.selectAll</code> и <code>selectionService.deselectAll</code> перегружены в библиотеке <code>right-angled</code>				и позволяют выполнять рекурсивный selection. В остальном контракт совпадает с <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/selectionservice.html">SelectionService</a>				библиотеки <a target="_blank" href="https://eastbanctechru.github.io/e2e4">e2e4</a>.
-			</p>
-		</aside>
-		<rt-demo-tab-section>
-			<rt-demo-sample-tab>
-				<rt-demo-select-all></rt-demo-select-all>
-			</rt-demo-sample-tab>
-			<rt-demo-code-tab url="selection/select-all/select-all.component.html">
-			</rt-demo-code-tab>
-			<rt-demo-code-tab url="selection/select-all/select-all.component.ts">
-			</rt-demo-code-tab>
+  </section>
+  <section id="additional-methods">
+    <h4>
+      Working with <code>rtSelectionArea</code> from Template
+    </h4>
+    <p>
+      One another way to interact with the selection model is referencing <code>rtSelectionArea</code> directive right in
+      your template and using its <code>selectionService</code> property.
+    </p>
+    <p>
+      Below you can see the example of buttons which utilizes the <code>selectionService.selectAll</code> and <code>selectionService.deselectAll</code>      methods.
+    </p>
+    <aside>
+      <p>
+        The <code>selectionService.selectAll</code> and <code>selectionService.deselectAll</code> methods are reloaded in
+        the <code>right-angled</code> library and allow executing recursive selection. As for the rest, the contract coincides
+        with the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/selectionservice.html">SelectionService</a>        of the <a target="_blank" href="https://eastbanctechru.github.io/e2e4">e2e4</a> library.
+      </p>
+    </aside>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-select-all></rt-demo-select-all>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="selection/select-all/select-all.component.html">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="selection/select-all/select-all.component.ts">
+      </rt-demo-code-tab>
 
-		</rt-demo-tab-section>
+    </rt-demo-tab-section>
 
-	</section>
+  </section>
 </section>
 
 <section id="additional-directives-checkboxes">
-	<h3>Директива <code>rtSelectionCheckboxFor</code></h3>
-	<p>
-		Данная директива будет полезна в том случае, если вам нужно реализовать модель выбора при помощи checkbox-ов вместо клика
-		по элементам.
-	</p>
-	<rt-demo-tab-section>
-		<rt-demo-sample-tab>
-			<rt-demo-selection-checkbox></rt-demo-selection-checkbox>
-		</rt-demo-sample-tab>
-		<rt-demo-code-tab url="selection/selection-checkbox/selection-checkbox.component.html">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="selection/selection-checkbox/selection-checkbox.component.ts">
-		</rt-demo-code-tab>
-	</rt-demo-tab-section>
+  <h3><code>rtSelectionCheckboxFor</code> directive</h3>
+  <p>
+    This directive will be useful in case if you need to implement the selection model that uses checkboxes instead of the click-based
+    elements selection.
+  </p>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab>
+      <rt-demo-selection-checkbox></rt-demo-selection-checkbox>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="selection/selection-checkbox/selection-checkbox.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="selection/selection-checkbox/selection-checkbox.component.ts">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="additional-settings-trackBy">
-	<h3><code>trackBy</code> function</h3>
-	<p>
-		Вдохновением для данной опции послужила одноименная опция у <code>angular</code> директивы <a targe="_blank" href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#ngFor">ngFor</a>.
-	</p>
-	<p>
-		Суть заключается в том, что при обновлении данных выполняется повторная проверка selection. Например, при обновлении списка,
-		в большинстве случаев с сервера будут возвращены те же самые данные.
-
-	</p>
-	<p>
-		Но, поскольку объекты будут сконструированы новые, то проверка при помощи reference equals, которая выполняется по умолчанию,
-		не сможет восстановить selection.
-	</p>
-	<p>
-		Если у вас имеется способ идентифицировать ваши объекты (например, уникальное свойство id), то вы можете указать свою реализацию
-		функции <code>trackBy</code>, которая будет использоваться для восстановления selection.
-	</p>
-	<p>
-		В примере ниже мы используем реализацию <code>trackBy</code>, которая возвращает название региона. Таким образом, пре перезагрузке
-		данных selection сохраняется.
-	</p>
-	<rt-demo-tab-section>
-		<rt-demo-sample-tab>
-			<rt-demo-custom-track-by></rt-demo-custom-track-by>
-		</rt-demo-sample-tab>
-		<rt-demo-code-tab url="selection/custom-track-by/custom-track-by.component.html">
-		</rt-demo-code-tab>
-		<rt-demo-code-tab url="selection/custom-track-by/custom-track-by.component.ts">
-		</rt-demo-code-tab>
-	</rt-demo-tab-section>
+  <h3><code>trackBy</code> function</h3>
+  <p>
+    This option was inspired by the trackBy option of the angular <a targe="_blank" href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#ngFor">ngFor</a>    directive.
+  </p>
+  <p>
+    The idea is that after data reload selection service performs check of the currently selected elements. For example, in most
+    of the cases when the list is refreshed, the same records will be returned from the server. But as long as new objects
+    will be constructed as elements, regular reference equality check will not be able to restore selection state of elements.
+  </p>
+  <p>
+    If you have the way to identify your elements (unique id property, for example), you can specify your own implementation
+    of the <code>trackBy</code> function, which will be used for selection state restoring.
+  </p>
+  <p>
+    In the below example, we are using the trackBy implementation, which returns the name property of element. So, the selection
+    is preserved after data reload.
+  </p>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab>
+      <rt-demo-custom-track-by></rt-demo-custom-track-by>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="selection/custom-track-by/custom-track-by.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="selection/custom-track-by/custom-track-by.component.ts">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="prevent-stop-events">
-	<h3>preventEventsDefaults и stopEventsPropagation</h3>
-	<p>
-		Еще два рубильника, которые вам вряд ли понадобятся, но, если уж понадобятся, то очень.
-	</p>
-	<p>
-		Смысл заключается в том, что selection при успешной обработке события мыши или клавиатуры, вызывает методы <a target="_blank"
-			href="https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation">stopPropagation</a> и <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault">preventDefault</a>.
-		Это нужно, к примеру, чтобы при нажатии <code>Ctrl + A</code> не выбирался весь текст на странице. При нажатии на <code>&uarr;</code>		и <code>&darr;</code> не прокручивалась вся страница и т.д.
-	</p>
-	<p>
-		Но если такое поведение стало для вас проблемой, вы можете отключить его.
-	</p>
+  <h3><code>preventEventsDefaults</code> and <code>stopEventsPropagation</code> parameters</h3>
+  <p>
+    Two more options you will not probably need often, but if it happens, they are more than necessary.
+  </p>
+  <p>
+    The thing is that the selection directives use the <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation">stopPropagation</a>    and <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault">preventDefault</a> methods
+    in mouse and keyboard handlers for the case when selection was performed successfully. It is required, for example, to
+    avoid selection of the whole text on the page when <code>Ctrl + A</code> key combination is pressed, or to prevent the
+    entire page scrolling when <code>&uarr;</code> and <code>&darr;</code> keys pressed and so on.
+  </p>
+  <p>
+    If such a behavior is a problem for you, you can easily switch it off.
+  </p>
 </section>
 <section>
   <aside>

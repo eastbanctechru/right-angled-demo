@@ -1,65 +1,66 @@
 <h2>Working with lists</h2>
 <section>
-  <h3>Table of contents</h3>
+  <h3>Contents</h3>
   <ul class="agenda">
-    <li><a href="list-controls#common-idea">Общая идея</a></li>
-    <li><a href="list-controls#bootstrap">Как подключить</a></li>
-    <li><a href="list-controls#rt-list">Директива <code>rtList</code></a>
+    <li><a href="list-controls#common-idea">General idea</a></li>
+    <li><a href="list-controls#bootstrap">How to bootstrap</a></li>
+    <li><a href="list-controls#rt-list"><code>rtList</code> directive</a>
       <ul>
         <li>
-          <a href="list-controls#load-on-init">Параметр <code>loadOnInit</code></a>
+          <a href="list-controls#load-on-init"><code>loadOnInit</code> parameter</a>
         </li>
         <li>
-          <a href="list-controls#default-sortings">Параметр <code>defaultSortings</code></a>
+          <a href="list-controls#default-sortings"><code>defaultSortings</code> parameter</a>
         </li>
         <li>
-          <a href="list-controls#list-methods">Вспомогательные методы и свойства</a>
+          <a href="list-controls#list-methods">Utility methods and properties</a>
         </li>
         <li>
-          <a href="list-controls#on-list-init">Событие <code>onListInit</code></a>
+          <a href="list-controls#on-list-init"><code>onListInit</code> event</a>
         </li>
         <li>
-          <a href="list-controls#after-list-init">Событие <code>afterListInit</code></a>
+          <a href="list-controls#after-list-init"><code>afterListInit</code> event</a>
         </li>
       </ul>
     </li>
-    <li><a href="list-controls#rt-sort">Директива <code>rtSort</code></a></li>
+    <li><a href="list-controls#rt-sort"><code>rtSort</code> directive</a></li>
     <li><a href="list-controls#rt-row-number"><code>rtRowNumber</code> pipe</a></li>
-    <li><a href="list-controls#custom-items-handling">Варианты работы с коллекцией <code>items</code></a></li>
+    <li><a href="list-controls#custom-items-handling">Working with <code>items</code> collection</a></li>
   </ul>
 </section>
 <section id="common-idea">
-  <h3>Общая идея</h3>
+  <h3>General idea</h3>
   <p>
-    При работе со списками все начинается с директивы <code>rtList</code>. Она представляет собой root container для dependency
-    injection и конфигурирует сервиса для вложенных компонентов (paging-контролы, директивы сортировки и т.д.).
+    The work with the lists begins with the <code>rtList</code> directive. It represents a root container for the <code>dependency
+    injection</code> and configures the services for the nested components (paging components, sorting directives and so
+    on).
   </p>
   <p>
-    В качестве необходимого минимума данной директиве требуется метод для получения данных, который будет вызываться сервисом
-    <code>RtList</code>.
+    At minimum, this directive needs the method for getting data, which will be called by the <code>RtList</code> service.
   </p>
   <p>
-    Данный метод должен принимать один параметр с настройками запроса, который следует контракту <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>    для простых списков и <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>    для paged-списков.
+    This method should get one parameter with the settings of the request implementing <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>    contract for the simple lists and <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>    one for the paged lists.
   </p>
   <p>
-    Если вы настраиваете фильтры для списка (о том как это сделать рассказано в <a href="#" [routerLink]="['/filters']">разделе про работы с фильтрами</a>),
-    то их значения так же будут добавлены в параметры запроса с соответствующими именами.
+    If you configure any filters (we described it in the <a href="#" [routerLink]="['/filters']">working with filters</a>    section), their values will be added to the request parameters under the corresponding names.
   </p>
   <p>
-    Возвращать данный метод должен <code>Observable</code>, <code>Promise</code> либо <code>EventEmitter</code>. Для простых
-    списков он должен содержать массив с записями. Для paged-списков ответ должен следовать контракту
-    <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>.
+    The return value of this method should be <code>Observable</code>, <code>Promise</code>, or <code>EventEmitter</code>.
+    For the simple lists the response should contain array with the records. As for the paged ones, it should implement
+    <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html">ListResponse</a> contract.
   </p>
   <aside>
-    Для простого списка response так же может следовать контракту <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>.
-    В таком случае в полях <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#totalcount">totalCount</a>    и <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#loadedcount">loadedCount</a>    должно находиться одно и то же значение, равное длине массива с записями.
+    <p>
+      For the simple list, response also can implement <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>      contract. In this case the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#totalcount">totalCount</a>      and <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#loadedcount">loadedCount</a>      fields should be equal to the length of the entire array with data.
+    </p>
   </aside>
 </section>
 <section id="bootstrap">
-  <h3>Как подключить</h3>
+  <h3>How to bootstrap</h3>
   <p>
-    Для работы со списками необходимо импортировать модуль <code>RTListsModule</code> и подключить его в вашем <code>AppModule</code>.
-    Так же вы можете импортировать модуль <code>RtModule</code>, включающий в себя функционал всей библиотеки <code>right-angled</code>    целиком.
+    To work with the lists you should import the <code>RTListsModule</code> module from <code>right-angled</code> library
+    and add it into your <code>AppModule</code> <code>imports</code> array. You can also use <code>RTModule</code> which
+    includes the functionality of the entire library.
   </p>
   <rt-demo-tab-section>
     <rt-demo-code-tab url="list-controls/bootstrap/app.module.tsfake">
@@ -67,28 +68,29 @@
   </rt-demo-tab-section>
 </section>
 <section id="rt-list">
-  <h3>Директива <code>rtList</code></h3>
+  <h3><code>rtList</code> directive</h3>
   <section id="load-on-init">
-    <h4>Параметр <code>loadOnInit</code></h4>
-    <p>Данный параметр указывает списку, что необходимо автоматически выполнить первый запрос за данными сразу после того, как
-      список будет проинициализирован. По умолчанию равен <code>true</code></p>
+    <h4><code>loadOnInit</code> parameter</h4>
+    <p>This parameter specifies that it is required to execute the first data loading automatically right after the list is
+      initialized. By default it is equal to <code>true</code></p>
   </section>
   <section id="default-sortings">
-    <h4>Параметр <code>defaultSortings</code></h4>
+    <h4><code>defaultSortings</code> parameter</h4>
     <p>
-      Данный параметр позволяет задать для списка сортировки по умолчанию. Сортировки будут применены сразу при создании списка
-      и в них же будет сбрасываться значение сортировок при вызове метода <code>resetSettings</code>.
+      This parameter specifies the default sortings for the list. These sortings are applied right after the list is created. Then,
+      if the <code>resetSettings</code> method is called, the values of list sortings will be resetted to this parameter
+      value.
     </p>
     <p>
-      В качестве значения данный параметр принимает массив объектов, удовлетворяющих контракту <code>SortParameter</code>
+      This parameter takes the array of objects which implements <code>SortParameter</code> contract.
     </p>
     <p>
-      Если в момент выставления сортировок по умолчанию список еще не был отсортирован, то данные сортировки будут автоматически
-      применены как текущие.
+      If the list has not been sorted at the moment of specifying the sortings, these sortings will be applied as current ones.
     </p>
     <p>
-      Ниже приведен пример списка, у которого выставлены сортировки по умолчанию по названию аэропорта в прямом порядке и стране
-      нахождения в обратном. Так же приведен контракт <code>SortParameter</code>.
+      Below there is the example of the list, which by default sorts the list of airports by the airport name in ascending order
+      and by the residence country in descending order. The <code>SortParameter</code> contract is also represented
+      on separate tab.
     </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
@@ -102,45 +104,44 @@
     </rt-demo-tab-section>
 
   </section>
-
   <section id="list-methods">
-    <h4>Вспомогательные методы и свойства</h4>
-    <p>В директиве <code>rtList</code> содержится ряд полезных методов и свойств, которые позволяют легко реализовать типичные
-      сценарии (к примеру, кнопку загрузки данных). Ниже приведен список методов и свойств:
+    <h4>Additional methods and properties</h4>
+    <p>
+      The <code>rtList</code> directive contains many useful methods and properties allowing implementing typical scenarios
+      easily:
     </p>
     <ul class="bulleted">
       <li>
-        Метод <code>loadData</code> - выполняет загрузку данных.
+        <code>loadData(): void</code> executes the data loading.
       </li>
       <li>
-        Метод <code>reloadData</code> - выполняет перезагрузку (загрузку со сбросом параметров пейджинга) данных.
+        <code>reloadData(): void</code> resets paging parameters and executes data loading.
       </li>
       <li>
-        Метод <code>cancelRequests</code> - выполняет отмену выполняющегося в данный момент времени запроса.
+        <code>cancelRequests(): void</code> cancels the request executed at the moment.
       </li>
       <li>
-        Метод <code>resetSettings</code> - выполняет сброс параметров списка (сортировки, пейджинг, фильтры).
+        <code>resetSettings(): void</code> resets the list parameters (sortings, paging, filters) to their default values.
       </li>
       <li>
-        Свойство <code>busy</code> - возвращает <code>true</code> если в данный момент времени выполняется запрос за данными.
+        <code>busy</code> property returns <code>true</code>, if there is a data request executed at the moment.
       </li>
       <li>
-        Свойство <code>ready</code> - возвращает <code>true</code> если в данный момент времени запрос за данными НЕ выполняется.
+        <code>ready</code> property returns <code>true</code>, if there is no data request executed at the moment.
       </li>
       <li>
-        Свойство <code>items</code> - возвращает массив с элементами, переданными в свойстве объекта <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#items">ListResponse.items</a>        и представляющее собой набор записей.
+        <code>items</code> property returns the array of elements transferred in the property of the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#items">ListResponse.items</a>        object.
       </li>
     </ul>
     <aside>
       <p>
-        Если при уничтожении записей (например, при перезагрузке, смене страницы, уничтожении всего списка) вам требуется выполнить
-        кастомную логику очистки для элементов списка, то вы можете реализовать метод <code>destroy</code> в классе
-        элемента записи, и этот метод будет вызван сервисом <code>RtList</code> при уничтожении записей.
+        If you want to execute any custom logic for the list elements when destroying the records (e.g., on list reload, page changing,
+        entire list destroy), you can implement the <code>destroy</code> method in the element class and this method
+        will be called by the <code>RtList</code> service on items destroy.
       </p>
     </aside>
-
     <p>
-      Ниже приведен пример, в котором реализованы 4 кнопки, использующие описанные выше методы и свойства.
+      Below you can see the example with 4 buttons implemented using the mentioned methods and properties.
     </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
@@ -151,62 +152,55 @@
     </rt-demo-tab-section>
   </section>
   <section id="on-list-init">
-    <h4>Событие <code>onListInit</code></h4>
+    <h4><code>onListInit</code> event</h4>
     <p>
-      Данное событие генерируется после того, как сработает хук
-      <a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-class.html">AfterViewInit</a> и выполнена первая
-      отрисовка шаблона.
+      This event is generated after the <a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-class.html">AfterViewInit</a>      hook is executed and the first template rendering happened.
     </p>
     <p>
-      При помощи него можно встроиться в конвейер инициализации сервиса <code>RtList</code> и выполнить дополнительную настройку
-      перед первой загрузкой данных. </p>
+      By using this event, it is possible to integrate into the initialization pipe of the <code>RtList</code> service and
+      apply the additional settings before the first data loading.
+    </p>
     <p>
-      Например, можно зарегистрировать объект с настройками фильтра, вызвав метод <code>RtList.registerFilterTarget</code>      передаваемого в качестве параметра сервиса <code>RtList</code> (если ваш фильтр представляет собой отдельный компонент,
-      то гораздо проще использовать директиву <a href="#" [routerLink]="['/filters']">rtRegisterAsFilter</a>, регистрируя
-      фильтр прямо из шаблона компонента).
+      For example, it is possible to register object with the filter settings by calling <code>RtList.registerFilterTarget</code>      method of <code>RtList</code> service which is sent as event objects (if the filter represents a separate component,
+      it is much easier to use <a href="#" [routerLink]="['/filters']">rtRegisterAsFilter</a> directive and registering the
+      filter right from the component template).
     </p>
   </section>
   <section id="after-list-init">
-    <h4>Событие <code>afterListInit</code></h4>
+    <h4><code>afterListInit</code> event</h4>
     <p>
-      Данное событие вызывается после того, как была выполнена инициализация списка и он готов к использованию.
-    </p>
-    <p>
-      Как и предыдущее событие, передает в качестве параметра сервис <code>RtList</code>.
+      This event is generated after the list initialization is performed and it is ready to be used. The same as a previously described
+      one, it sends the <code>RtList</code> service as event object.
     </p>
   </section>
 
 </section>
 <section id="rt-sort">
-  <h3>Директива <code>rtSort</code></h3>
+  <h3><code>rtSort</code> directive</h3>
   <p>
-    Данная директива предназначена для настройки сортировок списка. Директива принимает в качестве обязательного параметра идентификатор
-    сортировки, который будет передаваться в запросе за данными.
+    This directive is used to specify the list sortings. As a parameter this directive gets the sorting identifier, and applies
+    it as a sort identifier to <code>sortings</code> collection of <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>    object.
   </p>
   <p>
-    Ниже расположен пример списка, в заголовки столбцов которого добавлена данная директива. Моменты, на которые следует обратить
-    внимание:
+    Below you can see the example of the list with this directive added into the column headers. Pay attention to these points:
   </p>
   <ul class="bulleted">
     <li>
-      К элементу, помеченному директивой <code>rtSort</code>, добавляется класс <code>rt-sortable</code>. С помощью данного
-      класса вы можете настроить стили, сигнализирующие, что элемент сортируемый. В наших примерах это появление двунаправленной
-      стрелки справа от столбца при наведении мыши.
+      <code>rtSort</code> directive adds <code>rt-sortable</code> class to the marked element. With the help of this class
+      you can set up the styles pointing out that the element is sortable. In our examples sortable elements display two-sided
+      arrow at the right side of the column on mouseover.
     </li>
     <li>
-      При клике по столбцу, переданный параметр-идентификатор добавляется в коллекцию сортировок с направлением
-      <code>Asc</code> и тут же вызывается метод <code>RtList.loadData</code>. Выбранные сортировки будут переданы в качестве
-      свойства
-      <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>.
-      При повторном клике направление сортировки меняется на противоположное и снова выполняется запрос за данными.
+      When you click on the column header, the specified sort identifier will be added to the sortings array with <code>Asc</code>      direction and the <code>RtList.loadData</code> method will be called. On second click the direction of sorting is changed
+      to the opposite one and the data request is executed again.
     </li>
     <li>
-      К столбцам, по которым выполнена сортировка, добавляются классы <code>rt-sort-asc</code> или <code>rt-sort-desc</code>,
-      в зависимости от выбранного направления сортировки.
+      The <code>rt-sort-asc</code> or <code>rt-sort-desc</code> css classes are added to marked element depending on the
+      current sorting direction.
     </li>
     <li>
-      С помощью клика с зажатой клавишей <code>Ctrl</code> можно настроить сортировку по нескольким полям. В таком случае,
-      в массив <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>      будет передано несколько значений.
+      By clicking column headers with held <code>Ctrl</code> key you can sort list by several fields. In this case the
+      <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>      array will get several values.
     </li>
   </ul>
   <rt-demo-tab-section>
@@ -218,28 +212,26 @@
   </rt-demo-tab-section>
   <aside>
     <p>
-      Если по какой-либо причине вас не устраивают названия классов <code>rt-sortable</code>, <code>rt-sort-asc</code> и
-      <code>rt-sort-desc</code>, вы можете поменять их глобально. Для этого импортируйте сервис <code>SortingsService</code>      в ваш <code>AppModule</code> и настройте названия классов при помощи объекта <code>settings</code>.
+      If, by some reason, you don’t like the names of <code>rt-sortable</code>, <code>rt-sort-asc</code>, and <code>rt-sort-desc</code>      classes, you can change them globally importing the <code>SortingsService</code> service into your <code>AppModule</code>      and setting up <code>SortingsService.settings</code> object properties.
     </p>
     <rt-demo-tab-section>
       <rt-demo-code-tab url="list-controls/sortings-configuration/app.component.ts">
       </rt-demo-code-tab>
     </rt-demo-tab-section>
-
   </aside>
 </section>
 <section id="rt-row-number">
   <h3><code>rtRowNumber</code> pipe</h3>
-  <p>Данный pipe может используется для автоматической нумерации строк в списке. Он распознает с каким пейджером работает и
-    проставляет соответствующим образом номера, например, начиная нумерацию не с 1, а с 6 для второй страницы постраничного
-    списка.
+  <p>
+    This pipe is used for the automated numbering of the rows in the list. It recognizes the pager it works with and puts the
+    numbers correspondingly. For example, it begins with 6, and not 1, for the second page of the paged list.
   </p>
   <p>
-    Данный <code>pipe</code> применяется к значению <code>index</code>, представляющему собой индекс текущего элемента в
-    коллекции. Также ему необходимо передать ссылку на <code>rtList</code> в качестве параметра.
+    This pipe is applied to the <code>index</code> value, which represents the index of the current element in the collection.
+    Also it is required to specify link to <code>rtList</code> directive as a parameter.
   </p>
   <p>
-    В примере ниже мы используем данную директиву, добавляя номера строк в первый столбец таблицы.
+    In the example below we use this directive to add the numbers of the rows into the first column of the table.
   </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
@@ -250,9 +242,9 @@
   </rt-demo-tab-section>
 </section>
 <section id="custom-items-handling">
-  <h3>Варианты работы с коллекцией <code>items</code></h3>
+  <h3>Working with <code>items</code> collection</h3>
   <p>
-    Описание данного раздела пока в работе.
+    Documentation is in progress.
   </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
