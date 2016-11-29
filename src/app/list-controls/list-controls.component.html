@@ -13,7 +13,7 @@
           <a href="list-controls#default-sortings"><code>defaultSortings</code> parameter</a>
         </li>
         <li>
-          <a href="list-controls#list-methods">Utility methods and properties</a>
+          <a href="list-controls#list-methods">Additional methods and properties</a>
         </li>
         <li>
           <a href="list-controls#on-list-init"><code>onListInit</code> event</a>
@@ -31,7 +31,7 @@
 <section id="common-idea">
   <h3>General idea</h3>
   <p>
-    The work with the lists begins with the <code>rtList</code> directive. It represents a root container for the <code>dependency
+    The work with the lists begins with the <code>rtList</code> directive. It represents a root container for the <code>angular dependency
     injection</code> and configures the services for the nested components (paging components, sorting directives and so
     on).
   </p>
@@ -59,8 +59,8 @@
   <h3>How to bootstrap</h3>
   <p>
     To work with the lists you should import the <code>RTListsModule</code> module from <code>right-angled</code> library
-    and add it into your <code>AppModule</code> <code>imports</code> array. You can also use <code>RTModule</code> which
-    includes the functionality of the entire library.
+    and add it into your <code>AppModule</code> <code>imports</code> array. You can also use <code>RTModule</code> module
+    which includes the functionality of the entire library.
   </p>
   <rt-demo-tab-section>
     <rt-demo-code-tab url="list-controls/bootstrap/app.module.tsfake">
@@ -78,8 +78,7 @@
     <h4><code>defaultSortings</code> parameter</h4>
     <p>
       This parameter specifies the default sortings for the list. These sortings are applied right after the list is created. Then,
-      if the <code>resetSettings</code> method is called, the values of list sortings will be resetted to this parameter
-      value.
+      on <code>resetSettings</code> method call, the values of list sortings will be resetted to this parameter value.
     </p>
     <p>
       This parameter takes the array of objects which implements <code>SortParameter</code> contract.
@@ -107,7 +106,7 @@
   <section id="list-methods">
     <h4>Additional methods and properties</h4>
     <p>
-      The <code>rtList</code> directive contains many useful methods and properties allowing implementing typical scenarios
+      The <code>rtList</code> directive contains several useful methods and properties allowing implementing typical scenarios
       easily:
     </p>
     <ul class="bulleted">
@@ -161,9 +160,7 @@
       apply the additional settings before the first data loading.
     </p>
     <p>
-      For example, it is possible to register object with the filter settings by calling <code>RtList.registerFilterTarget</code>      method of <code>RtList</code> service which is sent as event objects (if the filter represents a separate component,
-      it is much easier to use <a href="#" [routerLink]="['/filters']">rtRegisterAsFilter</a> directive and registering the
-      filter right from the component template).
+      For example, it is possible to <a href="#" [routerLink]="['/filters']">register object with the filter settings</a>      by calling <code>RtList.registerFilterTarget</code> method of <code>RtList</code> service which is sent as event objects.
     </p>
   </section>
   <section id="after-list-init">
@@ -178,8 +175,8 @@
 <section id="rt-sort">
   <h3><code>rtSort</code> directive</h3>
   <p>
-    This directive is used to specify the list sortings. As a parameter this directive gets the sorting identifier, and applies
-    it as a sort identifier to <code>sortings</code> collection of <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>    object.
+    This directive is used to specify the list sortings. As a parameter this directive gets the sorting identifier, which will
+    be applied to <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>    array.
   </p>
   <p>
     Below you can see the example of the list with this directive added into the column headers. Pay attention to these points:
@@ -191,16 +188,15 @@
       arrow at the right side of the column on mouseover.
     </li>
     <li>
-      When you click on the column header, the specified sort identifier will be added to the sortings array with <code>Asc</code>      direction and the <code>RtList.loadData</code> method will be called. On second click the direction of sorting is changed
-      to the opposite one and the data request is executed again.
+      When you click on the column header, the specified sort identifier will be added to the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">sortings</a>      array with <code>Asc</code> direction and the <code>RtList.loadData</code> method will be called immediately. On second
+      click the direction of sorting is changed to the opposite one and the data request is executed again.
     </li>
     <li>
       The <code>rt-sort-asc</code> or <code>rt-sort-desc</code> css classes are added to marked element depending on the
       current sorting direction.
     </li>
     <li>
-      By clicking column headers with held <code>Ctrl</code> key you can sort list by several fields. In this case the
-      <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">ListRequest.sortings</a>      array will get several values.
+      By clicking column headers with held <code>Ctrl</code> key you can sort list by several fields.
     </li>
   </ul>
   <rt-demo-tab-section>
@@ -212,7 +208,7 @@
   </rt-demo-tab-section>
   <aside>
     <p>
-      If, by some reason, you don’t like the names of <code>rt-sortable</code>, <code>rt-sort-asc</code>, and <code>rt-sort-desc</code>      classes, you can change them globally importing the <code>SortingsService</code> service into your <code>AppModule</code>      and setting up <code>SortingsService.settings</code> object properties.
+      If, by some reason, you don’t like the names of <code>rt-sortable</code>, <code>rt-sort-asc</code>, and <code>rt-sort-desc</code>      classes, you can change them globally importing the <code>SortDirective</code> service into your <code>AppModule</code>      and setting up <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/sortdirective.html#settings">SortDirective.settings</a>      object properties.
     </p>
     <rt-demo-tab-section>
       <rt-demo-code-tab url="list-controls/sortings-configuration/app.component.ts">
@@ -224,7 +220,7 @@
   <h3><code>rtRowNumber</code> pipe</h3>
   <p>
     This pipe is used for the automated numbering of the rows in the list. It recognizes the pager it works with and puts the
-    numbers correspondingly. For example, it begins with 6, and not 1, for the second page of the paged list.
+    numbers correspondingly. For example, it begins with 6, and not 1, for the second page of the paged list with page size equal to 5.
   </p>
   <p>
     This pipe is applied to the <code>index</code> value, which represents the index of the current element in the collection.

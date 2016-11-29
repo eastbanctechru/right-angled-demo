@@ -1,8 +1,8 @@
 <h2>right-angled quick tour</h2>
 <section>
   <p>
-    In this section you will get familiar with the <code>right-angled</code> library. You will see its possibilities on the live examples.
-    Also we provide the links to the sections with more details for each of the <code>right-angled</code> aspects.
+    In this section you will get familiar with the <code>right-angled</code> library. You will see its possibilities on the
+    live examples. Also we provide the links to the sections with more details for each of the <code>right-angled</code>    aspects.
   </p>
 </section>
 <section>
@@ -62,7 +62,8 @@
   </p>
   <p>
     Next, we import the <code>RTModule</code> and add it to <code>AppModule</code> imports array. Also, it is possible to
-    use the functionality part by part. For that there are such modules as <code>RTListsModule</code>, <code>RTSelectionModule</code>, <code>RTFiltersModule</code> and <code>RTMiscModule</code>.
+    use the functionality part by part. For that there are such modules as <code>RTListsModule</code>, <code>RTSelectionModule</code>,
+    <code>RTFiltersModule</code> and <code>RTMiscModule</code>.
   </p>
   <rt-demo-tab-section>
     <rt-demo-code-tab url="quick-tour/bootstrap/app.module.tsfake">
@@ -104,9 +105,12 @@
 <section id="use-sortings">
   <h3>Adding the sorting</h3>
   <p>
-    Our list already sends the sorting parameters in the request. But we need the way to change them through UI. We add <code>rtSort</code>    directive into the table headers template to do this. The component code doesn’t require any changes. As a parameter
-    <code>rtSort</code> directive gets the string with the sorting identifier, which will be sent to the server. In the most
-    obvious case, it can coincide with the column name. However, remember about <a href="https://en.wikipedia.org/wiki/SQL_injection">sql injection</a>    when developing backend!
+    Our list already sends the sorting parameters in the request. But we need the way to change them through UI. In the example
+    below, we add <code>rtSort</code> directive into the table headers template to do this. The component code doesn’t
+    require any changes.
+    <code>rtSort</code> directive gets the string with the sorting identifier as a parameter. This identifier will be sent
+    to the server when requesting data. In the most obvious case, it can coincide with the column name. However, remember
+    about <a href="https://en.wikipedia.org/wiki/SQL_injection">sql injection</a> when developing backend!
   </p>
   <p>
     In the example below, sorting will be made by click on column headers; holding <code>Ctrl</code> allows sorting several
@@ -156,7 +160,8 @@
     selection area.
   </p>
   <p>
-    Then we add <code>rtSelectable</code> directive into tr element specifying, that the row is becoming selected element.
+    Then we add <code>rtSelectable</code> directive into <code>tr</code> element specifying, that the row is becoming selected
+    element.
   </p>
   <p>
     Moreover, with the use of <code>angular</code> <code>class</code> directive, we add the <code>selected</code> class to
@@ -203,8 +208,7 @@
   <h3>Implementing a couple of useful controls</h3>
   <p>
     In the example below we add buttons for data loading, canceling requests and resetting list parameters. These buttons use
-    the additional <code>rtList</code> methods in their <code>click</code> event handlers. See details in the section
-    about <a href="#" [routerLink]="['/list-controls']">working with the lists</a>.
+    the <a href="#" [routerLink]="['/list-controls']">additional <code>rtList</code> methods</a> in their <code>click</code>    event handlers.
   </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
@@ -230,8 +234,8 @@
     here its result.
   </p>
   <p>
-    We also change the data fetching from <code>getAirportsList</code> method to <code>getAirportsPagedList</code>, in order
-    to get the data with the paged structure.
+    We also change the data fetching function from <code>getAirportsList</code> to <code>getAirportsPagedList</code>, in
+    order to get the data with the paged structure.
   </p>
   <p>
     Pay attention to the fact that <code>reset</code> button now resets the paging settings also.
@@ -253,8 +257,7 @@
     HTML markup. At the same time, the component code looks interesting.
   </p>
   <p>
-    First, we mark the added <code>airportName</code> and <code>countryName</code> properties by the <code>filter</code>    decorator. We also specified additional parameters in the filter annotation of the <code>countryName</code> property.
-    You can read about all parameters in the <a href="#" [routerLink]="['/filters']">section about the filters</a>.
+    First, we annotate the added <code>airportName</code> and <code>countryName</code> properties by the <code>@filter</code>    decorator.
   </p>
   <p>
     Second, we add the <code>onListInit</code> event handler, in which we register our component as a filter by calling <code>registerFilterTarget</code>    method of the received <code>RtList</code> service.
@@ -264,11 +267,11 @@
   </p>
   <ul class="bulleted">
     <li>
-      When requesting data the annotated properties are added to the request object as parameters automatically.
+      When requesting data, the annotated properties are added to the request object as parameters automatically.
     </li>
     <li>
       When clicking "Reset settings" button, the values of filter inputs are resetted to default values. For the <code>airportName</code>      property it is its initial value that is <code>null</code>. And for the <code>countryName</code> property it is the
-      "Iceland" string specified through the filter decorator settings
+      "Iceland" string specified through the <code>@filter</code> decorator <a href="#" [routerLink]="['/filters']">additional settings</a>
     </li>
   </ul>
   <rt-demo-tab-section>
@@ -289,8 +292,8 @@
 
   </p>
   <p>
-    Now the state of list parameters will be reflected in <code>queryString</code> while every data request. If you change
-    any of the list parameters and reload data, the values of the parameters will be restored during this reload.
+    Now the state of list parameters will be reflected in <code>queryString</code> on every data request. If you change any
+    of the list parameters and reload browser page, the values of the list properties will be restored from <code>queryString</code>    parameters.
   </p>
   <p>
     We also have used the <code>loadOnInit</code> option of the <code>rtList</code> directive to switch off the automated
@@ -310,42 +313,41 @@
     <rt-demo-code-tab url="quick-tour/use-persistence/use-persistence.component.html">
     </rt-demo-code-tab>
   </rt-demo-tab-section>
-  <p>
-    So, this is the end of our quick tour. You can review the detailed sections about <code>right-angled</code> library features.
-    For example, you can start with detailed explanation of <a href="#" [routerLink]="['/list-controls']">lists</a> functionality.
-  </p>
-  <p>
-    You also can make the fork of this demo-site on <a target="_blank" href="https://github.com/eastbanctechru/right-angled-demo">github</a>    or contribute to the <a target="_blank" href="https://github.com/eastbanctechru/right-angled">right-angled</a> library.
-  </p>
 </section>
 <section id="airports-service">
   <h3>“Backend” to work with our demo data</h3>
   <p>
     Instead of implementing the fully functional backend, we will use a simple <code>json</code>-file with the data about
-    99 airports, which we will process in <code>AirportsService</code> with the help of the <a target="_blank" href="https://lodash.com">lodash</a>    library right in the browser.
+    99 airports, which we will process in <code>AirportsService</code> with the help of the <a target="_blank" href="https://lodash.com">lodash</a>    library.
 
   </p>
   <p>
-    To work with the simple lists we have implemented <code>getAirportsList</code> method. This method will get request object
-    as parameter which implements <code>AirportsListRequest</code> contract and specifies filter and sorting parameters.
+    To work with the simple lists we have implemented <code>getAirportsList</code> method. This method gets single parameter
+    which implements <code>AirportsListRequest</code> contract and specifies filter and sorting parameters.
   </p>
   <p>
     This method returns <code>Observable</code> with first five <code>Airport</code> objects from the whole collection, since
     99 records is too much and we do not have paging in the several first examples of our quick tour.
   </p>
   <p>
-    To work with paging we have implemented <code>getAirportsPagedList</code> method. This method will get request object
-    as parameter which implements <code>AirportsPagedListRequest</code> contract. <code>AirportsPagedListRequest</code> contract
-    extends <code>AirportsListRequest</code> contract and adds the <code>skip</code> property to specify the number of records
-    for skipping and <code>take</code> property to specify the number of records for taking.
+    To work with paging we have implemented <code>getAirportsPagedList</code> method. This method gets single parameter which
+    implements <code>AirportsPagedListRequest</code> contract. <code>AirportsPagedListRequest</code> extends <code>AirportsListRequest</code>    contract and adds two additional properties:
   </p>
+  <ul>
+    <li>
+      <code>skip</code> property specifies the number of records to skip on next data request.
+    </li>
+    <li>
+      <code>take</code> property specifies the number of records to take on next data request.
+    </li>
+  </ul>
   <p>
     This method returns the object which implements <code>AirportsListResponse</code> contract. Such object contains array
     of airports and the <code>totalCount</code> and <code>loadedCount</code> properties, which specify the total number of
     records regardless paging and number of records loaded as a result of the executed data request.
   </p>
   <p>
-    You can see below the source code of the mentioned classes and interfaces.
+    You can see below the source code of the mentioned classes and interfaces below.
   </p>
   <rt-demo-tab-section>
     <rt-demo-code-tab url="shared/data/airports-list-request.ts">

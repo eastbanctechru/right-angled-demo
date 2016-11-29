@@ -17,7 +17,7 @@
   <p>
     If you have already seen the <a href="#" [routerLink]="['/filters']">working with filters</a> section, you know that
     it is possible to annotate the properties of your component with <code>@filter</code> decorator and configure them as
-    parameters to send while data request.
+    data request parameters.
   </p>
   <p>
     However, there are other possibilities of using filters:
@@ -25,7 +25,7 @@
   <ul class="bulleted">
     <li>
       We can save the state of important list parameters (sortings, page size) in the <code>localStorage</code> and restore
-      these parameter values when user visits the page next time.
+      these parameters values when user visits the page next time.
     </li>
     <li>
       We can save the state of list parameters in <code>sessionStorage</code> and restore them when user returns to the page
@@ -47,22 +47,16 @@
 <section id="service-implementations">
   <h3>Examples of <code>RTStateService</code> contract implementations</h3>
   <p>
-    First of all, it is needed to implement the service (or services) inheriting <code>RTStateService</code> abstract class.
-    Below you can see the source code of this class.
+    First of all, it is needed to implement the service (or services) inheriting <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtstateservice.html">RTStateService</a>    abstract class.
   </p>
-  <rt-demo-tab-section>
-    <rt-demo-code-tab [fromLib]="true" url="core/state-service.ts">
-    </rt-demo-code-tab>
-  </rt-demo-tab-section>
   <p>
-    The <code>getState</code> method will be called by the list during initialization and will return settings saved previously.
+    The <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtstateservice.html#getstate">getState</a>    method will be called by the list during initialization and will return settings saved previously.
   </p>
   <p>
 
-    The <code>persistState</code> method will be called by the list on every data loading. This logic works the following
-    way: if user changes any parameters and confirms it by clicking “load” button, we can persist these parameters. For that
-    we call the <a target="_blank" href="http://eastbanctechru.github.io/e2e4/classes/filtersservice.html#getrequeststate">getRequestState</a>    method of the passed <code>filtersService</code> object and use optional delegate to filter resulted state representation
-    by any required condition?
+    The <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtstateservice.html#persiststate">persistState</a>    method will be called by the list on every data loading. This logic works the following way: if user changes any parameters
+    and confirms it by clicking “load” button, we can persist these parameters. For that we call the <a target="_blank" href="http://eastbanctechru.github.io/e2e4/classes/filtersservice.html#getrequeststate">getRequestState</a>    method of the passed <code>filtersService</code> object and use optional delegate to filter resulted state representation
+    by any required condition.
   </p>
   <p>
     Below you can see the implementations of <code>RTStateService</code> which saves the list state in <code>localStorage</code>,
@@ -83,7 +77,7 @@
   </p>
   <p>
     As a result, the service saves only the part of list state. Well, saving such settings as page size usually is reasonable,
-    since rarely changed by the user. But unlikely it is necessary to save the values of the filters, because the user will
+    since rarely changed by the user. But it is not necessary to save the values of the filters, because the user will
     probably not need the same values on every page visit.
   </p>
   <rt-demo-tab-section>
@@ -100,20 +94,20 @@
       <a target="_blank" href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html">ActivatedRoute</a>      object and implement the serialization/deserialization key based on the current routing path.
     </p>
     <p>
-      Good this solution or not depends on the requirements for the end app. For example, it is more suitable to assign the unique
+      Good this solution or not depends on the requirements of the end app. For example, it can be more suitable to assign the unique
       key to each of the components and register such key via <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/OpaqueToken-class.html">OpaqueToken</a>      into the component injectors.
     </p>
   </aside>
 </section>
 <section id="service-usage">
   <h3>Register and use the implemented services</h3>
-  <p>Now, we need to register the implemented services to use them in our components. We have several options for this.</p>
+  <p>Now, we need to register the implemented services to use them in our components. We have several options to do this.</p>
   <section id="concrete-component">
     <h4>Register state service in the specific component</h4>
     <p>
       The simplest way is to register services at the component level. In the example below we implement the handler of the
       <a href="#" [routerLink]="['/list-controls']">onListInit</a> event and register the corresponding services with the
-      help of the <code>registerStateService</code> method. As a result the list gets all the described functionality.
+      help of the <code>registerStateService</code> method. As a result the component gets all the described functionality.
     </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
@@ -129,7 +123,7 @@
     <h4>Implementing utility directives</h4>
     <p>
       Of course, the solution implemented above is not good if we need to add persistence functionality to the multitude of the
-      lists. Below there is the example of three utility directives, which perform service registration. It is possible to
+      components. Below there is the example of three utility directives, which perform service registration. It is possible to
       use these directives in the list template and they perform the registration of the state services for us.
     </p>
     <rt-demo-tab-section>

@@ -11,16 +11,16 @@
 <section id="common-idea">
   <h3>General idea</h3>
   <p>
-    The directives from this section work directly with the native <code>HTML</code> elements and their events and implement
-    useful features not related to the <code>right-angled</code> library. For example, you can use <code>rtStopEvents</code>    directive for preventing event bubbling on any element.
+    The directives from this section work directly with the native <code>HTML</code> elements and browser events. They implement
+    useful features not related directly to the <code>right-angled</code> library. For example, you can use <code>rtStopEvents</code>    directive for preventing event bubbling on any element.
   </p>
 </section>
 <section id="bootstrap">
   <h3>How to bootstrap</h3>
   <p>
     To work with these directives you should import the <code>RTMiscModule</code> module from <code>right-angled</code> library
-    and add it into your <code>AppModule</code> imports array. You can also use <code>RTModule</code> which includes the
-    functionality of the entire library.
+    and add it into your <code>AppModule</code> imports array. You can also use <code>RTModule</code> module which includes
+    the functionality of the entire library.
   </p>
   <rt-demo-tab-section>
     <rt-demo-code-tab url="misc-directives/bootstrap/app.module.tsfake">
@@ -36,7 +36,7 @@
     The directive will subscribe to the specified events of the element and will call the event <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation">stopPropagation</a>    method in the event handler to prevent further event propagation.
   </p>
   <p>
-    In the example below you can see, how the <code>input</code> element, marked by this directive, stops the <code>keypress</code>    event propagation (if the "stop keypress events propagation" is checked) and does not allow the parent <code>div</code>    element to process this event. If you uncheck "stop keypress events propagation" checkbox, <code>keypress</code> event
+    In the example below you can see, how the <code>input</code> element, marked by this directive, stops the <code>keypress</code>    event propagation if the "stop keypress events propagation" checkbox is checked and does not allow the parent <code>div</code>    element to process this event. If you uncheck "stop keypress events propagation" checkbox, <code>keypress</code> event
     handler of the <code>div</code> element begins to log every key that has been pressed.
   </p>
   <rt-demo-tab-section>

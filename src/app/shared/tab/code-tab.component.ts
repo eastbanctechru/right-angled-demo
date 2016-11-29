@@ -19,10 +19,8 @@ export class CodeTabComponent extends Tab implements OnChanges {
   public contentLoadStarted: boolean = false;
   public contentReady: boolean = false;
   public baseUrl: string = 'https://raw.githubusercontent.com/eastbanctechru/right-angled-demo/master/src/app/';
-  public libBaseUrl: string = 'https://raw.githubusercontent.com/eastbanctechru/right-angled/master/src/';
   public src: Observable<any> = Observable.empty();
   @Input() public url: string;
-  @Input() public fromLib: boolean;
   constructor(private tabSection: TabSectionComponent, private http: Http, private elementRef: ElementRef) {
     super();
   }
@@ -30,7 +28,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
     super.activate();
     if (!this.contentLoadStarted) {
       this.contentLoadStarted = true;
-      this.http.get((this.fromLib ? this.libBaseUrl : this.baseUrl) + this.url)
+      this.http.get(this.baseUrl + this.url)
         .map(res => {
           return res.text();
         }).subscribe(res => {
