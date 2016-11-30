@@ -16,7 +16,7 @@ export class CountryDetailsComponent {
   public onSelected(): void {
     this.selected = true;
     this.loading = true;
-    this.countriesService.getCountryInfo(this.country.name).subscribe(countryInfo => {
+    this.countriesService.getCountryInfo(this.country.name).subscribe((countryInfo) => {
       this.countryInfo = countryInfo;
       this.loading = false;
     });

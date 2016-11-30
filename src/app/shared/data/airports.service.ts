@@ -21,19 +21,19 @@ export class AirportsService {
     return this
       .getAllAirports()
       .delay(delay)
-      .map(airports => _.cloneDeep(airports))
-      .map(airports => this.applyFilters(request, airports))
-      .map(airports => this.applySortings(request, airports))
-      .map(airports => airports.slice(0, 5));
+      .map((airports) => _.cloneDeep(airports))
+      .map((airports) => this.applyFilters(request, airports))
+      .map((airports) => this.applySortings(request, airports))
+      .map((airports) => airports.slice(0, 5));
   }
   public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 500): Observable<ListResponse> {
     return this
       .getAllAirports()
       .delay(delay)
-      .map(airports => _.cloneDeep(airports))
-      .map(airports => this.applyFilters(request, airports))
-      .map(airports => this.applySortings(request, airports))
-      .map(airports => this.applyPaging(request, airports));
+      .map((airports) => _.cloneDeep(airports))
+      .map((airports) => this.applyFilters(request, airports))
+      .map((airports) => this.applySortings(request, airports))
+      .map((airports) => this.applyPaging(request, airports));
   }
 
   private getAllAirports(): Observable<Airport[]> {
@@ -42,24 +42,24 @@ export class AirportsService {
       this.airportsCache.complete();
       this.airportsCache = new ReplaySubject<Airport[]>(1);
       this.http.get(this.airportsUrl)
-        .map(response => (response.json().airports as Airport[]))
-        .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
+        .map((response) => (response.json().airports as Airport[]))
+        .subscribe((data) => this.airportsCache.next(data), (error) => this.airportsCache.error(error));
     }
     return this.airportsCache;
   }
 
   private applySortings(request: AirportsListRequest, data: Airport[]): Airport[] {
-    let fieldNames = request.sortings.map(sort => (sort.fieldName));
-    let directions = request.sortings.map(sort => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
+    let fieldNames = request.sortings.map((sort) => (sort.fieldName));
+    let directions = request.sortings.map((sort) => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
     return _.orderBy(data, fieldNames, directions);
   }
 
   private applyFilters(request: AirportsListRequest, airports: Airport[]): Airport[] {
     return _.chain(airports)
-      .filter(item => !request.country || (item.countryName || '').toLowerCase().indexOf(request.country.toLowerCase()) !== -1)
-      .filter(item => !request.airportName || item.name.toLowerCase().indexOf(request.airportName.toLowerCase()) !== -1)
-      .filter(item => request.airportSize === null || request.airportSize === undefined || (item.size === null && request.airportSize === '') || item.size === request.airportSize)
-      .filter(item => !request.airportType || item.type === request.airportType)
+      .filter((item) => !request.country || (item.countryName || '').toLowerCase().indexOf(request.country.toLowerCase()) !== -1)
+      .filter((item) => !request.airportName || item.name.toLowerCase().indexOf(request.airportName.toLowerCase()) !== -1)
+      .filter((item) => request.airportSize === null || request.airportSize === undefined || (item.size === null && request.airportSize === '') || item.size === request.airportSize)
+      .filter((item) => !request.airportType || item.type === request.airportType)
       .value();
   }
   private applyPaging(request: AirportsPagedListRequest, airports: Airport[]): ListResponse {

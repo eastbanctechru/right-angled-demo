@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ListDirective, filter } from 'right-angled';
+import { filter, ListDirective } from 'right-angled';
 
 import { LookupsService } from '../../shared';
 
@@ -17,7 +17,7 @@ export class FilterAreaComponent implements OnInit {
   constructor(private lookupsService: LookupsService) {
   }
   public ngOnInit(): void {
-    this.lookupsService.getAirportSizeLookups().subscribe(sizes => this.airportSizes = sizes);
-    this.lookupsService.getAirportTypeLookups().subscribe(types => this.airportTypes = types);
+    this.lookupsService.getAirportSizeLookups().subscribe((sizes) => this.airportSizes = sizes);
+    this.lookupsService.getAirportTypeLookups().subscribe((types) => this.airportTypes = types);
   }
 }

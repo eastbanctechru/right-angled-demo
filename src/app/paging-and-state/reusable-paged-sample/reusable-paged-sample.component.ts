@@ -12,5 +12,5 @@ export class ReusablePagedListSampleComponent {
   }
   public loadData = (requestParams: AirportsPagedListRequest): any => {
     return this.airportsService.getAirportsPagedList(requestParams);
-  };
+  }
 }

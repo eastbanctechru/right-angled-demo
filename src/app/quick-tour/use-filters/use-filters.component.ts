@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FilterConfig, RtList, filter } from 'right-angled';
+import { filter, FilterConfig, RtList } from 'right-angled';
+import { Observable } from 'rxjs/Observable';
 
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'rt-demo-use-filters',

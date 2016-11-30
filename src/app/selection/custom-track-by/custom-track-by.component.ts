@@ -7,7 +7,7 @@ import { CountriesService } from '../countries.service';
   templateUrl: 'custom-track-by.component.html'
 })
 export class CustomTrackByComponent {
-  public countries: Array<any> = [];
+  public countries: any = [];
   constructor(public countriesService: CountriesService) {
     this.reload();
   }
@@ -15,7 +15,7 @@ export class CustomTrackByComponent {
     this.countries = [];
     this.countriesService
       .getSomeCountries(5, 700)
-      .subscribe(countries => this.countries = countries);
+      .subscribe((countries) => this.countries = countries);
   }
   public trackByName(index: number, country: any): string {
     return country.name;

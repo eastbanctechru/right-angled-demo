@@ -7,9 +7,9 @@ import { CountriesService } from '../countries.service';
   templateUrl: 'selected-flag.component.html'
 })
 export class SelectedFlagComponent {
-  public countries: Array<any> = new Array<any>();
+  public countries: any[] = new Array<any>();
   constructor(public countriesService: CountriesService) {
     this.countriesService.getSomeCountries()
-      .subscribe(countries => this.countries = countries);
+      .subscribe((countries) => this.countries = countries);
   }
 }

@@ -12,7 +12,7 @@ import 'rxjs/Rx';
 export class DemoAppComponent {
   // hack from https://github.com/angular/angular/issues/6595#issuecomment-244232725
   constructor(router: Router, private angulartics2: Angulartics2, private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
-    router.events.subscribe(s => {
+    router.events.subscribe((s) => {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
         if (tree.fragment) {
