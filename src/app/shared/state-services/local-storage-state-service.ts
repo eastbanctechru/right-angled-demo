@@ -9,7 +9,7 @@ export class LocalStorageStateService implements RtStateService {
   private internalStateKey: string;
 
   constructor( @Optional() @SkipSelf() private activatedRoute: ActivatedRoute) {
-    this.internalStateKey = this.activatedRoute.snapshot.url.length > 0 ? this.activatedRoute.snapshot.url.map(segment => segment.path).join(':') : 'default-route';
+    this.internalStateKey = this.activatedRoute.snapshot.url.length > 0 ? this.activatedRoute.snapshot.url.map((segment) => segment.path).join(':') : 'default-route';
   }
 
   public persistState(filtersService: FiltersService): void {
@@ -19,7 +19,7 @@ export class LocalStorageStateService implements RtStateService {
     } catch (e) {
       // supress QUOTA_EXCEEDED_ERR because we can't do anything with it
     }
-  };
+  }
 
   public getState(): any {
     let res = window.localStorage.getItem(this.internalStateKey);
@@ -28,5 +28,5 @@ export class LocalStorageStateService implements RtStateService {
     } else {
       return JSON.parse(res).data;
     }
-  };
+  }
 }

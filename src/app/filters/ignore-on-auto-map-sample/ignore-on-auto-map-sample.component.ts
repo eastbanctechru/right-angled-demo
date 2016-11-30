@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FilterConfig, RtFiltersService, filter } from 'right-angled';
+import { filter, FilterConfig, RtFiltersService } from 'right-angled';
 
 @Component({
   providers: [RtFiltersService],

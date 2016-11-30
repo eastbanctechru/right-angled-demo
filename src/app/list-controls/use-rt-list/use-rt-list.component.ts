@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'rt-demo-use-rt-list',

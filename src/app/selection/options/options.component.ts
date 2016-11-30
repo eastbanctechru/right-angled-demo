@@ -12,13 +12,13 @@ export class OptionsComponent {
   public multiple: boolean = true;
   public toggleOnly: boolean = false;
   public autoSelectFirst: boolean = false;
-  public countries: Array<any> = [];
+  public countries: any[] = [];
   constructor(public countriesService: CountriesService) {
     this.reload();
   }
   public reload(): void {
     this.countries = [];
     this.countriesService.getSomeCountries(8, 500)
-      .subscribe(countries => this.countries = countries);
+      .subscribe((countries) => this.countries = countries);
   }
 }

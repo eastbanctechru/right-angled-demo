@@ -13,40 +13,40 @@ export class CountriesService {
   constructor(private http: Http) {
 
   }
-  private getAirports(): Observable<Array<Airport>> {
+  private getAirports(): Observable<Airport[]> {
     if (!this.airportsCache.observers.length) {
       this.airportsCache.complete();
       this.airportsCache = new ReplaySubject<Airport[]>(1);
       this.http.get(this.airportsUrl)
-        .map(response => (response.json().airports as Airport[]))
-        .subscribe(data => this.airportsCache.next(data), error => this.airportsCache.error(error));
+        .map((response) => (response.json().airports as Airport[]))
+        .subscribe((data) => this.airportsCache.next(data), (error) => this.airportsCache.error(error));
     }
     return this.airportsCache;
   }
 
-  public getSomeCountries(countriesCount: number = 5, delay: number = 0): Observable<Array<any>> {
+  public getSomeCountries(countriesCount: number = 5, delay: number = 0): Observable<any[]> {
     return this.getAirports()
       .delay(delay)
-      .map(airports =>
+      .map((airports) =>
         _.chain(airports)
           .map((item: Airport) => (item.countryName))
-          .filter(c => !!c)
+          .filter((c) => !!c)
           .uniq()
           .take(countriesCount)
           .value())
-      .map(countryNames => countryNames.map(countryName => ({ name: countryName })));
+      .map((countryNames) => countryNames.map((countryName) => ({ name: countryName })));
   }
-  public getRegionsWithCountriesAndAirports(): Observable<Array<any>> {
+  public getRegionsWithCountriesAndAirports(): Observable<any[]> {
     return this.getAirports()
-      .map(airports => (
+      .map((airports) => (
         _.chain(airports)
-          .groupBy(item => item.region)
+          .groupBy((item) => item.region)
           .map((groupedByRegion, regionName) => (
             {
-              countries: _.chain(groupedByRegion).groupBy(item => item.countryName).map((groupedByCountry, countryName) => (
+              countries: _.chain(groupedByRegion).groupBy((item) => item.countryName).map((groupedByCountry, countryName) => (
                 {
                   airports: groupedByCountry
-                    .map(airport => ({
+                    .map((airport) => ({
                       iataCode: airport.iataCode,
                       name: airport.name,
                       selected: false
@@ -54,18 +54,18 @@ export class CountriesService {
                   name: countryName,
                   selected: false
                 }))
-                .filter(country => country.airports.length > 1)
-                .orderBy(country => country.name)
+                .filter((country) => country.airports.length > 1)
+                .orderBy((country) => country.name)
                 .value(),
               name: regionName,
               selected: false
             }))
-          .filter(region => region.countries.length > 1)
-          .orderBy(region => region.name)
+          .filter((region) => region.countries.length > 1)
+          .orderBy((region) => region.name)
           .value()
       ));
   }
   public getCountryInfo(countryName: string, delay: number = 0): Observable<any> {
-    return this.http.get(`https://restcountries.eu/rest/v1/name/${countryName}`).map(response => (response.json()[0])).delay(delay);
+    return this.http.get(`https://restcountries.eu/rest/v1/name/${countryName}`).map((response) => (response.json()[0])).delay(delay);
   }
 }

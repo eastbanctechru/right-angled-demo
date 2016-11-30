@@ -25,13 +25,13 @@ export class StateComponentsComponent {
       }
       return response;
     });
-  };
+  }
   public loadEmptyData(): void {
     this.returnNoData = true;
     this.listDirective.reloadData();
-  };
+  }
   public raiseErrorOnLoad(): void {
     this.raiseError = true;
     this.listDirective.reloadData();
-  };
+  }
 }

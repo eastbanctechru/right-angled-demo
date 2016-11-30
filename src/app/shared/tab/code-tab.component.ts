@@ -29,9 +29,9 @@ export class CodeTabComponent extends Tab implements OnChanges {
     if (!this.contentLoadStarted) {
       this.contentLoadStarted = true;
       this.http.get(this.baseUrl + this.url)
-        .map(res => {
+        .map((res) => {
           return res.text();
-        }).subscribe(res => {
+        }).subscribe((res) => {
           let pre = this.elementRef.nativeElement.querySelector('pre');
           const ext = this.url.substring(this.url.lastIndexOf('.') + 1).replace('tsfake', 'ts').toLowerCase();
           const lang = ext === 'ts' ? 'typescript' : 'html';

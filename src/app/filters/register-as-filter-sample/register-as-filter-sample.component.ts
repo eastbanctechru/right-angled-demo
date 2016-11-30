@@ -12,5 +12,5 @@ export class RegisterAsFilterSampleComponent {
   }
   public loadData = (requestParams: AirportsPagedListRequest): any => {
     return this.airportsService.getAirportsPagedList(requestParams);
-  };
+  }
 }

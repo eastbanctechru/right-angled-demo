@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { Airport, AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'rt-demo-custom-items-handling',
@@ -9,11 +9,11 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'custom-items-handling.component.html'
 })
 export class CustomItemsHandlingComponent {
-  public myOwnItemsCollection: Array<Airport> = [];
+  public myOwnItemsCollection: Airport[] = [];
   constructor(private airportsService: AirportsService) {
   }
   getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
     return this.airportsService.getAirportsPagedList(request)
-      .do(response => this.myOwnItemsCollection = response.items);
+      .do((response) => this.myOwnItemsCollection = response.items);
   }
 }

@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { FiltersService, RtStateService, cloneAsLiteral } from 'right-angled';
+import { cloneAsLiteral, FiltersService, RtStateService } from 'right-angled';
 
 @Injectable()
 export class QueryStringStateService implements RtStateService {

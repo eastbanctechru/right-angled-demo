@@ -14,7 +14,7 @@ export class PersistenceSampleComponent {
   }
   public loadData = (requestParams: AirportsPagedListRequest): any => {
     return this.airportsService.getAirportsPagedList(requestParams);
-  };
+  }
   onListInit(list: RtList): void {
     list.registerStateService(this.localStorageStateService, this.sessionStorageStateService, this.queryStringStateService);
   }

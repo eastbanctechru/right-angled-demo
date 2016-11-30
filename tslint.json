@@ -76,29 +76,17 @@
       "check-type"
     ],
     // Codelyzer rules
-    "directive-selector-name": [
+    "directive-selector": [
       true,
+      "attribute",
+      "rtDemo",
       "camelCase"
     ],
-    "component-selector-name": [
+    "component-selector": [
       true,
+      "element",
+      "rt-demo",
       "kebab-case"
-    ],
-    "directive-selector-type": [
-      true,
-      "attribute"
-    ],
-    "component-selector-type": [
-      true,
-      "element"
-    ],
-    "directive-selector-prefix": [
-      true,
-      "rtDemo"
-    ],
-    "component-selector-prefix": [
-      true,
-      "rt-demo"
     ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -117,8 +105,9 @@
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "import-destructuring-spacing": true,
-    "templates-use-public": true,
+    "templates-use-public": false,
     "invoke-injectable": true,
-    "no-access-missing-member": true
+    "no-access-missing-member": false,
+    "no-unused-css": false
   }
 }
