@@ -1,6 +1,5 @@
 import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 
 import { Tab } from './tab-base';
 import { TabSectionComponent } from './tab-section.component';
