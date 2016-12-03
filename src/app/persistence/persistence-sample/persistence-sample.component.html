@@ -1,4 +1,4 @@
-<div [rtList]="loadData" #list="rtList" [loadOnInit]="false" (onListInit)="onListInit($event)">
+<div [rtList]="loadData" #list="rtList" [loadOnInit]="false">
 	<rt-demo-filter-area [list]="list" #filter [rtRegisterAsFilter]="filter">
 	</rt-demo-filter-area>
 	<div class="table-responsive">
@@ -20,7 +20,7 @@
 				</tr>
 			</thead>
 			<tbody rtSelectionArea>
-				<tr *ngFor="let airport of list.items" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
+				<tr *ngFor="let airport of list.items" [rtSelectable]="airport">
 					<td>{{airport.iataCode}}</td>
 					<td>{{airport.name}}</td>
 					<td>{{airport.cityName}}</td>

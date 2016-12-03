@@ -94,7 +94,7 @@
     "no-attribute-parameter-decorator": true,
     "no-input-rename": false,
     "no-output-rename": false,
-    "no-forward-ref": true,
+    "no-forward-ref": false,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "pipe-naming": [

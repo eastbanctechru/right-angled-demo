@@ -36,7 +36,7 @@
     on).
   </p>
   <p>
-    At minimum, this directive needs the method for getting data, which will be called by the <code>RtList</code> service.
+    At minimum, this directive needs the method for getting data, which will be called by the <code>RTList</code> service.
   </p>
   <p>
     This method should get one parameter with the settings of the request implementing <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html">ListRequest</a>    contract for the simple lists and <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/pagedlistrequest.html">PagedListRequest</a>    one for the paged lists.
@@ -136,7 +136,7 @@
       <p>
         If you want to execute any custom logic for the list elements when destroying the records (e.g., on list reload, page changing,
         entire list destroy), you can implement the <code>destroy</code> method in the element class and this method
-        will be called by the <code>RtList</code> service on items destroy.
+        will be called by the <code>RTList</code> service on items destroy.
       </p>
     </aside>
     <p>
@@ -156,18 +156,18 @@
       This event is generated after the <a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-class.html">AfterViewInit</a>      hook is executed and the first template rendering happened.
     </p>
     <p>
-      By using this event, it is possible to integrate into the initialization pipe of the <code>RtList</code> service and
+      By using this event, it is possible to integrate into the initialization pipe of the <code>RTList</code> service and
       apply the additional settings before the first data loading.
     </p>
     <p>
-      For example, it is possible to <a href="#" [routerLink]="['/filters']">register object with the filter settings</a>      by calling <code>RtList.registerFilterTarget</code> method of <code>RtList</code> service which is sent as event objects.
+      For example, it is possible to <a href="#" [routerLink]="['/filters']">register object with the filter settings</a>      by calling <code>RTList.registerFilterTarget</code> method of <code>RTList</code> service which is sent as event objects.
     </p>
   </section>
   <section id="after-list-init">
     <h4><code>afterListInit</code> event</h4>
     <p>
       This event is generated after the list initialization is performed and it is ready to be used. The same as a previously described
-      one, it sends the <code>RtList</code> service as event object.
+      one, it sends the <code>RTList</code> service as event object.
     </p>
   </section>
 
@@ -188,7 +188,7 @@
       arrow at the right side of the column on mouseover.
     </li>
     <li>
-      When you click on the column header, the specified sort identifier will be added to the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">sortings</a>      array with <code>Asc</code> direction and the <code>RtList.loadData</code> method will be called immediately. On second
+      When you click on the column header, the specified sort identifier will be added to the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listrequest.html#sortings">sortings</a>      array with <code>Asc</code> direction and the <code>RTList.loadData</code> method will be called immediately. On second
       click the direction of sorting is changed to the opposite one and the data request is executed again.
     </li>
     <li>
@@ -208,7 +208,7 @@
   </rt-demo-tab-section>
   <aside>
     <p>
-      If, by some reason, you don’t like the names of <code>rt-sortable</code>, <code>rt-sort-asc</code>, and <code>rt-sort-desc</code>      classes, you can change them globally importing the <code>SortDirective</code> service into your <code>AppModule</code>      and setting up <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/sortdirective.html#settings">SortDirective.settings</a>      object properties.
+      If, by some reason, you don’t like the names of <code>rt-sortable</code>, <code>rt-sort-asc</code>, and <code>rt-sort-desc</code>      classes, you can change them globally importing the <code>SortDirective</code> into your <code>AppModule</code>      and setting up <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/sortdirective.html#settings">SortDirective.settings</a>      object properties.
     </p>
     <rt-demo-tab-section>
       <rt-demo-code-tab url="list-controls/sortings-configuration/app.component.ts">
@@ -253,7 +253,7 @@
     <h4>Related sections</h4>
     <p class="text-center clearfix">
       <a href="#" [routerLink]="['/quick-tour']" class="btn btn-primary docs-link pull-left">&larr; Quick tour</a>
-      <a href="#" [routerLink]="['/paging-and-state']" class="btn btn-primary docs-link  pull-right">Paging and state &rarr;</a>
+      <a href="#" [routerLink]="['/paging-and-statuses']" class="btn btn-primary docs-link  pull-right">Paging and statuses &rarr;</a>
     </p>
   </aside>
 </section>

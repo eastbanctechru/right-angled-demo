@@ -16,6 +16,8 @@ export class DemoAppComponent {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
         if (tree.fragment) {
+          let qsIndex = tree.fragment.indexOf('?');
+          tree.fragment = qsIndex === -1 ? tree.fragment : tree.fragment.substring(0, qsIndex);
           const element = document.querySelector('#' + tree.fragment);
           if (element) { element.scrollIntoView(element); }
         } else {

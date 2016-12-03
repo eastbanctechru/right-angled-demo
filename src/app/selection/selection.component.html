@@ -8,9 +8,9 @@
     <li><a href="selection#additional-options"><code>rtSelectionArea</code> configuration options</a></li>
     <li><a href="selection#handle-selection">Interacting with the selection model</a>
       <ul>
-        <li><a href="selection#handle-selection-selected"><code>selected</code> flag</a></li>
+        <li><a href="selection#handle-selection-selected"><code>[(selected)]</code> binding</a></li>
         <li><a href="selection#handle-selection-events">Events</a></li>
-        <li><a href="selection#selection-service">Injecting the <code>RtSelectionService</code></a></li>
+        <li><a href="selection#selection-service">Injecting the <code>RTSelectionService</code></a></li>
         <li><a href="selection#additional-methods">Working with <code>rtSelectionArea</code> from template</a></li>
       </ul>
     </li>
@@ -72,6 +72,21 @@
     <rt-demo-code-tab url="selection/basic-usage/basic-usage.component.ts">
     </rt-demo-code-tab>
   </rt-demo-tab-section>
+
+  <p>
+    Also <code>rtSelectable</code> directive adds <code>rt-selected</code> class to the marked element when it selected.
+    With the help of this class you can set up the styles pointing out that the element is selected or not.
+  </p>
+  <aside>
+    <p>
+      If, by some reason, you don’t like the <code>rt-selected</code> class name, you can change it globally importing the
+      <code>SelectableDirective</code> into your <code>AppModule</code> and setting up <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/selectabledirective.html#settings">SelectableDirective.settings.selectedClassName</a>      property.
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-code-tab url="selection/selectable-configuration/app.component.ts">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </aside>
 </section>
 <section id="additional-options">
   <h3><code>rtSelectionArea</code> configuration options</h3>
@@ -110,19 +125,18 @@
     or not. There are the following options to do this:
   </p>
   <section id="handle-selection-selected">
-    <h4><code>selected</code> flag</h4>
+    <h4><code>[(selected)]</code> binding</h4>
     <p>
-      <code>rtSelectable</code> directive contains <code>selected</code> flag, which can be used to respond on the element
-      selection state changes. The example of such approach is demonstrated in the example above, where we apply the <code>selected</code>      class to the selectable element depending on <code>selected</code> flag state. Below there is a more interesting example
-      showing the inline-editing functionality implemented with the <code>selected</code> flag.
+      <code>rtSelectable</code> directive contains <code>selected</code> property, which can be used to respond on the element
+      selection state changes. Below there is an example showing the inline-editing functionality implemented with the <code>selected</code>      property.
     </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
-        <rt-demo-selected-flag></rt-demo-selected-flag>
+        <rt-demo-selected-ref></rt-demo-selected-ref>
       </rt-demo-sample-tab>
-      <rt-demo-code-tab url="selection/selected-flag/selected-flag.component.html">
+      <rt-demo-code-tab url="selection/selected-ref/selected-ref.component.html">
       </rt-demo-code-tab>
-      <rt-demo-code-tab url="selection/selected-flag/selected-flag.component.ts">
+      <rt-demo-code-tab url="selection/selected-ref/selected-ref.component.ts">
       </rt-demo-code-tab>
     </rt-demo-tab-section>
 
@@ -134,15 +148,15 @@
     </aside>
 
     <p>
-      You can also implement the <code>selected</code> property in your data element. Selection model will update it depending
-      on the current state of selection. </p>
+      You can also use <code>selected</code> property with two-way binding syntax. Selection model will update binded property
+      and react to it changes depending on the current state of selection. </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
-        <rt-demo-selected-flag-data></rt-demo-selected-flag-data>
+        <rt-demo-selected-two-way></rt-demo-selected-two-way>
       </rt-demo-sample-tab>
-      <rt-demo-code-tab url="selection/selected-flag-data/selected-flag-data.component.html">
+      <rt-demo-code-tab url="selection/selected-two-way/selected-two-way.component.html">
       </rt-demo-code-tab>
-      <rt-demo-code-tab url="selection/selected-flag-data/selected-flag-data.component.ts">
+      <rt-demo-code-tab url="selection/selected-two-way/selected-two-way.component.ts">
       </rt-demo-code-tab>
     </rt-demo-tab-section>
 
@@ -179,7 +193,7 @@
   </section>
 
   <section id="selection-service">
-    <h4>Injecting the <code>RtSelectionService</code></h4>
+    <h4>Injecting the <code>RTSelectionService</code></h4>
     <p>
       This approach is the most flexible, because it gives the access to full <a target="_blank" href="http://eastbanctechru.github.io/e2e4/interfaces/selectionservice.html">selection functionality</a>.
     </p>
@@ -319,7 +333,7 @@
   <aside>
     <h4>Related sections</h4>
     <p class="text-center clearfix">
-      <a href="#" [routerLink]="['/paging-and-state']" class="btn btn-primary docs-link pull-left">&larr; Paging and state</a>
+      <a href="#" [routerLink]="['/paging-and-statuses']" class="btn btn-primary docs-link pull-left">&larr; Paging and statuses</a>
       <a href="#" [routerLink]="['/filters']" class="btn btn-primary docs-link  pull-right">Working with filters &rarr;</a>
     </p>
   </aside>

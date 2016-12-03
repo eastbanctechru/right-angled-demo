@@ -13,11 +13,11 @@ import { UsePagingComponent } from './use-paging/use-paging.component';
 import { UsePersistenceComponent } from './use-persistence/use-persistence.component';
 import { UseSelectionComponent } from './use-selection/use-selection.component';
 import { UseSortingsComponent } from './use-sortings/use-sortings.component';
-import { UseStateComponent } from './use-state/use-state.component';
+import { UseStatusesComponent } from './use-statuses/use-statuses.component';
 
 @NgModule({
-  declarations: [QuickTourComponent, StarterComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
-  exports: [QuickTourComponent, StarterComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStateComponent, UseSelectionComponent],
+  declarations: [QuickTourComponent, StarterComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStatusesComponent, UseSelectionComponent],
+  exports: [QuickTourComponent, StarterComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStatusesComponent, UseSelectionComponent],
   imports: [CommonModule, SharedModule, FormsModule, RouterModule]
 })
 export class QuickTourModule {

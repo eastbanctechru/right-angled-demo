@@ -7,8 +7,8 @@ import { BasicUsageComponent } from './basic-usage/basic-usage.component';
 import { CustomTrackByComponent } from './custom-track-by/custom-track-by.component';
 import { OptionsComponent } from './options/options.component';
 import { SelectAllComponent } from './select-all/select-all.component';
-import { SelectedFlagDataComponent } from './selected-flag-data/selected-flag-data.component';
-import { SelectedFlagComponent } from './selected-flag/selected-flag.component';
+import { SelectedRefComponent } from './selected-ref/selected-ref.component';
+import { SelectedTwoWayComponent } from './selected-two-way/selected-two-way.component';
 import { SelectionCheckboxComponent } from './selection-checkbox/selection-checkbox.component';
 import { CountryDetailsComponent } from './selection-events/country-details/country-details.component';
 import { SelectionEventsComponent } from './selection-events/selection-events.component';
@@ -27,8 +27,8 @@ import { CountriesService } from './countries.service';
     CountryDetailsComponent,
     OptionsComponent,
     SelectAllComponent,
-    SelectedFlagComponent,
-    SelectedFlagDataComponent,
+    SelectedRefComponent,
+    SelectedTwoWayComponent,
     SelectionCheckboxComponent,
     SelectionEventsComponent,
     SelectionComponent,
@@ -40,8 +40,8 @@ import { CountriesService } from './countries.service';
     CountryDetailsComponent,
     OptionsComponent,
     SelectAllComponent,
-    SelectedFlagComponent,
-    SelectedFlagDataComponent,
+    SelectedRefComponent,
+    SelectedTwoWayComponent,
     SelectionCheckboxComponent,
     SelectionEventsComponent,
     SelectionComponent,

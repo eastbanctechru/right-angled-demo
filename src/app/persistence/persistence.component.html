@@ -7,7 +7,6 @@
     <a href="persistence#service-usage">Register and use the implemented services</a>
     <ul>
       <li><a href="persistence#concrete-component">Register state service in the specific component</a></li>
-      <li><a href="persistence#helper-directives">Implementing utility directives</a></li>
       <li><a href="persistence#global-registration">Register state services globally</a></li>
     </ul>
   </li>
@@ -77,8 +76,8 @@
   </p>
   <p>
     As a result, the service saves only the part of list state. Well, saving such settings as page size usually is reasonable,
-    since rarely changed by the user. But it is not necessary to save the values of the filters, because the user will
-    probably not need the same values on every page visit.
+    since rarely changed by the user. But it is not necessary to save the values of the filters, because the user will probably
+    not need the same values on every page visit.
   </p>
   <rt-demo-tab-section>
     <rt-demo-code-tab url="shared/state-services/local-storage-state-service.ts">
@@ -94,8 +93,8 @@
       <a target="_blank" href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html">ActivatedRoute</a>      object and implement the serialization/deserialization key based on the current routing path.
     </p>
     <p>
-      Good this solution or not depends on the requirements of the end app. For example, it can be more suitable to assign the unique
-      key to each of the components and register such key via <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/OpaqueToken-class.html">OpaqueToken</a>      into the component injectors.
+      Good this solution or not depends on the requirements of the end app. For example, it can be more suitable to assign the
+      unique key to each of the components and register such key via <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/OpaqueToken-class.html">OpaqueToken</a>      into the component injectors.
     </p>
   </aside>
 </section>
@@ -105,9 +104,7 @@
   <section id="concrete-component">
     <h4>Register state service in the specific component</h4>
     <p>
-      The simplest way is to register services at the component level. In the example below we implement the handler of the
-      <a href="#" [routerLink]="['/list-controls']">onListInit</a> event and register the corresponding services with the
-      help of the <code>registerStateService</code> method. As a result the component gets all the described functionality.
+      The simplest way is to register implemented services as <code>RTStateService</code> at the component level in <code>providers</code>      array. As a result the component gets all the described functionality.
     </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
@@ -116,22 +113,6 @@
       <rt-demo-code-tab url="persistence/persistence-sample/persistence-sample.component.ts">
       </rt-demo-code-tab>
       <rt-demo-code-tab url="persistence/persistence-sample/persistence-sample.component.html">
-      </rt-demo-code-tab>
-    </rt-demo-tab-section>
-  </section>
-  <section id="helper-directives">
-    <h4>Implementing utility directives</h4>
-    <p>
-      Of course, the solution implemented above is not good if we need to add persistence functionality to the multitude of the
-      components. Below there is the example of three utility directives, which perform service registration. It is possible to
-      use these directives in the list template and they perform the registration of the state services for us.
-    </p>
-    <rt-demo-tab-section>
-      <rt-demo-code-tab url="shared/state-services/serialize-to-local-storage.directive.ts">
-      </rt-demo-code-tab>
-      <rt-demo-code-tab url="shared/state-services/serialize-to-session-storage.directive.ts">
-      </rt-demo-code-tab>
-      <rt-demo-code-tab url="shared/state-services/serialize-to-query-string.directive.ts">
       </rt-demo-code-tab>
     </rt-demo-tab-section>
   </section>

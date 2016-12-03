@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { filter, FilterConfig, RtList } from 'right-angled';
+import { Component, forwardRef } from '@angular/core';
+import { filter, FilterConfig, RTFilterTarget, RTList } from 'right-angled';
 import { Observable } from 'rxjs/Observable';
 
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 
 @Component({
+  providers: [
+    { provide: RTFilterTarget, useExisting: forwardRef(() => UseFiltersComponent) }
+  ],
   selector: 'rt-demo-use-filters',
   templateUrl: 'use-filters.component.html'
 })
@@ -17,7 +20,7 @@ export class UseFiltersComponent {
   getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
     return this.airportsService.getAirportsPagedList(request);
   }
-  onListInit(list: RtList): void {
+  onListInit(list: RTList): void {
     list.registerFilterTarget(this);
   }
 }

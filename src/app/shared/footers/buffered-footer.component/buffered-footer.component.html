@@ -1,25 +1,25 @@
-<rt-list-state-no-data class="text-center">
+<rt-status-no-data class="text-center">
   There are no data found
-</rt-list-state-no-data>
-<rt-list-state-request-cancelled class="text-center">
+</rt-status-no-data>
+<rt-status-request-cancelled class="text-center">
   Data loading was cancelled
-</rt-list-state-request-cancelled>
-<rt-list-state-failed class="text-center">
+</rt-status-request-cancelled>
+<rt-status-failed class="text-center">
   An error has occured since the last data loading
-</rt-list-state-failed>
-<rt-list-state-initial class="text-center">
+</rt-status-failed>
+<rt-status-initial class="text-center">
   Enter search options and press "Show" button
-</rt-list-state-initial>
-<rt-list-state-progress class="text-center">
+</rt-status-initial>
+<rt-status-progress class="text-center">
   <div class="line-progress"></div>
-</rt-list-state-progress>
+</rt-status-progress>
 <div>
-  <rt-list-state-done>
+  <rt-status-done>
     <rt-buffered-pager [defaultRowCount]="5" #rtPager>
       <span>Loaded records {{rtPager.pager.loadedCount}} of {{rtPager.pager.totalCount}}</span>
       <a tabindex="0" (click)="rtPager.loadMore()" rtPreventDefaults="click" [class.hidden]="!rtPager.canLoadMore" href="#">Show more</a>
-      <input class="form-control" rtSelectOnFocus rtRowCount [class.hidden]="!rtPager.canLoadMore" type="text" maxlength="3" title="count of rows to load"
+      <input class="form-control" rtSelectOnFocus rtRowCount (keyup.enter)="rtPager.loadMore()" [class.hidden]="!rtPager.canLoadMore" type="text" maxlength="3" title="count of rows to load"
       />
     </rt-buffered-pager>
-  </rt-list-state-done>
+  </rt-status-done>
 </div>

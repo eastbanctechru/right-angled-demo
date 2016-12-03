@@ -7,7 +7,7 @@ import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../s
   selector: 'rt-demo-use-rt-list',
   templateUrl: 'use-rt-list.component.html'
 })
-export class UseRtListComponent {
+export class UseRTListComponent {
   constructor(private airportsService: AirportsService) {
   }
   getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {

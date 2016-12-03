@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RtSelectionEvent } from 'right-angled';
+import { RTSelectionEvent } from 'right-angled';
 
 import { CountriesService } from '../countries.service';
 
@@ -14,10 +14,10 @@ export class SelectionEventsComponent {
       .subscribe((countries) => this.countries = countries);
   }
 
-  public onItemSelected(evt: RtSelectionEvent): void {
+  public onItemSelected(evt: RTSelectionEvent): void {
     alertify.log(`${evt.item.name} - selection handled by area`);
   }
-  public onItemDeselected(evt: RtSelectionEvent): void {
+  public onItemDeselected(evt: RTSelectionEvent): void {
     alertify.log(`${evt.item.name} - deselection handled by area`);
   }
 }

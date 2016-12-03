@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { CountriesService } from '../countries.service';
 
 @Component({
-  selector: 'rt-demo-selected-flag',
-  templateUrl: 'selected-flag.component.html'
+  selector: 'rt-demo-selected-two-way',
+  templateUrl: 'selected-two-way.component.html'
 })
-export class SelectedFlagComponent {
+export class SelectedTwoWayComponent {
   public countries: any[] = new Array<any>();
   constructor(public countriesService: CountriesService) {
     this.countriesService.getSomeCountries()
-      .subscribe((countries) => this.countries = countries);
+      .subscribe((countries) => this.countries = countries.map((country) => ({ name: country.name, selected: false })));
   }
 }

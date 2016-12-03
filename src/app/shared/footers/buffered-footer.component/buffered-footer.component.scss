@@ -8,12 +8,12 @@
         display: block;
     }
 
-    rt-list-state-done {
+    rt-status-done {
         text-align: right;
     }
     @media (max-width:768px)
     {
-      rt-list-state-done {
+      rt-status-done {
         text-align: left;
         padding-left: 15px;
       }

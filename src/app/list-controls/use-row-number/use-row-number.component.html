@@ -9,7 +9,7 @@
 			</tr>
 		</thead>
 		<tbody rtSelectionArea>
-			<tr *ngFor="let airport of list.items, let index=index" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
+			<tr *ngFor="let airport of list.items, let index=index" [rtSelectable]="airport">
 				<td>{{index | rtRowNumber: list}}</td>
 				<td>{{airport.iataCode}}</td>
 				<td>{{airport.name}}</td>

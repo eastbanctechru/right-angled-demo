@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { filter, FilterConfig, RtFiltersService } from 'right-angled';
+import { filter, FilterConfig, RTFiltersService } from 'right-angled';
 
 @Component({
-  providers: [RtFiltersService],
+  providers: [RTFiltersService],
   selector: 'rt-demo-parameter-name-sample',
   templateUrl: 'parameter-name-sample.component.html'
 })
@@ -12,7 +12,7 @@ export class ParameterNameSampleComponent {
   @filter() public defaultField: string = null;
   @filter(<FilterConfig>{ parameterName: 'customParameterName' }) public configuredField: string = null;
 
-  constructor(private filtersService: RtFiltersService) {
+  constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);
     this.lastRequest = this.filtersService.getRequestState();
   }

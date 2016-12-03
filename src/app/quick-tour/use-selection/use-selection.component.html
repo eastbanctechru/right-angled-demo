@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <tbody tabindex="5" rtSelectionArea>
-      <tr *ngFor="let airport of list.items" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
+      <tr *ngFor="let airport of list.items" [rtSelectable]="airport">
         <td>{{airport.iataCode}}</td>
         <td>{{airport.name}}</td>
         <td>{{airport.countryName}}</td>
@@ -17,12 +17,12 @@
     <tfoot>
       <tr>
         <td colspan="3">
-          <rt-list-state-progress>
+          <rt-status-progress>
             <div class="line-progress"></div>
-          </rt-list-state-progress>
-          <rt-list-state-done>
+          </rt-status-progress>
+          <rt-status-done>
             Data was loaded sucessfully.
-          </rt-list-state-done>
+          </rt-status-done>
 
         </td>
       </tr>

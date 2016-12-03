@@ -14,20 +14,16 @@ import { CodeTabComponent } from './tab/code-tab.component';
 import { SampleTabComponent } from './tab/sample-tab.component';
 import { TabSectionComponent } from './tab/tab-section.component';
 
-import { SerializeToLocalStorageDirective } from './state-services/serialize-to-local-storage.directive';
-import { SerializeToQueryStringDirective } from './state-services/serialize-to-query-string.directive';
-import { SerializeToSessionStorageDirective } from './state-services/serialize-to-session-storage.directive';
-
 @NgModule({
-  declarations: [BufferedFooterComponent, PagedFooterComponent, FilterAreaComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent, SerializeToLocalStorageDirective, SerializeToSessionStorageDirective, SerializeToQueryStringDirective],
-  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, FilterAreaComponent, PagedFooterComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent, SerializeToLocalStorageDirective, SerializeToSessionStorageDirective, SerializeToQueryStringDirective],
+  declarations: [BufferedFooterComponent, PagedFooterComponent, FilterAreaComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent],
+  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, FilterAreaComponent, PagedFooterComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent],
   imports: [CommonModule, FormsModule, RTModule]
 })
 export class SharedModule {
   public static forRoot(): ModuleWithProviders {
-  return {
-    ngModule: SharedModule,
-    providers: [AirportsService, LookupsService]
-  };
+    return {
+      ngModule: SharedModule,
+      providers: [AirportsService, LookupsService]
+    };
   }
 }

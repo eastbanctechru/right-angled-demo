@@ -20,7 +20,7 @@
 				</tr>
 			</thead>
 			<tbody rtSelectionArea>
-				<tr *ngFor="let airport of list.items" [class.selected]="rts.selected" [rtSelectable]="airport" #rts="rtSelectable">
+				<tr *ngFor="let airport of list.items" [rtSelectable]="airport">
 					<td>{{airport.iataCode}}</td>
 					<td>{{airport.name}}</td>
 					<td>{{airport.cityName}}</td>

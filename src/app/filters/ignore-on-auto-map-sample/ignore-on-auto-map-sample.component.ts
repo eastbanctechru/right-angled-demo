@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { filter, FilterConfig, RtFiltersService } from 'right-angled';
+import { filter, FilterConfig, RTFiltersService } from 'right-angled';
 
 @Component({
-  providers: [RtFiltersService],
+  providers: [RTFiltersService],
   selector: 'rt-demo-ignore-on-auto-map-sample',
   templateUrl: 'ignore-on-auto-map-sample.component.html'
 })
@@ -12,7 +12,7 @@ export class IgnoreOnAutoMapSampleComponent {
   @filter() public autoMappedField: string = 'current value';
   @filter(<FilterConfig>{ ignoreOnAutoMap: true }) public ignoredField: string = 'current value';
 
-  constructor(private filtersService: RtFiltersService) {
+  constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);
     this.filtersService.getRequestState();
   }

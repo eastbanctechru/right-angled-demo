@@ -4,10 +4,10 @@ import { ListDirective } from 'right-angled';
 import { Airport, AirportsListRequest, AirportsService } from '../../shared';
 
 @Component({
-  selector: 'rt-demo-state-components',
-  templateUrl: 'state-components.component.html'
+  selector: 'rt-demo-status-components',
+  templateUrl: 'status-components.component.html'
 })
-export class StateComponentsComponent {
+export class StatusComponentsComponent {
   private raiseError: boolean = false;
   private returnNoData: boolean = false;
   @ViewChild(ListDirective) public listDirective: ListDirective;

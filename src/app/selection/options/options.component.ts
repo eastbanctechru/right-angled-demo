@@ -4,7 +4,6 @@ import { CountriesService } from '../countries.service';
 
 @Component({
   selector: 'rt-demo-options',
-  styleUrls: ['options.component.css'],
   templateUrl: 'options.component.html'
 })
 export class OptionsComponent {

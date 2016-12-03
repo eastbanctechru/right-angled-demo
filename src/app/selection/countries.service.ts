@@ -48,17 +48,14 @@ export class CountriesService {
                   airports: groupedByCountry
                     .map((airport) => ({
                       iataCode: airport.iataCode,
-                      name: airport.name,
-                      selected: false
+                      name: airport.name
                     })),
-                  name: countryName,
-                  selected: false
+                  name: countryName
                 }))
                 .filter((country) => country.airports.length > 1)
                 .orderBy((country) => country.name)
                 .value(),
-              name: regionName,
-              selected: false
+              name: regionName
             }))
           .filter((region) => region.countries.length > 1)
           .orderBy((region) => region.name)

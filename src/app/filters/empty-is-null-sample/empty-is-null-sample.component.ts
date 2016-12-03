@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { filter, FilterConfig, RtFiltersService } from 'right-angled';
+import { filter, FilterConfig, RTFiltersService } from 'right-angled';
 
 @Component({
-  providers: [RtFiltersService],
+  providers: [RTFiltersService],
   selector: 'rt-demo-empty-is-null-sample',
   templateUrl: 'empty-is-null-sample.component.html'
 })
@@ -12,7 +12,7 @@ export class EmptyIsNullSampleComponent {
   @filter() public defaultField: string = '';
   @filter(<FilterConfig>{ emptyIsNull: true }) public configuredField: string = '';
 
-  constructor(private filtersService: RtFiltersService) {
+  constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);
     this.lastRequest = this.filtersService.getRequestState();
   }

@@ -4,7 +4,17 @@
   <ul class="agenda">
     <li><a href="filters#common-idea">General idea</a></li>
     <li><a href="filters#bootstrap">How to bootstrap</a></li>
-    <li><a href="filters#filter-annotation"><code>@filter</code> annotation options</a></li>
+    <li><a href="filters#filter-annotation"><code>@filter</code> annotation options</a>
+      <ul>
+        <li><a href="filters#parameter-name"><code>parameterName</code></a></li>
+        <li><a href="filters#coerce"><code>coerce</code></a></li>
+        <li><a href="filters#default-value"><code>defaultValue</code></a></li>
+        <li><a href="filters#empty-is-null"><code>emptyIsNull</code></a></li>
+        <li><a href="filters#ignore-on-auto-map"><code>ignoreOnAutoMap</code></a></li>
+        <li><a href="filters#parse-formatter"><code>parseFormatter</code></a></li>
+        <li><a href="filters#serialize-formatter"><code>serializeFormatter</code></a></li>
+      </ul>
+    </li>
     <li>
       <a href="filters#register-as-filter"><code>rtRegisterAsFilter</code> directive</a>
     </li>
@@ -50,20 +60,27 @@
     It is quite simple to use them. First of all, we mark the filter properties of our component by the <code>@filter</code>    annotation. If required, we can specify additional parameters described below.
   </p>
   <p>
-    Second, we register our component in the <code>RTFiltersService</code> service (which is already configured in <code>RTList</code>).
+    Second, we register our component as <code>RTFilterTarget</code> in its own <code>providers</code> array (you can read
+    details about this technique <a target="_blank" href="http://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html#registering-the-controlvalueaccessor">here</a>).
     After that, the list will process properties of our component through all the described above scenarios in the same way
     as its own ones.
   </p>
+  <aside>
+    <p>
+      <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/forwardRef-function.html">forwardRef</a>      usage is debatable question. If you to prefer to avoid using it, you can use
+      <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/listdirective.html#onlistinit">rtList.onListInit</a>      event and register your component as filter target by calling
+      <a taregt="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtlist.html#registerfiltertarget">registerFilterTarget</a>      method.
+    </p>
+  </aside>
   <p>
-    Below there is a live example of the component which represents the list with the custom filters. As you can see, the component
-    properties are marked by the <code>@filter</code> annotation, and the component is registered in the <code>onListInit</code>    event handler. Now these properties values are sent automatically in the server request, resetted by the "reset settings"
-    button, serialized to <code>queryString</code> and restored from <code>queryString</code> when page is loaded.
+    Below there is a live example of the component which configures its properties as filters. Additionally, we use <a href="https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html"
+      target="_blank">json pipe</a> to display the parameters of the last executed request under the table for you to see what
+    parameters have been sent to the server.
   </p>
   <p>
-    Additionally, we use <a href="https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html" target="_blank">json pipe</a>    and display the parameters of the last executed request under the table for you to see what parameters have been sent
-    to the server.
+    As you can see, these properties values are sent automatically in the server request, resetted by the "reset settings" button,
+    serialized to <code>queryString</code> and restored from <code>queryString</code> when page is loaded.
   </p>
-
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
       <rt-demo-filters-sample></rt-demo-filters-sample>
@@ -102,8 +119,7 @@
     <p>
       You also can apply any custom properties to the parameter object of the <code>@filter</code> annotation. This is the
       way we use the <code>persistable</code> custom property to persist only part of list state in the section about
-      <a
-        href="#" [routerLink]="['/persistence']">state persistence</a>.
+      <a href="#" [routerLink]="['/persistence']">state persistence</a>.
     </p>
   </aside>
   <p>
@@ -115,90 +131,111 @@
     The <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/filterconfig.html">FilterConfig</a> object
     parameters have the following purpose:
   </p>
-  <ul class="bulleted">
-    <li>
-      <code>parameterName</code> - name of the parameter which is used on serialization/deserialization of properties. By default
-      the value of this property is equal to the name of the annotated property.
-      <rt-demo-tab-section>
-        <rt-demo-sample-tab>
-          <rt-demo-parameter-name-sample></rt-demo-parameter-name-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="filters/parameter-name-sample/parameter-name-sample.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="filters/parameter-name-sample/parameter-name-sample.component.html">
-        </rt-demo-code-tab>
-      </rt-demo-tab-section>
-    </li>
-    <li><code>coerce</code> - specifies that the parameter value should be coerced to it’s real type on deserialization. For
+  <section id="parameter-name">
+    <h4>parameterName</h4>
+    <p>
+      <code>parameterName</code> - name of the parameter which is used on serialization/deserialization of properties. By
+      default the value of this property is equal to the name of the annotated property.
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-parameter-name-sample></rt-demo-parameter-name-sample>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="filters/parameter-name-sample/parameter-name-sample.component.ts">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="filters/parameter-name-sample/parameter-name-sample.component.html">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </section>
+  <section id="coerce">
+    <h4>coerce</h4>
+    <p>
+      <code>coerce</code> - specifies that the parameter value should be coerced to it’s real type on deserialization. For
       example it means that "null" string will be converted to <code>null</code> value, "true" string will be converted to
-      boolean <code>true</code>, "1.0"string to <code>1.0</code> number and so on. Such approach is useful when the values
-      are read from <code>queryString</code>. By default this parameter has <code>true</code> value.
-      <rt-demo-tab-section>
-        <rt-demo-sample-tab>
-          <rt-demo-coerce-sample></rt-demo-coerce-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="filters/coerce-sample/coerce-sample.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="filters/coerce-sample/coerce-sample.component.html">
-        </rt-demo-code-tab>
-      </rt-demo-tab-section>
-    </li>
-    <li>
+      boolean
+      <code>true</code>, "1.0"string to <code>1.0</code> number and so on. Such approach is useful when the values are read
+      from <code>queryString</code>. By default this parameter has <code>true</code> value.
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-coerce-sample></rt-demo-coerce-sample>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="filters/coerce-sample/coerce-sample.component.ts">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="filters/coerce-sample/coerce-sample.component.html">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </section>
+  <section id="default-value">
+    <h4>defaultValue</h4>
+    <p>
       <code>defaultValue</code> - the default value to which the annotated property will be set on “resetSettings” method
       call. If this parameter is not specified, <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>      will remember the value of annotated property at first use of any of the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>      methods as a default value.
-      <rt-demo-tab-section>
-        <rt-demo-sample-tab>
-          <rt-demo-default-value-sample></rt-demo-default-value-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="filters/default-value-sample/default-value-sample.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="filters/default-value-sample/default-value-sample.component.html">
-        </rt-demo-code-tab>
-      </rt-demo-tab-section>
-    </li>
-    <li>
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-default-value-sample></rt-demo-default-value-sample>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="filters/default-value-sample/default-value-sample.component.ts">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="filters/default-value-sample/default-value-sample.component.html">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </section>
+  <section id="empty-is-null">
+    <h4>emptyIsNull</h4>
+    <p>
       <code>emptyIsNull</code> - means that falsy values should be converted to <code>null</code> when serialized as a request
       parameter. By default this option is equal to <code>false</code>.
-      <rt-demo-tab-section>
-        <rt-demo-sample-tab>
-          <rt-demo-empty-is-null-sample></rt-demo-empty-is-null-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="filters/empty-is-null-sample/empty-is-null-sample.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="filters/empty-is-null-sample/empty-is-null-sample.component.html">
-        </rt-demo-code-tab>
-      </rt-demo-tab-section>
-    </li>
-    <li>
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-empty-is-null-sample></rt-demo-empty-is-null-sample>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="filters/empty-is-null-sample/empty-is-null-sample.component.ts">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="filters/empty-is-null-sample/empty-is-null-sample.component.html">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </section>
+  <section id="ignore-on-auto-map">
+    <h4>ignoreOnAutoMap</h4>
+    <p>
       <code>ignoreOnAutoMap</code> - if this parameter is equal to <code>true</code>, the value will not be applied to the
       target property by the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a>      function. By default this parameter is equal to <code>false</code>.
-      <rt-demo-tab-section>
-        <rt-demo-sample-tab>
-          <rt-demo-ignore-on-auto-map-sample></rt-demo-ignore-on-auto-map-sample>
-        </rt-demo-sample-tab>
-        <rt-demo-code-tab url="filters/ignore-on-auto-map-sample/ignore-on-auto-map-sample.component.ts">
-        </rt-demo-code-tab>
-        <rt-demo-code-tab url="filters/ignore-on-auto-map-sample/ignore-on-auto-map-sample.component.html">
-        </rt-demo-code-tab>
-      </rt-demo-tab-section>
-    </li>
-    <li>
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-ignore-on-auto-map-sample></rt-demo-ignore-on-auto-map-sample>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="filters/ignore-on-auto-map-sample/ignore-on-auto-map-sample.component.ts">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="filters/ignore-on-auto-map-sample/ignore-on-auto-map-sample.component.html">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </section>
+  <section id="parse-formatter">
+    <h4>parseFormatter</h4>
+    <p>
       <code>parseFormatter(rawValue: Object, allValues?: Object)</code> - custom function, which can be used to perform custom
       parse logic of the values on <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a>      function execution.
-    </li>
-    <li>
+    </p>
+  </section>
+  <section id="serialize-formatter">
+    <h4>serializeFormatter</h4>
+    <p>
       <code>serializeFormatter(value: Object)</code> - custom function, which can be used to perform custom serialization
       logic of the annotated property.
-      <aside>
-        <p>
-          When serializing parameters, <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>          also checks the target properties for having <code>toRequest</code> method. If such method exists, <a target="_blank"
-            href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a> calls it and uses the
-          result as a parameter value. It allows to implement reusable serialization logic instead of copy-pasting it in
-          the <code>serializeFormatter</code> parameter, in case if the same class is used as a filter many times.
-        </p>
-      </aside>
-    </li>
-  </ul>
+    </p>
+    <aside>
+      <p>
+        When serializing parameters, <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>        also checks the target properties for having <code>toRequest</code> method. If such method exists, <a target="_blank"
+          href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a> calls it and uses the
+        result as a parameter value. It allows to implement reusable serialization logic instead of copy-pasting it in the
+        <code>serializeFormatter</code> parameter, in case if the same class is used as a filter many times.
+      </p>
+    </aside>
+  </section>
 </section>
 <section id="register-as-filter">
   <h3><code>rtRegisterAsFilter</code> directive</h3>

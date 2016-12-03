@@ -12,7 +12,7 @@
     <li><a href="quick-tour#bootstrap">Installing <code>right-angled</code></a></li>
     <li><a href="quick-tour#use-list">Creating basic list</a></li>
     <li><a href="quick-tour#use-sortings">Adding the sorting</a></li>
-    <li><a href="quick-tour#use-state">Adding the progress bar</a></li>
+    <li><a href="quick-tour#use-statuses">Display list current status</a></li>
     <li><a href="quick-tour#use-selection">Adding the selection</a></li>
     <li><a href="quick-tour#use-controls">Implementing a couple of useful controls</a></li>
     <li><a href="quick-tour#use-paging">Adding the paging</a></li>
@@ -127,28 +127,28 @@
 
   </rt-demo-tab-section>
 </section>
-<section id="use-state">
-  <h3>Adding the progress bar</h3>
+<section id="use-statuses">
+  <h3>Display list current status</h3>
   <p>
-    Our list does not look good when loading data. We can fix this situation using <code>rt-list-state-progress</code> component.
+    Our list does not look good when loading data. We can fix this situation using <code>rt-status-progress</code> component.
     This component will render the nested markup while data loading.
   </p>
   <p>
-    In the example below we add <code>rt-list-state-progress</code> component with the <code>div</code> inside which is styled
-    to display progress bar. Additionally, we add <code>rt-list-state-done</code> component to display notification about
-    successful data loading. The code of our component has not been changed.
+    In the example below we add <code>rt-status-progress</code> component with the <code>div</code> inside which is styled
+    to display progress bar. Additionally, we add <code>rt-status-done</code> component to display notification about successful
+    data loading. The code of our component has not been changed.
   </p>
   <p>
     The same technique can be used to display specific content when there are errors, or no records loaded and so on. See more
-    details <a href="#" [routerLink]="['/paging-and-state']">here</a>.
+    details <a href="#" [routerLink]="['/paging-and-statuses']">here</a>.
   </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
-      <rt-demo-use-state></rt-demo-use-state>
+      <rt-demo-use-statuses></rt-demo-use-statuses>
     </rt-demo-sample-tab>
-    <rt-demo-code-tab url="quick-tour/use-state/use-state.component.html">
+    <rt-demo-code-tab url="quick-tour/use-statuses/use-statuses.component.html">
     </rt-demo-code-tab>
-    <rt-demo-code-tab url="quick-tour/use-state/use-state.component.ts">
+    <rt-demo-code-tab url="quick-tour/use-statuses/use-statuses.component.ts">
     </rt-demo-code-tab>
   </rt-demo-tab-section>
 
@@ -162,10 +162,6 @@
   <p>
     Then we add <code>rtSelectable</code> directive into <code>tr</code> element specifying, that the row is becoming selected
     element.
-  </p>
-  <p>
-    Moreover, with the use of <code>angular</code> <code>class</code> directive, we add the <code>selected</code> class to
-    the table row, when the <code>selected</code> property of the <code>rtSelectable</code> directive becomes equal to <code>true</code>.
   </p>
   <p>
     The component code has not been changed.
@@ -224,13 +220,13 @@
   <h3>Adding the paging</h3>
   <p>
     In the example below we add the second list to the template, which is assigned to the same component. Then we add the paged
-    pager and buffered pager components, described in the <a href="#" [routerLink]="['/paging-and-state']">section about the paging</a>,
+    pager and buffered pager components, described in the <a href="#" [routerLink]="['/paging-and-statuses']">section about the paging</a>,
     into these two lists
   </p>
   <p>
     In brief, there are several utility components and directives in <code>right-angled</code> library, which can be used
     to construct a reusable and functional pager component. Such a pager can be used for all the lists in your project. This
-    is particularly what we did in the <a href="#" [routerLink]="['/paging-and-state']">section about the paging</a> using
+    is particularly what we did in the <a href="#" [routerLink]="['/paging-and-statuses']">section about the paging</a> using
     here its result.
   </p>
   <p>
@@ -253,14 +249,16 @@
 <section id="use-filters">
   <h3>Adding the filters</h3>
   <p>
-    In the below example, we add two inputs to filter the data in the list. The component template in this case is just regular
-    HTML markup. At the same time, the component code looks interesting.
+    In the below example, we add two <code>input</code> elements to filter the data in the list. The component template in
+    this case is just regular
+    <code>HTML</code> markup. At the same time, the component code looks interesting.
   </p>
   <p>
     First, we annotate the added <code>airportName</code> and <code>countryName</code> properties by the <code>@filter</code>    decorator.
   </p>
   <p>
-    Second, we add the <code>onListInit</code> event handler, in which we register our component as a filter by calling <code>registerFilterTarget</code>    method of the received <code>RtList</code> service.
+    Second, we register our component as <code>RTFilterTarget</code> in its own <code>providers</code> array (you can read
+    details about this technique <a target="_blank" href="http://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html#registering-the-controlvalueaccessor">here</a>).
   </p>
   <p>
     As a result, we get the following:
@@ -270,7 +268,7 @@
       When requesting data, the annotated properties are added to the request object as parameters automatically.
     </li>
     <li>
-      When clicking "Reset settings" button, the values of filter inputs are resetted to default values. For the <code>airportName</code>      property it is its initial value that is <code>null</code>. And for the <code>countryName</code> property it is the
+      When clicking "Reset settings" button, the values of filter properties elements are resetted to default values. For the <code>airportName</code>      property it is its initial value that is <code>null</code>. And for the <code>countryName</code> property it is the
       "Iceland" string specified through the <code>@filter</code> decorator <a href="#" [routerLink]="['/filters']">additional settings</a>
     </li>
   </ul>
@@ -283,12 +281,12 @@
     <rt-demo-code-tab url="quick-tour/use-filters/use-filters.component.html">
     </rt-demo-code-tab>
   </rt-demo-tab-section>
-</section>
+</section>-
 <section id="use-persistence">
   <h3>Adding the control of state</h3>
   <p>
-    In the example below you can see that we add the <code>rtDemoSerializeToQueryString</code> directive, implemented in
-    <a href="#" [routerLink]="['/persistence']">Persist lists state</a> section, into the list template.
+    In the example below you can see that we register <code>QueryStringStateService</code> service, implemented in
+    <a href="#" [routerLink]="['/persistence']">Persist lists state</a> section, as provider in our component metadata.
 
   </p>
   <p>

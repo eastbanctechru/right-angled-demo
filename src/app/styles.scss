@@ -205,12 +205,12 @@ div.toolbar {
   }
 }
 
-rt-list-state-done,
-rt-list-state-failed,
-rt-list-state-initial,
-rt-list-state-no-data,
-rt-list-state-progress,
-rt-list-state-request-cancelled {
+rt-status-done,
+rt-status-failed,
+rt-status-initial,
+rt-status-no-data,
+rt-status-progress,
+rt-status-request-cancelled {
   display: block;
   text-align: center;
 }
@@ -326,7 +326,7 @@ form {
         background-color: $color-gray;
       }
 
-      &.selected {
+      &.rt-selected {
         background-color: $color-selected;
       }
     }
