@@ -8,7 +8,7 @@ import { TabSectionComponent } from './tab-section.component';
   selector: 'rt-demo-code-tab',
   template: `
   <div [hidden]="!isActive">
-    <rt-demo-copy-button [text]="rawSources"></rt-demo-copy-button>
+    <rt-demo-copy-button [hidden]="!contentReady" [text]="rawSources"></rt-demo-copy-button>
     <div [hidden]="contentReady" class="spinner"></div>
     <pre [hidden]="!contentReady"></pre>
   </div>
