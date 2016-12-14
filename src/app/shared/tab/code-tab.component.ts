@@ -8,6 +8,7 @@ import { TabSectionComponent } from './tab-section.component';
   selector: 'rt-demo-code-tab',
   template: `
   <div [hidden]="!isActive">
+    <rt-demo-copy-button [text]="rawSources"></rt-demo-copy-button>
     <div [hidden]="contentReady" class="spinner"></div>
     <pre [hidden]="!contentReady"></pre>
   </div>
@@ -18,6 +19,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
   public contentLoadStarted: boolean = false;
   public contentReady: boolean = false;
   public baseUrl: string = 'https://raw.githubusercontent.com/eastbanctechru/right-angled-demo/master/src/app/';
+  public rawSources: string = null;
   @Input() public url: string;
   constructor(private tabSection: TabSectionComponent, private http: Http, private elementRef: ElementRef) {
     super();
@@ -30,6 +32,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
         .map((res) => {
           return res.text();
         }).subscribe((res) => {
+          this.rawSources = res;
           let pre = this.elementRef.nativeElement.querySelector('pre');
           const ext = this.url.substring(this.url.lastIndexOf('.') + 1).replace('tsfake', 'ts').toLowerCase();
           const lang = ext === 'ts' ? 'typescript' : 'html';

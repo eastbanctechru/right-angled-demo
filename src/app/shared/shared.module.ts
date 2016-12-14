@@ -7,6 +7,7 @@ import { RTModule } from 'right-angled';
 import { AirportsService } from './data/airports.service';
 import { LookupsService } from './data/lookups.service';
 
+import { CopyButtonComponent } from './copy-button/copy-button.component';
 import { FilterAreaComponent } from './filter-area/filter-area.component';
 import { BufferedFooterComponent } from './footers/buffered-footer.component/buffered-footer.component';
 import { PagedFooterComponent } from './footers/paged-footer.component/paged-footer.component';
@@ -15,8 +16,8 @@ import { SampleTabComponent } from './tab/sample-tab.component';
 import { TabSectionComponent } from './tab/tab-section.component';
 
 @NgModule({
-  declarations: [BufferedFooterComponent, PagedFooterComponent, FilterAreaComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent],
-  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, FilterAreaComponent, PagedFooterComponent, CodeTabComponent, SampleTabComponent, TabSectionComponent],
+  declarations: [BufferedFooterComponent, PagedFooterComponent, FilterAreaComponent, CodeTabComponent, CopyButtonComponent, SampleTabComponent, TabSectionComponent],
+  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, FilterAreaComponent, PagedFooterComponent, CodeTabComponent, CopyButtonComponent, SampleTabComponent, TabSectionComponent],
   imports: [CommonModule, FormsModule, RTModule]
 })
 export class SharedModule {

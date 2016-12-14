@@ -86,6 +86,7 @@
     "alertify": "^0.3.0",
     "angulartics2": "1.5.2",
     "bootstrap": "^3.3.7",
+    "clipboard": "^1.5.16",
     "core-js": "2.4.1",
     "lodash": "^4.17.2",
     "right-angled": "^1.0.0-beta.2",
@@ -94,6 +95,7 @@
   },
   "devDependencies": {
     "@types/alertify": "^0.3.29",
+    "@types/clipboard": "^1.5.30",
     "@types/core-js": "~0.9.35",
     "@types/express": "~4.0.34",
     "@types/ip": "~0.0.29",
