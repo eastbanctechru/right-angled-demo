@@ -36,7 +36,7 @@
   <p>
     In this section we describe all existing components and directives concerned with the paging and displaying list current
     status. At the end we will construct reusable pager components for the paged and buffered lists, which can be used as
-    a basis for your own pager components.
+    a basis for your own ones.
   </p>
 </section>
 <section id="bootstrap">
@@ -56,7 +56,7 @@
     only when the list is in particular status. All possible list statuses are enumerated in <a target="_blank" href="http://eastbanctechru.github.io/e2e4/enums/operationstatus.html">OperationStatus</a>    enum.
   </p>
   <ul class="bulleted">
-    <li><code>rt-status-initial</code> - displays the nested content while no data requests are executed.</li>
+    <li><code>rt-status-initial</code> - displays the nested content if no data requests were executed before.</li>
     <li><code>rt-status-progress</code> - displays the nested content while the data request is executed. Ideal for displaying
       a progress bar, for example.</li>
     <li><code>rt-status-no-data</code> - displays the nested content after the request is executed and no records are returned.</li>
@@ -86,10 +86,10 @@
 <section id="paged-pager">
   <h3><code>rt-paged-pager</code> component</h3>
   <p>
-    First of all, you need to use <code>rt-paged-pager</code> component to implement paging functionality of the list. This
+    First of all, you need to use <code>rt-paged-pager</code> component to implement paging functionality. This
     component registers itself in the list; therefore, the list gets the paging functionality. Also, it serves as a container
     for the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/pagedpager.html">PagedPager</a> service
-    you can use to implement paging functionality.
+    which you can inject when implementing you own paging controls.
   </p>
   <p>
     This component has the following methods and properties::
@@ -110,7 +110,7 @@
   <aside>
     <p>
       You can change the values of <code>minPageSize</code>, <code>maxPageSize</code> and <code>defaultPageSize</code> properties
-      globally. For that you need to import <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/pagedpager.html">PagedPager</a>      service from the <code>right-angled</code> library and use its static <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/pagedpager.html#settings">settings</a>      property.
+      globally. To do that you need to import <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/pagedpager.html">PagedPager</a>      service from the <code>right-angled</code> library and use its static <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/pagedpager.html#settings">settings</a>      property.
     </p>
     <rt-demo-tab-section>
       <rt-demo-code-tab url="paging-and-statuses/global-configuration/app.component.paged.ts">
