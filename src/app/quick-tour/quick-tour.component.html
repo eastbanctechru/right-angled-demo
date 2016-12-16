@@ -1,14 +1,7 @@
-<h2>right-angled quick tour</h2>
-<section>
-  <p>
-    In this section you will get familiar with the <code>right-angled</code> library. You will see its possibilities on the
-    live examples. Also we provide the links to the sections with more details for each of the <code>right-angled</code>    aspects.
-  </p>
-</section>
+<h2>Quick tour</h2>
 <section>
   <h3>Contents</h3>
   <ul class="agenda">
-    <li><a href="quick-tour#project-idea">Project idea</a></li>
     <li><a href="quick-tour#bootstrap">Installing <code>right-angled</code></a></li>
     <li><a href="quick-tour#use-list">Creating basic list</a></li>
     <li><a href="quick-tour#use-sortings">Adding the sorting</a></li>
@@ -19,37 +12,6 @@
     <li><a href="quick-tour#use-filters">Adding the filters</a></li>
     <li><a href="quick-tour#use-persistence">Adding the control of state</a></li>
     <li><a href="quick-tour#airports-service">"Backend" to work with the data of our demo</a></li>
-  </ul>
-</section>
-<section id="project-idea">
-  <h3>Project idea</h3>
-  <p>
-    <code>right-angled</code> is the library for constructing functional data tables (aka data lists, data grids). Also,
-    it has a very useful selection and filter models. They can work even without lists, but they go much better with them.
-    The main feature providing the basis for the library is unobtrusiveness seen in the following:
-  </p>
-  <ul class="bulleted">
-    <li>
-      The library is not tied to such frameworks as <a target="_blank" href="https://getbootstrap.com">bootstrap</a> and
-      does not include any css styles. It is 100% up to you how the app will be structured and look.
-    </li>
-    <li>
-      Minimal impact on your markup. <code>right-angled</code> provides directives instead of components whenever it’s possible.
-      There are only several components in <code>right-angled</code> and they act just as visibility containers without any
-      additional markup. Again, it is 100% up to you how the app will structured and look.
-    </li>
-    <li>
-      As a consequence of the above point, the library contains minimum of directives and components. It means that you will have
-      to implement some of the components yourself (<code>right-angled</code> provides several useful services which
-      you can inject and use to implement your components easily). Nevertheless, we are sure that creating a new component
-      will give you more pleasure, than learning dozens of options and trying to style an alien one with the markup that
-      cannot be modified.
-    </li>
-    <li>
-      The only dependency of <code>right-angled</code>, except <a target="_blank" href="https://angular.io">angular</a>,
-      is the <a target="_blank" href="https://github.com/eastbanctechru/e2e4">e2e4</a> library created by us. This library
-      implements the functionality for the lists in abstract manner with no dependencies at all.
-    </li>
   </ul>
 </section>
 <section id="bootstrap">
@@ -73,18 +35,17 @@
 <section id="use-list">
   <h3>Creating basic list</h3>
   <p>
-    Below there is an example of the code which we will turn into the list. As you have noticed, it is the simplest <code>angular</code>    component with the template representing regular markup with the use of <a target="_blank" href="http://getbootstrap.com/">bootstrap</a>    library. The use of <code>bootstrap</code> is not necessary, actually. The reason we have used it is just because of
-    its popularity among the software developers, so the sample markup looks familiar to most of you.
+    Below there is an example of the most basic list component. As you have noticed, it is quite simple <code>angular</code>    component with the template representing regular <code>HTML</code> markup with the use of <a target="_blank" href="http://getbootstrap.com/">bootstrap</a>    library.
   </p>
-  <rt-demo-tab-section>
-    <rt-demo-code-tab url="quick-tour/starter/starter.component.html">
-    </rt-demo-code-tab>
-    <rt-demo-code-tab url="quick-tour/starter/starter.component.ts">
-    </rt-demo-code-tab>
-  </rt-demo-tab-section>
+  <aside>
+    <p>
+      The use of <code>bootstrap</code> is not necessary, actually. The reason we have used it is just because of its popularity
+      among the software developers, so the sample markup looks familiar to most of you.
+    </p>
+  </aside>
   <p>
-    In order to turn the component into the list, we need to add <code>rtList</code> directive in the template. This directive
-    takes one parameter – data request function. This function should return <code>Promise</code>, <code>Observable</code>,
+    In order to turn the component into the list, we add <code>rtList</code> directive to the <code>table</code> element.
+    This directive takes one parameter – data request function. This function should return <code>Promise</code>, <code>Observable</code>,
     or <code>EventEmitter</code> with the resulting data. As in the example below, we inject <code>AirportsService</code>    class into our component and use its <code>getAirportsList</code> method.
   </p>
   <rt-demo-tab-section>
@@ -174,9 +135,11 @@
     <li>Mouse click with the <code>Ctrl</code> held selects clicked element keeping the previous selections.</li>
     <li>Mouse click with the <code>Shift</code> held selects the sequence of the elements from the last selected element to the
       clicked one.</li>
-    <li>Pressing <code>&uarr;</code> key selects the previous element. Or it selects the first element in the list, if nothing is previously selected.
+    <li>Pressing <code>&uarr;</code> key selects the previous element. Or it selects the first element in the list, if nothing
+      is previously selected.
     </li>
-    <li>Pressing <code>&darr;</code> key selects the next element. Or the first element in the list, if nothing is previously selected.
+    <li>Pressing <code>&darr;</code> key selects the next element. Or the first element in the list, if nothing is previously
+      selected.
     </li>
     <li>Pressing the combination of <code>Ctrl + &uarr;</code> selects the first element in the list.</li>
     <li>Pressing the combination of <code>Ctrl + &darr;</code> selects the last element in the list.</li>
@@ -247,8 +210,8 @@
 <section id="use-filters">
   <h3>Adding the filters</h3>
   <p>
-    In the below example, we add two <code>input</code> elements to filter the data in the list. The template in
-    this case is just regular
+    In the below example, we add two <code>input</code> elements to filter the data in the list. The template in this case
+    is just regular
     <code>HTML</code> markup. At the same time, the component code gets some interesting changes.
   </p>
   <p>
