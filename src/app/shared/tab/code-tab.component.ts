@@ -21,6 +21,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
   public baseUrl: string = 'https://raw.githubusercontent.com/eastbanctechru/right-angled-demo/master/src/app/';
   public rawSources: string = null;
   @Input() public url: string;
+  @Input() public title: string;
   constructor(private tabSection: TabSectionComponent, private http: Http, private elementRef: ElementRef) {
     super();
   }
@@ -43,7 +44,8 @@ export class CodeTabComponent extends Tab implements OnChanges {
   }
   public ngOnChanges(changes: any): void {
     if (changes.url && !this.tabTitle) {
-      this.tabTitle = this.url.substring(this.url.lastIndexOf('/') + 1).replace('tsfake', 'ts');
+      const title = this.url.substring(this.url.lastIndexOf('.') + 1).replace('tsfake', 'ts').toLowerCase() === 'ts' ? 'Component' : 'Template';
+      this.tabTitle = this.title || title;
       this.tabSection.addTab(this);
     }
   }
