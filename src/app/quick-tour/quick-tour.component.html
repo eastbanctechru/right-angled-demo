@@ -2,16 +2,46 @@
 <section>
   <h3>Contents</h3>
   <ul class="agenda">
+    <li><a href="quick-tour#project-idea">Project idea</a></li>
     <li><a href="quick-tour#bootstrap">Installing <code>right-angled</code></a></li>
     <li><a href="quick-tour#use-list">Creating basic list</a></li>
     <li><a href="quick-tour#use-sortings">Adding the sorting</a></li>
     <li><a href="quick-tour#use-statuses">Display list current status</a></li>
-    <li><a href="quick-tour#use-selection">Adding the selection</a></li>
-    <li><a href="quick-tour#use-controls">Implementing a couple of useful controls</a></li>
-    <li><a href="quick-tour#use-paging">Adding the paging</a></li>
-    <li><a href="quick-tour#use-filters">Adding the filters</a></li>
+    <li><a href="quick-tour#use-selection">Implementing selection</a></li>
+    <li><a href="quick-tour#use-controls">Adding a couple of useful controls</a></li>
+    <li><a href="quick-tour#use-paging">Use paging</a></li>
+    <li><a href="quick-tour#use-filters">Use filters</a></li>
     <li><a href="quick-tour#use-persistence">Adding the control of state</a></li>
     <li><a href="quick-tour#airports-service">"Backend" to work with the data of our demo</a></li>
+  </ul>
+</section>
+<section id="project-idea">
+  <h3>Project idea</h3>
+  <p>
+    <code>right-angled</code> is the library for constructing functional data tables (aka data lists, data grids). Also,
+    it has very useful selection and filtering models. The main characteristic of this library is unobtrusiveness, which
+    can be seen in the following:
+  </p>
+  <ul class="bulleted">
+    <li>
+      Instead of large amount of tightly coupled components with dozens of options, <code>right-angled</code> provides the
+      minimal set of directives to decorate your own markup. As a consequence, it's easy to learn, easy to style, easy to
+      customize. Another nice consequence, your templates stay pretty close to regular HTML even for complex, fully fuctional
+      grids.
+    </li>
+    <li>
+      The library is not tied to such frameworks as <a target="_blank" href="https://getbootstrap.com">bootstrap</a> and
+      does not include any css styles. It is 100% up to you how the app will be structured and look.
+    </li>
+    <li>
+      <code>right-angled</code> doesn't produce HTML markup at all. In this way, it has minimal impact on your app. Again,
+      it is 100% up to you how the app will be structured and look.
+    </li>
+    <li>
+      The only dependency of right-angled, except <a target="_blank" href="https://angular.io">angular</a>, is the <a target="_blank"
+        href="https://github.com/eastbanctechru/e2e4">e2e4</a> library created by us. This library implements the functionality
+      for the lists in abstract manner with no dependencies at all.
+    </li>
   </ul>
 </section>
 <section id="bootstrap">
@@ -35,7 +65,7 @@
 <section id="use-list">
   <h3>Creating basic list</h3>
   <p>
-    Below there is an example of the most basic list component. As you have noticed, it is quite simple <code>angular</code>    component with the template representing regular <code>HTML</code> markup with the use of <a target="_blank" href="http://getbootstrap.com/">bootstrap</a>    library.
+    Below there is an example of the most basic list component. As you have probably noticed, it is quite simple <code>angular</code>    component with the template representing regular <code>HTML</code> markup with the use of <a target="_blank" href="http://getbootstrap.com/">bootstrap</a>    library.
   </p>
   <aside>
     <p>
@@ -66,9 +96,9 @@
 <section id="use-sortings">
   <h3>Adding the sorting</h3>
   <p>
-    Our list already sends the sorting parameters in the request. But we need the way to change them through UI. In the example
-    below, we add <code>rtSort</code> directive into the table headers template to do this. The component code doesn’t
-    require any changes.
+    Our list already sends sortings as request parameters. But we need the way to change them through UI. In the example below,
+    we add <code>rtSort</code> directive into the table headers template to do this. The component code doesn’t require
+    any changes.
     <code>rtSort</code> directive gets the string with the sorting identifier as a parameter. This identifier will be sent
     to the server when requesting data. In the most obvious case, it can coincide with the column name. However, remember
     about <a href="https://en.wikipedia.org/wiki/SQL_injection">sql injection</a> when developing backend!
@@ -115,7 +145,7 @@
 
 </section>
 <section id="use-selection">
-  <h3>Adding the selection</h3>
+  <h3>Implementing selection</h3>
   <p>
     In the example below we add <code>rtSelectionArea</code> directive into <code>tbody</code> element specifying it as the
     selection area.
@@ -162,7 +192,7 @@
   </rt-demo-tab-section>
 </section>
 <section id="use-controls">
-  <h3>Implementing a couple of useful controls</h3>
+  <h3>Adding a couple of useful controls</h3>
   <p>
     In the example below we add buttons for data loading, canceling requests and resetting list parameters. These buttons use
     the <a href="#" [routerLink]="['/list-controls']">additional <code>rtList</code> methods</a> in their <code>click</code>    event handlers.
@@ -178,7 +208,7 @@
   </rt-demo-tab-section>
 </section>
 <section id="use-paging">
-  <h3>Adding the paging</h3>
+  <h3>Use paging</h3>
   <p>
     In the example below we add the second list to the template, which is assigned to the same component. Then we add the paged
     pager and buffered pager components, described in the <a href="#" [routerLink]="['/paging-and-statuses']">section about the paging</a>,
@@ -208,7 +238,7 @@
   </rt-demo-tab-section>
 </section>
 <section id="use-filters">
-  <h3>Adding the filters</h3>
+  <h3>Use filters</h3>
   <p>
     In the below example, we add two <code>input</code> elements to filter the data in the list. The template in this case
     is just regular

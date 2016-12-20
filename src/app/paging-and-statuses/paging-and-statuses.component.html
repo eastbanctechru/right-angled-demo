@@ -86,10 +86,10 @@
 <section id="paged-pager">
   <h3><code>rt-paged-pager</code> component</h3>
   <p>
-    First of all, you need to use <code>rt-paged-pager</code> component to implement paging functionality. This
-    component registers itself in the list; therefore, the list gets the paging functionality. Also, it serves as a container
-    for the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/pagedpager.html">PagedPager</a> service
-    which you can inject when implementing you own paging controls.
+    First of all, you need to use <code>rt-paged-pager</code> component to implement paging functionality. This component
+    registers itself in the list; therefore, the list gets the paging functionality. Also, it serves as a container for the
+    <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/pagedpager.html">PagedPager</a> service which
+    you can inject when implementing you own paging controls.
   </p>
   <p>
     This component has the following methods and properties::
@@ -229,6 +229,26 @@
     The entered values are limited by some rules. For example, it is not possible to specify the value bigger than <a target="_blank"
       href="http://eastbanctechru.github.io/e2e4/classes/bufferedpager.html#maxrowcount">maxRowCount</a>.
   </p>
+  <h4>rtInfinite</h4>
+  <p>
+    This directive is used to implement automatic loading of the next chunk of data when scroll position reaches the element
+    marked by this directive.
+  </p>
+  <p>
+    <code>rtInfinite</code> directive has one optional parameter which represents the element to listen <code>scroll</code> event.
+    If such parameter is not specified, directive will listen the <code>window.scroll</code> event.
+  </p>
+
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab>
+      <rt-demo-infinite-sample></rt-demo-infinite-sample>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="paging-and-statuses/infinite-sample/infinite-sample.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="paging-and-statuses/infinite-sample/infinite-sample.component.ts">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
+
 </section>
 <section id="reusable-buffered-pager">
   <h3>Example of reusable buffered pager component</h3>
