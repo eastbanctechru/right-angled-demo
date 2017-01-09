@@ -10,7 +10,7 @@ export class IgnoreOnAutoMapSampleComponent {
   public valueForAutoMappedField: string = 'new value';
   public valueForIgnoredField: string = 'new value';
   @filter() public autoMappedField: string = 'current value';
-  @filter(<FilterConfig>{ ignoreOnAutoMap: true }) public ignoredField: string = 'current value';
+  @filter({ ignoreOnAutoMap: true } as FilterConfig) public ignoredField: string = 'current value';
 
   constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);

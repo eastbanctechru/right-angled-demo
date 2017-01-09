@@ -10,9 +10,9 @@ export class QueryStringStateService implements RTStateService {
   constructor(private location: Location, private router: Router) {
   }
   public persistState(filtersService: FiltersService): void {
-    let newState = {};
+    const newState = {};
     Object.assign(newState, filtersService.getRequestState());
-    let params = cloneAsLiteral(this.router.routerState.root.snapshot.queryParams || {});
+    const params = cloneAsLiteral(this.router.routerState.root.snapshot.queryParams || {});
     params[this.serializationKey] = JSON.stringify(newState);
     let path = this.location.path(true);
     path = path.indexOf('?') === -1 ? path : path.substring(0, path.indexOf('?'));
@@ -20,14 +20,14 @@ export class QueryStringStateService implements RTStateService {
   }
   public getState(): Object {
     const restoredState = {};
-    let routerState = this.router.routerState.snapshot.root.queryParams[this.serializationKey] ? JSON.parse(decodeURIComponent(this.router.routerState.snapshot.root.queryParams[this.serializationKey])) : {};
+    const routerState = this.router.routerState.snapshot.root.queryParams[this.serializationKey] ? JSON.parse(decodeURIComponent(this.router.routerState.snapshot.root.queryParams[this.serializationKey])) : {};
 
     Object.assign(restoredState, routerState);
     return restoredState;
   }
   private serializeQueryParams(params: { [key: string]: string }): string {
     const res: string[] = [];
-    for (let prop in params) {
+    for (const prop in params) {
       if (params.hasOwnProperty(prop)) {
         res.push(`${encodeURIComponent(prop)}=${encodeURIComponent(params[prop])}`);
       }

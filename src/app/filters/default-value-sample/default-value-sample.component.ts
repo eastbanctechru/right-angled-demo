@@ -10,7 +10,7 @@ export class DefaultValueSampleComponent {
   public lastRequest: any = '';
 
   @filter() public defaultField: string = null;
-  @filter(<FilterConfig>{ defaultValue: 'abracadabra' }) public configuredField: string = null;
+  @filter({ defaultValue: 'abracadabra' } as FilterConfig) public configuredField: string = null;
 
   constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);

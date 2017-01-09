@@ -10,7 +10,7 @@ export class ParameterNameSampleComponent {
   public lastRequest: any = '';
 
   @filter() public defaultField: string = null;
-  @filter(<FilterConfig>{ parameterName: 'customParameterName' }) public configuredField: string = null;
+  @filter({ parameterName: 'customParameterName' } as FilterConfig) public configuredField: string = null;
 
   constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);

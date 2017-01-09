@@ -10,7 +10,7 @@ export class CoerceSampleComponent {
   public lastRequest: any = '';
 
   @filter() public defaultField: string = null;
-  @filter(<FilterConfig>{ coerce: false }) public configuredField: string = null;
+  @filter({ coerce: false } as FilterConfig) public configuredField: string = null;
 
   constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);

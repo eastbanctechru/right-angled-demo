@@ -34,7 +34,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
           return res.text();
         }).subscribe((res) => {
           this.rawSources = res;
-          let pre = this.elementRef.nativeElement.querySelector('pre');
+          const pre = this.elementRef.nativeElement.querySelector('pre');
           const ext = this.url.substring(this.url.lastIndexOf('.') + 1).replace('tsfake', 'ts').toLowerCase();
           const lang = ext === 'ts' ? 'typescript' : 'html';
           pre.innerHTML = Prism.highlight(res, Prism.languages[lang]);

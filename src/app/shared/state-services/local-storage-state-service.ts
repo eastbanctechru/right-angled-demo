@@ -14,7 +14,7 @@ export class LocalStorageStateService implements RTStateService {
 
   public persistState(filtersService: FiltersService): void {
     try {
-      let data = { data: filtersService.getRequestState((config: ExtendedFilterConfig) => { return config.persistable; }) };
+      const data = { data: filtersService.getRequestState((config: ExtendedFilterConfig) => { return config.persistable; }) };
       window.localStorage.setItem(this.internalStateKey, JSON.stringify(data));
     } catch (e) {
       // supress QUOTA_EXCEEDED_ERR because we can't do anything with it
@@ -22,7 +22,7 @@ export class LocalStorageStateService implements RTStateService {
   }
 
   public getState(): any {
-    let res = window.localStorage.getItem(this.internalStateKey);
+    const res = window.localStorage.getItem(this.internalStateKey);
     if (res === null) {
       return undefined;
     } else {

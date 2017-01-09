@@ -13,7 +13,7 @@ import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../s
 })
 export class UseFiltersComponent {
   @filter() public airportName: string = null;
-  @filter(<FilterConfig>{ defaultValue: 'Iceland', parameterName: 'country' }) public countryName: string = null;
+  @filter({ defaultValue: 'Iceland', parameterName: 'country' } as FilterConfig) public countryName: string = null;
 
   constructor(private airportsService: AirportsService) {
   }

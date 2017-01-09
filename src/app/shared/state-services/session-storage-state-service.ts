@@ -13,7 +13,7 @@ export class SessionStorageStateService implements RTStateService {
 
   public persistState(filtersService: FiltersService): void {
     try {
-      let data = { data: filtersService.getRequestState() };
+      const data = { data: filtersService.getRequestState() };
       window.sessionStorage.setItem(this.internalStateKey, JSON.stringify(data));
     } catch (e) {
       // supress QUOTA_EXCEEDED_ERR because we can't do anything with it
@@ -21,7 +21,7 @@ export class SessionStorageStateService implements RTStateService {
   }
 
   public getState(): any {
-    let res = window.sessionStorage.getItem(this.internalStateKey);
+    const res = window.sessionStorage.getItem(this.internalStateKey);
     if (res === null) {
       return undefined;
     } else {

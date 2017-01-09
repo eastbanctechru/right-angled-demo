@@ -49,8 +49,8 @@ export class AirportsService {
   }
 
   private applySortings(request: AirportsListRequest, data: Airport[]): Airport[] {
-    let fieldNames = request.sortings.map((sort) => (sort.fieldName));
-    let directions = request.sortings.map((sort) => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
+    const fieldNames = request.sortings.map((sort) => (sort.fieldName));
+    const directions = request.sortings.map((sort) => (sort.direction === SortDirection.Asc ? 'asc' : 'desc'));
     return _.orderBy(data, fieldNames, directions);
   }
 
@@ -63,9 +63,9 @@ export class AirportsService {
       .value();
   }
   private applyPaging(request: AirportsPagedListRequest, airports: Airport[]): ListResponse {
-    let skip = request.skip || 0;
-    let take = request.take || airports.length;
-    let resultRecords = _.slice(airports, skip, skip + take);
+    const skip = request.skip || 0;
+    const take = request.take || airports.length;
+    const resultRecords = _.slice(airports, skip, skip + take);
 
     return {
       items: resultRecords,
