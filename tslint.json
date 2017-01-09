@@ -75,6 +75,7 @@
       "check-separator",
       "check-type"
     ],
+    "no-angle-bracket-type-assertion": false,
     // Codelyzer rules
     "directive-selector": [
       true,

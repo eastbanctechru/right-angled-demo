@@ -10,7 +10,7 @@ export class EmptyIsNullSampleComponent {
   public lastRequest: any = '';
 
   @filter() public defaultField: string = '';
-  @filter({ emptyIsNull: true } as FilterConfig) public configuredField: string = '';
+  @filter(<FilterConfig>{ emptyIsNull: true }) public configuredField: string = '';
 
   constructor(private filtersService: RTFiltersService) {
     filtersService.registerFilterTarget(this);
