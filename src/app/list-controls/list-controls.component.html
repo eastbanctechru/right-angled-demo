@@ -16,6 +16,9 @@
           <a href="list-controls#list-methods">Additional methods and properties</a>
         </li>
         <li>
+          <a href="list-controls#destroy-method">Implementing custom logic on items destroy</a>
+        </li>
+        <li>
           <a href="list-controls#on-list-init"><code>onListInit</code> event</a>
         </li>
         <li>
@@ -25,7 +28,7 @@
     </li>
     <li><a href="list-controls#rt-sort"><code>rtSort</code> directive</a></li>
     <li><a href="list-controls#rt-row-number"><code>rtRowNumber</code> pipe</a></li>
-    <li><a href="list-controls#custom-items-handling">Working with <code>items</code> collection</a></li>
+    <li><a href="list-controls#custom-items-handling">Taking control over <code>items</code> collection</a></li>
   </ul>
 </section>
 <section id="common-idea">
@@ -127,13 +130,6 @@
         <code>items</code> property returns the array of elements transferred in the property of the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#items">ListResponse.items</a>        object.
       </li>
     </ul>
-    <aside>
-      <p>
-        If you want to execute any custom logic for the list elements when destroying the records (e.g., on list reload, page changing,
-        entire list destroy), you can implement the <code>destroy</code> method in the element class and this method
-        will be called by the <code>RTList</code> service on items destroy.
-      </p>
-    </aside>
     <p>
       Below you can see the example with 4 buttons implemented using the mentioned methods and properties.
     </p>
@@ -144,6 +140,14 @@
       <rt-demo-code-tab url="list-controls/use-rt-list/use-rt-list.component.html">
       </rt-demo-code-tab>
     </rt-demo-tab-section>
+  </section>
+  <section id="destroy-method">
+    <h4>Implementing custom logic on items destroy</h4>
+    <p>
+      If you want to execute any custom logic for the list elements when destroying the records (e.g., on list reload, page changing,
+      entire list destroy), you can implement the <code>destroy</code> method in the element class and this method
+      will be called by the <code>RTList</code> service on items destroy.
+    </p>
   </section>
   <section id="on-list-init">
     <h4><code>onListInit</code> event</h4>
@@ -234,14 +238,45 @@
   </rt-demo-tab-section>
 </section>
 <section id="custom-items-handling">
-  <h3>Working with <code>items</code> collection</h3>
+  <h3>Taking control over <code>items</code> collection</h3>
   <p>
-    Documentation is in progress.
+    Sometimes you need to implement some custom logic when working with list elements.
   </p>
+  <p>
+    For example, instead of displaying the progress bar you may want to keep currently loaded records in list while the data
+    request is executed. Or you want to implement some logic which requires access to the list elements.
+  </p>
+  <p>
+    There are many possible scenarios which can be commonly described as "you need to take control over <code>items</code>    collection".
+  </p>
+  <p>
+    To achieve this you can declare property in your component and use it instead of <code>rtList.items</code> in component
+    template. This means that you loose the features which <code>RTList</code> implements for <code>items</code> collection,
+    but you can easily reproduce them (if you need them at all). In fact, <code>RTList</code> makes only two things:
+  </p>
+  <ul class="bulleted">
+    <li>
+      Determines is it required to destroy currently loaded elements or keep them. For example, it is required to keep loaded items
+      when loading next chunk of buffered lists data.
+    </li>
+    <li>
+      Calls optional <a href="list-controls#destroy-method">destroy</a> method of <code>items</code> collection
+      elements on list reload/destroy.
+    </li>
+  </ul>
+  <p>
+    Below there is the example of the component which uses its own <code>myOwnItemsCollection</code> property instead of
+    <code>rtList.items</code> and destroys elements when new data already loaded.
+  </p>
+
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
       <rt-demo-custom-items-handling></rt-demo-custom-items-handling>
     </rt-demo-sample-tab>
+    <rt-demo-code-tab url="list-controls/custom-items-handling/custom-items-handling.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="list-controls/custom-items-handling/custom-items-handling.component.ts">
+    </rt-demo-code-tab>
   </rt-demo-tab-section>
 </section>
 <section>

@@ -15,12 +15,18 @@
   min-height: 250px;
   background-color: #fafafa;
 
+  rt-demo-sample-tab > div {
+    min-height: 360px;
+  }
+
   rt-demo-code-tab {
     display: block;
     position: relative;
+
     rt-demo-copy-button {
       opacity: 0;
     }
+
     &:hover {
       rt-demo-copy-button {
         opacity: 1;
