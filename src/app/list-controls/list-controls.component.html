@@ -90,7 +90,7 @@
       If the list has not been sorted at the moment of specifying the sortings, these sortings will be applied as current ones.
     </p>
     <p>
-      Below there is the example of the list, which by default sorts the list of airports by the airport name in ascending order
+      Below there is an example of the list, which by default sorts the list of airports by the airport name in ascending order
       and by the residence country in descending order.
     </p>
     <rt-demo-tab-section>
@@ -251,12 +251,12 @@
   </p>
   <p>
     To achieve this you can declare property in your component and use it instead of <code>rtList.items</code> in component
-    template. This means that you loose the features which <code>RTList</code> implements for <code>items</code> collection,
-    but you can easily reproduce them (if you need them at all). In fact, <code>RTList</code> makes only two things:
+    template. This means that you lose the features which <code>RTList</code> implements for <code>items</code> collection,
+    but you can easily reproduce them (if you need them at all). In fact, <code>RTList</code> does only two things:
   </p>
   <ul class="bulleted">
     <li>
-      Determines is it required to destroy currently loaded elements or keep them. For example, it is required to keep loaded items
+      Determines if it is required to destroy currently loaded elements or keep them when loading data. For example, it is required to keep loaded items
       when loading next chunk of buffered lists data.
     </li>
     <li>
@@ -265,7 +265,7 @@
     </li>
   </ul>
   <p>
-    Below there is the example of the component which uses its own <code>myOwnItemsCollection</code> property instead of
+    Below there is an example of the component which uses its own <code>myOwnItemsCollection</code> property instead of
     <code>rtList.items</code> and destroys elements when new data already loaded.
   </p>
 
