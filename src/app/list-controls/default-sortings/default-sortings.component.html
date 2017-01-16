@@ -1,7 +1,7 @@
 <div>
 	<form>
 		<div class="form-group">
-			<input type="submit" class="btn btn-load" title="Load data" (click)="list.loadData()" [disabled]="list.busy" />
+			<input type="submit" class="btn btn-load" title="Load data" (click)="list.reloadData()" [disabled]="list.busy" />
 			<input type="button" class="btn btn-cancel" title="Cancel loading" (click)="list.cancelRequests()" [disabled]="list.ready"
 			/>
 			<button type="button" class="btn btn-reset" title="Reset settings" (click)="list.resetSettings()" [disabled]="list.busy"></button>

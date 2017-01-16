@@ -1,7 +1,7 @@
 <div class="toolbar">
 	<ul>
 		<li>
-			<button (click)="list.loadData()" [disabled]="list.busy" type="button" class="btn btn-primary">Load data</button>
+			<button (click)="list.reloadData()" [disabled]="list.busy" type="button" class="btn btn-primary">Load data</button>
 		</li>
 		<li>
 			<button (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-primary">Cancel loading</button>

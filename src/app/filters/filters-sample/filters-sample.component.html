@@ -31,7 +31,7 @@
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<div class="form-group">
-					<input (click)="list.loadData()" [disabled]="list.busy" type="submit" class="btn btn-load" title="Load data" />
+					<input (click)="list.reloadData()" [disabled]="list.busy" type="submit" class="btn btn-load" title="Load data" />
 					<input (click)="list.cancelRequests()" [disabled]="list.ready" type="button" class="btn btn-cancel" title="Cancel loading"
 					/>
 					<button (click)="list.resetSettings()" [disabled]="list.busy" type="button" class="btn btn-reset" title="Reset settings"></button>
