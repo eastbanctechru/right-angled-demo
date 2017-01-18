@@ -48,16 +48,18 @@
     after the app is passed to the end users.
   </p>
   <p>
-    To solve this issue we provide the <code>@filter</code> annotation and <code>RTFiltersService</code> service in the <code>right-angled</code>    library.
+    To solve this issue we provide the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/index.html#filter">@filter</a>    annotation and <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtfiltersservice.html">RTFiltersService</a>    service in the <code>right-angled</code> library.
   </p>
   <aside>
     <p>
-      <code>RTFiltersService</code> service inherits the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>      from the <a target="_blank" href="https://eastbanctechru.github.io/e2e4">e2e4</a> library and has the same contract.
-      If you have a need to inject this service into your components, it is necessary to register <code>RTFiltersService</code>      class in the <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>      collection as it is annotated with the <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Injectable-decorator.html">Injectable</a>      decorator.
+      <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtfiltersservice.html">RTFiltersService</a>      service inherits the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a>      from the <a target="_blank" href="https://eastbanctechru.github.io/e2e4">e2e4</a> library and has the same contract.
+      If you have a need to inject this service into your components, it is necessary to register <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtfiltersservice.html">RTFiltersService</a>      class in the <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>      collection as it is annotated with the <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Injectable-decorator.html">Injectable</a>      decorator.
     </p>
   </aside>
   <p>
-    It is quite simple to use them. First of all, we mark the filter properties of our component by the <code>@filter</code>    annotation. If required, we can specify additional parameters described below.
+    It is quite simple to use them. First of all, we mark the filter properties of our component by the <a target="_blank"
+      href="https://eastbanctechru.github.io/e2e4/index.html#filter">@filter</a> annotation. If required, we can specify additional
+    parameters described below.
   </p>
   <p>
     Second, we register our component as <code>RTFilterTarget</code> in its own <code>providers</code> array (you can read
@@ -94,12 +96,12 @@
 <section id="bootstrap">
   <h3>How to bootstrap</h3>
   <p>
-    To use filters functionality you just import <code>@filter</code> annotation and annotate your component properties.
-    If you want to use the filter functionality separately from the lists, you can import <code>RTFiltersService</code> service
-    into your component and configure it as a provider in the <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>    collection of your component declaration.
+    To use filters functionality you just import <a target="_blank" href="https://eastbanctechru.github.io/e2e4/index.html#filter">@filter</a>    annotation and annotate your component properties. If you want to use the filter functionality separately from the lists,
+    you can import <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtfiltersservice.html">RTFiltersService</a>    service into your component and configure it as a provider in the <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html">providers</a>    collection of your component declaration.
   </p>
   <p>
-    If you plan to use the <code>rtRegisterAsFilter</code> directive, which is described below, you should import <code>RTFiltersModule</code>    (or <code>RTModule</code> module which includes functionality of entire library) and add it into your <code>AppModule</code>    <code>imports</code> array.
+    If you plan to use the <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/registerasfilterdirective.html">rtRegisterAsFilter</a>    directive, which is described below, you should import <code>RTFiltersModule</code> (or <code>RTModule</code> module
+    which includes functionality of entire library) and add it into your <code>AppModule</code> <code>imports</code> array.
   </p>
   <rt-demo-tab-section>
     <rt-demo-code-tab title="app.module.ts" url="filters/bootstrap/app.module.tsfake">
@@ -185,8 +187,8 @@
   <section id="empty-is-null">
     <h4>emptyIsNull</h4>
     <p>
-      <code>emptyIsNull</code> - means that falsy values should be converted to <code>null</code> when serialized as a request
-      parameter. By default this option is equal to <code>false</code>.
+      <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/filterconfig.html#emptyisnull">emptyIsNull</a>      - means that falsy values should be converted to <code>null</code> when serialized as a request parameter. By default
+      this option is equal to <code>false</code>.
     </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
@@ -201,8 +203,9 @@
   <section id="ignore-on-auto-map">
     <h4>ignoreOnAutoMap</h4>
     <p>
-      <code>ignoreOnAutoMap</code> - if this parameter is equal to <code>true</code>, the value will not be applied to the
-      target property by the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a>      function. By default this parameter is equal to <code>false</code>.
+      <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/filterconfig.html#ignoreonautomap">ignoreOnAutoMap</a>      - if this parameter is equal to <code>true</code>, the value will not be applied to the target property by the <a target="_blank"
+        href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a> function. By default
+      this parameter is equal to <code>false</code>.
     </p>
     <rt-demo-tab-section>
       <rt-demo-sample-tab>
