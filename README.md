@@ -2,6 +2,8 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/eastbanctechru/right-angled-demo.svg)](https://greenkeeper.io/)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/eastbanctechru/right-angled-demo.svg)](https://greenkeeper.io/)
+
 This project is based on [angular-webpack2-starter](https://github.com/qdouble/angular-webpack2-starter).
 
 [![Build Status](https://travis-ci.org/eastbanctechru/right-angled-demo.svg?branch=master)](https://travis-ci.org/eastbanctechru/right-angled-demo)
