@@ -4,6 +4,9 @@
   <ul class="agenda">
     <li><a href="filters#common-idea">General idea</a></li>
     <li><a href="filters#bootstrap">How to bootstrap</a></li>
+    <li>
+      <a href="filters#register-as-filter"><code>rtRegisterAsFilter</code> directive</a>
+    </li>
     <li><a href="filters#filter-annotation"><code>@filter</code> annotation options</a>
       <ul>
         <li><a href="filters#parameter-name"><code>parameterName</code></a></li>
@@ -14,9 +17,6 @@
         <li><a href="filters#parse-formatter"><code>parseFormatter</code></a></li>
         <li><a href="filters#serialize-formatter"><code>serializeFormatter</code></a></li>
       </ul>
-    </li>
-    <li>
-      <a href="filters#register-as-filter"><code>rtRegisterAsFilter</code> directive</a>
     </li>
   </ul>
 </section>
@@ -39,13 +39,6 @@
     if you need to use some custom parameters? For example, when it is needed to add filter to the list? How to make it so
     the filter value is sent to the server as a parameter, resetted to the default value on list state reset, serialized
     in <code>queryString</code>, and restored its value when page with such <code>queryString</code> parameters is opened?
-  </p>
-  <p>
-    And, this functionality should be achieved with minimum of code to write. It is easy to remember that the component property
-    should be added to the request parameters – as soon as we created it for this. The same as easy to forget to write the
-    code to implement other features in the working rush. And sometimes it takes a long time to notice that our filter property
-    is not resettled by the <a href="#" [routerLink]="['/list-controls']">resetSettings</a> method call. A long time
-    after the app is passed to the end users.
   </p>
   <p>
     To solve this issue we provide the <a target="_blank" href="https://eastbanctechru.github.io/e2e4/index.html#filter">@filter</a>    annotation and <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtfiltersservice.html">RTFiltersService</a>    service in the <code>right-angled</code> library.
@@ -108,6 +101,36 @@
     </rt-demo-code-tab>
   </rt-demo-tab-section>
 
+</section>
+<section id="register-as-filter">
+  <h3><code>rtRegisterAsFilter</code> directive</h3>
+  <p>
+    In order to make the <code>RTFiltersService</code> to know about our component as a parameter source and construct filters
+    from its properties, we can register our objects as filters with <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#registerfiltertarget">registerFilterTarget</a>    directive
+  </p>
+  <p>
+    In the first example of this section you could see how we register our component as a filter with the help of <code>onListInit</code>    event of the <code>rtList</code> directive.
+  </p>
+  <p>
+    In other examples we have implement components, which inject <code>RTFiltersService</code> service and register themselves
+    as filter in it.
+  </p>
+  <p>
+    There is also the third way to register object as filter. It goes well when your filter is a separate component. This third
+    way is the <code>rtRegisterAsFilter</code> directive.
+  </p>
+  <p>
+    Below there is an example of using this directive. The list filter is implemented as a separate <code>rt-demo-filter-area</code>    component and is registered as a filter for the current list directly in the template with the help of the <code>rtRegisterAsFilter</code>    directive.
+  </p>
+  <rt-demo-tab-section>
+    <rt-demo-sample-tab>
+      <rt-demo-register-as-filter-sample></rt-demo-register-as-filter-sample>
+    </rt-demo-sample-tab>
+    <rt-demo-code-tab url="filters/register-as-filter-sample/register-as-filter-sample.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="filters/register-as-filter-sample/register-as-filter-sample.component.ts">
+    </rt-demo-code-tab>
+  </rt-demo-tab-section>
 </section>
 <section id="filter-annotation">
   <h3><code>@filter</code> annotation options</h3>
@@ -239,36 +262,6 @@
       </p>
     </aside>
   </section>
-</section>
-<section id="register-as-filter">
-  <h3><code>rtRegisterAsFilter</code> directive</h3>
-  <p>
-    In order to make the <code>RTFiltersService</code> to know about our component as a parameter source and construct filters
-    from its properties, we can register our objects as filters with <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#registerfiltertarget">registerFilterTarget</a>    directive
-  </p>
-  <p>
-    In the first example of this section you could see how we register our component as a filter with the help of <code>onListInit</code>    event of the <code>rtList</code> directive.
-  </p>
-  <p>
-    In other examples we have implement components, which inject <code>RTFiltersService</code> service and register themselves
-    as filter in it.
-  </p>
-  <p>
-    There is also the third way to register object as filter. It goes well when your filter is a separate component. This third
-    way is the <code>rtRegisterAsFilter</code> directive.
-  </p>
-  <p>
-    Below there is an example of using this directive. The list filter is implemented as a separate <code>rt-demo-filter-area</code>    component and is registered as a filter for the current list directly in the template with the help of the <code>rtRegisterAsFilter</code>    directive.
-  </p>
-  <rt-demo-tab-section>
-    <rt-demo-sample-tab>
-      <rt-demo-register-as-filter-sample></rt-demo-register-as-filter-sample>
-    </rt-demo-sample-tab>
-    <rt-demo-code-tab url="filters/register-as-filter-sample/register-as-filter-sample.component.html">
-    </rt-demo-code-tab>
-    <rt-demo-code-tab url="filters/register-as-filter-sample/register-as-filter-sample.component.ts">
-    </rt-demo-code-tab>
-  </rt-demo-tab-section>
 </section>
 <section>
   <aside>
