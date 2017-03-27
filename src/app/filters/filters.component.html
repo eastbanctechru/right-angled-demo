@@ -13,6 +13,7 @@
         <li><a href="filters#coerce"><code>coerce</code></a></li>
         <li><a href="filters#default-value"><code>defaultValue</code></a></li>
         <li><a href="filters#empty-is-null"><code>emptyIsNull</code></a></li>
+        <li><a href="filters#omit-if-null"><code>omitIfNullOrUndefined</code></a></li>
         <li><a href="filters#ignore-on-auto-map"><code>ignoreOnAutoMap</code></a></li>
         <li><a href="filters#parse-formatter"><code>parseFormatter</code></a></li>
         <li><a href="filters#serialize-formatter"><code>serializeFormatter</code></a></li>
@@ -222,7 +223,30 @@
       <rt-demo-code-tab url="filters/empty-is-null-sample/empty-is-null-sample.component.ts">
       </rt-demo-code-tab>
     </rt-demo-tab-section>
+
   </section>
+
+
+  <section id="omit-if-null">
+    <h4>omitIfNullOrUndefined</h4>
+    <p>
+      <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/filterconfig.html#omitifnullorundefined">omitIfNullOrUndefined</a>      - means that <code>null</code> and <code>undefined</code> values should be omitted when serialized as a request parameter.
+      By default this option is equal to <code>false</code>.
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-omit-if-null-or-undefined-sample></rt-demo-omit-if-null-or-undefined-sample>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="filters/omit-if-null-or-undefined-sample/omit-if-null-or-undefined-sample.component.html">
+      </rt-demo-code-tab>
+      <rt-demo-code-tab url="filters/omit-if-null-or-undefined-sample/omit-if-null-or-undefined-sample.component.ts">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+
+  </section>
+
+
+
   <section id="ignore-on-auto-map">
     <h4>ignoreOnAutoMap</h4>
     <p>
