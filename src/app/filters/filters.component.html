@@ -15,8 +15,8 @@
         <li><a href="filters#empty-is-null"><code>emptyIsNull</code></a></li>
         <li><a href="filters#omit-if-null"><code>omitIfNullOrUndefined</code></a></li>
         <li><a href="filters#ignore-on-auto-map"><code>ignoreOnAutoMap</code></a></li>
-        <li><a href="filters#parse-formatter"><code>parseFormatter</code></a></li>
         <li><a href="filters#serialize-formatter"><code>serializeFormatter</code></a></li>
+        <li><a href="filters#parse-formatter"><code>parseFormatter</code></a></li>
       </ul>
     </li>
   </ul>
@@ -264,13 +264,6 @@
       </rt-demo-code-tab>
     </rt-demo-tab-section>
   </section>
-  <section id="parse-formatter">
-    <h4>parseFormatter</h4>
-    <p>
-      <code>parseFormatter(rawValue: Object, allValues?: Object)</code> - custom function, which can be used to perform custom
-      parse logic of the values on <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a>      function execution.
-    </p>
-  </section>
   <section id="serialize-formatter">
     <h4>serializeFormatter</h4>
     <p>
@@ -286,6 +279,23 @@
       </p>
     </aside>
   </section>
+  <section id="parse-formatter">
+    <h4>parseFormatter</h4>
+    <p>
+      <code>parseFormatter(rawValue: Object, allValues?: Object)</code> - custom function, which can be used to perform custom
+      parse logic of the values on <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html#applyparams">applyParams</a>      function execution.
+    </p>
+  </section>
+  <aside>
+    <p>
+      If you want to change default values of described properties globally, you can import <a target="_blank" href="https://eastbanctechru.github.io/e2e4/index.html#defaultfilterconfig">DefaultFilterConfig</a>      object and setting up it properties.
+    </p>
+    <rt-demo-tab-section>
+      <rt-demo-code-tab title="app.component.ts" url="filters/global-configuration/app.component.tsfake">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </aside>
+
 </section>
 <section>
   <aside>
