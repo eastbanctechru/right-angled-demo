@@ -35,6 +35,16 @@ export class AirportsService {
       .map((airports) => this.applySortings(request, airports))
       .map((airports) => this.applyPaging(request, airports));
   }
+  public getAirportsListChunk(request: AirportsPagedListRequest, delay: number = 500): Observable<Airport[]> {
+    return this
+      .getAllAirports()
+      .delay(delay)
+      .map((airports: Airport[]) => _.cloneDeep(airports))
+      .map((airports: Airport[]) => this.applyFilters(request, airports))
+      .map((airports: Airport[]) => this.applySortings(request, airports))
+      .map((airports: Airport[]) => this.applyPaging(request, airports))
+      .map((airports: ListResponse) => airports.items);
+  }
 
   private getAllAirports(): Observable<Airport[]> {
     // we "cache" result since we get all of the items

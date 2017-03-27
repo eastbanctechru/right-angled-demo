@@ -11,6 +11,6 @@ export class InfiniteSampleComponent {
     this.airportsService = airportsService;
   }
   public loadData = (requestParams: AirportsPagedListRequest): any => {
-    return this.airportsService.getAirportsPagedList(requestParams);
+    return this.airportsService.getAirportsListChunk(requestParams);
   }
 }

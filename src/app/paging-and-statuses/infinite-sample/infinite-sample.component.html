@@ -38,7 +38,7 @@
           <div>
             <rt-status-done>
               <rt-buffered-pager [defaultRowCount]="20" #rtPager>
-                <span>Loaded records {{rtPager.pager.loadedCount}} of {{rtPager.pager.totalCount}}</span>
+                <span>{{rtPager.pager.loadedCount}} records loaded</span>
                 <a tabindex="0" (click)="rtPager.loadMore()" rtPreventDefaults="click" [class.hidden]="!rtPager.canLoadMore" [rtInfinite]="scrollContainer"
                   href="#">Show more</a>
               </rt-buffered-pager>
