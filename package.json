@@ -69,6 +69,8 @@
     "watch": "npm run watch:dev",
     "watch:dev": "npm-run-all -p -r \"build:dev -- --watch\" sass:watch",
     "watch:prod": "npm-run-all -p -r \"build:prod -- --watch\" sass:watch",
+    "preversion": "npm run lint && npm run compile:dev",
+    "postversion": "git push && git push --tags",
     "deploy": "npm run compile:e2e && npm run rewrite-base-url && gh-pages -d dist\\client",
     "rewrite-base-url": "replace \"href=\\\"/\\\"\" \"href=\\\"/right-angled-demo/\\\"\" dist/client/index.html dist/client/404.html"
   },
