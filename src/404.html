@@ -20,11 +20,6 @@
 
 
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    #str-dlls {
-      display: none
-    }
-  </style>
 </head>
 
 <body>
@@ -41,21 +36,15 @@
   </rt-demo-app>
 
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=console.*,Intl.~locale.en&gated=1"></script>
-  <div id="str-dlls">
-    <%= '<' %>script src="/polyfill.dll.js"
-      <%= '>' %>
-        <%= '<' %>/script
-          <%= '>' %>
-            <%= '<' %>script src="/vendor.dll.js"
-              <%= '>' %>
-                <%= '<' %>/script
-                  <%= '>' %>
-  </div>
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer) { %>
+  <!-- DLL files -->
+		<script src="/polyfill.dll.js"></script>
+		<script src="/vendor.dll.js"></script>
+  <% } %>  
   <script src="./prism.js" data-manual></script>
   <script src="./prism-typescript.js"></script>
   <script src="./alertify.min.js"></script>
-
-  <script src="./index.js"></script>
+  <script src="./clipboard.min.js"></script>
 </body>
 
 </html>

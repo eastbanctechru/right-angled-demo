@@ -44,7 +44,7 @@ Thumbs.db
 /coverage/
 
 /output/
-/src/compiled/
+/compiled/
 .awcache/
 /src/app/**/*.css
 ts-node

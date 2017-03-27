@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitHelpers": true,
@@ -16,11 +18,9 @@
   },
   "exclude": [
     "node_modules",
-    "src/compiled",
-    "src/**/*.e2e.ts",
+    "compiled",
     "src/**/*.spec.ts",
-    "src/server.ts",
-    "src/main.browser.aot.ts"
+    "src/server.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
@@ -31,7 +31,7 @@
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": "src/compiled",
+   "genDir": "compiled",
    "skipMetadataEmit" : true
  }
 }

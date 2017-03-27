@@ -1,4 +1,4 @@
-/* tslint:disable */
+/* tslint:disable: max-line-length triple-equals */
 beforeEach(() => {
   jasmine.addMatchers({
 

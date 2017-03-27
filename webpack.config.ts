@@ -1,9 +1,10 @@
-/* tslint:disable */
+/* tslint:disable: variable-name max-line-length */
 /**
- * Try to not make your own edits to this file, use the constants folder instead. 
+ * Try to not make your own edits to this file, use the constants folder instead.
  * If more constants should be added file an issue or create PR.
  */
 import 'ts-helpers';
+const path = require('path');
 
 import {
   DEV_PORT, PROD_PORT, EXCLUDE_SOURCE_MAPS, HOST,
@@ -24,10 +25,12 @@ const {
 
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WebpackMd5Hash = require('webpack-md5-hash');
 
 const { hasProcessFlag, root, testDll } = require('./helpers.js');
 
@@ -38,6 +41,7 @@ const DLL = EVENT.includes('dll');
 const E2E = EVENT.includes('e2e');
 const HMR = hasProcessFlag('hot');
 const PROD = EVENT.includes('prod');
+const WATCH = hasProcessFlag('watch');
 
 let port: number;
 if (PROD) {
@@ -85,6 +89,7 @@ const COPY_FOLDERS = [
 
 if (!DEV_SERVER) {
   COPY_FOLDERS.unshift({ from: 'src/index.html' });
+  COPY_FOLDERS.unshift({ from: 'src/404.html' });
 } else {
   COPY_FOLDERS.push({ from: 'dll' });
 }
@@ -102,14 +107,14 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.ts$/,
         loaders: [
-          'awesome-typescript-loader',
+          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
           'angular2-template-loader',
-          'angular2-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
+          'angular-router-loader?loader=system&genDir=compiled&aot=' + AOT
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/]
       },
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
+      { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html'), root('src/404.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
       ...MY_CLIENT_RULES
     ]
@@ -117,12 +122,23 @@ const clientConfig = function webpackConfig(): WebpackConfig {
 
   config.plugins = [
     new ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      root('./src')
+      /angular(\\|\/)core(\\|\/)@angular/,
+      path.resolve(__dirname, '../src')
     ),
     new ProgressPlugin(),
+    new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
+    new WebpackMd5Hash(),
+    new HtmlWebpackPlugin({
+      metadata: { isDevServer: DEV_SERVER },
+      template: 'src/index.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: '404.html',
+      metadata: { isDevServer: DEV_SERVER },
+      template: 'src/404.html'
+    }),
     ...MY_CLIENT_PLUGINS
   ];
 
@@ -135,10 +151,6 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       new DllReferencePlugin({
         context: '.',
         manifest: require(`./dll/vendor-manifest.json`)
-      }),
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        inject: false
       })
     );
   }
@@ -173,9 +185,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       }),
       ...MY_CLIENT_PRODUCTION_PLUGINS,
     );
-    if (!E2E) {
+    if (!E2E && !WATCH) {
       config.plugins.push(
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({ analyzerPort: 5000 })
       );
     }
   }
@@ -220,7 +232,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   if (!DLL) {
     config.output = {
       path: root('dist/client'),
-      filename: 'index.js'
+      filename: !PROD ? '[name].bundle.js' : '[name].[chunkhash].bundle.js',
+      sourceMapFilename: !PROD ? '[name].bundle.map' : '[name].[chunkhash].bundle.map',
+      chunkFilename: !PROD ? '[id].chunk.js' : '[id].[chunkhash].chunk.js'
     };
   } else {
     config.output = {
@@ -231,11 +245,12 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   }
 
   config.devServer = {
-    contentBase: AOT ? './src/compiled' : './src',
+    contentBase: AOT ? './compiled' : './src',
     port: CONSTANTS.PORT,
     historyApiFallback: {
       disableDotRule: true,
     },
+    stats: 'minimal',
     host: '0.0.0.0',
     watchOptions: DEV_SERVER_WATCH_OPTIONS
   };
@@ -245,6 +260,10 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       proxy: DEV_SERVER_PROXY_CONFIG
     });
   }
+
+  config.performance = {
+    hints: false
+  };
 
   config.node = {
     global: true,

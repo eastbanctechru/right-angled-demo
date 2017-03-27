@@ -3,12 +3,14 @@
  */
 const webpack = require('webpack');
 const root = require('../helpers').root;
+const path = require('path');
 
 /**
  * Webpack Plugins
  */
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
 const EXCLUDE_SOURCE_MAPS = require('../constants').EXCLUDE_SOURCE_MAPS;
@@ -22,8 +24,6 @@ const STORE_DEV_TOOLS = require('../constants').STORE_DEV_TOOLS;
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = {
-
-  entry: {},
 
   /**
    * Source map for Karma from the help of karma-sourcemap-loader &  karma-webpack
@@ -151,8 +151,8 @@ module.exports = {
    */
   plugins: [
     new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      root('./src')
+      /angular(\\|\/)core(\\|\/)@angular/,
+      path.resolve(__dirname, '../src')
     ),
     /**
      * Plugin: DefinePlugin
