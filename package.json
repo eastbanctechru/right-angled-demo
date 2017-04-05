@@ -3,6 +3,11 @@
   "version": "1.0.0-beta.4",
   "description": "Demo site for right-angled library",
   "author": "EastBanc Technologies",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eastbanctechru/right-angled-demo/issues"
+  },
+  "homepage": "https://github.com/eastbanctechru/right-angled-demo#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eastbanctechru/right-angled-demo.git"
@@ -60,7 +65,7 @@
     "@angular/router": "4.0.1",
     "@angular/tsc-wrapped": "4.0.1",
     "alertify": "^0.3.0",
-    "angulartics2": "1.6.4",
+    "angulartics2": "^2.0.0",
     "bootstrap": "^3.3.7",
     "clipboard": "1.6.1",
     "core-js": "2.4.1",
@@ -128,10 +133,5 @@
       "@angular/router",
       "@angular/tsc-wrapped"
     ]
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/eastbanctechru/right-angled-demo/issues"
-  },
-  "homepage": "https://github.com/eastbanctechru/right-angled-demo#readme"
+  }
 }
