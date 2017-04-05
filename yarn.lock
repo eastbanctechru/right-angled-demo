@@ -52,9 +52,9 @@
   version "0.3.29"
   resolved "https://registry.yarnpkg.com/@types/alertify/-/alertify-0.3.29.tgz#b8de6f3fbde9155c0f7c720e7526c8501259fbc0"
 
-"@types/clipboard@^1.5.31":
-  version "1.5.31"
-  resolved "https://registry.yarnpkg.com/@types/clipboard/-/clipboard-1.5.31.tgz#e7b549a5d4ee689b3766dc6a631ca1cf2f4a624a"
+"@types/clipboard@^1.5.33":
+  version "1.5.33"
+  resolved "https://registry.yarnpkg.com/@types/clipboard/-/clipboard-1.5.33.tgz#add44ab691a2d64c79100c8d29c0bd303828636c"
 
 "@types/core-js@0.9.35":
   version "0.9.35"
