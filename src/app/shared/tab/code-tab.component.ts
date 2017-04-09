@@ -4,6 +4,9 @@ import { Http } from '@angular/http';
 import { Tab } from './tab-base';
 import { TabSectionComponent } from './tab-section.component';
 
+import * as Prism from 'prismjs';
+import 'prismjs/components/prism-typescript';
+
 @Component({
   selector: 'rt-demo-code-tab',
   template: `

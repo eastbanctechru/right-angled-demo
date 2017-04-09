@@ -56,13 +56,11 @@ exports.MY_COPY_FOLDERS = [
   // format is { from: 'folder_name', to: 'folder_name' }
     { from: '.gitignore' },
   { from: 'src/favicon.ico' },
+  { from: 'node_modules/normalize.css/normalize.css' },
   { from: 'node_modules/bootstrap/dist/css/bootstrap.min.css' },
   { from: 'node_modules/alertify/themes/alertify.core.css' },
   { from: 'node_modules/alertify/themes/alertify.bootstrap.css' },
   { from: 'node_modules/alertify/lib/alertify.min.js' },
-  { from: 'node_modules/clipboard/dist/clipboard.min.js' },
-  { from: 'node_modules/prismjs/prism.js' },
-  { from: 'node_modules/prismjs/components/prism-typescript.js' },
   { from: 'node_modules/prismjs/themes/prism.css' }
 ]
 
@@ -73,6 +71,12 @@ exports.MY_POLYFILL_DLLS = [
 ]
 
 exports.MY_VENDOR_DLLS = [
+  'e2e4',
+  'right-angled',
+  'lodash',
+  'angulartics2',
+  'prismjs',
+  'clipboard'
   // list vendors that you want to be included in your dlls files
   // this will speed up initial dev server build and incremental builds.
   // Be sure to run `npm run build:dll` if you make changes to this array.

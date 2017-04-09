@@ -1,4 +1,10 @@
-@import 'shared.scss';
+@import './shared.scss';
+@import './normalize.css';
+@import './bootstrap.min.css';
+@import './alertify.core.css';
+@import './alertify.bootstrap.css';
+@import './prism.css';
+
 
 body,
 html {

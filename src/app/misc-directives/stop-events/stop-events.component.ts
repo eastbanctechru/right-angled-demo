@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
 export class StopEventsComponent {
   public stopPropagation: boolean = true;
   public logKeyPress(eventKey: string): void {
-  alertify.log(`'${eventKey}' pressed`);
+    alertify.log(`'${eventKey}' pressed`);
   }
 }

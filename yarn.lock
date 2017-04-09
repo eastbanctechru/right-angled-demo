@@ -89,9 +89,9 @@
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.5.tgz#96a0f0a618b7b606f1ec547403c00650210bfbb7"
 
-"@types/prismjs@1.4.18":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.4.18.tgz#3941877a78a27ce37011d6f28e404e388c97fe6c"
+"@types/prismjs@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.6.1.tgz#a8eb810dd329618b3c12efc48a75cb93ed6911bc"
 
 "@types/serve-static@*":
   version "1.7.31"
@@ -758,9 +758,9 @@ compressible@~2.0.8:
   dependencies:
     mime-db ">= 1.24.0 < 2"
 
-compression-webpack-plugin@~0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-0.3.2.tgz#1edfb0e749d7366d3e701670c463359b2c0cf704"
+compression-webpack-plugin@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-0.4.0.tgz#811de04215f811ea6a12d4d8aed8457d758f13ac"
   dependencies:
     async "0.2.x"
     webpack-sources "^0.1.0"
@@ -2619,6 +2619,10 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
+normalize.css@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-6.0.0.tgz#22188c2707c911fb3ad3c1aac0677ff68661bea8"
+
 npm-run-all@~4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.0.2.tgz#a84669348e6db6ccbe052200b4cdb6bfe034a4fe"
@@ -3993,9 +3997,9 @@ tsickle@^0.21.0:
     source-map "^0.5.6"
     source-map-support "^0.4.2"
 
-tslint-loader@~3.4.3:
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.4.3.tgz#ac1eaf57d35eff383d0b008fa67b0813e8b51c54"
+tslint-loader@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.5.2.tgz#ef2f512c05a96fb1a22d94c32d22fb7975ef9917"
   dependencies:
     loader-utils "^1.0.2"
     mkdirp "^0.5.1"
