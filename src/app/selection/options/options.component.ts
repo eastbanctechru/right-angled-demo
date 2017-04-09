@@ -17,7 +17,7 @@ export class OptionsComponent {
   }
   public reload(): void {
     this.countries = [];
-    this.countriesService.getSomeCountries(8, 500)
+    this.countriesService.getSomeCountries(8, 200)
       .subscribe((countries) => this.countries = countries);
   }
 }
