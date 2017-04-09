@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
 
 import { Airport, AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
