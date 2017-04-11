@@ -13,6 +13,9 @@
           <a href="list-controls#default-sortings"><code>defaultSortings</code> parameter</a>
         </li>
         <li>
+          <a href="list-controls#keep-records-on-load"><code>keepRecordsOnLoad</code> parameter</a>
+        </li>
+        <li>
           <a href="list-controls#list-methods">Additional methods and properties</a>
         </li>
         <li>
@@ -28,7 +31,6 @@
     </li>
     <li><a href="list-controls#rt-sort"><code>rtSort</code> directive</a></li>
     <li><a href="list-controls#rt-row-number"><code>rtRowNumber</code> pipe</a></li>
-    <li><a href="list-controls#custom-items-handling">Taking control over <code>items</code> collection</a></li>
   </ul>
 </section>
 <section id="common-idea">
@@ -77,6 +79,7 @@
     <p>This parameter specifies that it is required to execute the first data loading automatically right after the list is
       initialized. By default it is equal to <code>true</code></p>
   </section>
+
   <section id="default-sortings">
     <h4><code>defaultSortings</code> parameter</h4>
     <p>
@@ -98,6 +101,19 @@
         <rt-demo-default-sortings></rt-demo-default-sortings>
       </rt-demo-sample-tab>
       <rt-demo-code-tab url="list-controls/default-sortings/default-sortings.component.html">
+      </rt-demo-code-tab>
+    </rt-demo-tab-section>
+  </section>
+  <section id="keep-records-on-load">
+    <h4><code>keepRecordsOnLoad</code> parameter</h4>
+    <p>This parameter specifies that list must keep previously loaded records until data request is completed. By default it
+      is equal to <code>false</code></p>
+
+    <rt-demo-tab-section>
+      <rt-demo-sample-tab>
+        <rt-demo-keep-records-on-load></rt-demo-keep-records-on-load>
+      </rt-demo-sample-tab>
+      <rt-demo-code-tab url="list-controls/keep-records-on-load/keep-records-on-load.component.html">
       </rt-demo-code-tab>
     </rt-demo-tab-section>
   </section>
@@ -207,7 +223,8 @@
   </rt-demo-tab-section>
   <aside>
     <p>
-      If, by some reason, you don’t like the names of <code>rt-sortable</code>, <code>rt-sort-asc</code>, and <code>rt-sort-desc</code>      classes, you can change them globally by importing the <code>SortDirective</code> and setting up <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/sortdirective.html#settings">SortDirective.settings</a>      object properties.
+      If, by some reason, you don’t like the names of <code>rt-sortable</code>, <code>rt-sort-asc</code>, and <code>rt-sort-desc</code>      classes, you can change them globally by importing the <code>SortDirective</code> and setting up <a target="_blank"
+        href="https://eastbanctechru.github.io/right-angled/classes/sortdirective.html#settings">SortDirective.settings</a>      object properties.
     </p>
     <rt-demo-tab-section>
       <rt-demo-code-tab title="app.component.ts" url="list-controls/sortings-configuration/app.component.ts">
@@ -234,48 +251,6 @@
       <rt-demo-use-row-number></rt-demo-use-row-number>
     </rt-demo-sample-tab>
     <rt-demo-code-tab url="list-controls/use-row-number/use-row-number.component.html">
-    </rt-demo-code-tab>
-  </rt-demo-tab-section>
-</section>
-<section id="custom-items-handling">
-  <h3>Taking control over <code>items</code> collection</h3>
-  <p>
-    Sometimes you need to implement some custom logic when working with list elements.
-  </p>
-  <p>
-    For example, instead of displaying the progress bar you may want to keep currently loaded records in list while the data
-    request is executed. Or you want to implement some logic which requires access to the list elements.
-  </p>
-  <p>
-    There are many possible scenarios which can be commonly described as "you need to take control over <code>items</code>    collection".
-  </p>
-  <p>
-    To achieve this you can declare property in your component and use it instead of <code>rtList.items</code> in component
-    template. This means that you lose the features which <code>RTList</code> implements for <code>items</code> collection,
-    but you can easily reproduce them (if you need them at all). In fact, <code>RTList</code> does only two things:
-  </p>
-  <ul class="bulleted">
-    <li>
-      Determines if it is required to destroy currently loaded elements or keep them when loading data. For example, it is required to keep loaded items
-      when loading next chunk of buffered lists data.
-    </li>
-    <li>
-      Calls optional <a href="list-controls#destroy-method">destroy</a> method of <code>items</code> collection
-      elements on list reload/destroy.
-    </li>
-  </ul>
-  <p>
-    Below there is an example of the component which uses its own <code>myOwnItemsCollection</code> property instead of
-    <code>rtList.items</code> and destroys elements when new data already loaded.
-  </p>
-
-  <rt-demo-tab-section>
-    <rt-demo-sample-tab>
-      <rt-demo-custom-items-handling></rt-demo-custom-items-handling>
-    </rt-demo-sample-tab>
-    <rt-demo-code-tab url="list-controls/custom-items-handling/custom-items-handling.component.html">
-    </rt-demo-code-tab>
-    <rt-demo-code-tab url="list-controls/custom-items-handling/custom-items-handling.component.ts">
     </rt-demo-code-tab>
   </rt-demo-tab-section>
 </section>

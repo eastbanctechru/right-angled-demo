@@ -18,7 +18,7 @@ export class AirportsService {
   private airportsCache: ReplaySubject<Airport[]> = new ReplaySubject<Airport[]>(1);
   constructor(private http: Http) {
   }
-  public getAirportsList(request: AirportsListRequest, delay: number = 200): Observable<Airport[]> {
+  public getAirportsList(request: AirportsListRequest, delay: number = 400): Observable<Airport[]> {
     return this
       .getAllAirports()
       .delay(delay)
@@ -27,7 +27,7 @@ export class AirportsService {
       .map((airports) => this.applySortings(request, airports))
       .map((airports) => airports.slice(0, 5));
   }
-  public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 200): Observable<ListResponse> {
+  public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 400): Observable<ListResponse> {
     return this
       .getAllAirports()
       .delay(delay)
@@ -36,7 +36,7 @@ export class AirportsService {
       .map((airports) => this.applySortings(request, airports))
       .map((airports) => this.applyPaging(request, airports));
   }
-  public getAirportsListChunk(request: AirportsPagedListRequest, delay: number = 200): Observable<Airport[]> {
+  public getAirportsListChunk(request: AirportsPagedListRequest, delay: number = 400): Observable<Airport[]> {
     return this
       .getAllAirports()
       .delay(delay)
