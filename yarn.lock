@@ -164,9 +164,9 @@ angular2-template-loader@~0.6.2:
   dependencies:
     loader-utils "^0.2.15"
 
-angulartics2@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-2.0.0.tgz#95273deb4536bfb01bd1baf36b3bdd80ae2958c4"
+angulartics2@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-2.2.0.tgz#52a459505d54d4a79a40fba1a857aac21ca329b0"
 
 ansi-align@^1.1.0:
   version "1.1.0"
@@ -1182,9 +1182,9 @@ duplexer@^0.1.1, duplexer@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
 
-e2e4@2.0.0-rc.5:
-  version "2.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/e2e4/-/e2e4-2.0.0-rc.5.tgz#b0a6159e883fd210e34228a7347d31cc935607ba"
+e2e4@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/e2e4/-/e2e4-2.0.0.tgz#2736e3f2a08debf25e5278c5b928889d3046858a"
 
 ecc-jsbn@~0.1.1:
   version "0.1.1"
@@ -3470,13 +3470,13 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-right-angled@1.0.0-beta.6:
-  version "1.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.0.0-beta.6.tgz#27d1fdde05d408bf369802b50325eddd988e8507"
+right-angled@^1.0.0-rc.0:
+  version "1.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.0.0-rc.0.tgz#83df9543c6dfce9656194fc7c395e02d628b2716"
   dependencies:
     "@angular/common" "^4.0.0"
     "@angular/core" "^4.0.0"
-    e2e4 "2.0.0-rc.5"
+    e2e4 "^2.0.0"
     rxjs "^5.0.3"
 
 rimraf@2, rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.5.4, rimraf@~2.6.1:
