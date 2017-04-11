@@ -1,4 +1,3 @@
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -13,7 +12,6 @@ import { routing } from './app.routing';
 export const APP_IMPORTS = [BrowserModule,
   Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
   HttpModule,
-  FormsModule,
   RTModule,
   RouterModule,
   SharedModule.forRoot(),

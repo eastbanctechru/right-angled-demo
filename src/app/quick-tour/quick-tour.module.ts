@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
@@ -17,7 +16,7 @@ import { UseStatusesComponent } from './use-statuses/use-statuses.component';
 @NgModule({
   declarations: [QuickTourComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStatusesComponent, UseSelectionComponent],
   exports: [QuickTourComponent, UseListComponent, UseControlsComponent, UseFiltersComponent, UsePagingComponent, UsePersistenceComponent, UseSortingsComponent, UseStatusesComponent, UseSelectionComponent],
-  imports: [CommonModule, SharedModule, FormsModule, RouterModule]
+  imports: [CommonModule, SharedModule, RouterModule]
 })
 export class QuickTourModule {
 }
