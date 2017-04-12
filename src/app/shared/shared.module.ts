@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { RTModule } from 'right-angled';
 
 import { AirportsService } from './data/airports.service';
-import { LookupsService } from './data/lookups.service';
 
 import { CopyButtonComponent } from './copy-button/copy-button.component';
 import { FilterAreaComponent } from './filter-area/filter-area.component';
@@ -24,7 +23,7 @@ export class SharedModule {
   public static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [AirportsService, LookupsService]
+      providers: [AirportsService]
     };
   }
 }

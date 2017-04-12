@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RTSelectionEvent } from 'right-angled';
 
-import { CountriesService } from '../countries.service';
+import { AirportsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-selection-events',
@@ -9,8 +9,8 @@ import { CountriesService } from '../countries.service';
 })
 export class SelectionEventsComponent {
   public countries: any[] = new Array<any>();
-  constructor(public countriesService: CountriesService) {
-    this.countriesService.getSomeCountries()
+  constructor(public airportsService: AirportsService) {
+    this.airportsService.getSomeCountries()
       .subscribe((countries) => this.countries = countries);
   }
 

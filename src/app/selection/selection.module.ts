@@ -18,8 +18,6 @@ import { NestedButtonComponent } from './service-injection/nested-button.compone
 import { ServiceInjectionComponent } from './service-injection/service-injection.component';
 import { ServiceViewChildComponent } from './service-view-child/service-view-child.component';
 
-import { CountriesService } from './countries.service';
-
 @NgModule({
   declarations: [
     BasicUsageComponent,
@@ -49,7 +47,7 @@ import { CountriesService } from './countries.service';
     ServiceInjectionComponent,
     NestedButtonComponent],
   imports: [CommonModule, RouterModule.forChild(SelectionRoutes), SharedModule],
-  providers: [CountriesService]
+  providers: []
 })
 export class SelectionModule {
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CountriesService } from '../countries.service';
+import { AirportsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-selected-ref',
@@ -8,8 +8,8 @@ import { CountriesService } from '../countries.service';
 })
 export class SelectedRefComponent {
   public countries: any[] = new Array<any>();
-  constructor(public countriesService: CountriesService) {
-    this.countriesService.getSomeCountries()
+  constructor(public airportsService: AirportsService) {
+    this.airportsService.getSomeCountries()
       .subscribe((countries) => this.countries = countries);
   }
 }

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { SelectionAreaDirective } from 'right-angled';
 
-import { CountriesService } from '../countries.service';
+import { AirportsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-service-view-child',
@@ -11,8 +11,8 @@ import { CountriesService } from '../countries.service';
 export class ServiceViewChildComponent {
   @ViewChild(SelectionAreaDirective) public selectionArea: SelectionAreaDirective;
   public countries: any[] = new Array<any>();
-  constructor(public countriesService: CountriesService) {
-    this.countriesService.getSomeCountries()
+  constructor(public airportsService: AirportsService) {
+    this.airportsService.getSomeCountries()
       .subscribe((countries) => this.countries = countries);
   }
   public displaySelectedItems(): void {

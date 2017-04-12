@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { CountriesService } from '../../countries.service';
+import { AirportsService } from '../../../shared';
 
 @Component({
   selector: 'rt-demo-country-details',
@@ -11,12 +11,12 @@ export class CountryDetailsComponent {
   public selected: boolean = false;
   public loading: boolean = false;
   public countryInfo: any = null;
-  constructor(private countriesService: CountriesService) {
+  constructor(private airportsService: AirportsService) {
   }
   public onSelected(): void {
     this.selected = true;
     this.loading = true;
-    this.countriesService.getCountryInfo(this.country.name).subscribe((countryInfo) => {
+    this.airportsService.getCountryInfo(this.country.name).subscribe((countryInfo) => {
       this.countryInfo = countryInfo;
       this.loading = false;
     });

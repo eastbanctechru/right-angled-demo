@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CountriesService } from '../countries.service';
+import { AirportsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-selection-checkbox',
@@ -9,7 +9,7 @@ import { CountriesService } from '../countries.service';
 })
 export class SelectionCheckboxComponent {
   public regions: any;
-  constructor(public countriesService: CountriesService) {
-    this.regions = this.countriesService.getRegionsWithCountriesAndAirports();
+  constructor(public airportsService: AirportsService) {
+    this.regions = this.airportsService.getRegionsWithCountriesAndAirports();
   }
 }

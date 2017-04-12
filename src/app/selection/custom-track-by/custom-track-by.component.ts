@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CountriesService } from '../countries.service';
+import { AirportsService } from '../../shared';
 
 @Component({
   selector: 'rt-demo-custom-track-by',
@@ -8,12 +8,12 @@ import { CountriesService } from '../countries.service';
 })
 export class CustomTrackByComponent {
   public countries: any = [];
-  constructor(public countriesService: CountriesService) {
+  constructor(public airportsService: AirportsService) {
     this.reload();
   }
   public reload(): void {
     this.countries = [];
-    this.countriesService
+    this.airportsService
       .getSomeCountries(5, 700)
       .subscribe((countries) => this.countries = countries);
   }

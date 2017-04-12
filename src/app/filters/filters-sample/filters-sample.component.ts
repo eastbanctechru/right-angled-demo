@@ -2,7 +2,7 @@ import { Component, forwardRef } from '@angular/core';
 import { filter, RTFilterTarget, RTList, RTStateService } from 'right-angled';
 import { Observable } from 'rxjs/Observable';
 
-import { AirportsService, ListResponse, LookupItem, LookupsService, QueryStringStateService } from '../../shared';
+import { AirportsService, ListResponse, LookupItem, QueryStringStateService } from '../../shared';
 
 @Component({
     providers: [
@@ -22,9 +22,9 @@ export class FiltersSampleComponent {
     @filter() public airportSize: string = null;
     @filter() public airportType: string = null;
 
-    constructor(private airportsService: AirportsService, private lookupsService: LookupsService) {
-        this.lookupsService.getAirportSizeLookups().subscribe((sizes) => this.airportSizes = sizes);
-        this.lookupsService.getAirportTypeLookups().subscribe((types) => this.airportTypes = types);
+    constructor(private airportsService: AirportsService) {
+        this.airportsService.getAirportSizeLookups().subscribe((sizes) => this.airportSizes = sizes);
+        this.airportsService.getAirportTypeLookups().subscribe((types) => this.airportTypes = types);
     }
 
     public getAirports = (request: any): Observable<ListResponse> => {
