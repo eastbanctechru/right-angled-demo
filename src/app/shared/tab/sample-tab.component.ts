@@ -6,7 +6,7 @@ import { TabSectionComponent } from './tab-section.component';
 @Component({
   selector: 'rt-demo-sample-tab',
   template: `
-  <div [hidden]="!isActive">
+  <div [ngClass]="{'hidden': !isActive}">
     <ng-content></ng-content>
   </div>
   `

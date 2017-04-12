@@ -10,10 +10,10 @@ import 'prismjs/components/prism-typescript';
 @Component({
   selector: 'rt-demo-code-tab',
   template: `
-  <div [hidden]="!isActive">
-    <rt-demo-copy-button [hidden]="!contentReady" [text]="rawSources"></rt-demo-copy-button>
-    <div [hidden]="contentReady" class="spinner"></div>
-    <pre [hidden]="!contentReady"></pre>
+  <div [ngClass]="{'hidden': !isActive}">
+    <rt-demo-copy-button [ngClass]="{'hidden': !contentReady}" [text]="rawSources"></rt-demo-copy-button>
+    <div [ngClass]="{'hidden': contentReady}" class="spinner"></div>
+    <pre [ngClass]="{'hidden': !contentReady}"></pre>
   </div>
   `
 })
