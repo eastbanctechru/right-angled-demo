@@ -49,8 +49,11 @@ export class AirportsService {
       .map((response) => response.airports)
       .map((airports) => this.applyFilters(request, airports))
       .map((airports) => this.applySortings(request, airports))
-      .map((airports) => airports.map((airport) => Object.assign({}, airport)))
-      .map((airports) => this.applyPaging(request, airports));
+      .map((airports) => this.applyPaging(request, airports))
+      .map((response) => {
+        response.items = response.items.map((airport) => Object.assign({}, airport));
+        return response;
+      });
 
   }
   public getAirportsListChunk(request: AirportsPagedListRequest, delay: number = 400): Observable<Airport[]> {
@@ -72,7 +75,14 @@ export class AirportsService {
   public getRegionsWithCountriesAndAirports(): Observable<any[]> {
     return this.getResponse()
       .map((response) => (
-        response.airportsTree
+        response.airportsTree.map((region) => ({
+          countries: region.countries.map((country) => (
+            {
+              airports: country.airports.map((airport) => (Object.assign({}, airport))),
+              name: country.name
+            })),
+          name: region.name
+        }))
       ));
   }
   public getCountryInfo(countryName: string, delay: number = 0): Observable<any> {
