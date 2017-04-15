@@ -5,15 +5,15 @@
 }
 
 :host /deep/ rt-demo-sample-tab > div {
-  background: #fafafa;
+  background: $color-light-grey;
   padding: 15px;
 }
 
 :host /deep/ div.tab-body {
-  border: 1px solid #4fc3f7;
+  border: 1px solid $color-light-blue;
   padding: 0;
   min-height: 250px;
-  background-color: #fafafa;
+  background-color: $color-light-grey;
 
   rt-demo-sample-tab > div {
     min-height: 360px;
@@ -37,12 +37,11 @@
   .spinner {
     width: 100%;
     height: 250px;
-    background: url('./assets/images/circle.gif') center center no-repeat;
     z-index: 1;
   }
 
   pre {
-    background-color: #fafafa;
+    background-color: $color-light-grey;
     font-family: Monaco, "Lucida Console", monospace;
     line-height: 24px;
     padding: 15px;
@@ -89,11 +88,11 @@ ul.tabs {
 
   li.active,
   li.active button.btn {
-    border-color: #fafafa;
+    border-color: $color-light-grey;
 
     button.btn {
       color: #333;
-      background: #fafafa;
+      background: $color-light-grey;
       padding: 7px 24px;
     }
   }

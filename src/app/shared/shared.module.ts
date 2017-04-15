@@ -10,13 +10,14 @@ import { CopyButtonComponent } from './copy-button/copy-button.component';
 import { FilterAreaComponent } from './filter-area/filter-area.component';
 import { BufferedFooterComponent } from './footers/buffered-footer.component/buffered-footer.component';
 import { PagedFooterComponent } from './footers/paged-footer.component/paged-footer.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { CodeTabComponent } from './tab/code-tab.component';
 import { SampleTabComponent } from './tab/sample-tab.component';
 import { TabSectionComponent } from './tab/tab-section.component';
 
 @NgModule({
-  declarations: [BufferedFooterComponent, PagedFooterComponent, FilterAreaComponent, CodeTabComponent, CopyButtonComponent, SampleTabComponent, TabSectionComponent],
-  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, FilterAreaComponent, PagedFooterComponent, CodeTabComponent, CopyButtonComponent, SampleTabComponent, TabSectionComponent],
+  declarations: [BufferedFooterComponent, PagedFooterComponent, FilterAreaComponent, CodeTabComponent, CopyButtonComponent, ProgressBarComponent, SampleTabComponent, TabSectionComponent],
+  exports: [CommonModule, FormsModule, RTModule, BufferedFooterComponent, FilterAreaComponent, PagedFooterComponent, CodeTabComponent, CopyButtonComponent, ProgressBarComponent, SampleTabComponent, TabSectionComponent],
   imports: [CommonModule, FormsModule, RTModule]
 })
 export class SharedModule {

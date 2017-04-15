@@ -33,7 +33,7 @@ export class AirportsService {
     return this.responseCache;
   }
 
-  public getAirportsList(request: AirportsListRequest, delay: number = 400): Observable<Airport[]> {
+  public getAirportsList(request: AirportsListRequest, delay: number = 600): Observable<Airport[]> {
     return this
       .getResponse()
       .delay(delay)
@@ -43,7 +43,7 @@ export class AirportsService {
       .map((airports) => airports.slice(0, 5))
       .map((airports) => airports.map((airport) => Object.assign({}, airport)));
   }
-  public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 400): Observable<ListResponse> {
+  public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 600): Observable<ListResponse> {
     return this
       .getResponse()
       .delay(delay)
@@ -57,7 +57,7 @@ export class AirportsService {
       });
 
   }
-  public getAirportsListChunk(request: AirportsPagedListRequest, delay: number = 400): Observable<Airport[]> {
+  public getAirportsListChunk(request: AirportsPagedListRequest, delay: number = 600): Observable<Airport[]> {
     return this
       .getResponse()
       .delay(delay)

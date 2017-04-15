@@ -5,7 +5,6 @@
 @import './alertify.bootstrap.css';
 @import './prism.css';
 
-
 body,
 html {
   background: $color-light-grey;
@@ -100,10 +99,105 @@ aside {
   }
 }
 
-.app-loader {
+.spinner {
+  display: table;
   width: 100%;
   height: 100vh;
-  background: url('./assets/images/circle.gif') center center no-repeat;
+
+  .spinner-pusher {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+
+    .spinner-wraper {
+      vertical-align: middle;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      margin: 50px auto;
+      cursor: pointer;
+      border-radius: 110px;
+      -webkit-border-radius: 110px;
+    }
+
+    .spinner-body {
+      background-color: $color-light-grey;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      z-index: 2;
+      border-radius: 110px;
+      text-align: center;
+      font-size: 10px;
+      color: $color-light-grey;
+      line-height: 90px;
+    }
+
+    .spinner-line {
+      margin: 0 auto;
+      background: $color-light-blue;
+      background: -webkit-radial-gradient(20% 20%, circle cover, $color-light-blue 0%, transparent 60%, transparent 100%);
+      background: radial-gradient(circle at 20% 20%, $color-light-blue 0%, transparent 60%, transparent 100%);
+      border-radius: 110px;
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      -webkit-animation-name: spinner-rotate;
+      -webkit-animation-duration: 1s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-name: spinner-rotate;
+      -moz-animation-duration: 1s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+      animation-name: spinner-rotate;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+}
+
+@-webkit-keyframes spinner-rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-moz-keyframes spinner-rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 .btn-primary {
@@ -219,13 +313,6 @@ rt-status-progress,
 rt-status-request-cancelled {
   display: block;
   text-align: center;
-}
-
-div.line-progress {
-  margin: 0 auto;
-  width: 128px;
-  height: 16px;
-  background: url('./assets/images/line-progress.gif') center center no-repeat;
 }
 
 rt-demo-buffered-footer,
