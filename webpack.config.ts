@@ -250,7 +250,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
     historyApiFallback: {
       disableDotRule: true,
     },
-    stats: 'minimal',
+    stats: 'errors-only',
     host: '0.0.0.0',
     watchOptions: DEV_SERVER_WATCH_OPTIONS
   };
