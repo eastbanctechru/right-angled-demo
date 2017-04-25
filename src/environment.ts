@@ -1,4 +1,4 @@
-// Angular 2
+/* tslint:disable */
 import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
 import { enableProdMode, ApplicationRef } from '@angular/core';
 

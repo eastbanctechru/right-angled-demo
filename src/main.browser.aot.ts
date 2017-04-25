@@ -1,5 +1,5 @@
 import './polyfills.browser.aot';
-declare var ENV: string;
+declare const ENV: string;
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
@@ -9,12 +9,12 @@ if ('production' === ENV) {
   enableProdMode();
 }
 
-export function main() {
+export function main(): Promise<any> {
   return platformBrowser().bootstrapModuleFactory(AppModuleNgFactory)
-    .catch(err => console.log(err));
+    .catch((err) => console.error(err));
 }
 
-export function bootstrapDomReady() {
+export function bootstrapDomReady(): void {
   document.addEventListener('DOMContentLoaded', main);
 }
 

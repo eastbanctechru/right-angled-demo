@@ -11,7 +11,7 @@ import 'prismjs/components/prism-typescript';
   selector: 'rt-demo-code-tab',
   template: `
   <div [ngClass]="{'hidden': !isActive}">
-    <rt-demo-copy-button [ngClass]="{'hidden': !contentReady}" [text]="rawSources"></rt-demo-copy-button>    
+    <rt-demo-copy-button [ngClass]="{'hidden': !contentReady}" [text]="rawSources"></rt-demo-copy-button>
     <div [ngClass]="{'hidden': contentReady}" class="spinner">
       <div class="spinner-pusher">
         <div class="spinner-wraper">
