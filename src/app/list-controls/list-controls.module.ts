@@ -11,10 +11,11 @@ import { KeepRecordsOnLoadComponent } from './keep-records-on-load/keep-records-
 import { UseRowNumberComponent } from './use-row-number/use-row-number.component';
 import { UseRTListComponent } from './use-rt-list/use-rt-list.component';
 import { UseSortingsComponent } from './use-sortings/use-sortings.component';
+import { UseStreamsComponent } from './use-streams/use-streams.component';
 
 @NgModule({
-  declarations: [ListControlsComponent, DefaultSortingsComponent, KeepRecordsOnLoadComponent, UseRTListComponent, UseRowNumberComponent, UseSortingsComponent],
-  exports: [ListControlsComponent, DefaultSortingsComponent, KeepRecordsOnLoadComponent, UseRTListComponent, UseRowNumberComponent, UseSortingsComponent],
+  declarations: [ListControlsComponent, DefaultSortingsComponent, KeepRecordsOnLoadComponent, UseRTListComponent, UseRowNumberComponent, UseSortingsComponent, UseStreamsComponent],
+  exports: [ListControlsComponent, DefaultSortingsComponent, KeepRecordsOnLoadComponent, UseRTListComponent, UseRowNumberComponent, UseSortingsComponent, UseStreamsComponent],
   imports: [CommonModule, SharedModule, RouterModule.forChild(ListControlsRoutes)]
 })
 export class ListControlsModule {
