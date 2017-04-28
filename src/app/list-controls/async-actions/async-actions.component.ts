@@ -47,7 +47,7 @@ export class AsyncActionsComponent {
   }
 
   public completeRequest(): void {
-    this.airportsService.getAirportsPagedList(this.lastRequestParams).subscribe((response) => {
+    this.airportsService.getAirportsPagedList(this.lastRequestParams, 0).subscribe((response) => {
       this.subscriber.next(response);
       this.subscriber.complete();
       this.subscriber = null;

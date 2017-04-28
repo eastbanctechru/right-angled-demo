@@ -80,7 +80,7 @@
   </p>
   <p>
     Also it is possible to request data by using async actions with tools like <a href="https://github.com/ngrx/store">ngrx-store</a>. See more
-    details <a href="#" [routerLink]="['/list-controls']">here</a>.
+    details <a href="#" [routerLink]="['/list-controls']" [queryParams]="{section: 'async-actions'}">here</a>.
   </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
@@ -135,7 +135,7 @@
   </p>
   <p>
     The same technique can be used to display specific content when there are errors, or no records loaded and so on. See more
-    details <a href="#" [routerLink]="['/paging-and-statuses']">here</a>.
+    details <a href="#" [routerLink]="['/paging-and-statuses']" [queryParams]="{section: 'status-components'}">here</a>.
   </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
@@ -199,7 +199,7 @@
   <h3>Adding a couple of useful controls</h3>
   <p>
     In the example below we add buttons for data loading, canceling requests and resetting list parameters. These buttons use
-    the <a href="#" [routerLink]="['/list-controls']">additional <code>rtList</code> methods</a> in their <code>click</code>    event handlers.
+    the <a href="#" [routerLink]="['/list-controls']" [queryParams]="{section: 'list-methods'}">additional <code>rtList</code> methods</a> in their <code>click</code>    event handlers.
   </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
@@ -215,13 +215,13 @@
   <h3>Use paging</h3>
   <p>
     In the example below we add the second list to the template, which is assigned to the same component. Then we add the paged
-    pager and buffered pager components, described in the <a href="#" [routerLink]="['/paging-and-statuses']">section about the paging</a>,
+    pager and buffered pager components, described in the <a href="#" [routerLink]="['/paging-and-statuses']" [queryParams]="{section: 'reusable-paged-pager'}">section about the paging</a>,
     into these two lists
   </p>
   <p>
     In brief, there are several utility components and directives in <code>right-angled</code> library, which can be used
     to construct a reusable and functional pager component. Such a pager can be used for all the lists in your project. This
-    is particularly what we did in the <a href="#" [routerLink]="['/paging-and-statuses']">section about the paging</a> using
+    is particularly what we did in the <a href="#" [routerLink]="['/paging-and-statuses']" [queryParams]="{section: 'reusable-paged-pager'}">section about the paging</a> using
     here its result.
   </p>
   <p>
@@ -264,7 +264,7 @@
     </li>
     <li>
       When clicking "Reset settings" button, the values of filter properties elements are resetted to default values. For the <code>airportName</code>      property it is its initial value that is <code>null</code>. And for the <code>countryName</code> property it is the
-      "Iceland" string specified through the <code>@filter</code> decorator <a href="#" [routerLink]="['/filters']">additional settings</a>
+      "Iceland" string specified through the <code>@filter</code> decorator <a href="#" [routerLink]="['/filters']" [queryParams]="{section: 'filter-annotation'}">additional settings</a>
     </li>
   </ul>
   <rt-demo-tab-section>
@@ -281,7 +281,7 @@
   <h3>Adding the control of state</h3>
   <p>
     In the example below you can see that we register <code>QueryStringStateService</code> service, implemented in
-    <a href="#" [routerLink]="['/persistence']">Persist lists state</a> section, as provider in our component metadata.
+    <a href="#" [routerLink]="['/persistence']" [queryParams]="{section: 'service-implementations'}">Persist lists state</a> section, as provider in our component metadata.
 
   </p>
   <p>

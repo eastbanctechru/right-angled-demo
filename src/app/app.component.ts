@@ -14,14 +14,22 @@ export class DemoAppComponent {
     router.events.subscribe((s) => {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
+        let elementId = '';
         if (tree.fragment) {
           const qsIndex = tree.fragment.indexOf('?');
-          tree.fragment = qsIndex === -1 ? tree.fragment : tree.fragment.substring(0, qsIndex);
-          const element = document.querySelector('#' + tree.fragment);
-          if (element) { element.scrollIntoView(element); }
-        } else {
-          window.scroll(0, 0);
+          elementId = qsIndex === -1 ? tree.fragment : tree.fragment.substring(0, qsIndex);
         }
+        if (tree.queryParams && tree.queryParams.section) {
+          elementId = tree.queryParams.section;
+        }
+        if (elementId) {
+          const element = document.querySelector('#' + elementId);
+          if (element) {
+            element.scrollIntoView(element);
+            return;
+          }
+        }
+        window.scroll(0, 0);
       }
     });
   }
