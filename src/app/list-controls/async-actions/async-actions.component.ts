@@ -5,10 +5,10 @@ import { Subscriber } from 'rxjs/Subscriber';
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 
 @Component({
-  selector: 'rt-demo-use-streams',
-  templateUrl: 'use-streams.component.html'
+  selector: 'rt-demo-async-actions',
+  templateUrl: 'async-actions.component.html'
 })
-export class UseStreamsComponent {
+export class AsyncActionsComponent {
   public lastRequestParams: AirportsPagedListRequest = null;
   public subscriber: Subscriber<ListResponse> = null;
   constructor(private airportsService: AirportsService) {
@@ -17,6 +17,7 @@ export class UseStreamsComponent {
     this.lastRequestParams = request;
     return new Observable<ListResponse>((subscriber) => this.subscriber = subscriber);
   }
+
   public cancelRequest(): void {
     this.subscriber.next({
       items: [],
@@ -26,6 +27,7 @@ export class UseStreamsComponent {
     this.subscriber.complete();
     this.subscriber = null;
   }
+
   public failRequest(): void {
     this.subscriber.next({
       items: [],
@@ -35,6 +37,7 @@ export class UseStreamsComponent {
     this.subscriber.complete();
     this.subscriber = null;
   }
+
   public continueRequest(): void {
     this.subscriber.next({
       items: [],
@@ -42,6 +45,7 @@ export class UseStreamsComponent {
       totalCount: 0
     });
   }
+
   public completeRequest(): void {
     this.airportsService.getAirportsPagedList(this.lastRequestParams).subscribe((response) => {
       this.subscriber.next(response);

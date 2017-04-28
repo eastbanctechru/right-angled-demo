@@ -31,7 +31,7 @@
     </li>
     <li><a href="list-controls#rt-sort"><code>rtSort</code> directive</a></li>
     <li><a href="list-controls#rt-row-number"><code>rtRowNumber</code> pipe</a></li>
-    <li><a href="list-controls#use-streams">Use streams with <code>rtList</code></a></li>
+    <li><a href="list-controls#async-actions">Querying data using async actions</a></li>
   </ul>
 </section>
 <section id="common-idea">
@@ -120,7 +120,8 @@
 
     <aside>
       <p>
-        You can change the value of <code>keepRecordsOnLoad</code>        property globally. To do that you need to import <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/list.html">List</a>        service from the <code>right-angled</code> library and use its static <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/list.html#settings">settings</a>        property.
+        You can change the value of <code>keepRecordsOnLoad</code> property globally. To do that you need to import <a target="_blank"
+          href="https://eastbanctechru.github.io/e2e4/classes/list.html">List</a> service from the <code>right-angled</code>        library and use its static <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/list.html#settings">settings</a>        property.
       </p>
       <rt-demo-tab-section>
         <rt-demo-code-tab title="app.component.ts" url="list-controls/global-configuration/app.component.ts">
@@ -266,13 +267,32 @@
     </rt-demo-code-tab>
   </rt-demo-tab-section>
 </section>
-<section id="use-streams">
-  <h3>Use streams with <code>rtList</code></h3>
+<section id="async-actions">
+  <h3>Querying data using async actions</h3>
+  <p>
+    If you manage the state of your application with tools like <a href="https://github.com/ngrx/store">ngrx-store</a> it
+    is reasonable to query lists data by using async actions.
+  </p>
+  <p>
+    Thereby, <code>rtList</code> should react to at least two state changes which are separated in time: start of the data request and its completion.
+  </p>
+  <p>
+    To achieve this, <a target="_blank" href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html">ListResponse</a>    contract has optional <a href="https://eastbanctechru.github.io/e2e4/interfaces/listresponse.html#status">status</a>    field. This field can be used to notify <code>rtList</code> instance about current request state via the same stream
+    as for data loading.
+  </p>
+  <p>
+    In the example below, you can see that the data request is started and completed through separate actions which are triggered
+    by clicking to the certain button. </p>
+  <p>
+    User actions is more general example of async actions than tools like ngrx. But idea is the same.
+  </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
-      <rt-demo-use-streams></rt-demo-use-streams>
+      <rt-demo-async-actions></rt-demo-async-actions>
     </rt-demo-sample-tab>
-    <rt-demo-code-tab url="list-controls/use-streams/use-streams.component.html">
+    <rt-demo-code-tab url="list-controls/async-actions/async-actions.component.html">
+    </rt-demo-code-tab>
+    <rt-demo-code-tab url="list-controls/async-actions/async-actions.component.ts">
     </rt-demo-code-tab>
   </rt-demo-tab-section>
 </section>

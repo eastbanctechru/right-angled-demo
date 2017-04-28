@@ -78,6 +78,10 @@
     This directive takes one parameter – data request function. This function should return <code>Promise</code>, <code>Observable</code>,
     or <code>EventEmitter</code> with the resulting data. As in the example below, we inject <code>AirportsService</code>    class into our component and use its <code>getAirportsList</code> method.
   </p>
+  <p>
+    Also it is possible to request data by using async actions with tools like <a href="https://github.com/ngrx/store">ngrx-store</a>. See more
+    details <a href="#" [routerLink]="['/list-controls']">here</a>.
+  </p>
   <rt-demo-tab-section>
     <rt-demo-sample-tab>
       <rt-demo-use-list></rt-demo-use-list>
