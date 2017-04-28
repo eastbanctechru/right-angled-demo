@@ -54,16 +54,16 @@
     "rewrite-base-url": "replace \"href=\\\"/\\\"\" \"href=\\\"/right-angled-demo/\\\"\" dist/client/index.html dist/client/404.html"
   },
   "dependencies": {
-    "@angular/common": "^4.0.3",
-    "@angular/compiler": "^4.0.3",
-    "@angular/compiler-cli": "^4.0.3",
-    "@angular/core": "^4.0.3",
-    "@angular/forms": "^4.0.3",
-    "@angular/http": "^4.0.3",
-    "@angular/platform-browser": "^4.0.3",
-    "@angular/platform-browser-dynamic": "^4.0.3",
-    "@angular/router": "^4.0.3",
-    "@angular/tsc-wrapped": "^4.0.3",
+    "@angular/common": "^4.1.0",
+    "@angular/compiler": "^4.1.0",
+    "@angular/compiler-cli": "^4.1.0",
+    "@angular/core": "^4.1.0",
+    "@angular/forms": "^4.1.0",
+    "@angular/http": "^4.1.0",
+    "@angular/platform-browser": "^4.1.0",
+    "@angular/platform-browser-dynamic": "^4.1.0",
+    "@angular/router": "^4.1.0",
+    "@angular/tsc-wrapped": "^4.1.0",
     "alertify": "^0.3.0",
     "angulartics2": "^2.2.1",
     "bootstrap": "^3.3.7",
@@ -73,7 +73,7 @@
     "normalize.css": "^6.0.0",
     "right-angled": "^1.1.0",
     "rxjs": "^5.3.0",
-    "zone.js": "0.8.5"
+    "zone.js": "^0.8.9"
   },
   "devDependencies": {
     "@types/alertify": "^0.3.29",
@@ -109,12 +109,12 @@
     "ts-node": "3.0.2",
     "tslint": "^5.1.0",
     "tslint-loader": "^3.5.3",
-    "typescript": "2.2.2",
+    "typescript": "2.3.1",
     "watch-run": "~1.2.5",
     "webpack": "^2.4.1",
     "webpack-bundle-analyzer": "^2.4.0",
     "webpack-dev-middleware": "^1.10.2",
-    "webpack-dev-server": "^2.4.4",
+    "webpack-dev-server": "^2.4.5",
     "webpack-md5-hash": "^0.0.5"
   },
   "greenkeeper": {
