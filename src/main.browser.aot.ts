@@ -11,6 +11,7 @@ if ('production' === ENV) {
 
 export function main(): Promise<any> {
   return platformBrowser().bootstrapModuleFactory(AppModuleNgFactory)
+    // tslint:disable-next-line:no-console
     .catch((err) => console.error(err));
 }
 

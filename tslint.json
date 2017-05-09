@@ -23,6 +23,7 @@
     ],
     "no-default-export": true,
     "no-inferrable-types": false,
+    "no-object-literal-type-assertion": false,
     "no-mergeable-namespace": true,
     "no-namespace": true,
     "no-null-keyword": false,

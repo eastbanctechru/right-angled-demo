@@ -12,4 +12,5 @@ if ('production' === ENV) {
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .then(decorateModuleRef)
+  // tslint:disable-next-line:no-console
   .catch((err) => console.error(err));
