@@ -7,9 +7,12 @@ import { RTModule } from 'right-angled';
 import { QuickTourModule } from './quick-tour/quick-tour.module';
 import { SharedModule } from './shared/shared.module';
 
+import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
 import { routing } from './app.routing';
 
-export const APP_IMPORTS = [BrowserModule,
+export const APP_IMPORTS = [
+  TransferHttpModule,
+  BrowserModule,
   Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
   HttpModule,
   RTModule,

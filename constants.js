@@ -6,6 +6,9 @@ exports.HOST = ip.address();
 exports.DEV_PORT = 3000;
 exports.E2E_PORT = 4201;
 exports.PROD_PORT = 8088;
+exports.UNIVERSAL_PORT = 8000;
+
+exports.SHOW_WEBPACK_BUNDLE_ANALYZER = false;
 
 /**
  * These constants set whether or not you will use proxy for Webpack DevServer
@@ -54,7 +57,7 @@ exports.MY_COPY_FOLDERS = [
   // use this for folders you want to be copied in to Client dist
   // src/assets and index.html are already copied by default.
   // format is { from: 'folder_name', to: 'folder_name' }
-    { from: '.gitignore' },
+  { from: '.gitignore' },
   { from: 'src/favicon.ico' },
   { from: 'node_modules/normalize.css/normalize.css' },
   { from: 'node_modules/bootstrap/dist/css/bootstrap.min.css' },
@@ -93,10 +96,18 @@ exports.MY_CLIENT_RULES = [
   // use this to import your own rules for Client webpack config.
 ]
 
+exports.MY_SERVER_RULES = [
+  // use this to import your own rules for Universal Server webpack config.
+]
+
 exports.MY_TEST_RULES = [
   // use this to import your own rules for Test webpack config.
 ]
 
 exports.MY_TEST_PLUGINS = [
   // use this to import your own Test webpack config plugins.
+]
+
+exports.MY_SERVER_INCLUDE_CLIENT_PACKAGES = [
+  // include these client packages so we can transform their source with webpack loaders
 ]

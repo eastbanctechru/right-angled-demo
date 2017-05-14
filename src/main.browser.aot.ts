@@ -1,21 +1,21 @@
 import './polyfills.browser.aot';
-declare const ENV: string;
+declare var ENV: string;
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
+import { BrowserAppModuleNgFactory } from '../compiled/src/app/browser.app.module.ngfactory';
 
 if ('production' === ENV) {
   enableProdMode();
 }
 
 export function main(): Promise<any> {
-  return platformBrowser().bootstrapModuleFactory(AppModuleNgFactory)
+  return platformBrowser().bootstrapModuleFactory(BrowserAppModuleNgFactory)
     // tslint:disable-next-line:no-console
-    .catch((err) => console.error(err));
+    .catch(err => console.log(err));
 }
 
-export function bootstrapDomReady(): void {
+export function bootstrapDomReady() {
   document.addEventListener('DOMContentLoaded', main);
 }
 
