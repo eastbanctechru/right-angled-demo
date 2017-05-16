@@ -1089,13 +1089,13 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2.6.1, debug@^2.2.0, debug@~2.6.0:
+debug@2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
     ms "0.7.2"
 
-debug@2.6.4, debug@^2.6.3:
+debug@2.6.4, debug@^2.2.0, debug@^2.6.3, debug@~2.6.0:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.4.tgz#7586a9b3c39741c0282ae33445c4e8ac74734fe0"
   dependencies:
@@ -1228,9 +1228,9 @@ duplexify@^3.2.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-e2e4@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/e2e4/-/e2e4-2.1.0.tgz#b7ef9246b66bde8d7b86cacd86425cff19612391"
+e2e4@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/e2e4/-/e2e4-2.1.1.tgz#2fc644b09d2fbcdb567eee223538c577abc0bbc3"
 
 ecc-jsbn@~0.1.1:
   version "0.1.1"
@@ -3673,11 +3673,11 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-right-angled@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.2.0.tgz#087414d9246b3496a466575b1f0414d32bc5dfeb"
+right-angled@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.2.2.tgz#97b37ab11b5540a30dd17643231c9d8fbc854bfe"
   dependencies:
-    e2e4 "^2.1.0"
+    e2e4 "^2.1.1"
 
 rimraf@2, rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.5.4, rimraf@~2.6.1:
   version "2.6.1"
@@ -3717,9 +3717,9 @@ sax@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
 
-script-ext-html-webpack-plugin@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/script-ext-html-webpack-plugin/-/script-ext-html-webpack-plugin-1.7.4.tgz#d1881df0eba13912a6841d75a5add4c6e8721c9a"
+script-ext-html-webpack-plugin@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/script-ext-html-webpack-plugin/-/script-ext-html-webpack-plugin-1.8.0.tgz#0b9e9aec8c78bcd9cefbc5f6e21d2be7a15735cd"
   dependencies:
     debug "^2.6.3"
 
@@ -4722,6 +4722,6 @@ yn@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-1.2.0.tgz#d237a4c533f279b2b89d3acac2db4b8c795e4a63"
 
-zone.js@~0.8.9:
-  version "0.8.9"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.9.tgz#34aaa9a3ec6d0e4acebd1b761adafa590473638b"
+zone.js@^0.8.10:
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.10.tgz#6d1b696492c029cdbe808e59e87bbd9491b98aa8"
