@@ -74,8 +74,6 @@ exports.MY_POLYFILL_DLLS = [
 ]
 
 exports.MY_VENDOR_DLLS = [
-  'e2e4',
-  'right-angled',
   'angulartics2',
   'prismjs',
   'clipboard'
