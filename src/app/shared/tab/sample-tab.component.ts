@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Tab } from './tab-base';
 import { TabSectionComponent } from './tab-section.component';
 
@@ -7,7 +6,7 @@ import { TabSectionComponent } from './tab-section.component';
   selector: 'rt-demo-sample-tab',
   template: `
   <div [ngClass]="{'hidden': !isActive}">
-    <ng-content></ng-content>
+      <ng-content></ng-content>
   </div>
   `
 })

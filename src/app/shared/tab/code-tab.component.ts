@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnChanges } from '@angular/core';
 import { Http } from '@angular/http';
-
+import { isBrowser } from '../../runtime';
 import { Tab } from './tab-base';
 import { TabSectionComponent } from './tab-section.component';
 
@@ -38,7 +38,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
   }
   public activate(): void {
     super.activate();
-    if (!this.contentLoadStarted) {
+    if (isBrowser && !this.contentLoadStarted) {
       this.contentLoadStarted = true;
       this.http.get(this.baseUrl + this.url)
         .map((res) => {

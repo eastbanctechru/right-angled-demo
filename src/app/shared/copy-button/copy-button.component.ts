@@ -1,5 +1,8 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as Clipboard from 'clipboard';
+import { isBrowser } from '../../runtime';
+
+const isBowser: boolean = typeof document === 'object' && !!document;
 
 @Component({
   selector: 'rt-demo-copy-button',
@@ -13,9 +16,11 @@ export class CopyButtonComponent implements OnInit, OnDestroy {
 
   }
   public ngOnInit(): void {
-    this.clipboard = new Clipboard(this.elementRef.nativeElement, {
-      text: this.getText
-    });
+    if (isBrowser) {
+      this.clipboard = new Clipboard(this.elementRef.nativeElement, {
+        text: this.getText
+      });
+    }
   }
   public ngOnDestroy(): void {
     if (this.clipboard) {

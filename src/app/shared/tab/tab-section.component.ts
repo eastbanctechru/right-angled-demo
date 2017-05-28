@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Tab } from './tab-base';
 
 @Component({

@@ -12,10 +12,10 @@ if ('production' === ENV) {
 export function main(): Promise<any> {
   return platformBrowser().bootstrapModuleFactory(BrowserAppModuleNgFactory)
     // tslint:disable-next-line:no-console
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 }
 
-export function bootstrapDomReady() {
+export function bootstrapDomReady(): void {
   document.addEventListener('DOMContentLoaded', main);
 }
 
