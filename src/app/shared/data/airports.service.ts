@@ -41,7 +41,7 @@ export class AirportsService {
       .map((airports) => this.applyFilters(request, airports))
       .map((airports) => this.applySortings(request, airports))
       .map((airports) => airports.slice(0, 5))
-      .map((airports) => airports.map((airport) => Object.assign({}, airport)));
+      .map((airports) => airports.map((airport) => ({ ...airport })));
   }
   public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 600): Observable<ListResponse> {
     return this
@@ -52,7 +52,7 @@ export class AirportsService {
       .map((airports) => this.applySortings(request, airports))
       .map((airports) => this.applyPaging(request, airports))
       .map((response) => {
-        response.items = response.items.map((airport) => Object.assign({}, airport));
+        response.items = response.items.map((airport) => ({ ...airport }));
         return response;
       });
 
@@ -65,7 +65,7 @@ export class AirportsService {
       .map((airports) => this.applyFilters(request, airports))
       .map((airports) => this.applySortings(request, airports))
       .map((airports) => this.applyPaging(request, airports))
-      .map((response) => response.items.map((airport) => Object.assign({}, airport)));
+      .map((response) => response.items.map((airport) => ({ ...airport })));
   }
   public getSomeCountries(countriesCount: number = 5, delay: number = 0): Observable<any[]> {
     return this.getResponse()
@@ -79,7 +79,7 @@ export class AirportsService {
         response.airportsTree.map((region) => ({
           countries: region.countries.map((country) => (
             {
-              airports: country.airports.map((airport) => (Object.assign({}, airport))),
+              airports: country.airports.map((airport) => ({ ...airport })),
               name: country.name
             })),
           name: region.name
