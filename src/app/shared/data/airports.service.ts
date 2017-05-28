@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-
+import { isBrowser } from '../../runtime';
 import { Airport } from './airport';
 import { AirportsListRequest } from './airports-list-request';
 import { AirportsPagedListRequest } from './airports-paged-list-request';
@@ -21,6 +22,16 @@ export class AirportsService {
 
   }
   private getResponse(): Observable<AirportsResponse> {
+    // on server return empty data to increase rendering time
+    if (!isBrowser) {
+      return Observable.of({
+        airports: [],
+        airportsTree: [],
+        countries: [],
+        sizes: [],
+        types: []
+      });
+    }
     // we use optional "delay" parameter to simulate backend latency
     // also we "cache" result sunce we get all of the items
     if (!this.responseCache.observers.length) {
