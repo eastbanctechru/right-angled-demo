@@ -29,7 +29,7 @@ export class DemoAppComponent implements OnInit {
         if (elementId) {
           const element = document.querySelector('#' + elementId);
           if (element) {
-            element.scrollIntoView(element);
+            element.scrollIntoView();
             return;
           }
         }
