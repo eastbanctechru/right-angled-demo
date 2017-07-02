@@ -1,34 +1,32 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": ["dom", "es6", "es2015", "es2016", "es2017"],
-    "noEmitHelpers": true,
-    "skipDefaultLibCheck": true,
-    "pretty": true,
-    "sourceMap": true,
-    "strictNullChecks": false,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "compiled",
-    "e2e/**/*.ts",
-    "src/server.ts",
-    "src/server.aot.ts",
-    "src/main.browser.aot.ts"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true,
-    "forkChecker": true,
-    "useCache": true
-  },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["dom", "es6", "es2015", "es2016", "es2017"],
+        "noEmitHelpers": true,
+        "skipDefaultLibCheck": true,
+        "pretty": true,
+        "sourceMap": true,
+        "strictNullChecks": false,
+        "typeRoots": ["node_modules/@types"]
+    },
+    "exclude": [
+        "node_modules",
+        "compiled",
+        "e2e/**/*.ts",
+        "src/server.ts",
+        "src/server.aot.ts",
+        "src/main.browser.aot.ts"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "useWebpackText": true,
+        "forkChecker": true,
+        "useCache": true
+    },
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "atom": { "rewriteTsconfig": false }
 }
