@@ -1,5 +1,5 @@
-import { List } from 'right-angled';
+import { List } from "right-angled";
 
 List.settings.keepRecordsOnLoad = true;
 
-export class AppComponent { }
+export class AppComponent {}

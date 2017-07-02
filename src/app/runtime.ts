@@ -1,1 +1,1 @@
-export const isBrowser: boolean = typeof document === 'object' && !!document;
+export const isBrowser: boolean = typeof document === "object" && !!document;

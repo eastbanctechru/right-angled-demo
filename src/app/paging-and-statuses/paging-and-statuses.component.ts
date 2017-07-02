@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  templateUrl: 'paging-and-statuses.component.html'
+    templateUrl: "paging-and-statuses.component.html"
 })
-export class PagingAndStatusesComponent {
-}
+export class PagingAndStatusesComponent {}

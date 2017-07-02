@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'rt-demo-buffered-footer',
-  styleUrls: ['buffered-footer.component.css'],
-  templateUrl: 'buffered-footer.component.html'
+    selector: "rt-demo-buffered-footer",
+    styleUrls: ["buffered-footer.component.css"],
+    templateUrl: "buffered-footer.component.html"
 })
-export class BufferedFooterComponent {
-}
+export class BufferedFooterComponent {}

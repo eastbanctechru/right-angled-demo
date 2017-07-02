@@ -1,9 +1,9 @@
-import { OperationStatus } from 'right-angled';
-import { Airport } from './airport';
+import { OperationStatus } from "right-angled";
+import { Airport } from "./airport";
 
 export interface ListResponse {
-  items: Airport[];
-  totalCount: number;
-  loadedCount?: number;
-  status?: OperationStatus;
+    items: Airport[];
+    totalCount: number;
+    loadedCount?: number;
+    status?: OperationStatus;
 }

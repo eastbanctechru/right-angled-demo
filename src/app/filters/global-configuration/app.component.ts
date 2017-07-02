@@ -1,6 +1,6 @@
-import { DefaultFilterConfig } from 'right-angled';
+import { DefaultFilterConfig } from "right-angled";
 
 DefaultFilterConfig.emptyIsNull = true;
 DefaultFilterConfig.omitIfNullOrUndefined = true;
 
-export class AppComponent { }
+export class AppComponent {}

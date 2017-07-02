@@ -1,28 +1,30 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-  "files.exclude": {
-    "**/compiled": true,
-    "**/dll": true,
-    "**/.awcache": true,
-    "**/dist": true,
-    "**/*.d.ts": {
-      "when": "$(basename).ts"
+    "files.exclude": {
+        "**/compiled": true,
+        "**/dll": true,
+        "**/.awcache": true,
+        "**/dist": true,
+        "**/*.d.ts": {
+            "when": "$(basename).ts"
+        },
+        "**/*.js.map": {
+            "when": "$(basename)"
+        },
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/*.css": {
+            "when": "$(basename).scss"
+        }
     },
-    "**/*.js.map": {
-      "when": "$(basename)"
+    "search.exclude": {
+        "**/docs": true,
+        "**/coverage": true
     },
-    "**/*.js": {
-      "when": "$(basename).ts"
-    },
-    "**/*.css": {
-      "when": "$(basename).scss"
-    }
-  },
-  "search.exclude": {
-    "**/docs": true,
-    "**/coverage": true
-  },
-  "editor.detectIndentation": false,
-  "editor.tabSize": 2,
-  "typescript.check.workspaceVersion": false
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 120,
+    "typescript.check.workspaceVersion": false
 }

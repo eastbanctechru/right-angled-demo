@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  templateUrl: 'misc-directives.component.html'
+    templateUrl: "misc-directives.component.html"
 })
-export class MiscDirectivesComponent {
-}
+export class MiscDirectivesComponent {}
