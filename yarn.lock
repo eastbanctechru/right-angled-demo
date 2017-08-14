@@ -4896,9 +4896,9 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-right-angled@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.2.6.tgz#01e2273a946654a24480b8ffeaef0a1c59bdf4a3"
+right-angled@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.2.7.tgz#1892d105255023928a1b919048ff5ceab4879750"
   dependencies:
     e2e4 "^2.2.2"
 
