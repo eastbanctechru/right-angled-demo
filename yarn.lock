@@ -1541,9 +1541,9 @@ duplexify@^3.2.0, duplexify@^3.5.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-e2e4@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/e2e4/-/e2e4-2.2.2.tgz#bb0953504cec81619f7f289fed4018da831470af"
+e2e4@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/e2e4/-/e2e4-2.2.3.tgz#2b45163f61d0e450fc46182937cfbf6140eb3fcd"
 
 ecc-jsbn@~0.1.1:
   version "0.1.1"
@@ -4896,11 +4896,11 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-right-angled@^1.2.7:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.2.7.tgz#1892d105255023928a1b919048ff5ceab4879750"
+right-angled@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/right-angled/-/right-angled-1.3.0.tgz#24b8d6976964be711d63645515f5a7971a90c3dd"
   dependencies:
-    e2e4 "^2.2.2"
+    e2e4 "^2.2.3"
 
 rimraf@2, rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.5.4, rimraf@~2.6.1:
   version "2.6.1"
