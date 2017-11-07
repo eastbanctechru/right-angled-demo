@@ -1,6 +1,6 @@
 # right-angled-demo
 
-This project is based on [angular-webpack2-starter](https://github.com/qdouble/angular-webpack2-starter).
+This project is based on [angular-cli](https://github.com/angular/angular-cli).
 
 [![Build Status](https://travis-ci.org/eastbanctechru/right-angled-demo.svg?branch=master)](https://travis-ci.org/eastbanctechru/right-angled-demo)
 [![Dependency Status](https://david-dm.org/eastbanctechru/right-angled-demo.svg)](https://david-dm.org/eastbanctechru/right-angled-demo)
