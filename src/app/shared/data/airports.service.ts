@@ -5,7 +5,6 @@ import "rxjs/add/operator/delay";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { ReplaySubject } from "rxjs/ReplaySubject";
-import { isBrowser } from "../../runtime";
 import { Airport } from "./airport";
 import { AirportsListRequest } from "./airports-list-request";
 import { AirportsPagedListRequest } from "./airports-paged-list-request";
@@ -20,16 +19,6 @@ export class AirportsService {
     private responseCache: ReplaySubject<AirportsResponse> = new ReplaySubject<AirportsResponse>(1);
     constructor(private http: Http) {}
     private getResponse(): Observable<AirportsResponse> {
-        // on server return empty data to increase rendering time
-        if (!isBrowser) {
-            return Observable.of({
-                airports: [],
-                airportsTree: [],
-                countries: [],
-                sizes: [],
-                types: []
-            });
-        }
         // we use optional "delay" parameter to simulate backend latency
         // also we "cache" result sunce we get all of the items
         if (!this.responseCache.observers.length) {
@@ -97,10 +86,14 @@ export class AirportsService {
             .delay(delay);
     }
     public getAirportTypeLookups(delay: number = 0): Observable<LookupItem[]> {
-        return this.getResponse().delay(delay).map(response => response.types);
+        return this.getResponse()
+            .delay(delay)
+            .map(response => response.types);
     }
     public getAirportSizeLookups(delay: number = 0): Observable<LookupItem[]> {
-        return this.getResponse().delay(delay).map(response => response.sizes);
+        return this.getResponse()
+            .delay(delay)
+            .map(response => response.sizes);
     }
 
     private applySortings(request: AirportsListRequest, data: Airport[]): Airport[] {

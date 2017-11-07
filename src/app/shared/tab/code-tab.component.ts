@@ -1,6 +1,5 @@
 import { Component, ElementRef, Input, OnChanges } from "@angular/core";
 import { Http } from "@angular/http";
-import { isBrowser } from "../../runtime";
 import { Tab } from "./tab-base";
 import { TabSectionComponent } from "./tab-section.component";
 
@@ -38,7 +37,7 @@ export class CodeTabComponent extends Tab implements OnChanges {
     }
     public activate(): void {
         super.activate();
-        if (isBrowser && !this.contentLoadStarted) {
+        if (!this.contentLoadStarted) {
             this.contentLoadStarted = true;
             this.http
                 .get(this.baseUrl + this.url)
@@ -48,7 +47,10 @@ export class CodeTabComponent extends Tab implements OnChanges {
                 .subscribe(res => {
                     this.rawSources = res;
                     const pre = this.elementRef.nativeElement.querySelector("pre");
-                    const ext = this.url.substring(this.url.lastIndexOf(".") + 1).replace("tsfake", "ts").toLowerCase();
+                    const ext = this.url
+                        .substring(this.url.lastIndexOf(".") + 1)
+                        .replace("tsfake", "ts")
+                        .toLowerCase();
                     const lang = ext === "ts" ? "typescript" : "html";
                     pre.innerHTML = Prism.highlight(res, Prism.languages[lang]);
                     this.contentReady = true;
@@ -58,7 +60,10 @@ export class CodeTabComponent extends Tab implements OnChanges {
     public ngOnChanges(changes: any): void {
         if (changes.url && !this.tabTitle) {
             const title =
-                this.url.substring(this.url.lastIndexOf(".") + 1).replace("tsfake", "ts").toLowerCase() === "ts"
+                this.url
+                    .substring(this.url.lastIndexOf(".") + 1)
+                    .replace("tsfake", "ts")
+                    .toLowerCase() === "ts"
                     ? "Component"
                     : "Template";
             this.tabTitle = this.title || title;

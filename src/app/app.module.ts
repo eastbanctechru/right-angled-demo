@@ -11,25 +11,32 @@ import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { BrowserTransferStateModule } from "../modules/transfer-state/browser-transfer-state.module";
-
-import { APP_DECLARATIONS } from "./app.declarations";
-import { APP_ENTRY_COMPONENTS } from "./app.entry-components";
-import { APP_IMPORTS } from "./app.imports";
-import { APP_PROVIDERS } from "./app.providers";
-
+import { RouterModule } from "@angular/router";
+import { Angulartics2Module } from "angulartics2";
+import { Angulartics2GoogleAnalytics } from "angulartics2/ga";
+import { RTModule } from "right-angled";
 import { DemoAppComponent } from "./app.component";
+import { routing } from "./app.routing";
+import { HeaderComponent } from "./header/header.component";
+import { QuickTourModule } from "./quick-tour/quick-tour.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
     bootstrap: [DemoAppComponent],
-    declarations: [DemoAppComponent, APP_DECLARATIONS],
-    entryComponents: [APP_ENTRY_COMPONENTS],
+    declarations: [DemoAppComponent, HeaderComponent],
     imports: [
-        APP_IMPORTS,
         BrowserModule,
-        DEV_SERVER ? [BrowserAnimationsModule, BrowserTransferStateModule] : [],
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+        HttpModule,
+        RTModule,
+        RouterModule,
+        SharedModule.forRoot(),
+        routing,
+        QuickTourModule,
+        BrowserModule,
+        BrowserAnimationsModule,
         HttpModule
     ],
-    providers: [APP_PROVIDERS]
+    providers: []
 })
 export class AppModule {}

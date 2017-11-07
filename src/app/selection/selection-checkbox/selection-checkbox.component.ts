@@ -4,7 +4,7 @@ import { AirportsService } from "../../shared";
 
 @Component({
     selector: "rt-demo-selection-checkbox",
-    styleUrls: ["selection-checkbox.component.css"],
+    styleUrls: ["selection-checkbox.component.scss"],
     templateUrl: "selection-checkbox.component.html"
 })
 export class SelectionCheckboxComponent {

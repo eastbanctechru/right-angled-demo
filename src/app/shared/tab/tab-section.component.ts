@@ -3,7 +3,7 @@ import { Tab } from "./tab-base";
 
 @Component({
     selector: "rt-demo-tab-section",
-    styleUrls: ["tab-section.component.css"],
+    styleUrls: ["tab-section.component.scss"],
     templateUrl: "tab-section.component.html"
 })
 export class TabSectionComponent {

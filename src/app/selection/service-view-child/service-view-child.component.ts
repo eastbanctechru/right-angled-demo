@@ -15,6 +15,11 @@ export class ServiceViewChildComponent {
         this.airportsService.getSomeCountries().subscribe(countries => (this.countries = countries));
     }
     public displaySelectedItems(): void {
-        alertify.alert(this.selectionArea.selectionService.getSelectedElements().map((c: any) => c.name).join(";"));
+        alertify.alert(
+            this.selectionArea.selectionService
+                .getSelectedElements()
+                .map((c: any) => c.name)
+                .join(";")
+        );
     }
 }
