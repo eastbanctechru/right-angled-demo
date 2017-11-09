@@ -1,5 +1,5 @@
 import { ModuleWithProviders } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { NoPreloading, RouterModule, Routes } from "@angular/router";
 
 import { QuickTourRoutes } from "./quick-tour/quick-tour.routes";
 
@@ -17,4 +17,4 @@ export const appRoutes: Routes = [
     { path: "**", redirectTo: "" }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules });
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, { preloadingStrategy: NoPreloading });
