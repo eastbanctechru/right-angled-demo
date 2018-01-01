@@ -1,10 +1,10 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
-import { FiltersComponent } from "./filters.component";
+import { FiltersComponent } from './filters.component';
 
 export const FiltersRoutes: Routes = [
-    {
-        component: FiltersComponent,
-        path: ""
-    }
+  {
+    component: FiltersComponent,
+    path: ''
+  }
 ];

@@ -1,10 +1,10 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
-import { ListControlsComponent } from "./list-controls.component";
+import { ListControlsComponent } from './list-controls.component';
 
 export const ListControlsRoutes: Routes = [
-    {
-        component: ListControlsComponent,
-        path: ""
-    }
+  {
+    component: ListControlsComponent,
+    path: ''
+  }
 ];

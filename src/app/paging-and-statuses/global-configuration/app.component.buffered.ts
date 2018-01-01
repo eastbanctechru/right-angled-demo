@@ -1,4 +1,4 @@
-import { BufferedPager } from "right-angled";
+import { BufferedPager } from 'right-angled';
 
 BufferedPager.settings.defaultRowCount = 10;
 BufferedPager.settings.minRowCount = 5;

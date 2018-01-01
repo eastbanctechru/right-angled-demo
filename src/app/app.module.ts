@@ -6,37 +6,36 @@
  * there is something that is specific to the environment.
  */
 
-import { ApplicationRef, NgModule } from "@angular/core";
-import { HttpModule } from "@angular/http";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from '@angular/common/http';
+import { ApplicationRef, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { RouterModule } from "@angular/router";
-import { Angulartics2Module } from "angulartics2";
-import { Angulartics2GoogleAnalytics } from "angulartics2/ga";
-import { RTModule } from "right-angled";
-import { DemoAppComponent } from "./app.component";
-import { routing } from "./app.routing";
-import { HeaderComponent } from "./header/header.component";
-import { QuickTourModule } from "./quick-tour/quick-tour.module";
-import { SharedModule } from "./shared/shared.module";
+import { RouterModule } from '@angular/router';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { RTModule } from 'right-angled';
+import { DemoAppComponent } from './app.component';
+import { routing } from './app.routing';
+import { HeaderComponent } from './header/header.component';
+import { QuickTourModule } from './quick-tour/quick-tour.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-    bootstrap: [DemoAppComponent],
-    declarations: [DemoAppComponent, HeaderComponent],
-    imports: [
-        BrowserModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
-        HttpModule,
-        RTModule,
-        RouterModule,
-        SharedModule.forRoot(),
-        routing,
-        QuickTourModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpModule
-    ],
-    providers: []
+  bootstrap: [DemoAppComponent],
+  declarations: [DemoAppComponent, HeaderComponent],
+  imports: [
+    BrowserModule,
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+    HttpClientModule,
+    RTModule,
+    RouterModule,
+    SharedModule.forRoot(),
+    routing,
+    QuickTourModule,
+    BrowserModule,
+    BrowserAnimationsModule
+  ],
+  providers: []
 })
 export class AppModule {}

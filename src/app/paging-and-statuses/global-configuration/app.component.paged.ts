@@ -1,4 +1,4 @@
-import { PagedPager } from "right-angled";
+import { PagedPager } from 'right-angled';
 
 PagedPager.settings.defaultPageSize = 10;
 PagedPager.settings.minPageSize = 5;

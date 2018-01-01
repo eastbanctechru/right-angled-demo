@@ -1,24 +1,25 @@
-import { Component, forwardRef } from "@angular/core";
-import { filter, FilterConfig, RTFilterTarget, RTStateService } from "right-angled";
-import { Observable } from "rxjs/Observable";
+import { Component, forwardRef } from '@angular/core';
+import { filter, FilterConfig, RTFilterTarget, RTStateService } from 'right-angled';
+import { Observable } from 'rxjs/Observable';
 
-import { AirportsPagedListRequest, AirportsService, ListResponse, QueryStringStateService } from "../../shared";
+import { AirportsPagedListRequest, AirportsService, ListResponse, QueryStringStateService } from '../../shared';
 
 @Component({
-    providers: [
-        { provide: RTStateService, useClass: QueryStringStateService, multi: true },
-        { provide: RTFilterTarget, useExisting: forwardRef(() => UsePersistenceComponent) }
-    ],
-    selector: "rt-demo-use-persistence",
-    templateUrl: "use-persistence.component.html"
+  providers: [
+    { provide: RTStateService, useClass: QueryStringStateService, multi: true },
+    // tslint:disable-next-line:no-forward-ref
+    { provide: RTFilterTarget, useExisting: forwardRef(() => UsePersistenceComponent) }
+  ],
+  selector: 'rt-demo-use-persistence',
+  templateUrl: 'use-persistence.component.html'
 })
 export class UsePersistenceComponent {
-    @filter() public airportName: string = null;
-    @filter(<FilterConfig>{ defaultValue: "Iceland", parameterName: "country" })
-    public countryName: string = null;
+  @filter() public airportName: string = null;
+  @filter(<FilterConfig>{ defaultValue: 'Iceland', parameterName: 'country' })
+  public countryName: string = null;
 
-    constructor(private airportsService: AirportsService) {}
-    getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
-        return this.airportsService.getAirportsPagedList(request);
-    };
+  constructor(private airportsService: AirportsService) {}
+  public getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
+    return this.airportsService.getAirportsPagedList(request);
+  };
 }
