@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { filter, RTFilterTarget, RTList, RTStateService } from 'right-angled';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { AirportsService, ListResponse, LookupItem, QueryStringStateService } from '../../shared';
 

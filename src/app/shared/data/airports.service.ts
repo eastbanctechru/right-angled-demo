@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Observable, ReplaySubject } from 'rxjs';
+import { delay, map } from 'rxjs/operators';
 import { Airport } from './airport';
 import { AirportsListRequest } from './airports-list-request';
 import { AirportsPagedListRequest } from './airports-paged-list-request';
@@ -18,68 +15,69 @@ export class AirportsService {
   private airportsUrl: string = './assets/airports.json';
   private responseCache: ReplaySubject<AirportsResponse> = new ReplaySubject<AirportsResponse>(1);
   constructor(private http: HttpClient) {}
-  public getAirportsList(request: AirportsListRequest, delay: number = 600): Observable<Airport[]> {
-    return this.getResponse()
-      .delay(delay)
-      .map(response => response.airports)
-      .map(airports => this.applyFilters(request, airports))
-      .map(airports => this.applySortings(request, airports))
-      .map(airports => airports.slice(0, 5))
-      .map(airports => airports.map(airport => ({ ...airport })));
-  }
-  public getAirportsPagedList(request: AirportsPagedListRequest, delay: number = 600): Observable<ListResponse> {
-    return this.getResponse()
-      .delay(delay)
-      .map(response => response.airports)
-      .map(airports => this.applyFilters(request, airports))
-      .map(airports => this.applySortings(request, airports))
-      .map(airports => this.applyPaging(request, airports))
-      .map(response => {
-        response.items = response.items.map(airport => ({ ...airport }));
-        return response;
-      });
-  }
-  public getAirportsListChunk(request: AirportsPagedListRequest, delay: number = 600): Observable<Airport[]> {
-    return this.getResponse()
-      .delay(delay)
-      .map(response => response.airports)
-      .map(airports => this.applyFilters(request, airports))
-      .map(airports => this.applySortings(request, airports))
-      .map(airports => this.applyPaging(request, airports))
-      .map(response => response.items.map(airport => ({ ...airport })));
-  }
-  public getSomeCountries(countriesCount: number = 5, delay: number = 0): Observable<any[]> {
-    return this.getResponse()
-      .delay(delay)
-      .map(response => response.countries)
-      .map(countryNames => countryNames.slice(0, countriesCount).map(countryName => ({ name: countryName })));
-  }
-  public getRegionsWithCountriesAndAirports(): Observable<any[]> {
-    return this.getResponse().map(response =>
-      response.airportsTree.map(region => ({
-        countries: region.countries.map(country => ({
-          airports: country.airports.map(airport => ({ ...airport })),
-          name: country.name
-        })),
-        name: region.name
-      }))
+  public getAirportsList(request: AirportsListRequest, delayTime: number = 600): Observable<Airport[]> {
+    return this.getResponse().pipe(
+      delay(delayTime),
+      map((response: AirportsResponse) => response.airports),
+      map((airports: Airport[]) => this.applyFilters(request, airports)),
+      map((airports: Airport[]) => this.applySortings(request, airports)),
+      map((airports: Airport[]) => airports.slice(0, 5)),
+      map((airports: Airport[]) => airports.map(airport => ({ ...airport })))
     );
   }
-  public getCountryInfo(countryName: string, delay: number = 0): Observable<any> {
+  public getAirportsPagedList(request: AirportsPagedListRequest, delayTime: number = 600): Observable<ListResponse> {
+    return this.getResponse().pipe(
+      delay(delayTime),
+      map((response: AirportsResponse) => response.airports),
+      map((airports: Airport[]) => this.applyFilters(request, airports)),
+      map((airports: Airport[]) => this.applySortings(request, airports)),
+      map((airports: Airport[]) => this.applyPaging(request, airports)),
+      map((response: ListResponse) => {
+        response.items = response.items.map(airport => ({ ...airport }));
+        return response;
+      })
+    );
+  }
+  public getAirportsListChunk(request: AirportsPagedListRequest, delayTime: number = 600): Observable<Airport[]> {
+    return this.getResponse().pipe(
+      delay(delayTime),
+      map((response: AirportsResponse) => response.airports),
+      map((airports: Airport[]) => this.applyFilters(request, airports)),
+      map((airports: Airport[]) => this.applySortings(request, airports)),
+      map((airports: Airport[]) => this.applyPaging(request, airports)),
+      map((response: ListResponse) => response.items.map(airport => ({ ...airport })))
+    );
+  }
+  public getSomeCountries(countriesCount: number = 5, delayTime: number = 0): Observable<any[]> {
+    return this.getResponse().pipe(
+      delay(delayTime),
+      map((response: AirportsResponse) => response.countries),
+      map((countryNames: string[]) => countryNames.slice(0, countriesCount).map(countryName => ({ name: countryName })))
+    );
+  }
+  public getRegionsWithCountriesAndAirports(): Observable<any[]> {
+    return this.getResponse().pipe(
+      map((response: AirportsResponse) =>
+        response.airportsTree.map(region => ({
+          countries: region.countries.map(country => ({
+            airports: country.airports.map(airport => ({ ...airport })),
+            name: country.name
+          })),
+          name: region.name
+        }))
+      )
+    );
+  }
+  public getCountryInfo(countryName: string, delayTime: number = 0): Observable<any> {
     return this.http
       .get(`https://restcountries.eu/rest/v1/name/${countryName}`)
-      .map(response => response[0])
-      .delay(delay);
+      .pipe(map(response => response[0]), delay(delayTime));
   }
-  public getAirportTypeLookups(delay: number = 0): Observable<LookupItem[]> {
-    return this.getResponse()
-      .delay(delay)
-      .map(response => response.types);
+  public getAirportTypeLookups(delayTime: number = 0): Observable<LookupItem[]> {
+    return this.getResponse().pipe(delay(delayTime), map((response: AirportsResponse) => response.types));
   }
-  public getAirportSizeLookups(delay: number = 0): Observable<LookupItem[]> {
-    return this.getResponse()
-      .delay(delay)
-      .map(response => response.sizes);
+  public getAirportSizeLookups(delayTime: number = 0): Observable<LookupItem[]> {
+    return this.getResponse().pipe(delay(delayTime), map((response: AirportsResponse) => response.sizes));
   }
   private getResponse(): Observable<AirportsResponse> {
     // we use optional "delay" parameter to simulate backend latency

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { OperationStatus } from 'right-angled';
-import { Observable } from 'rxjs/Observable';
-import { Subscriber } from 'rxjs/Subscriber';
+import { Observable, Subscriber } from 'rxjs';
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 
 @Component({

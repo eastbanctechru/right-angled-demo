@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { filter, FilterConfig, RTFilterTarget, RTList } from 'right-angled';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { AirportsPagedListRequest, AirportsService, ListResponse } from '../../shared';
 
