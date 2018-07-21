@@ -23,7 +23,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "npm run rimraf -- docs && ng build --configuration=production --output-path docs --base-href /right-angled-demo/ && npm run cpy -- docs/index.html docs --rename=404.html",
+    "deploy":
+      "npm run rimraf -- docs && ng build --configuration=production --output-path docs --base-href /right-angled-demo/ && npm run cpy -- docs/index.html docs --rename=404.html",
     "preversion": "npm run precommit",
     "version": "npm run deploy && git add -A docs",
     "postversion": "git push && git push --tags"

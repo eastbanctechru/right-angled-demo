@@ -1,4 +1,4 @@
-prismjs@1.14.0
+prismjs@1.15.0
 MIT
 MIT LICENSE
 
@@ -74,7 +74,7 @@ alertify@0.3.0
 MIT
 MIT
 
-core-js@2.5.6
+core-js@2.5.7
 MIT
 Copyright (c) 2014-2018 Denis Pushkarev
 
@@ -144,7 +144,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-tslib@1.9.0
+tslib@1.9.3
 Apache-2.0
 Apache License
 
@@ -202,11 +202,11 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@angular/common@6.0.3
+@angular/common@6.0.9
 MIT
 MIT
 
-rxjs@6.2.0
+rxjs@6.2.2
 Apache-2.0
 Apache License
                          Version 2.0, January 2004
@@ -414,7 +414,11 @@ right-angled@6.0.0
 MIT
 MIT
 
-@angular/platform-browser@6.0.3
+@angular/router@6.0.9
+MIT
+MIT
+
+@angular/platform-browser@6.0.9
 MIT
 MIT
 
@@ -422,14 +426,10 @@ clipboard@2.0.1
 MIT
 MIT
 
-@angular/router@6.0.3
+@angular/core@6.0.9
 MIT
 MIT
 
-@angular/core@6.0.3
-MIT
-MIT
-
-@angular/forms@6.0.3
+@angular/forms@6.0.9
 MIT
 MIT
