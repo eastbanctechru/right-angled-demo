@@ -19,7 +19,7 @@ export class UseFiltersComponent {
   public getAirports = (request: AirportsPagedListRequest): Observable<ListResponse> => {
     return this.airportsService.getAirportsPagedList(request);
   };
-  public onListInit(list: RTList): void {
+  public listInit(list: RTList): void {
     list.registerFilterTarget(this);
   }
 }

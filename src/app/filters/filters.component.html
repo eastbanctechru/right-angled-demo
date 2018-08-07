@@ -106,8 +106,7 @@
     </aside>
     <p>
         It is quite simple to use them. First of all, we mark the filter properties of our component by the
-        <a target="_blank"
-            href="https://eastbanctechru.github.io/e2e4/index.html#filter">@filter</a> annotation. If required, we can specify additional parameters described below.
+        <a target="_blank" href="https://eastbanctechru.github.io/e2e4/index.html#filter">@filter</a> annotation. If required, we can specify additional parameters described below.
     </p>
     <p>
         Second, we register our component as
@@ -119,15 +118,14 @@
     <aside>
         <p>
             <a target="_blank" href="https://angular.io/docs/ts/latest/api/core/index/forwardRef-function.html">forwardRef</a> usage is debatable question. If you to prefer to avoid using it, you can use
-            <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/listdirective.html#onlistinit">rtList.onListInit</a> event and register your component as filter target by calling
+            <a target="_blank" href="https://eastbanctechru.github.io/right-angled/classes/listdirective.html#listinit">rtList.listInit</a> event and register your component as filter target by calling
             <a taregt="_blank" href="https://eastbanctechru.github.io/right-angled/classes/rtlist.html#registerfiltertarget">registerFilterTarget</a> method.
         </p>
     </aside>
     <p>
         Below there is a live example of the component which configures its properties as filters. Additionally, we use
-        <a
-            href="https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html" target="_blank">json pipe</a> to display the parameters of the last executed request under the table for you to see what parameters
-            have been sent to the server.
+        <a href="https://angular.io/docs/ts/latest/api/common/index/JsonPipe-pipe.html" target="_blank">json pipe</a> to display the parameters of the last executed request under the table for you to see what parameters
+        have been sent to the server.
     </p>
     <p>
         As you can see, these properties values are sent automatically in the server request, resetted by the "reset settings" button,
@@ -179,7 +177,7 @@
     </p>
     <p>
         In the first example of this section you could see how we register our component as a filter with the help of
-        <code>onListInit</code> event of the
+        <code>listInit</code> event of the
         <code>rtList</code> directive.
     </p>
     <p>
@@ -277,8 +275,7 @@
             <code>defaultValue</code> - the default value to which the annotated property will be set on “resetSettings” method call. If this parameter
             is not specified,
             <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a> will remember the value of annotated property at first use of any of the
-            <a target="_blank"
-                href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a> methods as a default value.
+            <a target="_blank" href="https://eastbanctechru.github.io/e2e4/classes/filtersservice.html">FiltersService</a> methods as a default value.
         </p>
         <rt-demo-tab-section>
             <rt-demo-sample-tab>
