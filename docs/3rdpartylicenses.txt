@@ -1,4 +1,4 @@
-e2e4@2.4.0
+e2e4@2.5.0
 MIT
 The MIT License (MIT)
 
@@ -284,7 +284,7 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-@angular/common@6.1.7
+@angular/common@6.1.8
 MIT
 MIT
 
@@ -316,23 +316,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-right-angled@7.0.1
+right-angled@7.1.0
 MIT
 MIT
 
-@angular/platform-browser@6.1.7
+@angular/platform-browser@6.1.8
 MIT
 MIT
 
-@angular/router@6.1.7
+@angular/router@6.1.8
 MIT
 MIT
 
-@angular/core@6.1.7
+@angular/core@6.1.8
 MIT
 MIT
 
-@angular/forms@6.1.7
+@angular/forms@6.1.8
 MIT
 MIT
 
